@@ -16,12 +16,32 @@
     .nav{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.86);font-size:15px}.nav a:hover{color:var(--gold-soft)}
     .header-cta{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:999px;font-weight:800;background:linear-gradient(180deg,#d8b17b,var(--gold));color:#1b1610;box-shadow:0 12px 30px rgba(0,0,0,.26)}
     .menu-toggle{display:none;width:46px;height:46px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.08);color:#fff;font-size:24px;cursor:pointer;align-items:center;justify-content:center}
-    .estimate-bar-wrap{position:sticky;top:82px;z-index:8;padding:10px 0 0;background:linear-gradient(180deg,rgba(18,25,34,.94),rgba(18,25,34,0));pointer-events:none}
-    .estimate-bar,.estimate-drawer{width:min(1220px, calc(100% - 32px));margin:0 auto}
+
+    .estimate-bar-wrap{position:sticky;top:82px;z-index:8;padding:8px 0 0;background:linear-gradient(180deg,rgba(18,25,34,.94),rgba(18,25,34,0));pointer-events:none}
+    .estimate-bar,.estimate-drawer{width:min(980px, calc(100% - 32px));margin:0 auto}
     .estimate-bar,.estimate-drawer,.estimate-link{pointer-events:auto}
-    .estimate-bar{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end;border-radius:26px;padding:16px 18px;background:linear-gradient(135deg, rgba(255,255,255,.94), rgba(245,236,224,.94));color:#1a2130;box-shadow:var(--shadow);border:1px solid rgba(202,160,100,.18)}
-    .estimate-eyebrow{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#7b5a2b;margin-bottom:4px}.estimate-meta{font-size:14px;color:#667085;line-height:1.5}.estimate-price{font-size:32px;font-weight:800;text-align:right}.estimate-link{font-size:13px;color:#7b5a2b;font-weight:700;text-align:right;cursor:pointer}
-    .estimate-drawer{display:none;background:#fff;color:#1a2130;border-radius:24px;padding:18px;box-shadow:0 14px 30px rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.06);margin-top:10px}.estimate-drawer.open{display:block}.drawer-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #e7dfd4;font-size:15px}.drawer-row:first-child{border-top:none;padding-top:0}.drawer-total{display:flex;justify-content:space-between;font-weight:800;padding-top:12px;margin-top:10px;border-top:1px solid #e7dfd4}
+    .estimate-bar{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:10px;
+      align-items:center;
+      border-radius:20px;
+      padding:12px 16px;
+      background:linear-gradient(135deg, rgba(255,255,255,.94), rgba(245,236,224,.94));
+      color:#1a2130;
+      box-shadow:0 16px 40px rgba(0,0,0,.18);
+      border:1px solid rgba(202,160,100,.18)
+    }
+    .estimate-eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7b5a2b;margin-bottom:2px}
+    .estimate-meta{font-size:13px;color:#667085;line-height:1.4}
+    .estimate-price{font-size:24px;font-weight:800;text-align:right;line-height:1}
+    .estimate-link{font-size:12px;color:#7b5a2b;font-weight:700;text-align:right;cursor:pointer;margin-top:4px}
+    .estimate-drawer{display:none;background:#fff;color:#1a2130;border-radius:20px;padding:16px;box-shadow:0 14px 30px rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.06);margin-top:8px}
+    .estimate-drawer.open{display:block}
+    .drawer-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #e7dfd4;font-size:15px}
+    .drawer-row:first-child{border-top:none;padding-top:0}
+    .drawer-total{display:flex;justify-content:space-between;font-weight:800;padding-top:12px;margin-top:10px;border-top:1px solid #e7dfd4}
+
     .hero{padding:36px 0 40px}.hero-stage{position:relative;overflow:visible;border-radius:38px;min-height:860px;background:linear-gradient(90deg, rgba(7,17,34,.88) 0%, rgba(7,17,34,.66) 35%, rgba(7,17,34,.35) 58%, rgba(7,17,34,.22) 100%),radial-gradient(circle at 30% 20%, rgba(216,177,123,.18), transparent 26%),radial-gradient(circle at 60% 0%, rgba(255,255,255,.08), transparent 18%),url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.08)}
     .hero-inner{position:relative;z-index:2;padding:34px;display:flex;flex-direction:column;min-height:860px}
     .hero-topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:52px}
@@ -57,8 +77,26 @@
     .feature-grid,.process-grid,.reviews-grid,.footer-contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature,.step-card,.review-card{background:#fff;color:#101828;border-radius:28px;padding:24px;border:1px solid #ece5d9;box-shadow:0 12px 28px rgba(16,24,40,.06)}.feature h3,.step-card h3,.review-card h3{margin:0 0 10px;font-size:24px;letter-spacing:-.03em}.feature p,.step-card p,.review-card p{margin:0;color:#667085;line-height:1.7;font-size:16px}.step-number{width:44px;height:44px;border-radius:999px;background:linear-gradient(180deg,#d6ae75,var(--gold));color:#fffef8;display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:14px}.review-stars{color:#cf9f4d;font-size:20px;margin-bottom:12px;letter-spacing:.12em}
     .cta-band{margin-top:10px;border-radius:34px;padding:34px;background:linear-gradient(135deg,#fff 0%, #f3e5cb 100%);color:#111827;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.5)}.cta-band h3{margin:0 0 8px;font-family:Georgia, 'Times New Roman', serif;font-size:44px;line-height:.96;letter-spacing:-.05em}.cta-band p{margin:0;color:#667085;font-size:17px}
     .site-footer{padding:28px 0 50px;color:rgba(255,255,255,.72);font-size:15px;background:#0a111e;margin-top:20px;border-top:1px solid rgba(255,255,255,.06)}.footer-row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}.footer-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:18px;color:rgba(255,255,255,.86)}.footer-card strong{display:block;margin-bottom:8px;font-size:15px;color:#fff}.footer-card span,.footer-card a{color:rgba(255,255,255,.76);line-height:1.6;font-size:14px;word-break:break-word}
-    @media (max-width:980px){.feature-grid,.service-grid,.frequency-grid,.room-grid,.process-grid,.reviews-grid,.footer-contact-grid,.field-grid,.trust-row{grid-template-columns:1fr}.estimate-hero{grid-template-columns:1fr}.postcode-bar{grid-template-columns:1fr}.progress{grid-template-columns:1fr 1fr}.hero{padding-top:24px}.hero h1{font-size:56px}.section-heading h2{font-size:42px}.cta-band h3{font-size:36px}.menu-toggle{display:flex}.nav{display:none;position:absolute;top:82px;right:0;width:min(280px, calc(100vw - 32px));background:rgba(7,18,47,.96);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:16px;flex-direction:column;align-items:flex-start;box-shadow:0 18px 40px rgba(0,0,0,.28);z-index:10001}.nav.open{display:flex}.header-cta{display:none}.hero-topbar .glass-chip{display:none}.hero-inner{padding:20px}.hero-stage,.hero-inner{min-height:auto}}
-    @media (max-width:640px){.estimate-bar{grid-template-columns:1fr}.estimate-price,.estimate-link{text-align:left}.estimate-bar-wrap{top:74px}.hero{padding-top:12px}.footer-row{flex-direction:column;align-items:flex-start}.hero h1{font-size:46px}.hero-sub{font-size:24px}.book-pill,.icon-btn{width:62px;height:62px;min-width:62px;border-radius:20px}.book-pill{font-size:18px;width:auto;padding:0 22px}.step-pill{font-size:15px;padding:18px 10px}.quote-form-card{padding:20px}}
+
+    @media (max-width:980px){
+      .feature-grid,.service-grid,.frequency-grid,.room-grid,.process-grid,.reviews-grid,.footer-contact-grid,.field-grid,.trust-row{grid-template-columns:1fr}
+      .estimate-hero{grid-template-columns:1fr}
+      .postcode-bar{grid-template-columns:1fr}
+      .progress{grid-template-columns:1fr 1fr}
+      .hero{padding-top:24px}.hero h1{font-size:56px}.section-heading h2{font-size:42px}.cta-band h3{font-size:36px}
+      .menu-toggle{display:flex}
+      .nav{display:none;position:absolute;top:82px;right:0;width:min(280px, calc(100vw - 32px));background:rgba(7,18,47,.96);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:16px;flex-direction:column;align-items:flex-start;box-shadow:0 18px 40px rgba(0,0,0,.28);z-index:10001}
+      .nav.open{display:flex}.header-cta{display:none}.hero-topbar .glass-chip{display:none}.hero-inner{padding:20px}.hero-stage,.hero-inner{min-height:auto}
+    }
+
+    @media (max-width:640px){
+      .estimate-bar{grid-template-columns:1fr;padding:10px 14px;border-radius:18px}
+      .estimate-price,.estimate-link{text-align:left}
+      .estimate-price{font-size:22px}
+      .estimate-meta{font-size:12px}
+      .estimate-bar-wrap{top:74px}
+      .hero{padding-top:12px}.footer-row{flex-direction:column;align-items:flex-start}.hero h1{font-size:46px}.hero-sub{font-size:24px}.book-pill,.icon-btn{width:62px;height:62px;min-width:62px;border-radius:20px}.book-pill{font-size:18px;width:auto;padding:0 22px}.step-pill{font-size:15px;padding:18px 10px}.quote-form-card{padding:20px}
+    }
   </style>
 </head>
 <body>
@@ -82,12 +120,18 @@
 
   <div class="estimate-bar-wrap">
     <div class="estimate-bar">
-      <div><div class="estimate-eyebrow">Live estimate</div><div class="estimate-meta" id="estimateMeta">Enter postcode, choose a service and build your quote.</div></div>
-      <div><div class="estimate-price" id="estimateAmount">£0.00</div><div class="estimate-link" id="estimateToggle">View breakdown</div></div>
+      <div>
+        <div class="estimate-eyebrow">Live estimate</div>
+        <div class="estimate-meta" id="estimateMeta">Enter postcode, choose a service and build your quote.</div>
+      </div>
+      <div>
+        <div class="estimate-price" id="estimateAmount">£0.00</div>
+        <div class="estimate-link" id="estimateToggle">View breakdown</div>
+      </div>
     </div>
     <div class="estimate-drawer" id="estimateDrawer">
       <div class="drawer-row"><span>Service</span><strong id="drawerService">Regular cleaning</strong></div>
-      <div class="drawer-row"><span>Frequency</span><strong id="drawerFrequency">Weekly</strong></div>
+      <div class="drawer-row"><span id="drawerPlanLabel">Plan</span><strong id="drawerFrequency">Weekly</strong></div>
       <div class="drawer-row"><span>Estimated hours</span><strong id="drawerHours">2.0h</strong></div>
       <div class="drawer-row"><span>Add-ons</span><strong id="drawerAddons">£0.00</strong></div>
       <div class="drawer-total"><span>Total estimate</span><strong id="drawerTotal">£0.00</strong></div>
@@ -100,7 +144,7 @@
         <div class="hero-inner">
           <div class="hero-topbar">
             <div class="icon-btn">☰</div>
-            <div class="glass-chip">+44 3333 123 4567 · Why Us</div>
+            <div class="glass-chip">020 8103 5100 · Why Us</div>
             <div class="book-pill">Book</div>
           </div>
 
@@ -134,7 +178,7 @@
             <div class="booking-shell" id="calculator">
               <div class="progress">
                 <div class="step-pill active" id="stepPill1">Step 1: Service</div>
-                <div class="step-pill" id="stepPill2">Step 2: Frequency</div>
+                <div class="step-pill" id="stepPill2">Step 2: Plan</div>
                 <div class="step-pill" id="stepPill3">Step 3: Schedule</div>
                 <div class="step-pill" id="stepPill4">Step 4: Details</div>
               </div>
@@ -144,20 +188,48 @@
                   <div class="quote-section-title">Choose your service</div>
                   <p class="quote-helper-text">A luxury booking flow starts by guiding the client into the right service quickly and clearly.</p>
                   <div class="service-grid" id="serviceOptions">
-                    <div class="select-card selected" data-service="regular" data-rate="16.95" data-name="Regular cleaning"><div class="micro">Best value · signature plan</div><h4>Regular cleaning</h4><div class="price">£16.95<span style="font-size:14px;color:rgba(255,255,255,.62)">/h</span></div><p>Designed for clients who want a polished home every week or fortnight.</p></div>
-                    <div class="select-card" data-service="oneoff" data-rate="19" data-name="One-off clean"><div class="micro">Flexible</div><h4>One-off clean</h4><div class="price">£19<span style="font-size:14px;color:rgba(255,255,255,.62)">/h</span></div><p>Ideal for occasional resets and standalone bookings.</p></div>
-                    <div class="select-card" data-service="deep" data-rate="23" data-name="Deep cleaning"><div class="micro">Detailed refresh</div><h4>Deep cleaning</h4><div class="price">£23<span style="font-size:14px;color:rgba(255,255,255,.62)">/h</span></div><p>For homes that need a fuller, more detailed refresh.</p></div>
+                    <div class="select-card selected" data-service="regular" data-rate="16.95" data-name="Regular cleaning">
+                      <div class="micro">Best value · signature plan</div>
+                      <h4>Regular cleaning</h4>
+                      <div class="price">£16.95<span style="font-size:14px;color:rgba(255,255,255,.62)">/h</span></div>
+                      <p>Designed for clients who want a polished home every week or fortnight.</p>
+                    </div>
+                    <div class="select-card" data-service="oneoff" data-rate="19" data-name="One-off clean">
+                      <div class="micro">Flexible</div>
+                      <h4>One-off clean</h4>
+                      <div class="price">£19<span style="font-size:14px;color:rgba(255,255,255,.62)">/h</span></div>
+                      <p>Ideal for occasional resets and standalone bookings.</p>
+                    </div>
+                    <div class="select-card" data-service="deep" data-rate="23" data-name="Deep cleaning">
+                      <div class="micro">Detailed refresh</div>
+                      <h4>Deep cleaning</h4>
+                      <div class="price">£23<span style="font-size:14px;color:rgba(255,255,255,.62)">/h</span></div>
+                      <p>For homes that need a fuller, more detailed refresh.</p>
+                    </div>
                   </div>
                   <div class="form-actions"><button class="btn btn-gold" type="button" id="toStep2">Continue</button></div>
                 </div>
 
                 <div class="step-panel" id="step2">
-                  <div class="quote-section-title">Choose your plan and home size</div>
-                  <p class="quote-helper-text">Recurring plans stay in the lead because that is where long-term client value sits.</p>
+                  <div class="quote-section-title" id="step2Title">Choose your plan and home size</div>
+                  <p class="quote-helper-text" id="step2Helper">Recurring plans stay in the lead because that is where long-term client value sits.</p>
+
                   <div class="frequency-grid" id="frequencyOptions">
-                    <div class="select-card selected" data-frequency="Weekly"><div class="micro">Best retention</div><h4>Weekly</h4><p>Best value, best consistency, strongest same-cleaner rhythm.</p></div>
-                    <div class="select-card" data-frequency="Fortnightly"><div class="micro">Balanced</div><h4>Fortnightly</h4><p>Still recurring, lower commitment, high convenience.</p></div>
-                    <div class="select-card" data-frequency="Monthly"><div class="micro">Occasional care</div><h4>Monthly</h4><p>For light upkeep with less frequent visits.</p></div>
+                    <div class="select-card selected" data-frequency="Weekly">
+                      <div class="micro">Best retention</div>
+                      <h4>Weekly</h4>
+                      <p>Best value, best consistency, strongest same-cleaner rhythm.</p>
+                    </div>
+                    <div class="select-card" data-frequency="Fortnightly">
+                      <div class="micro">Balanced</div>
+                      <h4>Fortnightly</h4>
+                      <p>Still recurring, lower commitment, high convenience.</p>
+                    </div>
+                    <div class="select-card" data-frequency="Monthly">
+                      <div class="micro">Occasional care</div>
+                      <h4>Monthly</h4>
+                      <p>For light upkeep with less frequent visits.</p>
+                    </div>
                   </div>
 
                   <div class="room-grid" id="roomsList">
@@ -186,7 +258,7 @@
                   <div class="payment-summary">
                     <div class="mini">Booking summary</div>
                     <div class="payment-row"><span>Service</span><strong id="payService">Regular cleaning</strong></div>
-                    <div class="payment-row"><span>Frequency</span><strong id="payFrequency">Weekly</strong></div>
+                    <div class="payment-row"><span id="payPlanLabelA">Plan</span><strong id="payFrequency">Weekly</strong></div>
                     <div class="payment-row"><span>Estimated total</span><strong id="payTotalA">£76.00</strong></div>
                   </div>
                   <div class="form-actions"><button class="btn btn-dark" type="button" id="backTo2">Back</button><button class="btn btn-gold" type="button" id="toStep4">Continue</button></div>
@@ -203,18 +275,17 @@
                   <div class="payment-summary">
                     <div class="mini">Booking</div>
                     <div class="payment-row"><span>Service</span><strong id="payServiceB">Regular cleaning</strong></div>
-                    <div class="payment-row"><span>Frequency</span><strong id="payFrequencyB">Weekly</strong></div>
+                    <div class="payment-row"><span id="payPlanLabelB">Plan</span><strong id="payFrequencyB">Weekly</strong></div>
                     <div class="payment-row"><span>Date</span><strong id="paySlot">2026-03-23 · 10:00</strong></div>
                     <div class="payment-row"><span>Estimate</span><strong id="payTotalB">£76.00</strong></div>
                   </div>
                   <div class="form-actions"><button class="btn btn-dark" type="button" id="backTo3">Back</button><button class="btn btn-green" type="button" id="payNowBtn">Submit Booking Request</button></div>
                   <div class="status-message" id="statusMessage"></div>
                 </div>
-
               </div>
             </div>
-
           </div>
+
         </div>
       </div>
     </div>
@@ -222,13 +293,36 @@
 
   <section id="services" class="section"><div class="container"><div class="section-heading"><h2>Built like a luxury service brand.</h2><p>Everything is positioned to make recurring cleaning feel premium, simple and easy to trust.</p></div><div class="light-card"><div class="feature-grid"><div class="feature"><h3>Recurring-first pricing</h3><p>Regular cleaning stays in the lead so clients naturally move toward the longer-term plan.</p></div><div class="feature"><h3>Private, polished feel</h3><p>Dark depth, warm gold accents, glass panels and restrained copy create a stronger luxury impression.</p></div><div class="feature"><h3>App-style booking</h3><p>The journey feels guided and modern, closer to a premium product than a normal service website.</p></div></div></div></div></section>
 
-  <section id="process" class="section"><div class="container"><div class="section-heading"><h2>Simple premium booking process.</h2><p>A stronger website makes the next step obvious and keeps recurring cleaning at the centre of the offer.</p></div><div class="light-card"><div class="process-grid"><div class="step-card"><div class="step-number">1</div><h3>Build the quote</h3><p>Enter postcode, choose the service, set frequency, and personalise rooms and extras.</p></div><div class="step-card"><div class="step-number">2</div><h3>Choose the schedule</h3><p>Select the date and time that suits your home routine while the estimate stays live.</p></div><div class="step-card"><div class="step-number">3</div><h3>Request the booking</h3><p>Confirm details in a final polished step, then connect payment later without changing the structure.</p></div></div></div></div></section>
+  <section id="process" class="section"><div class="container"><div class="section-heading"><h2>Simple premium booking process.</h2><p>A stronger website makes the next step obvious and keeps recurring cleaning at the centre of the offer.</p></div><div class="light-card"><div class="process-grid"><div class="step-card"><div class="step-number">1</div><h3>Build the quote</h3><p>Enter postcode, choose the service, set frequency or hours, and personalise rooms and extras.</p></div><div class="step-card"><div class="step-number">2</div><h3>Choose the schedule</h3><p>Select the date and time that suits your home routine while the estimate stays live.</p></div><div class="step-card"><div class="step-number">3</div><h3>Request the booking</h3><p>Confirm details in a final polished step, then connect payment later without changing the structure.</p></div></div></div></div></section>
 
   <section id="reviews" class="section"><div class="container"><div class="section-heading"><h2>Proof that builds trust faster.</h2><p>Keep the premium feel strong until you swap in real reviews, press mentions and social proof.</p></div><div class="light-card"><div class="reviews-grid"><div class="review-card"><div class="review-stars">★★★★★</div><h3>Reliable and beautifully organised</h3><p>The booking flow felt premium and the cleaner quality has been consistently excellent.</p></div><div class="review-card"><div class="review-stars">★★★★★</div><h3>Best cleaner we’ve had</h3><p>We chose the regular plan and the whole service feels calmer and more professional than others we tried.</p></div><div class="review-card"><div class="review-stars">★★★★★</div><h3>Easy to trust</h3><p>The quote system, pricing and recurring plan made the service feel much more polished from the start.</p></div></div></div></div></section>
 
   <section id="pricing" class="section"><div class="container"><div class="cta-band"><div><h3>Ready to book now?</h3><p>Start with postcode, move through the guided flow, and connect payment later when you are ready.</p></div><div style="display:flex;gap:12px;flex-wrap:wrap;"><a href="#calculator" class="btn btn-gold">Book now</a><a href="#services" class="btn btn-dark">Request a quote</a></div></div></div></section>
 
-  <footer class="site-footer"><div class="container footer-row"><span>© 2026 Nestlyn Home</span><span>Premium recurring cleaning with postcode-first booking</span></div><div class="container footer-contact-grid"><div class="footer-card"><strong>Email</strong><a href="mailto:info@nestlynhome.co.uk">info@nestlynhome.co.uk</a></div><div class="footer-card"><strong>Phone</strong><a href="tel:02000000000">020 0000 0000</a></div><div class="footer-card"><strong>Service</strong><span>Regular cleaning, deep cleaning, one-off cleaning and premium home care add-ons.</span></div></div></footer>
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© 2026 Nestlyn Home</span>
+      <span>Premium recurring cleaning with postcode-first booking</span>
+    </div>
+    <div class="container footer-contact-grid">
+      <div class="footer-card">
+        <strong>Email</strong>
+        <a href="mailto:info@nestlynhome.co.uk">info@nestlynhome.co.uk</a>
+      </div>
+      <div class="footer-card">
+        <strong>Phone</strong>
+        <a href="tel:02081035100">020 8103 5100</a>
+      </div>
+      <div class="footer-card">
+        <strong>Service</strong>
+        <span>Regular cleaning, deep cleaning, one-off cleaning and premium home care add-ons.</span>
+      </div>
+      <div class="footer-card">
+        <strong>Address</strong>
+        <span>128, City Road, London, EC1V 2NX, UNITED KINGDOM</span>
+      </div>
+    </div>
+  </footer>
 
   <script>
     const API_BASE = "https://nestlyn-backend-system.onrender.com";
@@ -239,6 +333,7 @@
       serviceName: "Regular cleaning",
       rate: 16.95,
       frequency: "Weekly",
+      durationHours: 2,
       rooms: { bedroom: 1, bathroom: 1, kitchen: 1, living: 1 },
       addons: { oven: false, tools: false, laundry: false },
       date: "2026-03-23",
@@ -259,12 +354,71 @@
       document.getElementById("stepPill4")
     ];
 
+    const regularFrequencyMarkup = `
+      <div class="select-card selected" data-frequency="Weekly">
+        <div class="micro">Best retention</div>
+        <h4>Weekly</h4>
+        <p>Best value, best consistency, strongest same-cleaner rhythm.</p>
+      </div>
+      <div class="select-card" data-frequency="Fortnightly">
+        <div class="micro">Balanced</div>
+        <h4>Fortnightly</h4>
+        <p>Still recurring, lower commitment, high convenience.</p>
+      </div>
+      <div class="select-card" data-frequency="Monthly">
+        <div class="micro">Occasional care</div>
+        <h4>Monthly</h4>
+        <p>For light upkeep with less frequent visits.</p>
+      </div>
+    `;
+
+    const hoursMarkup = `
+      <div class="select-card selected" data-hours="2">
+        <div class="micro">Quick reset</div>
+        <h4>2 hours</h4>
+        <p>Suitable for smaller homes or lighter visits.</p>
+      </div>
+      <div class="select-card" data-hours="3">
+        <div class="micro">Popular</div>
+        <h4>3 hours</h4>
+        <p>Good balance for most one-off cleaning sessions.</p>
+      </div>
+      <div class="select-card" data-hours="4">
+        <div class="micro">Thorough</div>
+        <h4>4 hours</h4>
+        <p>More time for a fuller clean and extra detail.</p>
+      </div>
+      <div class="select-card" data-hours="5">
+        <div class="micro">Extended</div>
+        <h4>5 hours</h4>
+        <p>Best for larger homes or deeper cleaning needs.</p>
+      </div>
+      <div class="select-card" data-hours="6">
+        <div class="micro">Maximum detail</div>
+        <h4>6 hours</h4>
+        <p>Ideal when the property needs a longer reset.</p>
+      </div>
+    `;
+
+    function isRegularService() {
+      return state.service === "regular";
+    }
+
     function roomMinutes() {
       return state.rooms.bedroom * 25 + state.rooms.bathroom * 35 + state.rooms.kitchen * 45 + state.rooms.living * 30;
     }
 
     function estimatedHours() {
+      if (!isRegularService()) return state.durationHours;
       return Math.max(2, roomMinutes() / 60);
+    }
+
+    function planLabel() {
+      return isRegularService() ? "Plan" : "Duration";
+    }
+
+    function planValue() {
+      return isRegularService() ? state.frequency : `${state.durationHours} hours`;
     }
 
     function addOnTotal() {
@@ -279,31 +433,56 @@
       return state.rooms.bedroom + state.rooms.bathroom + state.rooms.kitchen + state.rooms.living;
     }
 
+    function rebuildPlanOptions() {
+      const container = document.getElementById("frequencyOptions");
+      const step2Title = document.getElementById("step2Title");
+      const step2Helper = document.getElementById("step2Helper");
+      const stepPill2 = document.getElementById("stepPill2");
+
+      if (isRegularService()) {
+        container.innerHTML = regularFrequencyMarkup;
+        step2Title.textContent = "Choose your plan and home size";
+        step2Helper.textContent = "Recurring plans stay in the lead because that is where long-term client value sits.";
+        stepPill2.textContent = "Step 2: Plan";
+      } else {
+        container.innerHTML = hoursMarkup;
+        step2Title.textContent = "Choose hours and home size";
+        step2Helper.textContent = "For one-off and deep cleaning, choose the number of hours you want instead of a weekly plan.";
+        stepPill2.textContent = "Step 2: Hours";
+      }
+
+      setupFrequencySelection();
+    }
+
     function updateEstimate() {
       const total = estimateTotal();
+      const currentPlanValue = planValue();
 
       document.getElementById("estimateAmount").textContent = "£" + total.toFixed(2);
       document.getElementById("heroEstimate").textContent = "£" + total.toFixed(0);
 
-      const parts = [state.postcode || "No postcode", state.frequency];
+      const parts = [state.postcode || "No postcode", currentPlanValue];
       if (roomCount()) parts.push(roomCount() + " rooms");
       const addonCount = Object.values(state.addons).filter(Boolean).length;
       if (addonCount) parts.push(addonCount + " add-on");
       parts.push(state.date, state.time);
 
       document.getElementById("estimateMeta").textContent = parts.join(" · ");
-      document.getElementById("heroEstimateMeta").textContent = state.serviceName + " · " + state.frequency + " plan";
+      document.getElementById("heroEstimateMeta").textContent = state.serviceName + " · " + currentPlanValue;
 
+      document.getElementById("drawerPlanLabel").textContent = planLabel();
       document.getElementById("drawerService").textContent = state.serviceName;
-      document.getElementById("drawerFrequency").textContent = state.frequency;
+      document.getElementById("drawerFrequency").textContent = currentPlanValue;
       document.getElementById("drawerHours").textContent = estimatedHours().toFixed(1) + "h";
       document.getElementById("drawerAddons").textContent = "£" + addOnTotal().toFixed(2);
       document.getElementById("drawerTotal").textContent = "£" + total.toFixed(2);
 
+      document.getElementById("payPlanLabelA").textContent = planLabel();
+      document.getElementById("payPlanLabelB").textContent = planLabel();
       document.getElementById("payService").textContent = state.serviceName;
-      document.getElementById("payFrequency").textContent = state.frequency;
+      document.getElementById("payFrequency").textContent = currentPlanValue;
       document.getElementById("payServiceB").textContent = state.serviceName;
-      document.getElementById("payFrequencyB").textContent = state.frequency;
+      document.getElementById("payFrequencyB").textContent = currentPlanValue;
       document.getElementById("paySlot").textContent = state.date + " · " + state.time;
       document.getElementById("payTotalA").textContent = "£" + total.toFixed(2);
       document.getElementById("payTotalB").textContent = "£" + total.toFixed(2);
@@ -327,17 +506,32 @@
           state.service = card.dataset.service;
           state.serviceName = card.dataset.name;
           state.rate = Number(card.dataset.rate);
+
+          if (isRegularService()) {
+            state.frequency = "Weekly";
+          } else {
+            state.durationHours = 2;
+          }
+
+          rebuildPlanOptions();
           updateEstimate();
         });
       });
     }
 
     function setupFrequencySelection() {
-      document.querySelectorAll("#frequencyOptions .select-card").forEach(card => {
+      const container = document.getElementById("frequencyOptions");
+      container.querySelectorAll(".select-card").forEach(card => {
         card.addEventListener("click", () => {
-          document.querySelectorAll("#frequencyOptions .select-card").forEach(c => c.classList.remove("selected"));
+          container.querySelectorAll(".select-card").forEach(c => c.classList.remove("selected"));
           card.classList.add("selected");
-          state.frequency = card.dataset.frequency;
+
+          if (isRegularService()) {
+            state.frequency = card.dataset.frequency;
+          } else {
+            state.durationHours = Number(card.dataset.hours);
+          }
+
           updateEstimate();
         });
       });
@@ -442,99 +636,100 @@
     }
 
     async function loginCustomer() {
-  await wakeBackend();
+      await wakeBackend();
 
-  const res = await fetch(`${API_BASE}/api/auth/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      email: "customer@example.com",
-      password: "Password123!"
-    })
-  });
+      const res = await fetch(`${API_BASE}/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: "customer@example.com",
+          password: "Password123!"
+        })
+      });
 
-  const text = await res.text();
-  let data = {};
+      const text = await res.text();
+      let data = {};
 
-  try {
-    data = JSON.parse(text);
-  } catch (e) {
-    throw new Error("Login response was not valid JSON");
-  }
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        throw new Error("Login response was not valid JSON");
+      }
 
-  if (!res.ok) {
-    throw new Error(data.error || "Login failed");
-  }
+      if (!res.ok) {
+        throw new Error(data.error || "Login failed");
+      }
 
-  localStorage.setItem("nestlyn_token", data.token);
-  return data.token;
-}
+      localStorage.setItem("nestlyn_token", data.token);
+      return data.token;
+    }
 
     async function submitBooking() {
-  const status = document.getElementById("statusMessage");
-  const payBtn = document.getElementById("payNowBtn");
+      const status = document.getElementById("statusMessage");
+      const payBtn = document.getElementById("payNowBtn");
 
-  try {
-    payBtn.disabled = true;
-    payBtn.textContent = "Submitting...";
-    status.style.display = "block";
-    status.textContent = "Submitting booking...";
+      try {
+        payBtn.disabled = true;
+        payBtn.textContent = "Submitting...";
+        status.style.display = "block";
+        status.textContent = "Submitting booking...";
 
-    const payload = {
-      service_type: String(state.service),
-      frequency: String(state.frequency).toLowerCase(),
-      date: String(state.date),
-      time: String(state.time),
-      postcode: String(state.postcode),
-      address: String(state.postcode),
-      notes: String(document.getElementById("notesInput").value || ""),
-      bedrooms: Number(state.rooms.bedroom || 0),
-      bathrooms: Number(state.rooms.bathroom || 0),
-      kitchens: Number(state.rooms.kitchen || 0),
-      living_rooms: Number(state.rooms.living || 0),
-      oven: state.addons.oven ? 1 : 0,
-      tools: state.addons.tools ? 1 : 0,
-      laundry: state.addons.laundry ? 1 : 0
-    };
+        const payload = {
+          service_type: String(state.service),
+          frequency: isRegularService() ? String(state.frequency).toLowerCase() : "once",
+          duration_hours: !isRegularService() ? Number(state.durationHours) : null,
+          date: String(state.date),
+          time: String(state.time),
+          postcode: String(state.postcode),
+          address: "128, City Road, London, EC1V 2NX, UNITED KINGDOM",
+          notes: String(document.getElementById("notesInput").value || ""),
+          bedrooms: Number(state.rooms.bedroom || 0),
+          bathrooms: Number(state.rooms.bathroom || 0),
+          kitchens: Number(state.rooms.kitchen || 0),
+          living_rooms: Number(state.rooms.living || 0),
+          oven: state.addons.oven ? 1 : 0,
+          tools: state.addons.tools ? 1 : 0,
+          laundry: state.addons.laundry ? 1 : 0
+        };
 
-    const res = await fetch("https://nestlyn-backend-system.onrender.com/api/bookings", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
+        const res = await fetch("https://nestlyn-backend-system.onrender.com/api/bookings", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
 
-    const text = await res.text();
-    let data = {};
+        const text = await res.text();
+        let data = {};
 
-    try {
-      data = JSON.parse(text);
-    } catch (e) {
-      throw new Error(text || "Invalid server response");
+        try {
+          data = JSON.parse(text);
+        } catch (e) {
+          throw new Error(text || "Invalid server response");
+        }
+
+        if (!res.ok) {
+          throw new Error(data.error || "Booking failed");
+        }
+
+        status.textContent = "✅ Booking created successfully";
+      } catch (error) {
+        console.error(error);
+        status.textContent = "Booking failed: " + error.message;
+      } finally {
+        payBtn.disabled = false;
+        payBtn.textContent = "Submit Booking Request";
+      }
     }
-
-    if (!res.ok) {
-      throw new Error(data.error || "Booking failed");
-    }
-
-    status.textContent = "✅ Booking created successfully";
-  } catch (error) {
-    console.error(error);
-    status.textContent = "Booking failed: " + error.message;
-  } finally {
-    payBtn.disabled = false;
-    payBtn.textContent = "Submit Booking Request";
-  }
-}
 
     document.addEventListener("DOMContentLoaded", () => {
       setupMenu();
       setupDrawer();
       setupServiceSelection();
-      setupFrequencySelection();
+      rebuildPlanOptions();
       setupRoomCounters();
       setupAddons();
       setupFlow();
