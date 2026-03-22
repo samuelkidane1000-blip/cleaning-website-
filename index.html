@@ -17,30 +17,76 @@
     .header-cta{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:999px;font-weight:800;background:linear-gradient(180deg,#d8b17b,var(--gold));color:#1b1610;box-shadow:0 12px 30px rgba(0,0,0,.26)}
     .menu-toggle{display:none;width:46px;height:46px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.08);color:#fff;font-size:24px;cursor:pointer;align-items:center;justify-content:center}
 
-    .estimate-bar-wrap{position:sticky;top:82px;z-index:8;padding:8px 0 0;background:linear-gradient(180deg,rgba(18,25,34,.94),rgba(18,25,34,0));pointer-events:none}
-    .estimate-bar,.estimate-drawer{width:min(980px, calc(100% - 32px));margin:0 auto}
-    .estimate-bar,.estimate-drawer,.estimate-link{pointer-events:auto}
-    .estimate-bar{
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:10px;
-      align-items:center;
-      border-radius:20px;
-      padding:12px 16px;
-      background:linear-gradient(135deg, rgba(255,255,255,.94), rgba(245,236,224,.94));
-      color:#1a2130;
-      box-shadow:0 16px 40px rgba(0,0,0,.18);
-      border:1px solid rgba(202,160,100,.18)
-    }
-    .estimate-eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7b5a2b;margin-bottom:2px}
-    .estimate-meta{font-size:13px;color:#667085;line-height:1.4}
-    .estimate-price{font-size:24px;font-weight:800;text-align:right;line-height:1}
-    .estimate-link{font-size:12px;color:#7b5a2b;font-weight:700;text-align:right;cursor:pointer;margin-top:4px}
-    .estimate-drawer{display:none;background:#fff;color:#1a2130;border-radius:20px;padding:16px;box-shadow:0 14px 30px rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.06);margin-top:8px}
-    .estimate-drawer.open{display:block}
-    .drawer-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #e7dfd4;font-size:15px}
-    .drawer-row:first-child{border-top:none;padding-top:0}
-    .drawer-total{display:flex;justify-content:space-between;font-weight:800;padding-top:12px;margin-top:10px;border-top:1px solid #e7dfd4}
+    .estimate-bar-wrap{
+  position:sticky;
+  top:82px;
+  z-index:50;
+  padding:6px 0;
+  pointer-events:none;
+}
+
+.estimate-bar{
+  pointer-events:auto;
+  width:min(720px, calc(100% - 32px));
+  margin:0 auto;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  padding:10px 14px;
+  border-radius:999px;
+
+  background:rgba(255,248,238,.9);
+  backdrop-filter:blur(20px);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.5);
+
+  border:1px solid rgba(202,160,100,.18);
+
+  font-size:12px;
+  color:#1a2130;
+}
+
+#estimateAmount{
+  font-weight:800;
+  font-size:16px;
+}
+
+#estimateMeta{
+  flex:1;
+  opacity:.7;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+#estimateToggle{
+  font-weight:700;
+  color:#7b5a2b;
+  cursor:pointer;
+}
+
+.estimate-drawer{
+  display:none;
+  width:min(720px, calc(100% - 32px));
+  margin:8px auto 0;
+
+  background:#fff;
+  border-radius:18px;
+  padding:14px;
+
+  box-shadow:0 14px 30px rgba(0,0,0,.12);
+  border:1px solid rgba(0,0,0,.06);
+
+  pointer-events:auto;
+}
+
+.estimate-drawer.open{
+  display:block;
+}
 
     .hero{padding:36px 0 40px}.hero-stage{position:relative;overflow:visible;border-radius:38px;min-height:860px;background:linear-gradient(90deg, rgba(7,17,34,.88) 0%, rgba(7,17,34,.66) 35%, rgba(7,17,34,.35) 58%, rgba(7,17,34,.22) 100%),radial-gradient(circle at 30% 20%, rgba(216,177,123,.18), transparent 26%),radial-gradient(circle at 60% 0%, rgba(255,255,255,.08), transparent 18%),url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.08)}
     .hero-inner{position:relative;z-index:2;padding:34px;display:flex;flex-direction:column;min-height:860px}
@@ -118,17 +164,11 @@
     </div>
   </header>
 
-  <div class="estimate-bar-wrap">
-    <div class="estimate-bar">
-      <div>
-        <div class="estimate-eyebrow">Live estimate</div>
-        <div class="estimate-meta" id="estimateMeta">Enter postcode, choose a service and build your quote.</div>
-      </div>
-      <div>
-        <div class="estimate-price" id="estimateAmount">£0.00</div>
-        <div class="estimate-link" id="estimateToggle">View breakdown</div>
-      </div>
-    </div>
+  <div class="estimate-bar">
+  <span id="estimateAmount">£0.00</span>
+  <span id="estimateMeta">SW1A 1AA · Weekly · 4 rooms · 10:00</span>
+  <span id="estimateToggle">Details</span>
+</div>
     <div class="estimate-drawer" id="estimateDrawer">
       <div class="drawer-row"><span>Service</span><strong id="drawerService">Regular cleaning</strong></div>
       <div class="drawer-row"><span id="drawerPlanLabel">Plan</span><strong id="drawerFrequency">Weekly</strong></div>
