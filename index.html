@@ -439,7 +439,27 @@
 
     document.getElementById("payNowBtn").addEventListener("click", submitBooking);
   }
+  async function loginCustomer() {
+  const res = await fetch(`${API_BASE}/api/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      email: "customer@example.com",
+      password: "Password123!"
+    })
+  });
 
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.error || "Login failed");
+  }
+
+  localStorage.setItem("nestlyn_token", data.token);
+  return data.token;
+}
  async function submitBooking() {
   const status = document.getElementById("statusMessage");
   const payBtn = document.getElementById("payNowBtn");
