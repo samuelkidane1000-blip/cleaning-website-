@@ -473,49 +473,62 @@
 }
 
     async function submitBooking() {
-      const status = document.getElementById("statusMessage");
-      const payBtn = document.getElementById("payNowBtn");
+  const status = document.getElementById("statusMessage");
+  const payBtn = document.getElementById("payNowBtn");
 
-      try {
-        payBtn.disabled = true;
-        payBtn.textContent = "Submitting...";
-        status.style.display = "block";
-        status.textContent = "Submitting booking...";
+  try {
+    payBtn.disabled = true;
+    payBtn.textContent = "Submitting...";
+    status.style.display = "block";
+    status.textContent = "Submitting booking...";
 
-        
+    const payload = {
+      service_type: String(state.service),
+      frequency: String(state.frequency).toLowerCase(),
+      date: String(state.date),
+      time: String(state.time),
+      postcode: String(state.postcode),
+      address: String(state.postcode),
+      notes: String(document.getElementById("notesInput").value || ""),
+      bedrooms: Number(state.rooms.bedroom || 0),
+      bathrooms: Number(state.rooms.bathroom || 0),
+      kitchens: Number(state.rooms.kitchen || 0),
+      living_rooms: Number(state.rooms.living || 0),
+      oven: state.addons.oven ? 1 : 0,
+      tools: state.addons.tools ? 1 : 0,
+      laundry: state.addons.laundry ? 1 : 0
+    };
 
-        const payload = {
-          service_type: state.service,
-          frequency: state.frequency.toLowerCase(),
-          date: state.date,
-          time: state.time,
-          postcode: state.postcode,
-          address: state.postcode,
-          rooms: state.rooms,
-          addons: state.addons,
-          notes: `Name: ${document.getElementById("nameInput").value.trim()} | Email: ${document.getElementById("emailInput").value.trim()} | Notes: ${document.getElementById("notesInput").value.trim()}`
-        };
+    const res = await fetch("https://nestlyn-backend-system.onrender.com/api/bookings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
 
-        const res = await fetch(`${API_BASE}/api/bookings`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload)
-        });
+    const text = await res.text();
+    let data = {};
 
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || "Booking failed");
-
-        status.textContent = `✅ Booking created successfully. ID: ${data.booking.id}`;
-      } catch (error) {
-        status.textContent = "Booking failed: " + error.message;
-        console.error(error);
-      } finally {
-        payBtn.disabled = false;
-        payBtn.textContent = "Submit Booking Request";
-      }
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
+      throw new Error(text || "Invalid server response");
     }
+
+    if (!res.ok) {
+      throw new Error(data.error || "Booking failed");
+    }
+
+    status.textContent = "✅ Booking created successfully";
+  } catch (error) {
+    console.error(error);
+    status.textContent = "Booking failed: " + error.message;
+  } finally {
+    payBtn.disabled = false;
+    payBtn.textContent = "Submit Booking Request";
+  }
+}
 
     document.addEventListener("DOMContentLoaded", () => {
       setupMenu();
