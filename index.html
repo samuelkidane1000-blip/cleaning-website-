@@ -440,13 +440,11 @@
     document.getElementById("payNowBtn").addEventListener("click", submitBooking);
   }
   async function loginCustomer() {
-  // Wake up backend first
-await fetch(`${API_BASE}/health`);
+  await fetch(`${API_BASE}/health`);
+  await new Promise(r => setTimeout(r, 1000));
 
-const res = await fetch(`${API_BASE}/api/bookings`, {
- await fetch(`${API_BASE}/health`);
-await new Promise(r => setTimeout(r, 2000));
-  method: "POST",
+  const res = await fetch(`${API_BASE}/api/auth/login`, {
+    method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
@@ -465,7 +463,8 @@ await new Promise(r => setTimeout(r, 2000));
   localStorage.setItem("nestlyn_token", data.token);
   return data.token;
 }
- async function submitBooking() {
+
+async function submitBooking() {
   const status = document.getElementById("statusMessage");
   const payBtn = document.getElementById("payNowBtn");
 
@@ -473,7 +472,7 @@ await new Promise(r => setTimeout(r, 2000));
     payBtn.disabled = true;
     payBtn.textContent = "Submitting...";
     status.style.display = "block";
-    status.textContent = "Submitting booking to backend...";
+    status.textContent = "Submitting booking...";
 
     let token = localStorage.getItem("nestlyn_token");
     if (!token) {
@@ -484,7 +483,7 @@ await new Promise(r => setTimeout(r, 2000));
     const email = document.getElementById("emailInput").value.trim();
     const notes = document.getElementById("notesInput").value.trim();
 
-    const bookingData = {
+    const payload = {
       service_type: state.service,
       frequency: state.frequency.toLowerCase(),
       date: state.date,
@@ -502,7 +501,7 @@ await new Promise(r => setTimeout(r, 2000));
         "Content-Type": "application/json",
         "Authorization": "Bearer " + token
       },
-      body: JSON.stringify(bookingData)
+      body: JSON.stringify(payload)
     });
 
     const data = await res.json();
@@ -512,9 +511,9 @@ await new Promise(r => setTimeout(r, 2000));
     }
 
     status.textContent = `✅ Booking created! ID: ${data.booking.id}`;
-  } catch (err) {
-    status.textContent = `❌ ${err.message}`;
-    console.error(err);
+  } catch (error) {
+    console.error(error);
+    status.textContent = "❌ " + error.message;
   } finally {
     payBtn.disabled = false;
     payBtn.textContent = "Submit Booking Request";
