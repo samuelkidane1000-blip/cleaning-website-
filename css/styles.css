@@ -1,0 +1,142 @@
+:root{
+  --bg:#071329;
+  --bg-2:#0b1931;
+  --bg-3:#0e223d;
+  --gold:#c59b5b;
+  --white:#ffffff;
+  --text:#f7f2eb;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  color:var(--text);
+  background:linear-gradient(180deg,var(--bg),var(--bg-2),var(--bg-3));
+}
+
+/* HEADER */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  backdrop-filter:blur(20px);
+  background:rgba(6,13,25,.6);
+}
+
+.header-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px;
+}
+
+.brand{
+  font-size:22px;
+  font-weight:800;
+}
+
+/* 🔥 FLOATING ESTIMATE BAR */
+.estimate-bar-wrap{
+  position:sticky;
+  top:72px;
+  z-index:90;
+  padding:6px 0;
+  pointer-events:none;
+}
+
+.estimate-bar{
+  pointer-events:auto;
+  width:calc(100% - 24px);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,248,238,.95);
+  backdrop-filter:blur(20px);
+  box-shadow:0 8px 24px rgba(0,0,0,.18);
+  font-size:12px;
+  color:#1a2130;
+}
+
+#estimateAmount{
+  font-weight:800;
+  font-size:16px;
+}
+
+#estimateMeta{
+  flex:1;
+  opacity:.7;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+#estimateToggle{
+  font-weight:700;
+  color:#7b5a2b;
+  cursor:pointer;
+}
+
+/* DRAWER */
+.estimate-drawer{
+  display:none;
+  width:calc(100% - 24px);
+  margin:8px auto 0;
+  background:#fff;
+  border-radius:16px;
+  padding:14px;
+  color:#111;
+}
+
+.estimate-drawer.open{
+  display:block;
+}
+
+/* HERO */
+.hero{
+  padding:20px;
+}
+
+.hero h1{
+  font-size:40px;
+  line-height:1.1;
+}
+
+/* CARDS */
+.select-card,
+.room-card,
+.addon-card{
+  background:rgba(255,255,255,.05);
+  border-radius:20px;
+  padding:16px;
+  margin-bottom:12px;
+}
+
+/* MOBILE FIXES */
+@media (max-width:640px){
+
+  .select-card h4{
+    font-size:18px;
+  }
+
+  .select-card p{
+    font-size:14px;
+  }
+
+  .room-card,
+  .addon-card{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .estimate-bar{
+    padding:8px 12px;
+  }
+
+  #estimateMeta{
+    font-size:10px;
+  }
+}
