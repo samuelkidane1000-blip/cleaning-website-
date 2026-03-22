@@ -482,8 +482,7 @@
         status.style.display = "block";
         status.textContent = "Submitting booking...";
 
-        let token = localStorage.getItem("nestlyn_token");
-        if (!token) token = await loginCustomer();
+        
 
         const payload = {
           service_type: state.service,
@@ -501,7 +500,6 @@
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
           },
           body: JSON.stringify(payload)
         });
