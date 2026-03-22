@@ -440,27 +440,61 @@
     document.getElementById("payNowBtn").addEventListener("click", submitBooking);
   }
 
-  async function loginCustomer() {
-    const res = await fetch(`${API_BASE}/api/auth/login`, {
+ async function submitBooking() {
+  const status = document.getElementById("statusMessage");
+  const payBtn = document.getElementById("payNowBtn");
+
+  try {
+    payBtn.disabled = true;
+    payBtn.textContent = "Submitting...";
+    status.style.display = "block";
+    status.textContent = "Submitting booking to backend...";
+
+    let token = localStorage.getItem("nestlyn_token");
+    if (!token) {
+      token = await loginCustomer();
+    }
+
+    const fullName = document.getElementById("nameInput").value.trim();
+    const email = document.getElementById("emailInput").value.trim();
+    const notes = document.getElementById("notesInput").value.trim();
+
+    const bookingData = {
+      service_type: state.service,
+      frequency: state.frequency.toLowerCase(),
+      date: state.date,
+      time: state.time,
+      postcode: state.postcode,
+      address: state.postcode,
+      rooms: state.rooms,
+      addons: state.addons,
+      notes: `Name: ${fullName} | Email: ${email} | Notes: ${notes}`
+    };
+
+    const res = await fetch(`${API_BASE}/api/bookings`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
       },
-      body: JSON.stringify({
-        email: "customer@example.com",
-        password: "Password123!"
-      })
+      body: JSON.stringify(bookingData)
     });
 
     const data = await res.json();
 
     if (!res.ok) {
-      throw new Error(data.error || "Login failed");
+      throw new Error(data.error || "Booking failed");
     }
 
-    localStorage.setItem("nestlyn_token", data.token);
-    return data.token;
+    status.textContent = `✅ Booking created! ID: ${data.booking.id}`;
+  } catch (err) {
+    status.textContent = `❌ ${err.message}`;
+    console.error(err);
+  } finally {
+    payBtn.disabled = false;
+    payBtn.textContent = "Submit Booking Request";
   }
+}
 
   async function submitBooking() {
     const status = document.getElementById("statusMessage");
