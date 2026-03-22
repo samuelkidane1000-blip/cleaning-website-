@@ -444,7 +444,9 @@
 await fetch(`${API_BASE}/health`);
 
 const res = await fetch(`${API_BASE}/api/bookings`, {
-    method: "POST",
+ await fetch(`${API_BASE}/health`);
+await new Promise(r => setTimeout(r, 2000));
+  method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
