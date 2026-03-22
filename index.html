@@ -440,7 +440,10 @@
     document.getElementById("payNowBtn").addEventListener("click", submitBooking);
   }
   async function loginCustomer() {
-  const res = await fetch(`${API_BASE}/api/auth/login`, {
+  // Wake up backend first
+await fetch(`${API_BASE}/health`);
+
+const res = await fetch(`${API_BASE}/api/bookings`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
