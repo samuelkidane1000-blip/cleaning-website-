@@ -12,24 +12,24 @@
     a{text-decoration:none;color:inherit}.container{position:relative;z-index:2;width:min(1220px, calc(100% - 32px));margin:0 auto}
     .site-header{position:sticky;top:0;z-index:20;backdrop-filter:blur(18px);background:rgba(6,13,25,.34);border-bottom:1px solid rgba(255,255,255,.07)}
     .header-row{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-    .brand-wrap{display:flex;align-items:center;gap:12px}.brand-logo{width:56px;height:56px;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(0,0,0,.3))}.brand{font-size:28px;font-weight:800;letter-spacing:-.03em}
+    .brand-wrap{display:flex;align-items:center;gap:12px}.brand{font-size:28px;font-weight:800;letter-spacing:-.03em}
     .nav{display:flex;align-items:center;gap:22px;color:rgba(255,255,255,.86);font-size:15px}.nav a:hover{color:var(--gold-soft)}
-    .header-cta{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:999px;font-weight:800;background:linear-gradient(180deg, #d8b17b, var(--gold));color:#1b1610;box-shadow:0 12px 30px rgba(0,0,0,.26)}
+    .header-cta{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:999px;font-weight:800;background:linear-gradient(180deg,#d8b17b,var(--gold));color:#1b1610;box-shadow:0 12px 30px rgba(0,0,0,.26)}
     .menu-toggle{display:none;width:46px;height:46px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.08);color:#fff;font-size:24px;cursor:pointer;align-items:center;justify-content:center}
-    .estimate-bar-wrap{position:sticky;top:82px;z-index:19;padding:10px 0 0;background:linear-gradient(180deg,rgba(18,25,34,.94),rgba(18,25,34,0))}
+    .estimate-bar-wrap{position:sticky;top:82px;z-index:8;padding:10px 0 0;background:linear-gradient(180deg,rgba(18,25,34,.94),rgba(18,25,34,0));pointer-events:none}
     .estimate-bar,.estimate-drawer{width:min(1220px, calc(100% - 32px));margin:0 auto}
+    .estimate-bar,.estimate-drawer,.estimate-link{pointer-events:auto}
     .estimate-bar{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end;border-radius:26px;padding:16px 18px;background:linear-gradient(135deg, rgba(255,255,255,.94), rgba(245,236,224,.94));color:#1a2130;box-shadow:var(--shadow);border:1px solid rgba(202,160,100,.18)}
     .estimate-eyebrow{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#7b5a2b;margin-bottom:4px}.estimate-meta{font-size:14px;color:#667085;line-height:1.5}.estimate-price{font-size:32px;font-weight:800;text-align:right}.estimate-link{font-size:13px;color:#7b5a2b;font-weight:700;text-align:right;cursor:pointer}
     .estimate-drawer{display:none;background:#fff;color:#1a2130;border-radius:24px;padding:18px;box-shadow:0 14px 30px rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.06);margin-top:10px}.estimate-drawer.open{display:block}.drawer-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #e7dfd4;font-size:15px}.drawer-row:first-child{border-top:none;padding-top:0}.drawer-total{display:flex;justify-content:space-between;font-weight:800;padding-top:12px;margin-top:10px;border-top:1px solid #e7dfd4}
-    .hero{padding:36px 0 40px}.hero-stage{position:relative;overflow:hidden;border-radius:38px;min-height:860px;background:linear-gradient(90deg, rgba(7,17,34,.88) 0%, rgba(7,17,34,.66) 35%, rgba(7,17,34,.35) 58%, rgba(7,17,34,.22) 100%),radial-gradient(circle at 30% 20%, rgba(216,177,123,.18), transparent 26%),radial-gradient(circle at 60% 0%, rgba(255,255,255,.08), transparent 18%),url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.08)}
-    .hero-stage:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 45% 42%, rgba(255,215,156,.12), transparent 14%),radial-gradient(circle at 30% 85%, rgba(197,155,91,.10), transparent 18%),radial-gradient(circle at 70% 80%, rgba(255,255,255,.06), transparent 12%);pointer-events:none}
+    .hero{padding:36px 0 40px}.hero-stage{position:relative;overflow:visible;border-radius:38px;min-height:860px;background:linear-gradient(90deg, rgba(7,17,34,.88) 0%, rgba(7,17,34,.66) 35%, rgba(7,17,34,.35) 58%, rgba(7,17,34,.22) 100%),radial-gradient(circle at 30% 20%, rgba(216,177,123,.18), transparent 26%),radial-gradient(circle at 60% 0%, rgba(255,255,255,.08), transparent 18%),url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.08)}
     .hero-inner{position:relative;z-index:2;padding:34px;display:flex;flex-direction:column;min-height:860px}
     .hero-topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:52px}
     .glass-chip{display:inline-flex;align-items:center;gap:10px;border-radius:20px;padding:12px 16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.09);box-shadow:var(--glow);color:rgba(255,255,255,.88);font-weight:700}
     .icon-btn{width:74px;height:74px;border-radius:26px;display:grid;place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);box-shadow:var(--glow);font-size:30px;color:#d5bf9a;flex:0 0 auto}
     .book-pill{min-width:154px;height:74px;border-radius:28px;display:grid;place-items:center;background:linear-gradient(180deg,#d6ae75,var(--gold));color:#1a1611;font-size:22px;font-weight:800;box-shadow:0 16px 36px rgba(0,0,0,.22)}
     .hero-copy{max-width:760px;padding-left:10px}.eyebrow{display:inline-block;margin-bottom:16px;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#e3cfac}
-    .hero h1{margin:0 0 18px;font-family:Georgia, "Times New Roman", serif;font-size:clamp(50px, 7vw, 96px);line-height:.92;letter-spacing:-.05em;text-shadow:0 6px 28px rgba(0,0,0,.22)}
+    .hero h1{margin:0 0 18px;font-family:Georgia, 'Times New Roman', serif;font-size:clamp(50px, 7vw, 96px);line-height:.92;letter-spacing:-.05em;text-shadow:0 6px 28px rgba(0,0,0,.22)}
     .hero-sub{font-size:clamp(24px, 2.5vw, 34px);margin:0 0 24px;color:#fff3e2;font-weight:500}
     .postcode-bar{width:min(760px, 100%);display:grid;grid-template-columns:1fr 220px;gap:0;border-radius:26px;overflow:hidden;background:rgba(255,247,235,.94);box-shadow:0 18px 48px rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.4);margin-bottom:18px}
     .postcode-bar input{border:none;background:transparent;padding:24px 26px;font-size:19px;color:#2b2f38;outline:none}.postcode-bar button{border:none;background:linear-gradient(180deg,#d6ae75,var(--gold));color:#fffaf2;font-size:18px;font-weight:800;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
@@ -38,27 +38,27 @@
     .estimate-left strong{display:block;font-size:22px;margin-bottom:10px}.estimate-meta-hero{font-size:16px;color:#333a48}.estimate-cta{display:grid;place-items:center;min-height:92px;border-radius:20px;background:linear-gradient(180deg,var(--green),var(--green-2));color:#fff;font-size:17px;font-weight:800;box-shadow:0 12px 30px rgba(50,80,71,.24)}
     .booking-shell{background:linear-gradient(180deg, rgba(10,16,31,.66), rgba(10,16,31,.56));border:1px solid rgba(255,255,255,.10);box-shadow:0 22px 60px rgba(0,0,0,.32);border-radius:28px;overflow:hidden;backdrop-filter:blur(14px)}
     .progress{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-bottom:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01))}
-    .step-pill{padding:22px 18px;font-size:18px;font-weight:700;color:rgba(255,255,255,.66);display:flex;justify-content:center;gap:10px;align-items:center;position:relative}.step-pill.active{color:#fff6e8}.step-pill.active:after{content:"";position:absolute;left:18px;right:18px;bottom:0;height:3px;background:linear-gradient(90deg, transparent, rgba(213,186,140,.85), transparent);border-radius:999px}
+    .step-pill{padding:22px 18px;font-size:18px;font-weight:700;color:rgba(255,255,255,.66);display:flex;justify-content:center;gap:10px;align-items:center;position:relative}.step-pill.active{color:#fff6e8}.step-pill.active:after{content:'';position:absolute;left:18px;right:18px;bottom:0;height:3px;background:linear-gradient(90deg, transparent, rgba(213,186,140,.85), transparent);border-radius:999px}
     .quote-form-card{padding:28px}.step-panel{display:none}.step-panel.active{display:block}
     .quote-section-title{margin:0 0 8px;font-size:30px;font-weight:800;color:#fff8ee;letter-spacing:-.03em}.quote-helper-text{margin:0 0 24px;color:rgba(255,255,255,.72);line-height:1.7;font-size:16px;max-width:760px}
     .field-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}label{display:block;font-weight:700;font-size:15px;color:#efe7d8}
     input,select,textarea{width:100%;margin-top:8px;padding:18px 18px;border-radius:18px;border:1px solid rgba(255,255,255,.10);font-size:17px;outline:none;color:#f9fbff;background:rgba(255,255,255,.07)}textarea{min-height:120px;resize:vertical}
     .service-grid,.frequency-grid,.addon-grid,.room-grid{display:grid;gap:16px;margin-top:16px}.service-grid{grid-template-columns:repeat(3,1fr)}.frequency-grid{grid-template-columns:repeat(3,1fr)}.room-grid{grid-template-columns:repeat(2,1fr)}.addon-grid{grid-template-columns:1fr}
     .select-card,.room-card,.addon-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:20px;color:#fff;box-shadow:var(--glow)}.select-card{cursor:pointer;transition:.2s ease}.select-card.selected{background:linear-gradient(180deg, rgba(222,191,148,.16), rgba(197,155,91,.12));border-color:rgba(222,191,148,.42)}
-    .select-card .micro{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#e6cfaa;margin-bottom:8px}.select-card h4,.room-card h4,.addon-card h4{margin:0 0 8px;font-size:24px;line-height:1.08}.select-card .price{font-family:Georgia, "Times New Roman", serif;font-size:46px;font-weight:700;line-height:1;letter-spacing:-.05em;margin-bottom:10px;color:#fff7ea}
+    .select-card .micro{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#e6cfaa;margin-bottom:8px}.select-card h4,.room-card h4,.addon-card h4{margin:0 0 8px;font-size:24px;line-height:1.08}.select-card .price{font-family:Georgia, 'Times New Roman', serif;font-size:46px;font-weight:700;line-height:1;letter-spacing:-.05em;margin-bottom:10px;color:#fff7ea}
     .select-card p,.room-card p,.addon-card p{margin:0;color:rgba(255,255,255,.72);font-size:15px;line-height:1.6}.room-card,.addon-card{display:flex;justify-content:space-between;align-items:center;gap:18px}
     .counter{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:8px}.counter button{width:38px;height:38px;border:none;border-radius:12px;background:rgba(255,255,255,.1);color:#fff;font-size:24px;cursor:pointer}.counter strong{min-width:24px;text-align:center;font-size:19px;font-weight:800}
     .toggle{display:flex;gap:4px;padding:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px}.toggle button{border:none;background:transparent;padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer;color:rgba(255,255,255,.68)}.toggle button.on{background:rgba(255,255,255,.12);color:#fff7ec}
     .payment-summary{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));color:#fff;border-radius:24px;padding:18px;margin-top:18px;border:1px solid rgba(255,255,255,.08);box-shadow:var(--glow)}.payment-summary .mini{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.56);font-weight:800;margin-bottom:12px}.payment-row{display:flex;justify-content:space-between;gap:12px;font-size:16px;padding:10px 0;border-top:1px solid rgba(255,255,255,.08)}.payment-row:first-of-type{border-top:none;padding-top:0}
     .form-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;border:none;cursor:pointer;border-radius:18px;padding:18px 24px;font-weight:800;font-size:17px;box-shadow:0 12px 30px rgba(0,0,0,.22)}.btn-gold{background:linear-gradient(180deg,#d6ae75,var(--gold));color:#fffdf8}.btn-dark{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.10)}.btn-green{background:linear-gradient(180deg,var(--green),var(--green-2));color:#fff}
     .status-message{margin-top:18px;background:rgba(120,168,138,.18);color:#dffbe7;border-radius:18px;padding:16px 18px;font-weight:700;display:none;border:1px solid rgba(120,168,138,.22)}
-    .section{padding:34px 0}.section-heading{margin-bottom:22px}.section-heading h2{margin:0 0 10px;font-family:Georgia, "Times New Roman", serif;font-size:56px;line-height:.95;letter-spacing:-.05em}.section-heading p{margin:0;font-size:18px;color:rgba(255,255,255,.72);line-height:1.7;max-width:820px}
+    .section{padding:34px 0}.section-heading{margin-bottom:22px}.section-heading h2{margin:0 0 10px;font-family:Georgia, 'Times New Roman', serif;font-size:56px;line-height:.95;letter-spacing:-.05em}.section-heading p{margin:0;font-size:18px;color:rgba(255,255,255,.72);line-height:1.7;max-width:820px}
     .light-card{background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(244,238,230,.95));color:#111827;border-radius:32px;padding:28px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.5)}
     .feature-grid,.process-grid,.reviews-grid,.footer-contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature,.step-card,.review-card{background:#fff;color:#101828;border-radius:28px;padding:24px;border:1px solid #ece5d9;box-shadow:0 12px 28px rgba(16,24,40,.06)}.feature h3,.step-card h3,.review-card h3{margin:0 0 10px;font-size:24px;letter-spacing:-.03em}.feature p,.step-card p,.review-card p{margin:0;color:#667085;line-height:1.7;font-size:16px}.step-number{width:44px;height:44px;border-radius:999px;background:linear-gradient(180deg,#d6ae75,var(--gold));color:#fffef8;display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:14px}.review-stars{color:#cf9f4d;font-size:20px;margin-bottom:12px;letter-spacing:.12em}
-    .cta-band{margin-top:10px;border-radius:34px;padding:34px;background:linear-gradient(135deg,#fff 0%, #f3e5cb 100%);color:#111827;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.5)}.cta-band h3{margin:0 0 8px;font-family:Georgia, "Times New Roman", serif;font-size:44px;line-height:.96;letter-spacing:-.05em}.cta-band p{margin:0;color:#667085;font-size:17px}
+    .cta-band{margin-top:10px;border-radius:34px;padding:34px;background:linear-gradient(135deg,#fff 0%, #f3e5cb 100%);color:#111827;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.5)}.cta-band h3{margin:0 0 8px;font-family:Georgia, 'Times New Roman', serif;font-size:44px;line-height:.96;letter-spacing:-.05em}.cta-band p{margin:0;color:#667085;font-size:17px}
     .site-footer{padding:28px 0 50px;color:rgba(255,255,255,.72);font-size:15px;background:#0a111e;margin-top:20px;border-top:1px solid rgba(255,255,255,.06)}.footer-row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}.footer-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:18px;color:rgba(255,255,255,.86)}.footer-card strong{display:block;margin-bottom:8px;font-size:15px;color:#fff}.footer-card span,.footer-card a{color:rgba(255,255,255,.76);line-height:1.6;font-size:14px;word-break:break-word}
     @media (max-width:980px){.feature-grid,.service-grid,.frequency-grid,.room-grid,.process-grid,.reviews-grid,.footer-contact-grid,.field-grid,.trust-row{grid-template-columns:1fr}.estimate-hero{grid-template-columns:1fr}.postcode-bar{grid-template-columns:1fr}.progress{grid-template-columns:1fr 1fr}.hero{padding-top:24px}.hero h1{font-size:56px}.section-heading h2{font-size:42px}.cta-band h3{font-size:36px}.menu-toggle{display:flex}.nav{display:none;position:absolute;top:82px;right:0;width:min(280px, calc(100vw - 32px));background:rgba(7,18,47,.96);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:16px;flex-direction:column;align-items:flex-start;box-shadow:0 18px 40px rgba(0,0,0,.28);z-index:10001}.nav.open{display:flex}.header-cta{display:none}.hero-topbar .glass-chip{display:none}.hero-inner{padding:20px}.hero-stage,.hero-inner{min-height:auto}}
-    @media (max-width:640px){.estimate-bar{grid-template-columns:1fr}.estimate-price,.estimate-link{text-align:left}.footer-row{flex-direction:column;align-items:flex-start}.hero h1{font-size:46px}.hero-sub{font-size:24px}.book-pill,.icon-btn{width:62px;height:62px;min-width:62px;border-radius:20px}.book-pill{font-size:18px;width:auto;padding:0 22px}.step-pill{font-size:15px;padding:18px 10px}.quote-form-card{padding:20px}}
+    @media (max-width:640px){.estimate-bar{grid-template-columns:1fr}.estimate-price,.estimate-link{text-align:left}.estimate-bar-wrap{top:74px}.hero{padding-top:12px}.footer-row{flex-direction:column;align-items:flex-start}.hero h1{font-size:46px}.hero-sub{font-size:24px}.book-pill,.icon-btn{width:62px;height:62px;min-width:62px;border-radius:20px}.book-pill{font-size:18px;width:auto;padding:0 22px}.step-pill{font-size:15px;padding:18px 10px}.quote-form-card{padding:20px}}
   </style>
 </head>
 <body>
@@ -208,7 +208,7 @@
                     <div class="payment-row"><span>Estimate</span><strong id="payTotalB">£76.00</strong></div>
                   </div>
                   <div class="form-actions"><button class="btn btn-dark" type="button" id="backTo3">Back</button><button class="btn btn-green" type="button" id="payNowBtn">Submit Booking Request</button></div>
-                  <div class="status-message" id="statusMessage">Booking request received. Payment can be connected later.</div>
+                  <div class="status-message" id="statusMessage"></div>
                 </div>
 
               </div>
@@ -231,362 +231,292 @@
   <footer class="site-footer"><div class="container footer-row"><span>© 2026 Nestlyn Home</span><span>Premium recurring cleaning with postcode-first booking</span></div><div class="container footer-contact-grid"><div class="footer-card"><strong>Email</strong><a href="mailto:info@nestlynhome.co.uk">info@nestlynhome.co.uk</a></div><div class="footer-card"><strong>Phone</strong><a href="tel:02000000000">020 0000 0000</a></div><div class="footer-card"><strong>Service</strong><span>Regular cleaning, deep cleaning, one-off cleaning and premium home care add-ons.</span></div></div></footer>
 
   <script>
-  const API_BASE = "http://localhost:4000";
+    const API_BASE = "https://nestlyn-backend-system.onrender.com";
 
-  const state = {
-    postcode: "SW1A 1AA",
-    service: "regular",
-    serviceName: "Regular cleaning",
-    rate: 16.95,
-    frequency: "Weekly",
-    rooms: { bedroom: 1, bathroom: 1, kitchen: 1, living: 1 },
-    addons: { oven: false, tools: false, laundry: false },
-    date: "2026-03-23",
-    time: "10:00"
-  };
-
-  const stepPanels = [
-    document.getElementById("step1"),
-    document.getElementById("step2"),
-    document.getElementById("step3"),
-    document.getElementById("step4")
-  ];
-
-  const stepPills = [
-    document.getElementById("stepPill1"),
-    document.getElementById("stepPill2"),
-    document.getElementById("stepPill3"),
-    document.getElementById("stepPill4")
-  ];
-
-  function roomMinutes() {
-    return (
-      state.rooms.bedroom * 25 +
-      state.rooms.bathroom * 35 +
-      state.rooms.kitchen * 45 +
-      state.rooms.living * 30
-    );
-  }
-
-  function estimatedHours() {
-    return Math.max(2, roomMinutes() / 60);
-  }
-
-  function addOnTotal() {
-    return (state.addons.oven ? 25 : 0) +
-           (state.addons.tools ? 15 : 0) +
-           (state.addons.laundry ? 12 : 0);
-  }
-
-  function estimateTotal() {
-    return Math.round((estimatedHours() * state.rate + addOnTotal()) * 100) / 100;
-  }
-
-  function roomCount() {
-    return state.rooms.bedroom + state.rooms.bathroom + state.rooms.kitchen + state.rooms.living;
-  }
-
-  function updateEstimate() {
-    const total = estimateTotal();
-
-    document.getElementById("estimateAmount").textContent = "£" + total.toFixed(2);
-    document.getElementById("heroEstimate").textContent = "£" + total.toFixed(0);
-
-    const parts = [state.postcode || "No postcode", state.frequency];
-    if (roomCount()) parts.push(roomCount() + " rooms");
-    const addonCount = Object.values(state.addons).filter(Boolean).length;
-    if (addonCount) parts.push(addonCount + " add-on");
-    parts.push(state.date, state.time);
-
-    document.getElementById("estimateMeta").textContent = parts.join(" · ");
-    document.getElementById("heroEstimateMeta").textContent = state.serviceName + " · " + state.frequency + " plan";
-
-    document.getElementById("drawerService").textContent = state.serviceName;
-    document.getElementById("drawerFrequency").textContent = state.frequency;
-    document.getElementById("drawerHours").textContent = estimatedHours().toFixed(1) + "h";
-    document.getElementById("drawerAddons").textContent = "£" + addOnTotal().toFixed(2);
-    document.getElementById("drawerTotal").textContent = "£" + total.toFixed(2);
-
-    document.getElementById("payService").textContent = state.serviceName;
-    document.getElementById("payFrequency").textContent = state.frequency;
-    document.getElementById("payServiceB").textContent = state.serviceName;
-    document.getElementById("payFrequencyB").textContent = state.frequency;
-    document.getElementById("paySlot").textContent = state.date + " · " + state.time;
-    document.getElementById("payTotalA").textContent = "£" + total.toFixed(2);
-    document.getElementById("payTotalB").textContent = "£" + total.toFixed(2);
-  }
-
-  function showStep(index) {
-    stepPanels.forEach((panel, i) => panel.classList.toggle("active", i === index));
-    stepPills.forEach((pill, i) => {
-      pill.classList.remove("active", "done");
-      if (i < index) pill.classList.add("done");
-      if (i === index) pill.classList.add("active");
-    });
-    document.getElementById("calculator").scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  function setupServiceSelection() {
-    document.querySelectorAll("#serviceOptions .select-card").forEach(card =>
-      card.addEventListener("click", () => {
-        document.querySelectorAll("#serviceOptions .select-card").forEach(c => c.classList.remove("selected"));
-        card.classList.add("selected");
-        state.service = card.dataset.service;
-        state.serviceName = card.dataset.name;
-        state.rate = Number(card.dataset.rate);
-        updateEstimate();
-      })
-    );
-  }
-
-  function setupFrequencySelection() {
-    document.querySelectorAll("#frequencyOptions .select-card").forEach(card =>
-      card.addEventListener("click", () => {
-        document.querySelectorAll("#frequencyOptions .select-card").forEach(c => c.classList.remove("selected"));
-        card.classList.add("selected");
-        state.frequency = card.dataset.frequency;
-        updateEstimate();
-      })
-    );
-  }
-
-  function setupRoomCounters() {
-    const roomMap = ["bedroom", "bathroom", "kitchen", "living"];
-    document.querySelectorAll("#roomsList .room-card").forEach((card, index) => {
-      const minus = card.querySelector(".minus");
-      const plus = card.querySelector(".plus");
-      const value = card.querySelector("strong");
-
-      minus.addEventListener("click", () => {
-        state.rooms[roomMap[index]] = Math.max(0, state.rooms[roomMap[index]] - 1);
-        value.textContent = state.rooms[roomMap[index]];
-        updateEstimate();
-      });
-
-      plus.addEventListener("click", () => {
-        state.rooms[roomMap[index]] += 1;
-        value.textContent = state.rooms[roomMap[index]];
-        updateEstimate();
-      });
-    });
-  }
-
-  function setupAddons() {
-    const addonKeys = ["oven", "tools", "laundry"];
-    document.querySelectorAll(".addon-card .toggle").forEach((toggle, index) => {
-      const buttons = toggle.querySelectorAll("button");
-      buttons.forEach((button, buttonIndex) =>
-        button.addEventListener("click", () => {
-          buttons.forEach(b => b.classList.remove("on"));
-          button.classList.add("on");
-          state.addons[addonKeys[index]] = buttonIndex === 1;
-          updateEstimate();
-        })
-      );
-    });
-  }
-
-  function setupDrawer() {
-    const toggle = document.getElementById("estimateToggle");
-    const drawer = document.getElementById("estimateDrawer");
-    toggle.addEventListener("click", () => {
-      drawer.classList.toggle("open");
-      toggle.textContent = drawer.classList.contains("open") ? "Hide breakdown" : "View breakdown";
-    });
-  }
-
-  function setupMenu() {
-    const menuToggle = document.getElementById("menuToggle");
-    const siteNav = document.getElementById("siteNav");
-    if (menuToggle && siteNav) {
-      menuToggle.addEventListener("click", () => siteNav.classList.toggle("open"));
-      siteNav.querySelectorAll("a").forEach(link =>
-        link.addEventListener("click", () => siteNav.classList.remove("open"))
-      );
-    }
-  }
-
-  function setupFlow() {
-    document.getElementById("heroQuoteBtn").addEventListener("click", () => {
-      state.postcode = document.getElementById("heroPostcodeInput").value.trim();
-      updateEstimate();
-      document.getElementById("calculator").scrollIntoView({ behavior: "smooth" });
-    });
-
-    document.getElementById("toStep2").addEventListener("click", () => {
-      state.postcode = document.getElementById("heroPostcodeInput").value.trim();
-      updateEstimate();
-      showStep(1);
-    });
-
-    document.getElementById("backTo1").addEventListener("click", () => showStep(0));
-
-    document.getElementById("toStep3").addEventListener("click", () => {
-      updateEstimate();
-      showStep(2);
-    });
-
-    document.getElementById("backTo2").addEventListener("click", () => showStep(1));
-
-    document.getElementById("toStep4").addEventListener("click", () => {
-      state.date = document.getElementById("dateInput").value || state.date;
-      state.time = document.getElementById("timeInput").value || state.time;
-      updateEstimate();
-      showStep(3);
-    });
-
-    document.getElementById("backTo3").addEventListener("click", () => showStep(2));
-
-    document.getElementById("payNowBtn").addEventListener("click", submitBooking);
-  }
-  async function loginCustomer() {
-  await fetch(`${API_BASE}/health`);
-  await new Promise(r => setTimeout(r, 1000));
-
-  const res = await fetch(`${API_BASE}/api/auth/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      email: "customer@example.com",
-      password: "Password123!"
-    })
-  });
-
-  const data = await res.json();
-
-  if (!res.ok) {
-    throw new Error(data.error || "Login failed");
-  }
-
-  localStorage.setItem("nestlyn_token", data.token);
-  return data.token;
-}
-
-async function submitBooking() {
-  const status = document.getElementById("statusMessage");
-  const payBtn = document.getElementById("payNowBtn");
-
-  try {
-    payBtn.disabled = true;
-    payBtn.textContent = "Submitting...";
-    status.style.display = "block";
-    status.textContent = "Submitting booking...";
-
-    let token = localStorage.getItem("nestlyn_token");
-    if (!token) {
-      token = await loginCustomer();
-    }
-
-    const fullName = document.getElementById("nameInput").value.trim();
-    const email = document.getElementById("emailInput").value.trim();
-    const notes = document.getElementById("notesInput").value.trim();
-
-    const payload = {
-      service_type: state.service,
-      frequency: state.frequency.toLowerCase(),
-      date: state.date,
-      time: state.time,
-      postcode: state.postcode,
-      address: state.postcode,
-      rooms: state.rooms,
-      addons: state.addons,
-      notes: `Name: ${fullName} | Email: ${email} | Notes: ${notes}`
+    const state = {
+      postcode: "SW1A 1AA",
+      service: "regular",
+      serviceName: "Regular cleaning",
+      rate: 16.95,
+      frequency: "Weekly",
+      rooms: { bedroom: 1, bathroom: 1, kitchen: 1, living: 1 },
+      addons: { oven: false, tools: false, laundry: false },
+      date: "2026-03-23",
+      time: "10:00"
     };
 
-    const res = await fetch(`${API_BASE}/api/bookings`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + token
-      },
-      body: JSON.stringify(payload)
-    });
+    const stepPanels = [
+      document.getElementById("step1"),
+      document.getElementById("step2"),
+      document.getElementById("step3"),
+      document.getElementById("step4")
+    ];
 
-    const data = await res.json();
+    const stepPills = [
+      document.getElementById("stepPill1"),
+      document.getElementById("stepPill2"),
+      document.getElementById("stepPill3"),
+      document.getElementById("stepPill4")
+    ];
 
-    if (!res.ok) {
-      throw new Error(data.error || "Booking failed");
+    function roomMinutes() {
+      return state.rooms.bedroom * 25 + state.rooms.bathroom * 35 + state.rooms.kitchen * 45 + state.rooms.living * 30;
     }
 
-    status.textContent = `✅ Booking created! ID: ${data.booking.id}`;
-  } catch (error) {
-    console.error(error);
-    status.textContent = "❌ " + error.message;
-  } finally {
-    payBtn.disabled = false;
-    payBtn.textContent = "Submit Booking Request";
-  }
-}
+    function estimatedHours() {
+      return Math.max(2, roomMinutes() / 60);
+    }
 
-  async function submitBooking() {
-    const status = document.getElementById("statusMessage");
-    const payBtn = document.getElementById("payNowBtn");
+    function addOnTotal() {
+      return (state.addons.oven ? 25 : 0) + (state.addons.tools ? 15 : 0) + (state.addons.laundry ? 12 : 0);
+    }
 
-    try {
-      payBtn.disabled = true;
-      payBtn.textContent = "Submitting...";
-      status.style.display = "block";
-      status.textContent = "Submitting booking to backend...";
+    function estimateTotal() {
+      return Math.round((estimatedHours() * state.rate + addOnTotal()) * 100) / 100;
+    }
 
-      let token = localStorage.getItem("nestlyn_token");
-      if (!token) {
-        token = await loginCustomer();
+    function roomCount() {
+      return state.rooms.bedroom + state.rooms.bathroom + state.rooms.kitchen + state.rooms.living;
+    }
+
+    function updateEstimate() {
+      const total = estimateTotal();
+
+      document.getElementById("estimateAmount").textContent = "£" + total.toFixed(2);
+      document.getElementById("heroEstimate").textContent = "£" + total.toFixed(0);
+
+      const parts = [state.postcode || "No postcode", state.frequency];
+      if (roomCount()) parts.push(roomCount() + " rooms");
+      const addonCount = Object.values(state.addons).filter(Boolean).length;
+      if (addonCount) parts.push(addonCount + " add-on");
+      parts.push(state.date, state.time);
+
+      document.getElementById("estimateMeta").textContent = parts.join(" · ");
+      document.getElementById("heroEstimateMeta").textContent = state.serviceName + " · " + state.frequency + " plan";
+
+      document.getElementById("drawerService").textContent = state.serviceName;
+      document.getElementById("drawerFrequency").textContent = state.frequency;
+      document.getElementById("drawerHours").textContent = estimatedHours().toFixed(1) + "h";
+      document.getElementById("drawerAddons").textContent = "£" + addOnTotal().toFixed(2);
+      document.getElementById("drawerTotal").textContent = "£" + total.toFixed(2);
+
+      document.getElementById("payService").textContent = state.serviceName;
+      document.getElementById("payFrequency").textContent = state.frequency;
+      document.getElementById("payServiceB").textContent = state.serviceName;
+      document.getElementById("payFrequencyB").textContent = state.frequency;
+      document.getElementById("paySlot").textContent = state.date + " · " + state.time;
+      document.getElementById("payTotalA").textContent = "£" + total.toFixed(2);
+      document.getElementById("payTotalB").textContent = "£" + total.toFixed(2);
+    }
+
+    function showStep(index) {
+      stepPanels.forEach((panel, i) => panel.classList.toggle("active", i === index));
+      stepPills.forEach((pill, i) => {
+        pill.classList.remove("active", "done");
+        if (i < index) pill.classList.add("done");
+        if (i === index) pill.classList.add("active");
+      });
+      document.getElementById("calculator").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function setupServiceSelection() {
+      document.querySelectorAll("#serviceOptions .select-card").forEach(card => {
+        card.addEventListener("click", () => {
+          document.querySelectorAll("#serviceOptions .select-card").forEach(c => c.classList.remove("selected"));
+          card.classList.add("selected");
+          state.service = card.dataset.service;
+          state.serviceName = card.dataset.name;
+          state.rate = Number(card.dataset.rate);
+          updateEstimate();
+        });
+      });
+    }
+
+    function setupFrequencySelection() {
+      document.querySelectorAll("#frequencyOptions .select-card").forEach(card => {
+        card.addEventListener("click", () => {
+          document.querySelectorAll("#frequencyOptions .select-card").forEach(c => c.classList.remove("selected"));
+          card.classList.add("selected");
+          state.frequency = card.dataset.frequency;
+          updateEstimate();
+        });
+      });
+    }
+
+    function setupRoomCounters() {
+      const roomMap = ["bedroom", "bathroom", "kitchen", "living"];
+      document.querySelectorAll("#roomsList .room-card").forEach((card, index) => {
+        const minus = card.querySelector(".minus");
+        const plus = card.querySelector(".plus");
+        const value = card.querySelector("strong");
+
+        minus.addEventListener("click", () => {
+          state.rooms[roomMap[index]] = Math.max(0, state.rooms[roomMap[index]] - 1);
+          value.textContent = state.rooms[roomMap[index]];
+          updateEstimate();
+        });
+
+        plus.addEventListener("click", () => {
+          state.rooms[roomMap[index]] += 1;
+          value.textContent = state.rooms[roomMap[index]];
+          updateEstimate();
+        });
+      });
+    }
+
+    function setupAddons() {
+      const addonKeys = ["oven", "tools", "laundry"];
+      document.querySelectorAll(".addon-card .toggle").forEach((toggle, index) => {
+        const buttons = toggle.querySelectorAll("button");
+        buttons.forEach((button, buttonIndex) => {
+          button.addEventListener("click", () => {
+            buttons.forEach(b => b.classList.remove("on"));
+            button.classList.add("on");
+            state.addons[addonKeys[index]] = buttonIndex === 1;
+            updateEstimate();
+          });
+        });
+      });
+    }
+
+    function setupDrawer() {
+      const toggle = document.getElementById("estimateToggle");
+      const drawer = document.getElementById("estimateDrawer");
+      toggle.addEventListener("click", () => {
+        drawer.classList.toggle("open");
+        toggle.textContent = drawer.classList.contains("open") ? "Hide breakdown" : "View breakdown";
+      });
+    }
+
+    function setupMenu() {
+      const menuToggle = document.getElementById("menuToggle");
+      const siteNav = document.getElementById("siteNav");
+      if (menuToggle && siteNav) {
+        menuToggle.addEventListener("click", () => siteNav.classList.toggle("open"));
+        siteNav.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => siteNav.classList.remove("open"));
+        });
       }
+    }
 
-      const fullName = document.getElementById("nameInput").value.trim();
-      const email = document.getElementById("emailInput").value.trim();
-      const notes = document.getElementById("notesInput").value.trim();
+    function setupFlow() {
+      document.getElementById("heroQuoteBtn").addEventListener("click", () => {
+        state.postcode = document.getElementById("heroPostcodeInput").value.trim();
+        updateEstimate();
+        document.getElementById("calculator").scrollIntoView({ behavior: "smooth" });
+      });
 
-      const payload = {
-        service_type: state.service,
-        frequency: state.frequency.toLowerCase(),
-        date: state.date,
-        time: state.time,
-        postcode: state.postcode,
-        address: state.postcode,
-        rooms: state.rooms,
-        addons: state.addons,
-        notes: `Name: ${fullName} | Email: ${email} | Notes: ${notes}`
-      };
+      document.getElementById("toStep2").addEventListener("click", () => {
+        state.postcode = document.getElementById("heroPostcodeInput").value.trim();
+        updateEstimate();
+        showStep(1);
+      });
 
-      const res = await fetch(`${API_BASE}/api/bookings`, {
+      document.getElementById("backTo1").addEventListener("click", () => showStep(0));
+
+      document.getElementById("toStep3").addEventListener("click", () => {
+        updateEstimate();
+        showStep(2);
+      });
+
+      document.getElementById("backTo2").addEventListener("click", () => showStep(1));
+
+      document.getElementById("toStep4").addEventListener("click", () => {
+        state.date = document.getElementById("dateInput").value || state.date;
+        state.time = document.getElementById("timeInput").value || state.time;
+        updateEstimate();
+        showStep(3);
+      });
+
+      document.getElementById("backTo3").addEventListener("click", () => showStep(2));
+      document.getElementById("payNowBtn").addEventListener("click", submitBooking);
+    }
+
+    async function wakeBackend() {
+      try {
+        await fetch(`${API_BASE}/health`);
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      } catch (error) {
+        console.error("Wake-up failed:", error);
+      }
+    }
+
+    async function loginCustomer() {
+      await wakeBackend();
+
+      const res = await fetch(`${API_BASE}/api/auth/login`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer " + token
-        },
-        body: JSON.stringify(payload)
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: "customer@example.com",
+          password: "Password123!"
+        })
       });
 
       const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Login failed");
 
-      if (!res.ok) {
-        throw new Error(data.error || "Booking failed");
-      }
-
-      status.textContent = `Booking created successfully. Booking ID: ${data.booking.id}`;
-      console.log("Booking created:", data);
-    } catch (error) {
-      console.error(error);
-      status.textContent = "Booking failed: " + error.message;
-    } finally {
-      payBtn.disabled = false;
-      payBtn.textContent = "Submit Booking Request";
+      localStorage.setItem("nestlyn_token", data.token);
+      return data.token;
     }
-  }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    setupMenu();
-    setupDrawer();
-    setupServiceSelection();
-    setupFrequencySelection();
-    setupRoomCounters();
-    setupAddons();
-    setupFlow();
-    updateEstimate();
-  });
-</script>
+    async function submitBooking() {
+      const status = document.getElementById("statusMessage");
+      const payBtn = document.getElementById("payNowBtn");
+
+      try {
+        payBtn.disabled = true;
+        payBtn.textContent = "Submitting...";
+        status.style.display = "block";
+        status.textContent = "Submitting booking...";
+
+        let token = localStorage.getItem("nestlyn_token");
+        if (!token) token = await loginCustomer();
+
+        const payload = {
+          service_type: state.service,
+          frequency: state.frequency.toLowerCase(),
+          date: state.date,
+          time: state.time,
+          postcode: state.postcode,
+          address: state.postcode,
+          rooms: state.rooms,
+          addons: state.addons,
+          notes: `Name: ${document.getElementById("nameInput").value.trim()} | Email: ${document.getElementById("emailInput").value.trim()} | Notes: ${document.getElementById("notesInput").value.trim()}`
+        };
+
+        const res = await fetch(`${API_BASE}/api/bookings`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Booking failed");
+
+        status.textContent = `✅ Booking created successfully. ID: ${data.booking.id}`;
+      } catch (error) {
+        status.textContent = "Booking failed: " + error.message;
+        console.error(error);
+      } finally {
+        payBtn.disabled = false;
+        payBtn.textContent = "Submit Booking Request";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setupMenu();
+      setupDrawer();
+      setupServiceSelection();
+      setupFrequencySelection();
+      setupRoomCounters();
+      setupAddons();
+      setupFlow();
+      updateEstimate();
+    });
+  </script>
 </body>
 </html>
