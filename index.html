@@ -231,60 +231,304 @@
   <footer class="site-footer"><div class="container footer-row"><span>© 2026 Nestlyn Home</span><span>Premium recurring cleaning with postcode-first booking</span></div><div class="container footer-contact-grid"><div class="footer-card"><strong>Email</strong><a href="mailto:info@nestlynhome.co.uk">info@nestlynhome.co.uk</a></div><div class="footer-card"><strong>Phone</strong><a href="tel:02000000000">020 0000 0000</a></div><div class="footer-card"><strong>Service</strong><span>Regular cleaning, deep cleaning, one-off cleaning and premium home care add-ons.</span></div></div></footer>
 
   <script>
-    const state={postcode:"SW1A 1AA",service:"regular",serviceName:"Regular cleaning",rate:16.95,frequency:"Weekly",rooms:{bedroom:1,bathroom:1,kitchen:1,living:1},addons:{oven:false,tools:false,laundry:false},date:"2026-03-23",time:"10:00"};
-    const stepPanels=[document.getElementById("step1"),document.getElementById("step2"),document.getElementById("step3"),document.getElementById("step4")];
-    const stepPills=[document.getElementById("stepPill1"),document.getElementById("stepPill2"),document.getElementById("stepPill3"),document.getElementById("stepPill4")];
-    function roomMinutes(){return state.rooms.bedroom*25+state.rooms.bathroom*35+state.rooms.kitchen*45+state.rooms.living*30}
-    function estimatedHours(){return Math.max(2, roomMinutes()/60)}
-    function addOnTotal(){return (state.addons.oven?25:0)+(state.addons.tools?15:0)+(state.addons.laundry?12:0)}
-    function estimateTotal(){return Math.round((estimatedHours()*state.rate+addOnTotal())*100)/100}
-    function roomCount(){return state.rooms.bedroom+state.rooms.bathroom+state.rooms.kitchen+state.rooms.living}
-    function updateEstimate(){
-      const total=estimateTotal();
-      document.getElementById("estimateAmount").textContent="£"+total.toFixed(2);
-      document.getElementById("heroEstimate").textContent="£"+total.toFixed(0);
-      const parts=[state.postcode||"No postcode",state.frequency];
-      if(roomCount()) parts.push(roomCount()+" rooms");
-      const addonCount=Object.values(state.addons).filter(Boolean).length;
-      if(addonCount) parts.push(addonCount+" add-on");
-      parts.push(state.date,state.time);
-      document.getElementById("estimateMeta").textContent=parts.join(" · ");
-      document.getElementById("heroEstimateMeta").textContent=state.serviceName+" · "+state.frequency+" plan";
-      document.getElementById("drawerService").textContent=state.serviceName;
-      document.getElementById("drawerFrequency").textContent=state.frequency;
-      document.getElementById("drawerHours").textContent=estimatedHours().toFixed(1)+"h";
-      document.getElementById("drawerAddons").textContent="£"+addOnTotal().toFixed(2);
-      document.getElementById("drawerTotal").textContent="£"+total.toFixed(2);
-      document.getElementById("payService").textContent=state.serviceName;
-      document.getElementById("payFrequency").textContent=state.frequency;
-      document.getElementById("payServiceB").textContent=state.serviceName;
-      document.getElementById("payFrequencyB").textContent=state.frequency;
-      document.getElementById("paySlot").textContent=state.date+" · "+state.time;
-      document.getElementById("payTotalA").textContent="£"+total.toFixed(2);
-      document.getElementById("payTotalB").textContent="£"+total.toFixed(2);
+  const API_BASE = "http://localhost:4000";
+
+  const state = {
+    postcode: "SW1A 1AA",
+    service: "regular",
+    serviceName: "Regular cleaning",
+    rate: 16.95,
+    frequency: "Weekly",
+    rooms: { bedroom: 1, bathroom: 1, kitchen: 1, living: 1 },
+    addons: { oven: false, tools: false, laundry: false },
+    date: "2026-03-23",
+    time: "10:00"
+  };
+
+  const stepPanels = [
+    document.getElementById("step1"),
+    document.getElementById("step2"),
+    document.getElementById("step3"),
+    document.getElementById("step4")
+  ];
+
+  const stepPills = [
+    document.getElementById("stepPill1"),
+    document.getElementById("stepPill2"),
+    document.getElementById("stepPill3"),
+    document.getElementById("stepPill4")
+  ];
+
+  function roomMinutes() {
+    return (
+      state.rooms.bedroom * 25 +
+      state.rooms.bathroom * 35 +
+      state.rooms.kitchen * 45 +
+      state.rooms.living * 30
+    );
+  }
+
+  function estimatedHours() {
+    return Math.max(2, roomMinutes() / 60);
+  }
+
+  function addOnTotal() {
+    return (state.addons.oven ? 25 : 0) +
+           (state.addons.tools ? 15 : 0) +
+           (state.addons.laundry ? 12 : 0);
+  }
+
+  function estimateTotal() {
+    return Math.round((estimatedHours() * state.rate + addOnTotal()) * 100) / 100;
+  }
+
+  function roomCount() {
+    return state.rooms.bedroom + state.rooms.bathroom + state.rooms.kitchen + state.rooms.living;
+  }
+
+  function updateEstimate() {
+    const total = estimateTotal();
+
+    document.getElementById("estimateAmount").textContent = "£" + total.toFixed(2);
+    document.getElementById("heroEstimate").textContent = "£" + total.toFixed(0);
+
+    const parts = [state.postcode || "No postcode", state.frequency];
+    if (roomCount()) parts.push(roomCount() + " rooms");
+    const addonCount = Object.values(state.addons).filter(Boolean).length;
+    if (addonCount) parts.push(addonCount + " add-on");
+    parts.push(state.date, state.time);
+
+    document.getElementById("estimateMeta").textContent = parts.join(" · ");
+    document.getElementById("heroEstimateMeta").textContent = state.serviceName + " · " + state.frequency + " plan";
+
+    document.getElementById("drawerService").textContent = state.serviceName;
+    document.getElementById("drawerFrequency").textContent = state.frequency;
+    document.getElementById("drawerHours").textContent = estimatedHours().toFixed(1) + "h";
+    document.getElementById("drawerAddons").textContent = "£" + addOnTotal().toFixed(2);
+    document.getElementById("drawerTotal").textContent = "£" + total.toFixed(2);
+
+    document.getElementById("payService").textContent = state.serviceName;
+    document.getElementById("payFrequency").textContent = state.frequency;
+    document.getElementById("payServiceB").textContent = state.serviceName;
+    document.getElementById("payFrequencyB").textContent = state.frequency;
+    document.getElementById("paySlot").textContent = state.date + " · " + state.time;
+    document.getElementById("payTotalA").textContent = "£" + total.toFixed(2);
+    document.getElementById("payTotalB").textContent = "£" + total.toFixed(2);
+  }
+
+  function showStep(index) {
+    stepPanels.forEach((panel, i) => panel.classList.toggle("active", i === index));
+    stepPills.forEach((pill, i) => {
+      pill.classList.remove("active", "done");
+      if (i < index) pill.classList.add("done");
+      if (i === index) pill.classList.add("active");
+    });
+    document.getElementById("calculator").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function setupServiceSelection() {
+    document.querySelectorAll("#serviceOptions .select-card").forEach(card =>
+      card.addEventListener("click", () => {
+        document.querySelectorAll("#serviceOptions .select-card").forEach(c => c.classList.remove("selected"));
+        card.classList.add("selected");
+        state.service = card.dataset.service;
+        state.serviceName = card.dataset.name;
+        state.rate = Number(card.dataset.rate);
+        updateEstimate();
+      })
+    );
+  }
+
+  function setupFrequencySelection() {
+    document.querySelectorAll("#frequencyOptions .select-card").forEach(card =>
+      card.addEventListener("click", () => {
+        document.querySelectorAll("#frequencyOptions .select-card").forEach(c => c.classList.remove("selected"));
+        card.classList.add("selected");
+        state.frequency = card.dataset.frequency;
+        updateEstimate();
+      })
+    );
+  }
+
+  function setupRoomCounters() {
+    const roomMap = ["bedroom", "bathroom", "kitchen", "living"];
+    document.querySelectorAll("#roomsList .room-card").forEach((card, index) => {
+      const minus = card.querySelector(".minus");
+      const plus = card.querySelector(".plus");
+      const value = card.querySelector("strong");
+
+      minus.addEventListener("click", () => {
+        state.rooms[roomMap[index]] = Math.max(0, state.rooms[roomMap[index]] - 1);
+        value.textContent = state.rooms[roomMap[index]];
+        updateEstimate();
+      });
+
+      plus.addEventListener("click", () => {
+        state.rooms[roomMap[index]] += 1;
+        value.textContent = state.rooms[roomMap[index]];
+        updateEstimate();
+      });
+    });
+  }
+
+  function setupAddons() {
+    const addonKeys = ["oven", "tools", "laundry"];
+    document.querySelectorAll(".addon-card .toggle").forEach((toggle, index) => {
+      const buttons = toggle.querySelectorAll("button");
+      buttons.forEach((button, buttonIndex) =>
+        button.addEventListener("click", () => {
+          buttons.forEach(b => b.classList.remove("on"));
+          button.classList.add("on");
+          state.addons[addonKeys[index]] = buttonIndex === 1;
+          updateEstimate();
+        })
+      );
+    });
+  }
+
+  function setupDrawer() {
+    const toggle = document.getElementById("estimateToggle");
+    const drawer = document.getElementById("estimateDrawer");
+    toggle.addEventListener("click", () => {
+      drawer.classList.toggle("open");
+      toggle.textContent = drawer.classList.contains("open") ? "Hide breakdown" : "View breakdown";
+    });
+  }
+
+  function setupMenu() {
+    const menuToggle = document.getElementById("menuToggle");
+    const siteNav = document.getElementById("siteNav");
+    if (menuToggle && siteNav) {
+      menuToggle.addEventListener("click", () => siteNav.classList.toggle("open"));
+      siteNav.querySelectorAll("a").forEach(link =>
+        link.addEventListener("click", () => siteNav.classList.remove("open"))
+      );
     }
-    function showStep(index){
-      stepPanels.forEach((panel,i)=>panel.classList.toggle("active",i===index));
-      stepPills.forEach((pill,i)=>{pill.classList.remove("active","done");if(i<index)pill.classList.add("done");if(i===index)pill.classList.add("active");});
-      document.getElementById("calculator").scrollIntoView({behavior:"smooth",block:"start"});
+  }
+
+  function setupFlow() {
+    document.getElementById("heroQuoteBtn").addEventListener("click", () => {
+      state.postcode = document.getElementById("heroPostcodeInput").value.trim();
+      updateEstimate();
+      document.getElementById("calculator").scrollIntoView({ behavior: "smooth" });
+    });
+
+    document.getElementById("toStep2").addEventListener("click", () => {
+      state.postcode = document.getElementById("heroPostcodeInput").value.trim();
+      updateEstimate();
+      showStep(1);
+    });
+
+    document.getElementById("backTo1").addEventListener("click", () => showStep(0));
+
+    document.getElementById("toStep3").addEventListener("click", () => {
+      updateEstimate();
+      showStep(2);
+    });
+
+    document.getElementById("backTo2").addEventListener("click", () => showStep(1));
+
+    document.getElementById("toStep4").addEventListener("click", () => {
+      state.date = document.getElementById("dateInput").value || state.date;
+      state.time = document.getElementById("timeInput").value || state.time;
+      updateEstimate();
+      showStep(3);
+    });
+
+    document.getElementById("backTo3").addEventListener("click", () => showStep(2));
+
+    document.getElementById("payNowBtn").addEventListener("click", submitBooking);
+  }
+
+  async function loginCustomer() {
+    const res = await fetch(`${API_BASE}/api/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: "customer@example.com",
+        password: "Password123!"
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.error || "Login failed");
     }
-    function setupServiceSelection(){document.querySelectorAll("#serviceOptions .select-card").forEach(card=>card.addEventListener("click",()=>{document.querySelectorAll("#serviceOptions .select-card").forEach(c=>c.classList.remove("selected"));card.classList.add("selected");state.service=card.dataset.service;state.serviceName=card.dataset.name;state.rate=Number(card.dataset.rate);updateEstimate();}))}
-    function setupFrequencySelection(){document.querySelectorAll("#frequencyOptions .select-card").forEach(card=>card.addEventListener("click",()=>{document.querySelectorAll("#frequencyOptions .select-card").forEach(c=>c.classList.remove("selected"));card.classList.add("selected");state.frequency=card.dataset.frequency;updateEstimate();}))}
-    function setupRoomCounters(){const roomMap=["bedroom","bathroom","kitchen","living"];document.querySelectorAll("#roomsList .room-card").forEach((card,index)=>{const minus=card.querySelector(".minus"),plus=card.querySelector(".plus"),value=card.querySelector("strong");minus.addEventListener("click",()=>{state.rooms[roomMap[index]]=Math.max(0,state.rooms[roomMap[index]]-1);value.textContent=state.rooms[roomMap[index]];updateEstimate();});plus.addEventListener("click",()=>{state.rooms[roomMap[index]]+=1;value.textContent=state.rooms[roomMap[index]];updateEstimate();});});}
-    function setupAddons(){const addonKeys=["oven","tools","laundry"];document.querySelectorAll(".addon-card .toggle").forEach((toggle,index)=>{const buttons=toggle.querySelectorAll("button");buttons.forEach((button,buttonIndex)=>button.addEventListener("click",()=>{buttons.forEach(b=>b.classList.remove("on"));button.classList.add("on");state.addons[addonKeys[index]]=buttonIndex===1;updateEstimate();}));});}
-    function setupDrawer(){const toggle=document.getElementById("estimateToggle"),drawer=document.getElementById("estimateDrawer");toggle.addEventListener("click",()=>{drawer.classList.toggle("open");toggle.textContent=drawer.classList.contains("open")?"Hide breakdown":"View breakdown";});}
-    function setupMenu(){const menuToggle=document.getElementById("menuToggle"),siteNav=document.getElementById("siteNav");if(menuToggle&&siteNav){menuToggle.addEventListener("click",()=>siteNav.classList.toggle("open"));siteNav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>siteNav.classList.remove("open")));}}
-    function setupFlow(){
-      document.getElementById("heroQuoteBtn").addEventListener("click",()=>{state.postcode=document.getElementById("heroPostcodeInput").value.trim();updateEstimate();document.getElementById("calculator").scrollIntoView({behavior:"smooth"});});
-      document.getElementById("toStep2").addEventListener("click",()=>{state.postcode=document.getElementById("heroPostcodeInput").value.trim();updateEstimate();showStep(1);});
-      document.getElementById("backTo1").addEventListener("click",()=>showStep(0));
-      document.getElementById("toStep3").addEventListener("click",()=>{updateEstimate();showStep(2);});
-      document.getElementById("backTo2").addEventListener("click",()=>showStep(1));
-      document.getElementById("toStep4").addEventListener("click",()=>{state.date=document.getElementById("dateInput").value||state.date;state.time=document.getElementById("timeInput").value||state.time;updateEstimate();showStep(3);});
-      document.getElementById("backTo3").addEventListener("click",()=>showStep(2));
-      document.getElementById("payNowBtn").addEventListener("click",()=>{const status=document.getElementById("statusMessage");status.style.display="block";status.textContent="Booking request received. Payment or email capture can be connected later without changing this flow.";});
+
+    localStorage.setItem("nestlyn_token", data.token);
+    return data.token;
+  }
+
+  async function submitBooking() {
+    const status = document.getElementById("statusMessage");
+    const payBtn = document.getElementById("payNowBtn");
+
+    try {
+      payBtn.disabled = true;
+      payBtn.textContent = "Submitting...";
+      status.style.display = "block";
+      status.textContent = "Submitting booking to backend...";
+
+      let token = localStorage.getItem("nestlyn_token");
+      if (!token) {
+        token = await loginCustomer();
+      }
+
+      const fullName = document.getElementById("nameInput").value.trim();
+      const email = document.getElementById("emailInput").value.trim();
+      const notes = document.getElementById("notesInput").value.trim();
+
+      const payload = {
+        service_type: state.service,
+        frequency: state.frequency.toLowerCase(),
+        date: state.date,
+        time: state.time,
+        postcode: state.postcode,
+        address: state.postcode,
+        rooms: state.rooms,
+        addons: state.addons,
+        notes: `Name: ${fullName} | Email: ${email} | Notes: ${notes}`
+      };
+
+      const res = await fetch(`${API_BASE}/api/bookings`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Booking failed");
+      }
+
+      status.textContent = `Booking created successfully. Booking ID: ${data.booking.id}`;
+      console.log("Booking created:", data);
+    } catch (error) {
+      console.error(error);
+      status.textContent = "Booking failed: " + error.message;
+    } finally {
+      payBtn.disabled = false;
+      payBtn.textContent = "Submit Booking Request";
     }
-    document.addEventListener("DOMContentLoaded",()=>{setupMenu();setupDrawer();setupServiceSelection();setupFrequencySelection();setupRoomCounters();setupAddons();setupFlow();updateEstimate();});
-  </script>
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setupMenu();
+    setupDrawer();
+    setupServiceSelection();
+    setupFrequencySelection();
+    setupRoomCounters();
+    setupAddons();
+    setupFlow();
+    updateEstimate();
+  });
+</script>
 </body>
 </html>
