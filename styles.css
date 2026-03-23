@@ -834,3 +834,22 @@ a {
     font-size: 1.55rem;
   }
 }
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  margin-bottom: 18px;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.footer-links a:hover {
+  color: var(--gold-soft);
+}
+.site-footer {
+  padding-bottom: 120px;
+}
