@@ -100,7 +100,10 @@ Email: ${booking.email}`;
   const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(message)}`;
 
   successMessage.hidden = false;
+
+setTimeout(() => {
   window.open(whatsappURL, '_blank');
+}, 500);
 
   bookingForm.reset();
   hoursInput.value = 2;
