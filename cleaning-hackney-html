@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cleaning Services Hackney | Nestlyn Clean</title>
+  <meta name="description" content="Professional cleaning services in Hackney. Book regular cleaning, deep cleaning, and one-off home cleaning in Hackney with Nestlyn Clean." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo">
+        <span class="logo-mark"></span>
+        <span>
+          <strong>Nestlyn</strong>
+          <small>Clean</small>
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#booking">Book</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="index.html#booking">Book a Clean</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-title">
+          <span>Cleaning Services Hackney</span>
+          <h1>Professional Cleaning Services in Hackney</h1>
+        </div>
+
+        <p class="pricing-copy">
+          Nestlyn Clean provides premium cleaning services in Hackney for homes, flats, and apartments
+          that need reliable, high-quality care. Whether you need regular cleaning, a one-off clean, or
+          a detailed deep clean, we deliver trusted results with flexible booking across Hackney.
+        </p>
+
+        <div class="service-grid" style="margin-top:32px;">
+          <article class="service-card featured">
+            <h2>Regular Cleaning Hackney</h2>
+            <p class="price">£16.95 / hour</p>
+            <p>Weekly and fortnightly cleaning in Hackney to keep your home consistently fresh and well maintained.</p>
+          </article>
+          <article class="service-card">
+            <h2>One-Off Cleaning Hackney</h2>
+            <p class="price">£19 / hour</p>
+            <p>Flexible one-time cleaning for Hackney homes that need a reset, refresh, or special-occasion clean.</p>
+          </article>
+          <article class="service-card">
+            <h2>Deep Cleaning Hackney</h2>
+            <p class="price">£23 / hour</p>
+            <p>Detailed top-to-bottom deep cleaning in Hackney for kitchens, bathrooms, bedrooms, and living spaces.</p>
+          </article>
+        </div>
+
+        <div class="section" style="padding-bottom:0;">
+          <div class="section-title">
+            <span>Why choose us</span>
+            <h2>Trusted home cleaners in Hackney</h2>
+          </div>
+          <p class="pricing-copy">
+            We focus on premium presentation, dependable service, and attention to detail. Our Hackney
+            cleaning service is designed for clients who want flexible appointments and consistently high standards.
+          </p>
+        </div>
+
+        <div class="section" style="padding-bottom:0;">
+          <div class="section-title">
+            <span>Book today</span>
+            <h2>Book cleaning in Hackney with Nestlyn Clean</h2>
+          </div>
+          <p class="pricing-copy">
+            If you’re looking for reliable cleaners in Hackney, Nestlyn Clean is ready to help with regular,
+            one-off, and deep cleaning across the area.
+          </p>
+          <div class="hero-actions" style="margin-top:24px;">
+            <a class="btn btn-gold" href="index.html#booking">Book a Clean</a>
+            <a class="btn btn-ghost" href="index.html#contact">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <div class="footer-links">
+        <a href="cleaning-hackney.html">Cleaning Hackney</a>
+      </div>
+      <p>© <span id="year"></span> Nestlyn Clean</p>
+      <a href="index.html">Back to home</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
