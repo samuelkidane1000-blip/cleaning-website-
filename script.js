@@ -7,6 +7,7 @@ const quoteTotal = document.getElementById('quoteTotal');
 const quoteBreakdown = document.getElementById('quoteBreakdown');
 const bookingForm = document.getElementById('bookingForm');
 const successMessage = document.getElementById('successMessage');
+const submitBtn = document.getElementById('submitBtn');
 const year = document.getElementById('year');
 const dateInput = document.getElementById('date');
 const timeInput = document.getElementById('time');
@@ -57,6 +58,10 @@ bookingForm.addEventListener('submit', function (event) {
   event.preventDefault();
 
   updateQuote();
+  successMessage.hidden = true;
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
 
   const booking = {
     name: nameInput.value.trim(),
@@ -99,18 +104,28 @@ Email: ${booking.email}`;
 
   const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(message)}`;
 
-  successMessage.hidden = false;
+  setTimeout(() => {
+    successMessage.hidden = false;
 
-setTimeout(() => {
-  window.open(whatsappURL, '_blank');
-}, 500);
+    successMessage.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
 
-  bookingForm.reset();
-  hoursInput.value = 2;
-  frequencySelect.value = 'Weekly';
-  timeInput.value = '10:00';
-  successMessage.hidden = false;
-  updateQuote();
+    setTimeout(() => {
+      window.open(whatsappURL, '_blank');
+    }, 600);
+
+    bookingForm.reset();
+    hoursInput.value = 2;
+    frequencySelect.value = 'Weekly';
+    timeInput.value = '10:00';
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Confirm & Book';
+
+    updateQuote();
+  }, 800);
 });
 
 const today = new Date();
