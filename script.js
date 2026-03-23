@@ -15,8 +15,6 @@ const nameInput = document.getElementById('name');
 const phoneInput = document.getElementById('phone');
 const emailInput = document.getElementById('email');
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
-
 function formatGBP(value) {
   return new Intl.NumberFormat('en-GB', {
     style: 'currency',
@@ -56,17 +54,14 @@ function updateQuote() {
   el.addEventListener('change', updateQuote);
 });
 
-bookingForm.addEventListener('submit', async function (event) {
+bookingForm.addEventListener('submit', function (event) {
   event.preventDefault();
 
   updateQuote();
   successMessage.hidden = true;
+
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
-
-  const extrasList = [];
-  if (ovenInput.checked) extrasList.push('Inside oven clean');
-  if (suppliesInput.checked) extrasList.push('Hoover & mop provided by us');
 
   const booking = {
     name: nameInput.value.trim(),
@@ -77,57 +72,39 @@ bookingForm.addEventListener('submit', async function (event) {
     hours: hoursInput.value,
     date: dateInput.value,
     time: timeInput.value,
-    extras: extrasList.length ? extrasList.join(', ') : 'None',
+    extras: {
+      oven: ovenInput.checked,
+      supplies: suppliesInput.checked
+    },
     total: quoteTotal.textContent,
     createdAt: new Date().toISOString()
   };
 
-  try {
-    const response = await fetch(FORMSPREE_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        name: booking.name,
-        phone: booking.phone,
-        email: booking.email,
-        service: booking.service,
-        frequency: booking.frequency,
-        hours: booking.hours,
-        date: booking.date,
-        time: booking.time,
-        extras: booking.extras,
-        total: booking.total,
-        createdAt: booking.createdAt
-      })
-    });
+  const bookings = JSON.parse(localStorage.getItem('nestlynBookings') || '[]');
+  bookings.unshift(booking);
+  localStorage.setItem('nestlynBookings', JSON.stringify(bookings));
 
-    if (!response.ok) {
-      throw new Error('Form submission failed');
-    }
+  const extrasList = [];
+  if (ovenInput.checked) extrasList.push('Inside oven clean');
+  if (suppliesInput.checked) extrasList.push('Hoover & mop provided by us');
 
-    const whatsappMessage = `Hi Nestlyn Clean, I'd like to book:
+  const message = `Hi Nestlyn Clean, I'd like to book:
 
 Service: ${booking.service}
 Frequency: ${booking.frequency}
 Hours: ${booking.hours}
 Date: ${booking.date}
 Time: ${booking.time}
-Extras: ${booking.extras}
+Extras: ${extrasList.length ? extrasList.join(', ') : 'None'}
 Estimated total: ${booking.total}
 
 Name: ${booking.name}
 Phone: ${booking.phone}
 Email: ${booking.email}`;
 
-    const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(message)}`;
 
-    successMessage.innerHTML = `
-      <h3>Booking Sent Successfully</h3>
-      <p>Your booking has been sent successfully. WhatsApp will open to confirm it.</p>
-    `;
+  setTimeout(() => {
     successMessage.hidden = false;
 
     successMessage.scrollIntoView({
@@ -135,26 +112,20 @@ Email: ${booking.email}`;
       block: 'center'
     });
 
+    setTimeout(() => {
+      window.open(whatsappURL, '_blank');
+    }, 600);
+
     bookingForm.reset();
     hoursInput.value = 2;
     frequencySelect.value = 'Weekly';
     timeInput.value = '10:00';
-    updateQuote();
 
-    setTimeout(() => {
-      window.open(whatsappURL, '_blank');
-    }, 700);
-
-  } catch (error) {
-    successMessage.innerHTML = `
-      <h3>Booking not sent</h3>
-      <p>Please try again or contact us on WhatsApp: 07514 718173.</p>
-    `;
-    successMessage.hidden = false;
-  } finally {
     submitBtn.disabled = false;
     submitBtn.textContent = 'Confirm & Book';
-  }
+
+    updateQuote();
+  }, 800);
 });
 
 const today = new Date();
@@ -163,7 +134,7 @@ const mm = String(today.getMonth() + 1).padStart(2, '0');
 const dd = String(today.getDate()).padStart(2, '0');
 
 dateInput.min = `${yyyy}-${mm}-${dd}`;
-if (year) year.textContent = yyyy;
+year.textContent = yyyy;
 hoursInput.value = 2;
 timeInput.value = '10:00';
 updateQuote();
