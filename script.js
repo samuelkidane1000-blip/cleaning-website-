@@ -8,29 +8,44 @@ const quoteBreakdown = document.getElementById('quoteBreakdown');
 const bookingForm = document.getElementById('bookingForm');
 const successMessage = document.getElementById('successMessage');
 const year = document.getElementById('year');
+const dateInput = document.getElementById('date');
+const timeInput = document.getElementById('time');
+const nameInput = document.getElementById('name');
+const phoneInput = document.getElementById('phone');
+const emailInput = document.getElementById('email');
 
 function formatGBP(value) {
-  return new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(value);
+  return new Intl.NumberFormat('en-GB', {
+    style: 'currency',
+    currency: 'GBP'
+  }).format(value);
 }
 
 function getServiceName() {
   return serviceSelect.options[serviceSelect.selectedIndex].text.split('—')[0].trim();
 }
 
+function getSafeHours() {
+  const hours = parseFloat(hoursInput.value || '2');
+  return hours < 2 ? 2 : hours;
+}
+
 function updateQuote() {
   const hourlyRate = parseFloat(serviceSelect.value || '0');
-  const hours = parseFloat(hoursInput.value || '0');
-  const oven = ovenInput.checked ? parseFloat(ovenInput.value) : 0;
-  const supplies = suppliesInput.checked ? parseFloat(suppliesInput.value) : 0;
-  const total = hourlyRate * hours + oven + supplies;
+  const hours = getSafeHours();
+  const oven = ovenInput.checked ? parseFloat(ovenInput.value || '0') : 0;
+  const supplies = suppliesInput.checked ? parseFloat(suppliesInput.value || '0') : 0;
+  const total = (hourlyRate * hours) + oven + supplies;
 
+  hoursInput.value = hours;
   quoteTotal.textContent = formatGBP(total);
 
   const extras = [];
   if (oven) extras.push('inside oven clean');
-  if (supplies) extras.push('hoover & mop included');
+  if (supplies) extras.push('hoover & mop provided by us');
 
-  quoteBreakdown.textContent = `${getServiceName()} · ${hours} hours · ${frequencySelect.value}${extras.length ? ' · ' + extras.join(' · ') : ''}`;
+  quoteBreakdown.textContent =
+    `${getServiceName()} · ${hours} hours · ${frequencySelect.value}${extras.length ? ' · ' + extras.join(' · ') : ''}`;
 }
 
 [serviceSelect, hoursInput, ovenInput, suppliesInput, frequencySelect].forEach((el) => {
@@ -38,19 +53,24 @@ function updateQuote() {
   el.addEventListener('change', updateQuote);
 });
 
-bookingForm.addEventListener('submit', (event) => {
+bookingForm.addEventListener('submit', function (event) {
   event.preventDefault();
+
   updateQuote();
 
   const booking = {
-    name: document.getElementById('name').value,
-    phone: document.getElementById('phone').value,
+    name: nameInput.value.trim(),
+    phone: phoneInput.value.trim(),
+    email: emailInput.value.trim(),
     service: getServiceName(),
     frequency: frequencySelect.value,
     hours: hoursInput.value,
-    date: document.getElementById('date').value,
-    time: document.getElementById('time').value,
-    address: document.getElementById('address').value,
+    date: dateInput.value,
+    time: timeInput.value,
+    extras: {
+      oven: ovenInput.checked,
+      supplies: suppliesInput.checked
+    },
     total: quoteTotal.textContent,
     createdAt: new Date().toISOString()
   };
@@ -59,11 +79,34 @@ bookingForm.addEventListener('submit', (event) => {
   bookings.unshift(booking);
   localStorage.setItem('nestlynBookings', JSON.stringify(bookings));
 
+  const extrasList = [];
+  if (ovenInput.checked) extrasList.push('Inside oven clean');
+  if (suppliesInput.checked) extrasList.push('Hoover & mop provided by us');
+
+  const message = `Hi Nestlyn Clean, I'd like to book:
+
+Service: ${booking.service}
+Frequency: ${booking.frequency}
+Hours: ${booking.hours}
+Date: ${booking.date}
+Time: ${booking.time}
+Extras: ${extrasList.length ? extrasList.join(', ') : 'None'}
+Estimated total: ${booking.total}
+
+Name: ${booking.name}
+Phone: ${booking.phone}
+Email: ${booking.email}`;
+
+  const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(message)}`;
+
   successMessage.hidden = false;
+  window.open(whatsappURL, '_blank');
+
   bookingForm.reset();
-  hoursInput.value = 3;
+  hoursInput.value = 2;
   frequencySelect.value = 'Weekly';
-  document.getElementById('time').value = '10:00';
+  timeInput.value = '10:00';
+  successMessage.hidden = false;
   updateQuote();
 });
 
@@ -71,40 +114,9 @@ const today = new Date();
 const yyyy = today.getFullYear();
 const mm = String(today.getMonth() + 1).padStart(2, '0');
 const dd = String(today.getDate()).padStart(2, '0');
-document.getElementById('date').min = `${yyyy}-${mm}-${dd}`;
+
+dateInput.min = `${yyyy}-${mm}-${dd}`;
 year.textContent = yyyy;
+hoursInput.value = 2;
+timeInput.value = '10:00';
 updateQuote();
-document.getElementById("bookingForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const service = document.getElementById("service").selectedOptions[0].text;
-  const frequency = document.getElementById("frequency").value;
-  const hours = document.getElementById("hours").value;
-  const date = document.getElementById("date").value;
-  const time = document.getElementById("time").value;
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const email = document.getElementById("email").value;
-  const total = document.getElementById("quoteTotal").textContent;
-
-  const extras = [];
-  if (document.getElementById("oven").checked) extras.push("Inside oven clean");
-  if (document.getElementById("supplies").checked) extras.push("Hoover & mop provided by us");
-
-  const message = `Hi Nestlyn Clean, I'd like to book:
-
-Service: ${service}
-Frequency: ${frequency}
-Hours: ${hours}
-Date: ${date}
-Time: ${time}
-Extras: ${extras.length ? extras.join(", ") : "None"}
-Estimated total: ${total}
-
-Name: ${name}
-Phone: ${phone}
-Email: ${email}`;
-
-  const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(message)}`;
-  window.open(whatsappURL, "_blank");
-});
