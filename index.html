@@ -36,11 +36,11 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <div class="eyebrow">Spring deal now on across London</div>
-          <h1>Luxury Home Cleaning<br>On‑Demand</h1>
+          <h1>Luxury Home Cleaning<br>On-Demand</h1>
           <p class="hero-sub">Exceptional service. Immaculate results. Premium home cleaning with elegant care, flexible scheduling, and trusted professionals across all London.</p>
           <div class="hero-promo">
             <span>🌿 Spring Special</span>
-            <p>Refresh your home for less this season with a big spring discount feel and polished premium service from start to finish.</p>
+            <p>Refresh your home this season with our spring deal and enjoy premium home cleaning across London.</p>
           </div>
           <div class="hero-actions">
             <a class="btn btn-gold" href="#booking">Book a Cleaning</a>
@@ -58,6 +58,7 @@
             <h2>Book a Cleaning</h2>
             <p>Choose your service, date and extras in minutes.</p>
           </div>
+
           <form id="bookingForm" class="booking-form">
             <label>
               <span>Select Service</span>
@@ -67,6 +68,7 @@
                 <option value="23">Deep cleaning — £23/h</option>
               </select>
             </label>
+
             <div class="form-row">
               <label>
                 <span>Frequency</span>
@@ -78,9 +80,10 @@
               </label>
               <label>
                 <span>Hours</span>
-                <input id="hours" type="number" min="2" step="1" value="3" required>
+                <input id="hours" type="number" min="2" step="1" value="2" required>
               </label>
             </div>
+
             <div class="form-row">
               <label>
                 <span>Date</span>
@@ -91,10 +94,7 @@
                 <input id="time" type="time" min="08:00" max="18:00" value="10:00" required>
               </label>
             </div>
-            <label>
-              <span>Address</span>
-              <input id="address" type="text" placeholder="Your London address" required>
-            </label>
+
             <fieldset class="extras">
               <legend>Add Extras</legend>
               <label class="check">
@@ -110,9 +110,9 @@
             <div class="quote-box">
               <div>
                 <small>Estimated total</small>
-                <strong id="quoteTotal">£50.85</strong>
+                <strong id="quoteTotal">£33.90</strong>
               </div>
-              <p id="quoteBreakdown">Regular cleaning · 3 hours</p>
+              <p id="quoteBreakdown">Regular cleaning · minimum 2 hours</p>
             </div>
 
             <div class="form-row">
@@ -126,9 +126,15 @@
               </label>
             </div>
 
+            <label>
+              <span>Email Address</span>
+              <input id="email" type="email" placeholder="Your email address" required>
+            </label>
+
             <button type="submit" class="btn btn-gold btn-full">Confirm &amp; Book</button>
-            <p class="booking-note">Opening hours: Monday to Saturday, 8:00am to 6:00pm.</p>
+            <p class="booking-note">Minimum booking is 2 hours. Opening hours: Monday to Saturday, 8:00am to 6:00pm.</p>
           </form>
+
           <div id="successMessage" class="success-message" hidden>
             <h3>Booking request received</h3>
             <p>Thank you for choosing Nestlyn Clean. We’ll confirm your booking by WhatsApp or phone.</p>
@@ -206,7 +212,7 @@
           <article class="service-card promo-card">
             <h3>Spring Deal</h3>
             <p class="price">Seasonal offer</p>
-            <p>Enjoy a big spring deal message on-site with premium presentation designed to help convert visitors into bookings.</p>
+            <p>Book now and enjoy our spring promotion across London with premium service and elegant care.</p>
           </article>
         </div>
       </div>
@@ -219,7 +225,7 @@
             <span>Transparent pricing</span>
             <h2>Simple, premium, and easy to understand</h2>
           </div>
-          <p class="pricing-copy">One-off and deep cleaning are charged as a one-time payment. Regular cleaning is ideal for weekly or fortnightly visits. Every quote on the booking form updates instantly.</p>
+          <p class="pricing-copy">Minimum booking is 2 hours. One-off and deep cleaning are charged as a one-time payment. Regular cleaning is ideal for weekly or fortnightly visits. Every quote on the booking form updates instantly.</p>
         </div>
         <div class="pricing-panel">
           <div class="pricing-row"><span>Regular cleaning</span><strong>£16.95/h</strong></div>
@@ -250,18 +256,9 @@
           <ul class="contact-list">
             <li><strong>WhatsApp:</strong> <a href="https://wa.me/447514718173">07514 718173</a></li>
             <li><strong>Office:</strong> <a href="tel:+442081035100">020 8103 5100</a></li>
+            <li><strong>Email:</strong> <a href="mailto:info@nestlynclean.com">info@nestlynclean.com</a></li>
             <li><strong>Address:</strong> 128, City Road, London, EC1V 2NX, United Kingdom</li>
             <li><strong>Coverage:</strong> All London</li>
-          </ul>
-        </div>
-        <div class="contact-panel">
-          <h3>Why this website converts</h3>
-          <ul>
-            <li>Luxury black-and-gold branding</li>
-            <li>Instant booking estimate</li>
-            <li>Clear spring promotion messaging</li>
-            <li>Strong calls to action</li>
-            <li>Mobile-friendly premium layout</li>
           </ul>
         </div>
       </div>
@@ -270,7 +267,15 @@
 
   <footer class="site-footer">
     <div class="container footer-wrap">
-      <p>© <span id="year"></span> Nestlyn Clean. Luxury home cleaning across London.</p>
+      <div>
+        <p>© <span id="year"></span> Nestlyn Clean. Luxury home cleaning across London.</p>
+        <p>
+          <a href="mailto:info@nestlynclean.com">info@nestlynclean.com</a> ·
+          <a href="tel:+442081035100">020 8103 5100</a> ·
+          <a href="https://wa.me/447514718173">WhatsApp</a>
+        </p>
+        <p>128, City Road, London, EC1V 2NX, United Kingdom</p>
+      </div>
       <a href="#top">Back to top</a>
     </div>
   </footer>
