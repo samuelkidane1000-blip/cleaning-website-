@@ -3,322 +3,348 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nestlyn Home Clean | Premium Cleaning</title>
+  <title>Nestlyn Home Clean | Premium Home Cleaning</title>
   <meta
     name="description"
-    content="Premium recurring home cleaning, one-off cleans and deep cleaning with a polished booking flow."
+    content="Premium home cleaning in London. Book regular cleaning, one-off cleaning and deep cleaning with Nestlyn Home Clean."
   />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <div class="site-bg">
+    <div class="bg-orb orb-one"></div>
+    <div class="bg-orb orb-two"></div>
+    <div class="bg-grid"></div>
+  </div>
+
   <header class="site-header">
     <div class="container header-row">
       <a href="#" class="brand-wrap" aria-label="Nestlyn Home Clean">
-        <div class="brand-mark">N</div>
-        <div class="brand-text">
-          <span class="brand-title">Nestlyn</span>
-          <span class="brand-subtitle">Home Clean</span>
-        </div>
+        <img src="images/nestlyn-logo.png" alt="Nestlyn Home Clean logo" class="site-logo" />
       </a>
 
-      <nav class="nav" id="siteNav">
-        <a href="#calculator">Quote</a>
+      <nav class="nav" id="siteNav" aria-label="Main navigation">
         <a href="#services">Services</a>
         <a href="#gallery">Gallery</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#contact">Contact</a>
+        <a href="#reviews">Google Reviews</a>
+        <a href="#contact-footer">Contact</a>
       </nav>
 
       <a href="#calculator" class="header-cta">Get Quote</a>
-      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu">☰</button>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu">
+        ☰
+      </button>
     </div>
   </header>
-
-  <div class="estimate-bar-wrap">
-    <div class="estimate-bar">
-      <span id="estimateAmount">£0.00</span>
-      <span id="estimateMeta">SW1A 1AA · Weekly · 4 rooms</span>
-      <button id="estimateToggle" class="estimate-toggle" type="button">Details</button>
-    </div>
-
-    <div class="estimate-drawer" id="estimateDrawer">
-      <div class="drawer-row"><span>Service</span><strong id="drawerService">Regular cleaning</strong></div>
-      <div class="drawer-row"><span id="drawerPlanLabel">Plan</span><strong id="drawerFrequency">Weekly</strong></div>
-      <div class="drawer-row"><span>Estimated hours</span><strong id="drawerHours">2.0h</strong></div>
-      <div class="drawer-row"><span>Add-ons</span><strong id="drawerAddons">£0.00</strong></div>
-      <div class="drawer-total"><span>Total</span><strong id="drawerTotal">£0.00</strong></div>
-    </div>
-  </div>
 
   <main>
     <section class="hero">
       <div class="container">
         <div class="hero-stage">
-          <div class="hero-inner">
-            <div class="hero-topbar">
-              <div class="glass-chip">020 8103 5100 · London</div>
-              <a href="#calculator" class="book-pill">Book</a>
+          <div class="hero-copy">
+            <div class="hero-badge-row">
+              <div class="glass-chip">London Home Cleaning</div>
+              <div class="glass-chip">020 8103 5100</div>
             </div>
 
-            <div class="hero-copy">
-              <img src="images/nestlyn-logo.png" alt="Nestlyn Home Clean logo" class="hero-logo" />
+            <img src="images/nestlyn-logo.png" alt="Nestlyn Home Clean logo" class="hero-logo" />
 
-              <h1>Premium cleaning services you can rely on.</h1>
-              <p class="hero-sub">Regular cleaning from £16.95/h</p>
+            <h1>Premium home cleaning with a polished, trusted finish.</h1>
+            <p class="hero-sub">
+              Reliable regular cleaning, one-off cleans and deep cleaning for homes that deserve more care.
+            </p>
+
+            <div class="postcode-quote-card" id="calculator">
+              <div class="postcode-copy">
+                <h2>Get a quote for your postcode</h2>
+                <p>Enter your postcode to start your booking.</p>
+              </div>
 
               <div class="postcode-bar">
                 <input
                   id="heroPostcodeInput"
                   type="text"
-                  placeholder="Enter your postcode"
-                  value="SW1A 1AA"
+                  placeholder="Type your postcode"
+                  value=""
+                  aria-label="Enter your postcode"
                 />
                 <button id="heroQuoteBtn" type="button">Get Quote</button>
               </div>
+            </div>
 
-              <div class="trust-inline">
-                <span class="stars">★★★★★</span>
-                <span>4.8/5</span>
-                <span class="trust-divider">•</span>
-                <span>Trustpilot reviews</span>
-                <span class="trust-divider">•</span>
-                <span>Google reviews</span>
+            <div class="trust-inline">
+              <span class="stars">★★★★★</span>
+              <span>Trusted by London households</span>
+              <span class="trust-divider">•</span>
+              <span>Regular & one-off cleaning</span>
+              <span class="trust-divider">•</span>
+              <span>Friendly professional cleaners</span>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-image-stack">
+              <div class="hero-image large">
+                <img
+                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1400&q=80"
+                  alt="Professional female cleaner working in a modern kitchen"
+                />
               </div>
+              <div class="hero-image small">
+                <img
+                  src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1200&q=80"
+                  alt="Professional cleaner making a tidy bed"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-              <div class="booking-shell" id="calculator">
-                <div class="progress">
-                  <div class="step-pill active" id="stepPill1">Step 1: Service</div>
-                  <div class="step-pill" id="stepPill2">Step 2: Plan</div>
-                  <div class="step-pill" id="stepPill3">Step 3: Schedule</div>
-                  <div class="step-pill" id="stepPill4">Step 4: Details</div>
+    <section class="booking-section section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Book your cleaning in a few simple steps</h2>
+          <p>Clear choices, premium feel, simple booking flow.</p>
+        </div>
+
+        <div class="booking-shell">
+          <div class="progress">
+            <div class="step-pill active" id="stepPill1">Step 1: Service</div>
+            <div class="step-pill" id="stepPill2">Step 2: Plan</div>
+            <div class="step-pill" id="stepPill3">Step 3: Schedule</div>
+            <div class="step-pill" id="stepPill4">Step 4: Details</div>
+          </div>
+
+          <div class="quote-form-card">
+            <div class="step-panel active" id="step1">
+              <div class="quote-section-title">Choose your service</div>
+              <p class="quote-helper-text">
+                Pick the service that suits your home best.
+              </p>
+
+              <div class="service-grid" id="serviceOptions">
+                <div class="select-card selected" data-service="regular" data-rate="16.95" data-name="Regular cleaning">
+                  <div class="micro">Most popular</div>
+                  <h4>Regular cleaning</h4>
+                  <div class="price">£16.95<span>/h</span></div>
+                  <p>Perfect for weekly or fortnightly home care with a polished finish.</p>
                 </div>
 
-                <div class="quote-form-card">
-                  <div class="step-panel active" id="step1">
-                    <div class="quote-section-title">Choose your service</div>
-                    <p class="quote-helper-text">
-                      Select the service that fits your home best, then continue through the booking flow.
-                    </p>
+                <div class="select-card" data-service="oneoff" data-rate="19" data-name="One-off clean">
+                  <div class="micro">Flexible</div>
+                  <h4>One-off clean</h4>
+                  <div class="price">£19<span>/h</span></div>
+                  <p>Ideal when your home needs a fresh reset without an ongoing plan.</p>
+                </div>
 
-                    <div class="service-grid" id="serviceOptions">
-                      <div class="select-card selected" data-service="regular" data-rate="16.95" data-name="Regular cleaning">
-                        <div class="micro">Best value · signature plan</div>
-                        <h4>Regular cleaning</h4>
-                        <div class="price">£16.95<span>/h</span></div>
-                        <p>Designed for clients who want a polished home every week or fortnight.</p>
-                      </div>
+                <div class="select-card" data-service="deep" data-rate="23" data-name="Deep cleaning">
+                  <div class="micro">Detailed clean</div>
+                  <h4>Deep cleaning</h4>
+                  <div class="price">£23<span>/h</span></div>
+                  <p>For homes that need extra time, detail and a deeper refresh.</p>
+                </div>
+              </div>
 
-                      <div class="select-card" data-service="oneoff" data-rate="19" data-name="One-off clean">
-                        <div class="micro">Flexible</div>
-                        <h4>One-off clean</h4>
-                        <div class="price">£19<span>/h</span></div>
-                        <p>Ideal for occasional resets and standalone bookings.</p>
-                      </div>
+              <div class="form-actions">
+                <button class="btn btn-gold" type="button" id="toStep2">Continue</button>
+              </div>
+            </div>
 
-                      <div class="select-card" data-service="deep" data-rate="23" data-name="Deep cleaning">
-                        <div class="micro">Detailed refresh</div>
-                        <h4>Deep cleaning</h4>
-                        <div class="price">£23<span>/h</span></div>
-                        <p>For homes that need a fuller, more detailed refresh.</p>
-                      </div>
-                    </div>
+            <div class="step-panel" id="step2">
+              <div class="quote-section-title" id="step2Title">Choose your plan and home size</div>
+              <p class="quote-helper-text" id="step2Helper">
+                Choose how often you want your cleaner and tell us about your home.
+              </p>
 
-                    <div class="form-actions">
-                      <button class="btn btn-gold" type="button" id="toStep2">Continue</button>
-                    </div>
+              <div class="frequency-grid" id="frequencyOptions">
+                <div class="select-card selected" data-frequency="Weekly">
+                  <div class="micro">Best value</div>
+                  <h4>Weekly</h4>
+                  <p>Great for a consistently clean home and the best overall value.</p>
+                </div>
+
+                <div class="select-card" data-frequency="Fortnightly">
+                  <div class="micro">Balanced</div>
+                  <h4>Fortnightly</h4>
+                  <p>A practical option for regular care with more flexibility.</p>
+                </div>
+
+                <div class="select-card" data-frequency="Monthly">
+                  <div class="micro">Light upkeep</div>
+                  <h4>Monthly</h4>
+                  <p>Best for occasional maintenance and lighter cleaning needs.</p>
+                </div>
+              </div>
+
+              <div class="room-grid" id="roomsList">
+                <div class="room-card">
+                  <div>
+                    <h4>Bedrooms</h4>
+                    <p>Dusting, surfaces, vacuuming and finishing touches.</p>
                   </div>
-
-                  <div class="step-panel" id="step2">
-                    <div class="quote-section-title" id="step2Title">Choose your plan and home size</div>
-                    <p class="quote-helper-text" id="step2Helper">
-                      Recurring plans are perfect for ongoing home care and better long-term value.
-                    </p>
-
-                    <div class="frequency-grid" id="frequencyOptions">
-                      <div class="select-card selected" data-frequency="Weekly">
-                        <div class="micro">Best retention</div>
-                        <h4>Weekly</h4>
-                        <p>Best value, best consistency, strongest same-cleaner rhythm.</p>
-                      </div>
-                      <div class="select-card" data-frequency="Fortnightly">
-                        <div class="micro">Balanced</div>
-                        <h4>Fortnightly</h4>
-                        <p>Still recurring, lower commitment, high convenience.</p>
-                      </div>
-                      <div class="select-card" data-frequency="Monthly">
-                        <div class="micro">Occasional care</div>
-                        <h4>Monthly</h4>
-                        <p>For light upkeep with less frequent visits.</p>
-                      </div>
-                    </div>
-
-                    <div class="room-grid" id="roomsList">
-                      <div class="room-card">
-                        <div>
-                          <h4>Bedroom</h4>
-                          <p>~25 min each · surfaces, dusting, vacuum, finishing touch</p>
-                        </div>
-                        <div class="counter">
-                          <button class="minus" type="button">−</button>
-                          <strong>1</strong>
-                          <button class="plus" type="button">+</button>
-                        </div>
-                      </div>
-
-                      <div class="room-card">
-                        <div>
-                          <h4>Bathroom</h4>
-                          <p>~35 min each · sanitaryware, mirrors, floor, detail wipe</p>
-                        </div>
-                        <div class="counter">
-                          <button class="minus" type="button">−</button>
-                          <strong>1</strong>
-                          <button class="plus" type="button">+</button>
-                        </div>
-                      </div>
-
-                      <div class="room-card">
-                        <div>
-                          <h4>Kitchen</h4>
-                          <p>~45 min · counters, sink, hob, external appliances</p>
-                        </div>
-                        <div class="counter">
-                          <button class="minus" type="button">−</button>
-                          <strong>1</strong>
-                          <button class="plus" type="button">+</button>
-                        </div>
-                      </div>
-
-                      <div class="room-card">
-                        <div>
-                          <h4>Living room</h4>
-                          <p>~30 min each · surfaces, vacuuming, visual polish</p>
-                        </div>
-                        <div class="counter">
-                          <button class="minus" type="button">−</button>
-                          <strong>1</strong>
-                          <button class="plus" type="button">+</button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="addon-grid">
-                      <div class="addon-card">
-                        <div>
-                          <h4>Inside oven clean</h4>
-                          <p>Timed add-on · +£25</p>
-                        </div>
-                        <div class="toggle">
-                          <button class="on" type="button">No</button>
-                          <button type="button">Yes</button>
-                        </div>
-                      </div>
-
-                      <div class="addon-card">
-                        <div>
-                          <h4>Hoover & mop provided by us</h4>
-                          <p>Per session · +£15</p>
-                        </div>
-                        <div class="toggle">
-                          <button class="on" type="button">No</button>
-                          <button type="button">Yes</button>
-                        </div>
-                      </div>
-
-                      <div class="addon-card">
-                        <div>
-                          <h4>Laundry & ironing</h4>
-                          <p>Timed add-on · +£12</p>
-                        </div>
-                        <div class="toggle">
-                          <button class="on" type="button">No</button>
-                          <button type="button">Yes</button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="form-actions">
-                      <button class="btn btn-dark" type="button" id="backTo1">Back</button>
-                      <button class="btn btn-gold" type="button" id="toStep3">Continue</button>
-                    </div>
+                  <div class="counter">
+                    <button class="minus" type="button">−</button>
+                    <strong>1</strong>
+                    <button class="plus" type="button">+</button>
                   </div>
+                </div>
 
-                  <div class="step-panel" id="step3">
-                    <div class="quote-section-title">Choose your schedule</div>
-                    <p class="quote-helper-text">
-                      Choose the date and time that suits your home routine.
-                    </p>
-
-                    <div class="field-grid">
-                      <label>
-                        Preferred date
-                        <input id="dateInput" type="date" value="2026-03-23" />
-                      </label>
-
-                      <label>
-                        Preferred time
-                        <select id="timeInput">
-                          <option selected>10:00</option>
-                          <option>12:00</option>
-                          <option>14:00</option>
-                          <option>16:00</option>
-                        </select>
-                      </label>
-                    </div>
-
-                    <div class="payment-summary">
-                      <div class="mini">Booking summary</div>
-                      <div class="payment-row"><span>Service</span><strong id="payService">Regular cleaning</strong></div>
-                      <div class="payment-row"><span id="payPlanLabelA">Plan</span><strong id="payFrequency">Weekly</strong></div>
-                      <div class="payment-row"><span>Estimated total</span><strong id="payTotalA">£76.00</strong></div>
-                    </div>
-
-                    <div class="form-actions">
-                      <button class="btn btn-dark" type="button" id="backTo2">Back</button>
-                      <button class="btn btn-gold" type="button" id="toStep4">Continue</button>
-                    </div>
+                <div class="room-card">
+                  <div>
+                    <h4>Bathrooms</h4>
+                    <p>Mirrors, sanitaryware, floors and careful detailing.</p>
                   </div>
+                  <div class="counter">
+                    <button class="minus" type="button">−</button>
+                    <strong>1</strong>
+                    <button class="plus" type="button">+</button>
+                  </div>
+                </div>
 
-                  <div class="step-panel" id="step4">
-                    <div class="quote-section-title">Complete your details</div>
-                    <p class="quote-helper-text">
-                      Keep the final step simple and high-trust.
-                    </p>
+                <div class="room-card">
+                  <div>
+                    <h4>Kitchen</h4>
+                    <p>Surfaces, sink, hob and external appliances.</p>
+                  </div>
+                  <div class="counter">
+                    <button class="minus" type="button">−</button>
+                    <strong>1</strong>
+                    <button class="plus" type="button">+</button>
+                  </div>
+                </div>
 
-                    <div class="field-grid">
-                      <label>
-                        Full name
-                        <input id="nameInput" type="text" value="John Smith" />
-                      </label>
-
-                      <label>
-                        Email address
-                        <input id="emailInput" type="email" value="john.smith@example.com" />
-                      </label>
-                    </div>
-
-                    <label>
-                      Special instructions
-                      <textarea id="notesInput">Please ensure the kitchen and bathrooms are prioritised.</textarea>
-                    </label>
-
-                    <div class="payment-summary">
-                      <div class="mini">Booking</div>
-                      <div class="payment-row"><span>Service</span><strong id="payServiceB">Regular cleaning</strong></div>
-                      <div class="payment-row"><span id="payPlanLabelB">Plan</span><strong id="payFrequencyB">Weekly</strong></div>
-                      <div class="payment-row"><span>Date</span><strong id="paySlot">2026-03-23 · 10:00</strong></div>
-                      <div class="payment-row"><span>Estimate</span><strong id="payTotalB">£76.00</strong></div>
-                    </div>
-
-                    <div class="form-actions">
-                      <button class="btn btn-dark" type="button" id="backTo3">Back</button>
-                      <button class="btn btn-green" type="button" id="payNowBtn">Submit Booking Request</button>
-                    </div>
-
-                    <div class="status-message" id="statusMessage"></div>
+                <div class="room-card">
+                  <div>
+                    <h4>Living rooms</h4>
+                    <p>Surfaces, vacuuming and overall visual polish.</p>
+                  </div>
+                  <div class="counter">
+                    <button class="minus" type="button">−</button>
+                    <strong>1</strong>
+                    <button class="plus" type="button">+</button>
                   </div>
                 </div>
               </div>
+
+              <div class="addon-grid">
+                <div class="addon-card">
+                  <div>
+                    <h4>Inside oven clean</h4>
+                    <p>Add-on · +£25</p>
+                  </div>
+                  <div class="toggle">
+                    <button class="on" type="button">No</button>
+                    <button type="button">Yes</button>
+                  </div>
+                </div>
+
+                <div class="addon-card">
+                  <div>
+                    <h4>We bring hoover & mop</h4>
+                    <p>Add-on · +£15</p>
+                  </div>
+                  <div class="toggle">
+                    <button class="on" type="button">No</button>
+                    <button type="button">Yes</button>
+                  </div>
+                </div>
+
+                <div class="addon-card">
+                  <div>
+                    <h4>Laundry & ironing</h4>
+                    <p>Add-on · +£12</p>
+                  </div>
+                  <div class="toggle">
+                    <button class="on" type="button">No</button>
+                    <button type="button">Yes</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn-dark" type="button" id="backTo1">Back</button>
+                <button class="btn btn-gold" type="button" id="toStep3">Continue</button>
+              </div>
+            </div>
+
+            <div class="step-panel" id="step3">
+              <div class="quote-section-title">Choose your schedule</div>
+              <p class="quote-helper-text">
+                Select the date and time that works best for you.
+              </p>
+
+              <div class="field-grid">
+                <label>
+                  Preferred date
+                  <input id="dateInput" type="date" />
+                </label>
+
+                <label>
+                  Preferred time
+                  <select id="timeInput">
+                    <option selected>10:00</option>
+                    <option>12:00</option>
+                    <option>14:00</option>
+                    <option>16:00</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="payment-summary">
+                <div class="mini">Booking summary</div>
+                <div class="payment-row"><span>Service</span><strong id="payService">Regular cleaning</strong></div>
+                <div class="payment-row"><span id="payPlanLabelA">Plan</span><strong id="payFrequency">Weekly</strong></div>
+                <div class="payment-row"><span>Estimated hours</span><strong id="payHours">2.0h</strong></div>
+                <div class="payment-row"><span>Estimated total</span><strong id="payTotalA">£0.00</strong></div>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn-dark" type="button" id="backTo2">Back</button>
+                <button class="btn btn-gold" type="button" id="toStep4">Continue</button>
+              </div>
+            </div>
+
+            <div class="step-panel" id="step4">
+              <div class="quote-section-title">Complete your details</div>
+              <p class="quote-helper-text">
+                Add your details and send your booking request.
+              </p>
+
+              <div class="field-grid">
+                <label>
+                  Full name
+                  <input id="nameInput" type="text" placeholder="Your full name" />
+                </label>
+
+                <label>
+                  Email address
+                  <input id="emailInput" type="email" placeholder="Your email address" />
+                </label>
+              </div>
+
+              <label>
+                Special instructions
+                <textarea id="notesInput" placeholder="Anything you want the cleaner to know"></textarea>
+              </label>
+
+              <div class="payment-summary">
+                <div class="mini">Final booking details</div>
+                <div class="payment-row"><span>Postcode</span><strong id="payPostcode">—</strong></div>
+                <div class="payment-row"><span>Service</span><strong id="payServiceB">Regular cleaning</strong></div>
+                <div class="payment-row"><span id="payPlanLabelB">Plan</span><strong id="payFrequencyB">Weekly</strong></div>
+                <div class="payment-row"><span>Date</span><strong id="paySlot">—</strong></div>
+                <div class="payment-row"><span>Estimate</span><strong id="payTotalB">£0.00</strong></div>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn-dark" type="button" id="backTo3">Back</button>
+                <button class="btn btn-green" type="button" id="payNowBtn">Submit Booking Request</button>
+              </div>
+
+              <div class="status-message" id="statusMessage"></div>
             </div>
           </div>
         </div>
@@ -328,28 +354,37 @@
     <section id="gallery" class="section">
       <div class="container">
         <div class="section-heading">
-          <h2>Professional cleaning with a polished finish.</h2>
-          <p>Use real service imagery to build trust and keep the premium feel strong.</p>
+          <h2>Professional cleaners. Beautiful results.</h2>
+          <p>Clean, welcoming visuals that make the brand feel trusted and premium.</p>
         </div>
 
         <div class="light-card">
-          <div class="gallery-grid">
+          <div class="gallery-grid premium-gallery">
             <div class="gallery-item">
               <img
                 src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80"
-                alt="Professional cleaner working in a modern home"
+                alt="Female cleaner wiping a kitchen counter"
               />
             </div>
+
             <div class="gallery-item">
               <img
                 src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1200&q=80"
-                alt="Cleaner making a bed in a tidy room"
+                alt="Female cleaner making a bed in a clean bedroom"
               />
             </div>
+
+            <div class="gallery-item">
+              <img
+                src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=80"
+                alt="Bright tidy luxury living room"
+              />
+            </div>
+
             <div class="gallery-item">
               <img
                 src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
-                alt="Well-finished premium home interior after cleaning"
+                alt="Fresh premium home interior after cleaning"
               />
             </div>
           </div>
@@ -360,23 +395,30 @@
     <section id="services" class="section">
       <div class="container">
         <div class="section-heading">
-          <h2>Designed for premium home care.</h2>
-          <p>Everything is structured to feel polished, reliable and easy to trust.</p>
+          <h2>Services designed around a better home clean.</h2>
+          <p>Simple, trusted and easy to book.</p>
         </div>
 
         <div class="light-card">
           <div class="feature-grid">
             <div class="feature">
-              <h3>Recurring-first pricing</h3>
-              <p>Regular cleaning stays in the lead so clients naturally move toward the longer-term plan.</p>
+              <h3>Regular cleaning</h3>
+              <p>Weekly, fortnightly or monthly cleaning for a consistently fresh home.</p>
             </div>
+
             <div class="feature">
-              <h3>Private, polished feel</h3>
-              <p>Dark depth, warm gold accents and refined layouts create a stronger premium impression.</p>
+              <h3>One-off cleaning</h3>
+              <p>A flexible option for homes that need a single professional clean.</p>
             </div>
+
             <div class="feature">
-              <h3>Easy booking flow</h3>
-              <p>The journey feels guided and modern, closer to a premium product than a basic service page.</p>
+              <h3>Deep cleaning</h3>
+              <p>More detail, more time and a more complete refresh when your home needs extra care.</p>
+            </div>
+
+            <div class="feature">
+              <h3>Add-on services</h3>
+              <p>Inside oven clean, laundry and ironing, and equipment provided when needed.</p>
             </div>
           </div>
         </div>
@@ -386,40 +428,46 @@
     <section id="reviews" class="section">
       <div class="container">
         <div class="section-heading">
-          <h2>Real reviews that build trust.</h2>
-          <p>Named reviews feel more human and more credible.</p>
+          <h2>Google Reviews</h2>
+          <p>Real names make reviews feel more trustworthy and more human.</p>
         </div>
 
         <div class="light-card">
           <div class="reviews-grid">
             <div class="review-card">
               <div class="review-stars">★★★★★</div>
-              <h3>Reliable and beautifully organised</h3>
-              <p><strong>Sarah M.</strong><br>The booking flow felt premium and the cleaner quality has been consistently excellent.</p>
+              <h3>Sarah Mitchell</h3>
+              <p>
+                “The cleaner was professional, friendly and very thorough. The whole experience felt smooth from booking to finish.”
+              </p>
             </div>
 
             <div class="review-card">
               <div class="review-stars">★★★★★</div>
-              <h3>Best cleaner we’ve had</h3>
-              <p><strong>Amelia R.</strong><br>We chose the regular plan and the whole service feels calmer and more professional than others we tried.</p>
+              <h3>Amelia Roberts</h3>
+              <p>
+                “Our home looked spotless. The website was easy to use and the service felt much more premium than others we tried.”
+              </p>
             </div>
 
             <div class="review-card">
               <div class="review-stars">★★★★★</div>
-              <h3>Easy to trust</h3>
-              <p><strong>Daniel K.</strong><br>The quote system, pricing and recurring plan made the service feel much more polished from the start.</p>
+              <h3>Daniel Khan</h3>
+              <p>
+                “Very reliable and easy to book. We now use Nestlyn regularly and the standard has been consistently excellent.”
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section">
+    <section class="section contact-band-section">
       <div class="container">
         <div class="cta-band">
           <div>
-            <h3>Ready to book now?</h3>
-            <p>Start with postcode and move through the guided booking flow.</p>
+            <h3>Ready to book your clean?</h3>
+            <p>Start with your postcode and send your booking request in minutes.</p>
           </div>
           <div class="cta-actions">
             <a href="#calculator" class="btn btn-gold">Book now</a>
@@ -430,9 +478,9 @@
   </main>
 
   <footer class="site-footer" id="contact-footer">
-    <div class="container footer-row">
-      <span>© 2026 Nestlyn Home Clean</span>
-      <span>Premium recurring cleaning with postcode-first booking</span>
+    <div class="container footer-brand-row">
+      <img src="images/nestlyn-logo.png" alt="Nestlyn Home Clean logo" class="footer-logo" />
+      <p>Premium home cleaning across London.</p>
     </div>
 
     <div class="container footer-contact-grid" id="contact">
@@ -441,14 +489,14 @@
         <a href="tel:02081035100">020 8103 5100</a>
       </div>
 
-      <div class="footer-card">
+      <div class="footer-card footer-card-center">
         <strong>Address</strong>
-        <span>128 City Road<br>London, EC1V 2NX<br>United Kingdom</span>
+        <span>128 City Road<br />London, EC1V 2NX<br />United Kingdom</span>
       </div>
 
       <div class="footer-card">
         <strong>Service</strong>
-        <span>Regular cleaning, deep cleaning, one-off cleaning and premium home care add-ons.</span>
+        <span>Regular cleaning, one-off cleaning, deep cleaning and premium add-ons.</span>
       </div>
 
       <div class="footer-card">
@@ -456,13 +504,18 @@
         <a href="mailto:info@nestlynhome.co.uk">info@nestlynhome.co.uk</a>
       </div>
     </div>
+
+    <div class="container footer-row">
+      <span>© 2026 Nestlyn Home Clean</span>
+      <span>Trusted premium home cleaning</span>
+    </div>
   </footer>
 
   <script>
     const API_BASE = "https://nestlyn-backend-system.onrender.com";
 
     const state = {
-      postcode: "SW1A 1AA",
+      postcode: "",
       service: "regular",
       serviceName: "Regular cleaning",
       rate: 16.95,
@@ -470,7 +523,7 @@
       durationHours: 2,
       rooms: { bedroom: 1, bathroom: 1, kitchen: 1, living: 1 },
       addons: { oven: false, tools: false, laundry: false },
-      date: "2026-03-23",
+      date: "",
       time: "10:00"
     };
 
@@ -490,19 +543,19 @@
 
     const regularFrequencyMarkup = `
       <div class="select-card selected" data-frequency="Weekly">
-        <div class="micro">Best retention</div>
+        <div class="micro">Best value</div>
         <h4>Weekly</h4>
-        <p>Best value, best consistency, strongest same-cleaner rhythm.</p>
+        <p>Great for a consistently clean home and the best overall value.</p>
       </div>
       <div class="select-card" data-frequency="Fortnightly">
         <div class="micro">Balanced</div>
         <h4>Fortnightly</h4>
-        <p>Still recurring, lower commitment, high convenience.</p>
+        <p>A practical option for regular care with more flexibility.</p>
       </div>
       <div class="select-card" data-frequency="Monthly">
-        <div class="micro">Occasional care</div>
+        <div class="micro">Light upkeep</div>
         <h4>Monthly</h4>
-        <p>For light upkeep with less frequent visits.</p>
+        <p>Best for occasional maintenance and lighter cleaning needs.</p>
       </div>
     `;
 
@@ -515,22 +568,22 @@
       <div class="select-card" data-hours="3">
         <div class="micro">Popular</div>
         <h4>3 hours</h4>
-        <p>Good balance for most one-off cleaning sessions.</p>
+        <p>A balanced option for most one-off sessions.</p>
       </div>
       <div class="select-card" data-hours="4">
         <div class="micro">Thorough</div>
         <h4>4 hours</h4>
-        <p>More time for a fuller clean and extra detail.</p>
+        <p>More time for detail and a fuller clean.</p>
       </div>
       <div class="select-card" data-hours="5">
         <div class="micro">Extended</div>
         <h4>5 hours</h4>
-        <p>Best for larger homes or deeper cleaning needs.</p>
+        <p>Best for larger homes or a stronger reset.</p>
       </div>
       <div class="select-card" data-hours="6">
         <div class="micro">Maximum detail</div>
         <h4>6 hours</h4>
-        <p>Ideal when the property needs a longer reset.</p>
+        <p>Ideal when the property needs longer attention.</p>
       </div>
     `;
 
@@ -539,7 +592,10 @@
     }
 
     function roomMinutes() {
-      return state.rooms.bedroom * 25 + state.rooms.bathroom * 35 + state.rooms.kitchen * 45 + state.rooms.living * 30;
+      return state.rooms.bedroom * 25
+        + state.rooms.bathroom * 35
+        + state.rooms.kitchen * 45
+        + state.rooms.living * 30;
     }
 
     function estimatedHours() {
@@ -556,15 +612,13 @@
     }
 
     function addOnTotal() {
-      return (state.addons.oven ? 25 : 0) + (state.addons.tools ? 15 : 0) + (state.addons.laundry ? 12 : 0);
+      return (state.addons.oven ? 25 : 0)
+        + (state.addons.tools ? 15 : 0)
+        + (state.addons.laundry ? 12 : 0);
     }
 
     function estimateTotal() {
       return Math.round((estimatedHours() * state.rate + addOnTotal()) * 100) / 100;
-    }
-
-    function roomCount() {
-      return state.rooms.bedroom + state.rooms.bathroom + state.rooms.kitchen + state.rooms.living;
     }
 
     function rebuildPlanOptions() {
@@ -576,12 +630,12 @@
       if (isRegularService()) {
         container.innerHTML = regularFrequencyMarkup;
         step2Title.textContent = "Choose your plan and home size";
-        step2Helper.textContent = "Recurring plans are perfect for ongoing home care and better long-term value.";
+        step2Helper.textContent = "Choose how often you want your cleaner and tell us about your home.";
         stepPill2.textContent = "Step 2: Plan";
       } else {
         container.innerHTML = hoursMarkup;
         step2Title.textContent = "Choose hours and home size";
-        step2Helper.textContent = "For one-off and deep cleaning, choose the number of hours you want instead of a weekly plan.";
+        step2Helper.textContent = "For one-off and deep cleaning, choose the number of hours you want.";
         stepPill2.textContent = "Step 2: Hours";
       }
 
@@ -592,30 +646,17 @@
       const total = estimateTotal();
       const currentPlanValue = planValue();
 
-      document.getElementById("estimateAmount").textContent = "£" + total.toFixed(2);
-
-      const parts = [
-        state.postcode || "No postcode",
-        isRegularService() ? state.frequency : `${state.durationHours}h`,
-        roomCount() + " rooms"
-      ];
-
-      document.getElementById("estimateMeta").textContent = parts.join(" · ");
-
-      document.getElementById("drawerPlanLabel").textContent = planLabel();
-      document.getElementById("drawerService").textContent = state.serviceName;
-      document.getElementById("drawerFrequency").textContent = currentPlanValue;
-      document.getElementById("drawerHours").textContent = estimatedHours().toFixed(1) + "h";
-      document.getElementById("drawerAddons").textContent = "£" + addOnTotal().toFixed(2);
-      document.getElementById("drawerTotal").textContent = "£" + total.toFixed(2);
-
       document.getElementById("payPlanLabelA").textContent = planLabel();
       document.getElementById("payPlanLabelB").textContent = planLabel();
       document.getElementById("payService").textContent = state.serviceName;
       document.getElementById("payFrequency").textContent = currentPlanValue;
+      document.getElementById("payHours").textContent = estimatedHours().toFixed(1) + "h";
       document.getElementById("payServiceB").textContent = state.serviceName;
       document.getElementById("payFrequencyB").textContent = currentPlanValue;
-      document.getElementById("paySlot").textContent = state.date + " · " + state.time;
+      document.getElementById("payPostcode").textContent = state.postcode || "—";
+      document.getElementById("paySlot").textContent = state.date
+        ? `${state.date} · ${state.time}`
+        : `—`;
       document.getElementById("payTotalA").textContent = "£" + total.toFixed(2);
       document.getElementById("payTotalB").textContent = "£" + total.toFixed(2);
     }
@@ -627,7 +668,11 @@
         if (i < index) pill.classList.add("done");
         if (i === index) pill.classList.add("active");
       });
-      document.getElementById("calculator").scrollIntoView({ behavior: "smooth", block: "start" });
+
+      document.querySelector(".booking-section").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
     }
 
     function setupServiceSelection() {
@@ -635,6 +680,7 @@
         card.addEventListener("click", () => {
           document.querySelectorAll("#serviceOptions .select-card").forEach(c => c.classList.remove("selected"));
           card.classList.add("selected");
+
           state.service = card.dataset.service;
           state.serviceName = card.dataset.name;
           state.rate = Number(card.dataset.rate);
@@ -653,6 +699,7 @@
 
     function setupFrequencySelection() {
       const container = document.getElementById("frequencyOptions");
+
       container.querySelectorAll(".select-card").forEach(card => {
         card.addEventListener("click", () => {
           container.querySelectorAll(".select-card").forEach(c => c.classList.remove("selected"));
@@ -671,6 +718,7 @@
 
     function setupRoomCounters() {
       const roomMap = ["bedroom", "bathroom", "kitchen", "living"];
+
       document.querySelectorAll("#roomsList .room-card").forEach((card, index) => {
         const minus = card.querySelector(".minus");
         const plus = card.querySelector(".plus");
@@ -692,8 +740,10 @@
 
     function setupAddons() {
       const addonKeys = ["oven", "tools", "laundry"];
+
       document.querySelectorAll(".addon-card .toggle").forEach((toggle, index) => {
         const buttons = toggle.querySelectorAll("button");
+
         buttons.forEach((button, buttonIndex) => {
           button.addEventListener("click", () => {
             buttons.forEach(b => b.classList.remove("on"));
@@ -705,18 +755,10 @@
       });
     }
 
-    function setupDrawer() {
-      const toggle = document.getElementById("estimateToggle");
-      const drawer = document.getElementById("estimateDrawer");
-      toggle.addEventListener("click", () => {
-        drawer.classList.toggle("open");
-        toggle.textContent = drawer.classList.contains("open") ? "Hide" : "Details";
-      });
-    }
-
     function setupMenu() {
       const menuToggle = document.getElementById("menuToggle");
       const siteNav = document.getElementById("siteNav");
+
       if (menuToggle && siteNav) {
         menuToggle.addEventListener("click", () => siteNav.classList.toggle("open"));
         siteNav.querySelectorAll("a").forEach(link => {
@@ -729,7 +771,7 @@
       document.getElementById("heroQuoteBtn").addEventListener("click", () => {
         state.postcode = document.getElementById("heroPostcodeInput").value.trim();
         updateEstimate();
-        document.getElementById("calculator").scrollIntoView({ behavior: "smooth" });
+        document.querySelector(".booking-section").scrollIntoView({ behavior: "smooth" });
       });
 
       document.getElementById("toStep2").addEventListener("click", () => {
@@ -817,7 +859,6 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       setupMenu();
-      setupDrawer();
       setupServiceSelection();
       rebuildPlanOptions();
       setupRoomCounters();
