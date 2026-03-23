@@ -15,8 +15,6 @@ const nameInput = document.getElementById('name');
 const phoneInput = document.getElementById('phone');
 const emailInput = document.getElementById('email');
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_REAL_FORM_ID';
-
 function formatGBP(value) {
   return new Intl.NumberFormat('en-GB', {
     style: 'currency',
@@ -56,11 +54,12 @@ function updateQuote() {
   el.addEventListener('change', updateQuote);
 });
 
-bookingForm.addEventListener('submit', async function (event) {
+bookingForm.addEventListener('submit', function (event) {
   event.preventDefault();
 
   updateQuote();
   successMessage.hidden = true;
+
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
 
@@ -68,100 +67,48 @@ bookingForm.addEventListener('submit', async function (event) {
   if (ovenInput.checked) extrasList.push('Inside oven clean');
   if (suppliesInput.checked) extrasList.push('Hoover & mop provided by us');
 
-  const booking = {
-    name: nameInput.value.trim(),
-    phone: phoneInput.value.trim(),
-    email: emailInput.value.trim(),
-    service: getServiceName(),
-    frequency: frequencySelect.value,
-    hours: hoursInput.value,
-    date: dateInput.value,
-    time: timeInput.value,
-    extras: extrasList.length ? extrasList.join(', ') : 'None',
-    total: quoteTotal.textContent,
-    createdAt: new Date().toISOString()
-  };
+  const message = `Hi Nestlyn Clean, I'd like to book:
 
-  try {
-    const formData = new FormData();
-    formData.append('name', booking.name);
-    formData.append('phone', booking.phone);
-    formData.append('email', booking.email);
-    formData.append('service', booking.service);
-    formData.append('frequency', booking.frequency);
-    formData.append('hours', booking.hours);
-    formData.append('date', booking.date);
-    formData.append('time', booking.time);
-    formData.append('extras', booking.extras);
-    formData.append('total', booking.total);
-    formData.append('createdAt', booking.createdAt);
-    formData.append('_subject', `New Nestlyn Clean booking from ${booking.name}`);
+Service: ${getServiceName()}
+Frequency: ${frequencySelect.value}
+Hours: ${hoursInput.value}
+Date: ${dateInput.value}
+Time: ${timeInput.value}
+Extras: ${extrasList.length ? extrasList.join(', ') : 'None'}
+Estimated total: ${quoteTotal.textContent}
 
-    const response = await fetch(FORMSPREE_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json'
-      },
-      body: formData
-    });
+Name: ${nameInput.value.trim()}
+Phone: ${phoneInput.value.trim()}
+Email: ${emailInput.value.trim()}`;
 
-    const result = await response.json().catch(() => null);
+  const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(message)}`;
 
-    if (!response.ok) {
-      throw new Error((result && result.error) || 'Form submission failed');
-    }
-
-    const whatsappMessage = `Hi Nestlyn Clean, I'd like to book:
-
-Service: ${booking.service}
-Frequency: ${booking.frequency}
-Hours: ${booking.hours}
-Date: ${booking.date}
-Time: ${booking.time}
-Extras: ${booking.extras}
-Estimated total: ${booking.total}
-
-Name: ${booking.name}
-Phone: ${booking.phone}
-Email: ${booking.email}`;
-
-    const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(whatsappMessage)}`;
-
+  setTimeout(() => {
     successMessage.innerHTML = `
       <h3>Booking Sent Successfully</h3>
-      <p>Your booking has been sent successfully. WhatsApp will open to confirm it.</p>
+      <p>You are being redirected to WhatsApp to confirm your booking.</p>
     `;
     successMessage.hidden = false;
+
     successMessage.scrollIntoView({
       behavior: 'smooth',
       block: 'center'
     });
+
+    setTimeout(() => {
+      window.open(whatsappURL, '_blank');
+    }, 600);
 
     bookingForm.reset();
     hoursInput.value = 2;
     frequencySelect.value = 'Weekly';
     timeInput.value = '10:00';
-    updateQuote();
 
-    setTimeout(() => {
-      window.open(whatsappURL, '_blank');
-    }, 700);
-
-  } catch (error) {
-    console.error(error);
-    successMessage.innerHTML = `
-      <h3>Booking not sent</h3>
-      <p>Please check your Formspree endpoint and try again, or contact us on WhatsApp: 07514 718173.</p>
-    `;
-    successMessage.hidden = false;
-    successMessage.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center'
-    });
-  } finally {
     submitBtn.disabled = false;
     submitBtn.textContent = 'Confirm & Book';
-  }
+
+    updateQuote();
+  }, 600);
 });
 
 const today = new Date();
