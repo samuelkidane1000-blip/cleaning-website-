@@ -58,10 +58,6 @@ bookingForm.addEventListener('submit', function (event) {
   event.preventDefault();
 
   updateQuote();
-  successMessage.hidden = true;
-
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Sending...';
 
   const extrasList = [];
   if (ovenInput.checked) extrasList.push('Inside oven clean');
@@ -83,27 +79,15 @@ Email: ${emailInput.value.trim()}`;
 
   const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(message)}`;
 
-  setTimeout(() => {
+  window.open(whatsappURL, '_blank');
+
+  if (successMessage) {
     successMessage.innerHTML = `
       <h3>Booking Sent Successfully</h3>
-      <p>You are being redirected to WhatsApp to confirm your booking.</p>
+      <p>Your booking details have been prepared in WhatsApp.</p>
     `;
     successMessage.hidden = false;
-
-setTimeout(() => {
-  window.open(whatsappURL, '_blank');
-}, 500);
-
-    bookingForm.reset();
-    hoursInput.value = 2;
-    frequencySelect.value = 'Weekly';
-    timeInput.value = '10:00';
-
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Confirm & Book';
-
-    updateQuote();
-  }, 600);
+  }
 });
 
 const today = new Date();
@@ -111,8 +95,9 @@ const yyyy = today.getFullYear();
 const mm = String(today.getMonth() + 1).padStart(2, '0');
 const dd = String(today.getDate()).padStart(2, '0');
 
-dateInput.min = `${yyyy}-${mm}-${dd}`;
+if (dateInput) dateInput.min = `${yyyy}-${mm}-${dd}`;
 if (year) year.textContent = yyyy;
-hoursInput.value = 2;
-timeInput.value = '10:00';
+if (hoursInput) hoursInput.value = 2;
+if (timeInput) timeInput.value = '10:00';
+
 updateQuote();
