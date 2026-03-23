@@ -90,14 +90,9 @@ Email: ${emailInput.value.trim()}`;
     `;
     successMessage.hidden = false;
 
-    successMessage.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center'
-    });
-
-    setTimeout(() => {
-      window.open(whatsappURL, '_blank');
-    }, 600);
+setTimeout(() => {
+  window.open(whatsappURL, '_blank');
+}, 500);
 
     bookingForm.reset();
     hoursInput.value = 2;
