@@ -74,3 +74,37 @@ const dd = String(today.getDate()).padStart(2, '0');
 document.getElementById('date').min = `${yyyy}-${mm}-${dd}`;
 year.textContent = yyyy;
 updateQuote();
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const service = document.getElementById("service").selectedOptions[0].text;
+  const frequency = document.getElementById("frequency").value;
+  const hours = document.getElementById("hours").value;
+  const date = document.getElementById("date").value;
+  const time = document.getElementById("time").value;
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const email = document.getElementById("email").value;
+  const total = document.getElementById("quoteTotal").textContent;
+
+  const extras = [];
+  if (document.getElementById("oven").checked) extras.push("Inside oven clean");
+  if (document.getElementById("supplies").checked) extras.push("Hoover & mop provided by us");
+
+  const message = `Hi Nestlyn Clean, I'd like to book:
+
+Service: ${service}
+Frequency: ${frequency}
+Hours: ${hours}
+Date: ${date}
+Time: ${time}
+Extras: ${extras.length ? extras.join(", ") : "None"}
+Estimated total: ${total}
+
+Name: ${name}
+Phone: ${phone}
+Email: ${email}`;
+
+  const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(message)}`;
+  window.open(whatsappURL, "_blank");
+});
