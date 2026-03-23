@@ -7,7 +7,6 @@ const quoteTotal = document.getElementById('quoteTotal');
 const quoteBreakdown = document.getElementById('quoteBreakdown');
 const bookingForm = document.getElementById('bookingForm');
 const successMessage = document.getElementById('successMessage');
-const submitBtn = document.getElementById('submitBtn');
 const year = document.getElementById('year');
 const dateInput = document.getElementById('date');
 const timeInput = document.getElementById('time');
@@ -59,35 +58,59 @@ bookingForm.addEventListener('submit', function (event) {
 
   updateQuote();
 
+  const booking = {
+    name: nameInput.value.trim(),
+    phone: phoneInput.value.trim(),
+    email: emailInput.value.trim(),
+    service: getServiceName(),
+    frequency: frequencySelect.value,
+    hours: hoursInput.value,
+    date: dateInput.value,
+    time: timeInput.value,
+    extras: {
+      oven: ovenInput.checked,
+      supplies: suppliesInput.checked
+    },
+    total: quoteTotal.textContent,
+    createdAt: new Date().toISOString()
+  };
+
+  const bookings = JSON.parse(localStorage.getItem('nestlynBookings') || '[]');
+  bookings.unshift(booking);
+  localStorage.setItem('nestlynBookings', JSON.stringify(bookings));
+
   const extrasList = [];
   if (ovenInput.checked) extrasList.push('Inside oven clean');
   if (suppliesInput.checked) extrasList.push('Hoover & mop provided by us');
 
   const message = `Hi Nestlyn Clean, I'd like to book:
 
-Service: ${getServiceName()}
-Frequency: ${frequencySelect.value}
-Hours: ${hoursInput.value}
-Date: ${dateInput.value}
-Time: ${timeInput.value}
+Service: ${booking.service}
+Frequency: ${booking.frequency}
+Hours: ${booking.hours}
+Date: ${booking.date}
+Time: ${booking.time}
 Extras: ${extrasList.length ? extrasList.join(', ') : 'None'}
-Estimated total: ${quoteTotal.textContent}
+Estimated total: ${booking.total}
 
-Name: ${nameInput.value.trim()}
-Phone: ${phoneInput.value.trim()}
-Email: ${emailInput.value.trim()}`;
+Name: ${booking.name}
+Phone: ${booking.phone}
+Email: ${booking.email}`;
 
   const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(message)}`;
 
-  window.open(whatsappURL, '_blank');
+  successMessage.hidden = false;
 
-  if (successMessage) {
-    successMessage.innerHTML = `
-      <h3>Booking Sent Successfully</h3>
-      <p>Your booking details have been prepared in WhatsApp.</p>
-    `;
-    successMessage.hidden = false;
-  }
+setTimeout(() => {
+  window.open(whatsappURL, '_blank');
+}, 500);
+
+  bookingForm.reset();
+  hoursInput.value = 2;
+  frequencySelect.value = 'Weekly';
+  timeInput.value = '10:00';
+  successMessage.hidden = false;
+  updateQuote();
 });
 
 const today = new Date();
@@ -95,9 +118,8 @@ const yyyy = today.getFullYear();
 const mm = String(today.getMonth() + 1).padStart(2, '0');
 const dd = String(today.getDate()).padStart(2, '0');
 
-if (dateInput) dateInput.min = `${yyyy}-${mm}-${dd}`;
-if (year) year.textContent = yyyy;
-if (hoursInput) hoursInput.value = 2;
-if (timeInput) timeInput.value = '10:00';
-
+dateInput.min = `${yyyy}-${mm}-${dd}`;
+year.textContent = yyyy;
+hoursInput.value = 2;
+timeInput.value = '10:00';
 updateQuote();
