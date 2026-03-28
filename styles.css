@@ -1387,7 +1387,6 @@ textarea {
     height: 36px;
   }
 }
-/* LOGO SIZE FIX */
 .logo img {
   height: 64px;
   width: auto;
@@ -1398,4 +1397,23 @@ textarea {
   .logo img {
     height: 52px;
   }
+}
+.logo img {
+  height: 64px;   /* 🔥 bigger on desktop */
+  width: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .logo img {
+    height: 52px; /* 🔥 bigger on mobile */
+  }
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav-wrap {
+  min-height: 90px; /* gives logo breathing space */
 }
