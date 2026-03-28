@@ -15,6 +15,9 @@ const phoneInput = document.getElementById("phone");
 const emailInput = document.getElementById("email");
 const footerToggle = document.querySelector(".footer-toggle");
 const areasList = document.getElementById("areasList");
+const menu = document.getElementById("premiumMenu");
+const overlay = document.getElementById("menuOverlay");
+const menuItems = document.querySelectorAll(".premium-menu-nav .menu-item");
 
 function formatGBP(value) {
   return new Intl.NumberFormat("en-GB", {
@@ -50,11 +53,11 @@ function updateQuote() {
   quoteTotal.textContent = formatGBP(total);
 
   const extras = [];
-  if (oven) extras.push("inside oven clean");
-  if (supplies) extras.push("hoover & mop provided by us");
+  if (oven) extras.push("Inside oven clean");
+  if (supplies) extras.push("Hoover & mop provided by us");
 
   quoteBreakdown.textContent =
-    `${getServiceName()} • ${hours} hour${hours > 1 ? "s" : ""} • ${frequencySelect.value}` +
+    `${hours} hour${hours > 1 ? "s" : ""} × ${formatGBP(hourlyRate)} • ${frequencySelect.value} service • No hidden fees` +
     (extras.length ? ` • ${extras.join(" • ")}` : "");
 }
 
@@ -126,17 +129,44 @@ Email: ${booking.email}`;
   updateQuote();
 });
 
-function toggleMenu() {
-  const menu = document.getElementById("premiumMenu");
-  const overlay = document.getElementById("menuOverlay");
-  const isOpen = menu.classList.contains("is-open");
-
-  menu.classList.toggle("is-open");
-  overlay.classList.toggle("is-open");
-
-  menu.setAttribute("aria-hidden", isOpen ? "true" : "false");
-  document.body.style.overflow = isOpen ? "" : "hidden";
+function closeMenu() {
+  if (!menu || !overlay) return;
+  menu.classList.remove("is-open");
+  overlay.classList.remove("is-open");
+  menu.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
 }
+
+function openMenu() {
+  if (!menu || !overlay) return;
+  menu.classList.add("is-open");
+  overlay.classList.add("is-open");
+  menu.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function toggleMenu() {
+  if (!menu) return;
+  const isOpen = menu.classList.contains("is-open");
+  if (isOpen) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
+}
+
+menuItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    menuItems.forEach((link) => link.classList.remove("is-active"));
+    item.classList.add("is-active");
+  });
+});
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeMenu();
+  }
+});
 
 footerToggle?.addEventListener("click", () => {
   if (!areasList) return;
