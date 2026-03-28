@@ -1377,3 +1377,13 @@ textarea {
     font-size: 2rem;
   }
 }
+.logo img {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+@media (max-width: 768px) {
+  .logo img {
+    height: 36px;
+  }
+}
