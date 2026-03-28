@@ -1,9 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="top">
 <head>
   <meta charset="UTF-8" />
   <meta name="google-site-verification" content="y312vlRjilt_j-ze3IG9xMd0ua33MomItyl-Ik7zaoI" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Nestlyn Clean | Luxury Home Cleaning in London</title>
+  <meta
+    name="description"
+    content="Luxury home cleaning in London. Book regular, one-off, or deep cleaning with Nestlyn Clean."
+  />
+
+  <meta property="og:title" content="Nestlyn Clean | Luxury Home Cleaning in London" />
+  <meta
+    property="og:description"
+    content="Trusted home cleaning across London. Book regular, one-off, or deep cleaning in under 60 seconds."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.nestlynclean.com" />
 
   <script type="application/ld+json">
   {
@@ -36,16 +50,10 @@
   }
   </script>
 
-  <title>Nestlyn Clean | Luxury Home Cleaning in London</title>
-  <meta
-    name="description"
-    content="Luxury home cleaning on-demand across London. Book regular, one-off, or deep cleaning with Nestlyn Clean."
-  />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="styles.css" />
@@ -53,15 +61,15 @@
 <body>
   <header class="site-header">
     <div class="container nav-wrap">
-      <a href="#top" class="logo">
+      <a href="#top" class="logo" aria-label="Nestlyn Clean home">
         <span class="logo-mark"></span>
-        <span>
+        <span class="logo-text">
           <strong>Nestlyn</strong>
           <small>Clean</small>
         </span>
       </a>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="Main navigation">
         <a href="#services">Services</a>
         <a href="#pricing">Pricing</a>
         <a href="#booking">Book</a>
@@ -72,18 +80,26 @@
     </div>
   </header>
 
-  <main id="top">
+  <main>
     <section class="hero">
-      <div class="hero-overlay"></div>
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
 
       <div class="container hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow">Spring deal now on across London</div>
-          <h1>Luxury Home Cleaning<br />On-Demand</h1>
+          <div class="eyebrow">Trusted across London</div>
+
+          <h1>Luxury Home Cleaning<br />in London</h1>
+
           <p class="hero-sub">
-            Exceptional service. Immaculate results. Premium home cleaning with elegant care,
-            flexible scheduling, and trusted professionals across all London.
+            Trusted by London households for premium regular, one-off, and deep cleaning.
+            Book in under 60 seconds.
           </p>
+
+          <div class="hero-rating">
+            <span>★★★★★</span>
+            <span>5-star service</span>
+          </div>
 
           <div class="hero-promo">
             <span>🌿 Spring Special</span>
@@ -99,9 +115,9 @@
           </div>
 
           <div class="hero-points">
-            <span>Trusted Professionals</span>
-            <span>Five-Star Quality</span>
-            <span>Effortless Booking</span>
+            <span>Fully vetted cleaners</span>
+            <span>No hidden fees</span>
+            <span>Instant quote</span>
           </div>
         </div>
 
@@ -111,13 +127,19 @@
             <p>Choose your service, date and extras in minutes.</p>
           </div>
 
+          <div class="booking-trust">
+            <span>✔ Fully vetted cleaners</span>
+            <span>✔ Instant quote</span>
+            <span>✔ No hidden fees</span>
+          </div>
+
           <form id="bookingForm" class="booking-form">
             <label>
               <span>Select Service</span>
               <select id="service" required>
-                <option value="16.95">Regular cleaning — £16.95/h</option>
-                <option value="19">One-off clean — £19/h</option>
-                <option value="23">Deep cleaning — £23/h</option>
+                <option value="16.95" data-label="Regular cleaning">Regular cleaning — £16.95/h</option>
+                <option value="19" data-label="One-off clean">One-off clean — £19/h</option>
+                <option value="23" data-label="Deep cleaning">Deep cleaning — £23/h</option>
               </select>
             </label>
 
@@ -168,7 +190,7 @@
                 <small>Estimated total</small>
                 <strong id="quoteTotal">£33.90</strong>
               </div>
-              <p id="quoteBreakdown">Minimum booking: 2 hours</p>
+              <p id="quoteBreakdown">Regular cleaning • 2 hours • Weekly</p>
             </div>
 
             <div class="form-row">
@@ -189,6 +211,7 @@
             </label>
 
             <button type="submit" class="btn btn-gold btn-full">Confirm &amp; Book</button>
+
             <p class="booking-note">
               Minimum booking is 2 hours. Opening hours: Monday to Saturday, 8:00am to 6:00pm.
             </p>
@@ -297,9 +320,7 @@
           <div class="pricing-row"><span>One-off clean</span><strong>£19/h</strong></div>
           <div class="pricing-row"><span>Deep cleaning</span><strong>£23/h</strong></div>
           <div class="pricing-row"><span>Inside oven clean</span><strong>+£25</strong></div>
-          <div class="pricing-row">
-            <span>Hoover &amp; mop provided by us</span><strong>+£20</strong>
-          </div>
+          <div class="pricing-row"><span>Hoover &amp; mop provided by us</span><strong>+£20</strong></div>
         </div>
       </div>
     </section>
@@ -319,26 +340,26 @@
       <div class="container">
         <div class="section-title center">
           <span>Google Reviews</span>
-          <h2>What our clients say</h2>
+          <h2>Rated 5 stars by happy London clients</h2>
         </div>
 
         <div class="service-grid">
           <article class="service-card">
             <p class="price">★★★★★</p>
             <p>“Amazing service, very professional and my flat looked spotless.”</p>
-            <p><strong>— Sarah M.</strong></p>
+            <p><strong>— Sarah M., Chelsea</strong></p>
           </article>
 
           <article class="service-card">
             <p class="price">★★★★★</p>
             <p>“Easy booking and very friendly cleaner. Highly recommend Nestlyn Clean.”</p>
-            <p><strong>— Daniel K.</strong></p>
+            <p><strong>— Daniel K., Islington</strong></p>
           </article>
 
           <article class="service-card">
             <p class="price">★★★★★</p>
             <p>“Excellent deep clean, worth every penny.”</p>
-            <p><strong>— Alan C.</strong></p>
+            <p><strong>— Alan C., Camden</strong></p>
           </article>
         </div>
       </div>
@@ -357,50 +378,26 @@
             Saturday from 8:00am to 6:00pm.
           </p>
 
-          <ul class="contact-list">
-            <li>
-              <strong>WhatsApp:</strong>
-              <a href="https://wa.me/447514718173" target="_blank" rel="noopener">07514 718173</a>
-            </li>
-            <li>
-              <strong>Office:</strong>
-              <a href="tel:+442081035100">020 8103 5100</a>
-            </li>
-            <li>
-              <strong>Email:</strong>
-              <a href="mailto:info@nestlynclean.com">info@nestlynclean.com</a>
-            </li>
-            <li><strong>Address:</strong> 128, City Road, London, EC1V 2NX, United Kingdom</li>
-            <li><strong>Coverage:</strong> All London</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+          <div class="contact-cards">
+            <a class="contact-card" href="https://wa.me/447514718173" target="_blank" rel="noopener">
+              <strong>WhatsApp</strong>
+              <span>07514 718173</span>
+            </a>
 
-    <section class="section reviews">
-      <div class="container">
-        <div class="section-title center">
-          <span>Client Reviews</span>
-          <h2>Trusted across London</h2>
-        </div>
+            <a class="contact-card" href="tel:+442081035100">
+              <strong>Office</strong>
+              <span>020 8103 5100</span>
+            </a>
 
-        <div class="reviews-grid">
-          <div class="review">
-            <p>★★★★★</p>
-            <p>“Amazing service. My flat looks brand new every time.”</p>
-            <strong>— Sarah, London</strong>
-          </div>
+            <a class="contact-card" href="mailto:info@nestlynclean.com">
+              <strong>Email</strong>
+              <span>info@nestlynclean.com</span>
+            </a>
 
-          <div class="review">
-            <p>★★★★★</p>
-            <p>“Very professional and reliable cleaners. Highly recommend.”</p>
-            <strong>— James, Chelsea</strong>
-          </div>
-
-          <div class="review">
-            <p>★★★★★</p>
-            <p>“Booked a deep clean and the results were incredible.”</p>
-            <strong>— Amina, Camden</strong>
+            <div class="contact-card">
+              <strong>Address</strong>
+              <span>128 City Road, London, EC1V 2NX, United Kingdom</span>
+            </div>
           </div>
         </div>
       </div>
@@ -409,35 +406,36 @@
 
   <footer class="site-footer">
     <div class="container footer-wrap">
-      <div class="footer-links">
-        <a href="regular-cleaning-london.html">Regular Cleaning London</a>
-        <a href="deep-cleaning-london.html">Deep Cleaning London</a>
-        <a href="one-off-cleaning-london.html">One-Off Cleaning London</a>
-        <a href="end-of-tenancy-cleaning-london.html">End of Tenancy Cleaning London</a>
-        <a href="after-builders-cleaning-london.html">After Builders Cleaning London</a>
-        <a href="cleaners-near-me-london.html">Cleaners Near Me London</a>
-
-        <a href="cleaning-camden.html">Cleaning Camden</a>
-        <a href="cleaning-chelsea.html">Cleaning Chelsea</a>
-        <a href="cleaning-westminster.html">Cleaning Westminster</a>
-        <a href="cleaning-islington.html">Cleaning Islington</a>
-        <a href="cleaning-shoreditch.html">Cleaning Shoreditch</a>
-        <a href="cleaning-canary-wharf.html">Cleaning Canary Wharf</a>
-        <a href="cleaning-kensington.html">Cleaning Kensington</a>
-        <a href="cleaning-notting-hill.html">Cleaning Notting Hill</a>
-        <a href="cleaning-fulham.html">Cleaning Fulham</a>
-        <a href="cleaning-southwark.html">Cleaning Southwark</a>
-        <a href="cleaning-lambeth.html">Cleaning Lambeth</a>
-        <a href="cleaning-marylebone.html">Cleaning Marylebone</a>
-        <a href="cleaning-hackney.html">Cleaning Hackney</a>
-        <a href="cleaning-battersea.html">Cleaning Battersea</a>
-        <a href="cleaning-clapham.html">Cleaning Clapham</a>
-        <a href="cleaning-greenwich.html">Cleaning Greenwich</a>
-        <a href="cleaning-hammersmith.html">Cleaning Hammersmith</a>
+      <div class="footer-summary">
+        <p>© <span id="year"></span> Nestlyn Clean</p>
+        <p>Luxury home cleaning across London • <a href="privacy-policy.html">Privacy Policy</a></p>
       </div>
 
-      <p>© <span id="year"></span> Nestlyn Clean</p>
-      <a href="#top">Back to top</a>
+      <div class="footer-areas">
+        <button class="footer-toggle" type="button" aria-expanded="false" aria-controls="areasList">
+          Areas we cover
+        </button>
+
+        <div id="areasList" class="footer-area-links">
+          <a href="cleaning-camden.html">Camden</a>
+          <a href="cleaning-chelsea.html">Chelsea</a>
+          <a href="cleaning-westminster.html">Westminster</a>
+          <a href="cleaning-islington.html">Islington</a>
+          <a href="cleaning-shoreditch.html">Shoreditch</a>
+          <a href="cleaning-canary-wharf.html">Canary Wharf</a>
+          <a href="cleaning-kensington.html">Kensington</a>
+          <a href="cleaning-notting-hill.html">Notting Hill</a>
+          <a href="cleaning-fulham.html">Fulham</a>
+          <a href="cleaning-southwark.html">Southwark</a>
+          <a href="cleaning-lambeth.html">Lambeth</a>
+          <a href="cleaning-marylebone.html">Marylebone</a>
+          <a href="cleaning-hackney.html">Hackney</a>
+          <a href="cleaning-battersea.html">Battersea</a>
+          <a href="cleaning-clapham.html">Clapham</a>
+          <a href="cleaning-greenwich.html">Greenwich</a>
+          <a href="cleaning-hammersmith.html">Hammersmith</a>
+        </div>
+      </div>
     </div>
   </footer>
 
