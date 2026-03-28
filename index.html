@@ -69,19 +69,61 @@
         </span>
       </a>
 
-      <nav class="nav" aria-label="Main navigation">
-        <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#booking">Book</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <a class="nav-cta" href="#booking">Book a Clean</a>
+      <div class="header-right">
+        <button class="menu-toggle" type="button" aria-label="Open menu" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
 
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+
+  <aside class="premium-menu" id="premiumMenu" aria-hidden="true">
+    <div class="premium-menu-top">
+      <div class="premium-menu-brand">
+        <span class="logo-mark"></span>
+        <span class="logo-text">
+          <strong>Nestlyn</strong>
+          <small>Clean</small>
+        </span>
+      </div>
+
+      <button class="menu-close" type="button" aria-label="Close menu" onclick="toggleMenu()">
+        ✕
+      </button>
+    </div>
+
+    <div class="premium-menu-body">
+      <p class="premium-menu-eyebrow">Explore</p>
+
+      <nav class="premium-menu-nav">
+        <a href="#services" onclick="toggleMenu()">Services</a>
+        <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+        <a href="#how" onclick="toggleMenu()">How it works</a>
+        <a href="#reviews" onclick="toggleMenu()">Reviews</a>
+        <a href="#contact" onclick="toggleMenu()">Contact</a>
+      </nav>
+
+      <div class="premium-menu-divider"></div>
+
+      <div class="premium-menu-info">
+        <p>Luxury home cleaning across London.</p>
+        <p>Monday to Saturday · 8:00am to 6:00pm</p>
+      </div>
+
+      <div class="premium-menu-actions">
+        <a href="#booking" class="premium-menu-btn" onclick="toggleMenu()">Book a Clean</a>
+        <a href="tel:+442081035100" class="premium-menu-link">Call 020 8103 5100</a>
+        <a href="https://wa.me/447514718173" target="_blank" rel="noopener" class="premium-menu-link">WhatsApp us</a>
+      </div>
+    </div>
+  </aside>
+
   <main>
-    <section class="hero">
+    <section class="hero reveal">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-overlay" aria-hidden="true"></div>
 
@@ -92,36 +134,26 @@
           <h1>Luxury Home Cleaning in London</h1>
 
           <p class="hero-sub">
-            Trusted by London households for premium regular, one-off, and deep cleaning.
+            Trusted by busy London households for premium regular, one-off, and deep cleaning.
             Book in under 60 seconds.
           </p>
 
           <div class="hero-rating">
             <span>★★★★★</span>
-            <span>5-star service</span>
-          </div>
-
-          <div class="hero-promo">
-            <span>🌿 Spring Special</span>
-            <p>
-              Refresh your home this season with our spring deal and enjoy premium home cleaning
-              across London.
-            </p>
+            <span>5-star rated across London</span>
           </div>
 
           <div class="hero-actions">
             <a class="btn btn-gold" href="#booking">Book a Cleaning</a>
-            <a class="btn btn-ghost" href="#pricing">See Prices</a>
+            <a class="btn btn-ghost" href="tel:+442081035100">Call: 020 8103 5100</a>
           </div>
 
           <div class="hero-points">
-            <span>Fully vetted cleaners</span>
-            <span>No hidden fees</span>
-            <span>Instant quote</span>
+            <span>Fully vetted &amp; insured cleaners</span>
           </div>
         </div>
 
-        <aside class="booking-card" id="booking">
+        <aside class="booking-card reveal" id="booking">
           <div class="booking-card-head">
             <h2>Book a Cleaning</h2>
             <p>Choose your service, date and extras in minutes.</p>
@@ -227,19 +259,58 @@
       </div>
     </section>
 
-    <section class="trust-bar">
+    <section class="trust-bar reveal">
       <div class="container trust-items">
-        <div>Vetted Professionals</div>
-        <div>Luxury Cleaning</div>
-        <div>All London Covered</div>
+        <div>Fully vetted cleaners</div>
+        <div>No hidden fees</div>
+        <div>Instant quote</div>
+        <div>Available across London</div>
       </div>
     </section>
 
-    <section class="section intro-steps">
+    <section class="section promo-section reveal">
+      <div class="container">
+        <div class="promo-card">
+          <span>🌿 Spring Special</span>
+          <p>
+            Refresh your home this season with our premium spring cleaning service across London.
+          </p>
+          <a class="btn btn-gold promo-btn" href="#booking">Book a Cleaning</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why-us reveal">
+      <div class="container">
+        <div class="section-title center">
+          <span>Why Nestlyn Clean</span>
+          <h2>Premium cleaning, without the hassle</h2>
+        </div>
+
+        <div class="service-grid three-grid">
+          <article class="service-card">
+            <h3>Trusted professionals</h3>
+            <p>Carefully vetted cleaners with a dependable, respectful approach.</p>
+          </article>
+
+          <article class="service-card">
+            <h3>Consistent quality</h3>
+            <p>High standards on every visit, from regular cleans to detailed deep cleans.</p>
+          </article>
+
+          <article class="service-card">
+            <h3>Flexible scheduling</h3>
+            <p>Book around your routine with convenient London-wide availability.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro-steps reveal" id="how">
       <div class="container">
         <div class="section-title">
-          <span>Book Your Cleaning in Minutes</span>
-          <h2>Elegant service with simple steps</h2>
+          <span>How it works</span>
+          <h2>Simple, seamless, spotless</h2>
         </div>
 
         <div class="steps-grid">
@@ -264,7 +335,7 @@
       </div>
     </section>
 
-    <section class="section services" id="services">
+    <section class="section services reveal" id="services">
       <div class="container">
         <div class="section-title center">
           <span>Premium services</span>
@@ -300,7 +371,7 @@
       </div>
     </section>
 
-    <section class="section pricing" id="pricing">
+    <section class="section pricing reveal" id="pricing">
       <div class="container pricing-wrap">
         <div>
           <div class="section-title">
@@ -325,7 +396,7 @@
       </div>
     </section>
 
-    <section class="section testimonial">
+    <section class="section testimonial reveal">
       <div class="container testimonial-card">
         <span>What our clients are saying</span>
         <blockquote>
@@ -336,14 +407,14 @@
       </div>
     </section>
 
-    <section class="section testimonial">
+    <section class="section testimonial reveal" id="reviews">
       <div class="container">
         <div class="section-title center">
           <span>Google Reviews</span>
           <h2>Rated 5 stars by happy London clients</h2>
         </div>
 
-        <div class="service-grid">
+        <div class="service-grid three-grid">
           <article class="service-card">
             <p class="price">★★★★★</p>
             <p>“Amazing service, very professional and my flat looked spotless.”</p>
@@ -365,7 +436,7 @@
       </div>
     </section>
 
-    <section class="section contact" id="contact">
+    <section class="section contact reveal" id="contact">
       <div class="container contact-grid">
         <div>
           <div class="section-title">
@@ -404,7 +475,7 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer reveal">
     <div class="container footer-wrap">
       <div class="footer-summary">
         <p>© <span id="year"></span> Nestlyn Clean</p>
