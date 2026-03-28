@@ -99,25 +99,75 @@
     <div class="premium-menu-body">
       <p class="premium-menu-eyebrow">Explore</p>
 
-      <nav class="premium-menu-nav">
-        <a href="#services" onclick="toggleMenu()">Services</a>
-        <a href="#pricing" onclick="toggleMenu()">Pricing</a>
-        <a href="#how" onclick="toggleMenu()">How it works</a>
-        <a href="#reviews" onclick="toggleMenu()">Reviews</a>
-        <a href="#contact" onclick="toggleMenu()">Contact</a>
+      <nav class="premium-menu-nav compact">
+        <a href="#top" class="menu-item is-active" onclick="toggleMenu()">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 11.5 12 4l9 7.5"></path>
+              <path d="M5.5 10.5V20h13V10.5"></path>
+              <path d="M9.5 20v-6h5v6"></path>
+            </svg>
+          </span>
+          <span>Home</span>
+        </a>
+
+        <a href="#services" class="menu-item" onclick="toggleMenu()">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="5" y="4" width="14" height="16" rx="2"></rect>
+              <path d="M8 8h8"></path>
+              <path d="M8 12h8"></path>
+              <path d="M8 16h5"></path>
+            </svg>
+          </span>
+          <span>Services</span>
+        </a>
+
+        <a href="#pricing" class="menu-item" onclick="toggleMenu()">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M14.8 8.8c-.6-.6-1.4-.9-2.6-.9-1.8 0-3 1-3 2.5 0 1.2.8 2 2.4 2.4l1.4.3c1.1.2 1.7.7 1.7 1.5 0 1-1 1.7-2.5 1.7-1.2 0-2.3-.4-3.1-1.2"></path>
+              <path d="M12 6.8v10.4"></path>
+            </svg>
+          </span>
+          <span>Pricing</span>
+        </a>
+
+        <a href="#how" class="menu-item" onclick="toggleMenu()">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1 1 0 0 0 .2 1.1l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1 1 0 0 0-1.1-.2 1 1 0 0 0-.6.9V20a2 2 0 1 1-4 0v-.2a1 1 0 0 0-.6-.9 1 1 0 0 0-1.1.2l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1 1 0 0 0 .2-1.1 1 1 0 0 0-.9-.6H4a2 2 0 1 1 0-4h.2a1 1 0 0 0 .9-.6 1 1 0 0 0-.2-1.1l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1 1 0 0 0 1.1.2 1 1 0 0 0 .6-.9V4a2 2 0 1 1 4 0v.2a1 1 0 0 0 .6.9 1 1 0 0 0 1.1-.2l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1 1 0 0 0-.2 1.1 1 1 0 0 0 .9.6H20a2 2 0 1 1 0 4h-.2a1 1 0 0 0-.9.6Z"></path>
+            </svg>
+          </span>
+          <span>How It Works</span>
+        </a>
+
+        <a href="#reviews" class="menu-item" onclick="toggleMenu()">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3Z"></path>
+            </svg>
+          </span>
+          <span>Reviews</span>
+        </a>
+
+        <a href="#contact" class="menu-item" onclick="toggleMenu()">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7l.4 2.6a2 2 0 0 1-.6 1.8l-1.3 1.3a16 16 0 0 0 7 7l1.3-1.3a2 2 0 0 1 1.8-.6l2.6.4A2 2 0 0 1 22 16.9Z"></path>
+            </svg>
+          </span>
+          <span>Contact</span>
+        </a>
       </nav>
 
       <div class="premium-menu-divider"></div>
 
-      <div class="premium-menu-info">
-        <p>Luxury home cleaning across London.</p>
-        <p>Monday to Saturday · 8:00am to 6:00pm</p>
-      </div>
-
       <div class="premium-menu-actions">
-        <a href="#booking" class="premium-menu-btn" onclick="toggleMenu()">Book a Clean</a>
-        <a href="tel:+442081035100" class="premium-menu-link">Call 020 8103 5100</a>
-        <a href="https://wa.me/447514718173" target="_blank" rel="noopener" class="premium-menu-link">WhatsApp us</a>
+        <a href="#booking" class="premium-menu-btn" onclick="toggleMenu()">Book a Cleaning</a>
+        <a href="tel:+442081035100" class="premium-menu-call">Call: 020 8103 5100</a>
       </div>
     </div>
   </aside>
@@ -145,8 +195,11 @@
 
           <div class="hero-actions">
             <a class="btn btn-gold" href="#booking">Book a Cleaning</a>
-            <a class="btn btn-ghost" href="tel:+442081035100">Call: 020 8103 5100</a>
           </div>
+
+          <p class="hero-call-text">
+            Prefer to speak? <a href="tel:+442081035100">Call 020 8103 5100</a>
+          </p>
 
           <div class="hero-points">
             <span>Fully vetted &amp; insured cleaners</span>
@@ -222,7 +275,7 @@
                 <small>Estimated total</small>
                 <strong id="quoteTotal">£33.90</strong>
               </div>
-              <p id="quoteBreakdown">Regular cleaning • 2 hours • Weekly</p>
+              <p id="quoteBreakdown">2 hours × £16.95 • Weekly service • No hidden fees</p>
             </div>
 
             <div class="form-row">
@@ -242,10 +295,10 @@
               <input id="email" type="email" placeholder="Your email address" required />
             </label>
 
-            <button type="submit" class="btn btn-gold btn-full">Confirm &amp; Book</button>
+            <button type="submit" class="btn btn-gold btn-full">Book My Cleaning</button>
 
             <p class="booking-note">
-              Minimum booking is 2 hours. Opening hours: Monday to Saturday, 8:00am to 6:00pm.
+              Takes less than 60 seconds. Minimum booking is 2 hours. Opening hours: Monday to Saturday, 8:00am to 6:00pm.
             </p>
           </form>
 
@@ -271,9 +324,9 @@
     <section class="section promo-section reveal">
       <div class="container">
         <div class="promo-card">
-          <span>🌿 Spring Special</span>
+          <span>🌿 Spring Offer: £10 OFF your first clean</span>
           <p>
-            Refresh your home this season with our premium spring cleaning service across London.
+            Limited time only. Refresh your home this season with premium cleaning across London.
           </p>
           <a class="btn btn-gold promo-btn" href="#booking">Book a Cleaning</a>
         </div>
@@ -511,7 +564,7 @@
   </footer>
 
   <div class="mobile-sticky-book">
-    <a href="tel:+442081035100">Call: 020 8103 5100</a>
+    <a href="tel:+442081035100" aria-label="Call Nestlyn Clean"></a>
   </div>
 
   <script src="script.js"></script>
