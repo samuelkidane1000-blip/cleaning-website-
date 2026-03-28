@@ -36,13 +36,7 @@ function getSafeHours() {
 }
 
 function updateQuote() {
-  if (
-    !serviceSelect ||
-    !hoursInput ||
-    !frequencySelect ||
-    !quoteTotal ||
-    !quoteBreakdown
-  ) {
+  if (!serviceSelect || !hoursInput || !frequencySelect || !quoteTotal || !quoteBreakdown) {
     return;
   }
 
@@ -132,12 +126,39 @@ Email: ${booking.email}`;
   updateQuote();
 });
 
+function toggleMenu() {
+  const menu = document.getElementById("premiumMenu");
+  const overlay = document.getElementById("menuOverlay");
+  const isOpen = menu.classList.contains("is-open");
+
+  menu.classList.toggle("is-open");
+  overlay.classList.toggle("is-open");
+
+  menu.setAttribute("aria-hidden", isOpen ? "true" : "false");
+  document.body.style.overflow = isOpen ? "" : "hidden";
+}
+
 footerToggle?.addEventListener("click", () => {
   if (!areasList) return;
 
   const expanded = footerToggle.getAttribute("aria-expanded") === "true";
   footerToggle.setAttribute("aria-expanded", String(!expanded));
   areasList.classList.toggle("is-open");
+});
+
+const revealItems = document.querySelectorAll(".section, .booking-card, .trust-bar, .hero, .site-footer");
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-visible");
+    }
+  });
+}, { threshold: 0.12 });
+
+revealItems.forEach((item) => {
+  item.classList.add("reveal");
+  revealObserver.observe(item);
 });
 
 const today = new Date();
