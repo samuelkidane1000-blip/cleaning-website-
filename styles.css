@@ -1403,3 +1403,31 @@ textarea {
     max-width: 165px;
   }
 }
+/* PERFECT MOBILE HEADER */
+@media (max-width: 768px) {
+  .nav-wrap {
+    min-height: 82px;
+    padding: 10px 0;
+  }
+
+  .logo {
+    width: auto;
+    max-width: none;
+  }
+
+  .logo img {
+    height: 58px; /* 🔥 key change */
+    width: auto;
+  }
+
+  .menu-toggle {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    height: 52px;
+  }
+}
