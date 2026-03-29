@@ -132,7 +132,7 @@ textarea:focus-visible {
   background: var(--gold-soft);
 }
 
-/* Premium menu */
+/* Menu */
 
 .menu-overlay {
   position: fixed;
@@ -242,7 +242,6 @@ textarea:focus-visible {
   border-radius: 18px;
   font-size: 1.2rem;
   font-weight: 600;
-  font-family: "Inter", sans-serif;
   color: var(--text);
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid transparent;
@@ -293,11 +292,6 @@ textarea:focus-visible {
   background: rgba(255, 255, 255, 0.02);
   color: var(--text);
   font-weight: 800;
-}
-
-.premium-menu-call:hover {
-  border-color: rgba(212, 175, 104, 0.45);
-  color: var(--gold-soft);
 }
 
 /* Hero */
@@ -444,7 +438,6 @@ textarea:focus-visible {
 
 .btn-gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 30px rgba(212, 175, 104, 0.22);
 }
 
 .btn-full {
@@ -511,16 +504,6 @@ textarea:focus-visible {
   padding: 13px 14px;
   font-size: 0.98rem;
   outline: none;
-}
-
-.booking-form input::placeholder {
-  color: #a8a090;
-}
-
-.booking-form input:focus,
-.booking-form select:focus {
-  border-color: rgba(212, 175, 104, 0.7);
-  box-shadow: 0 0 0 4px rgba(212, 175, 104, 0.12);
 }
 
 .form-row {
@@ -609,11 +592,7 @@ textarea:focus-visible {
   padding: 18px;
 }
 
-.success-message h3 {
-  margin-top: 0;
-}
-
-/* Trust strip */
+/* Trust bar */
 
 .trust-bar {
   border-top: 1px solid var(--line);
@@ -632,7 +611,6 @@ textarea:focus-visible {
   color: var(--gold-soft);
   border-right: 1px solid var(--line);
   font-weight: 600;
-  letter-spacing: 0.01em;
   font-size: 1rem;
 }
 
@@ -687,17 +665,6 @@ textarea:focus-visible {
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.steps-grid article:hover,
-.service-card:hover,
-.pricing-panel:hover,
-.testimonial-card:hover,
-.contact-card:hover,
-.promo-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(212, 175, 104, 0.34);
-  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.34);
-}
-
 .steps-grid article,
 .service-card,
 .contact-card,
@@ -717,10 +684,6 @@ textarea:focus-visible {
   font-size: 1.55rem;
   font-weight: 800;
   margin-bottom: 14px;
-}
-
-.steps-grid h3 {
-  margin: 0 0 10px;
 }
 
 .steps-grid p,
@@ -781,14 +744,6 @@ textarea:focus-visible {
   border-bottom: none;
 }
 
-.pricing-row span {
-  color: var(--muted);
-}
-
-.pricing-row strong {
-  color: var(--gold-soft);
-}
-
 /* Testimonial */
 
 .testimonial-card {
@@ -796,7 +751,6 @@ textarea:focus-visible {
   text-align: center;
   max-width: 920px;
   margin: 0 auto;
-  background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01));
 }
 
 .testimonial-card blockquote {
@@ -900,19 +854,10 @@ textarea:focus-visible {
   max-width: 600px;
 }
 
-.footer-area-links[hidden] {
-  display: none !important;
-}
-
 .footer-area-links a {
   color: var(--muted);
   line-height: 1.5;
   font-size: 0.85rem;
-  transition: 0.2s ease;
-}
-
-.footer-area-links a:hover {
-  color: var(--gold-soft);
 }
 
 /* Reveal */
@@ -928,7 +873,7 @@ textarea:focus-visible {
   transform: translateY(0);
 }
 
-/* Sticky call */
+/* Mobile sticky CTA */
 
 .mobile-sticky-book {
   display: none;
@@ -978,11 +923,6 @@ textarea:focus-visible {
 
   .footer-wrap {
     grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .footer-area-links {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1028,20 +968,17 @@ textarea:focus-visible {
 
   .hero-copy h1 {
     font-size: 3.1rem;
-    line-height: 0.96;
-    margin-bottom: 14px;
+    max-width: none;
   }
 
   .hero-sub {
     font-size: 1rem;
     line-height: 1.6;
-    margin-bottom: 14px;
   }
 
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
-    margin: 16px 0 10px;
   }
 
   .hero-actions .btn {
@@ -1050,21 +987,8 @@ textarea:focus-visible {
     font-size: 1.05rem;
   }
 
-  .hero-call-text {
-    font-size: 0.94rem;
-    margin-bottom: 12px;
-  }
-
   .hero-points {
-    gap: 10px;
     flex-direction: column;
-    margin-top: 0;
-  }
-
-  .hero-points span {
-    padding: 12px 14px;
-    border-radius: 18px;
-    font-size: 0.95rem;
   }
 
   .booking-card {
@@ -1072,18 +996,11 @@ textarea:focus-visible {
     border-radius: 22px;
   }
 
-  .booking-card-head h2 {
-    font-size: 1.95rem;
-  }
-
-  .booking-form input,
-  .booking-form select {
-    padding: 12px 14px;
-    min-height: 52px;
-  }
-
   .form-row,
-  .contact-cards {
+  .contact-cards,
+  .steps-grid,
+  .service-grid,
+  .three-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1091,7 +1008,6 @@ textarea:focus-visible {
     display: grid;
     gap: 8px;
     align-items: flex-start;
-    padding: 14px;
   }
 
   .quote-box p {
@@ -1099,19 +1015,13 @@ textarea:focus-visible {
     text-align: left;
   }
 
-  .quote-box strong {
-    font-size: 1.5rem;
-  }
-
   .trust-items {
     grid-template-columns: 1fr;
   }
 
   .trust-items div {
-    border-right: none !important;
+    border-right: none;
     border-bottom: 1px solid var(--line);
-    padding: 14px;
-    font-size: 0.98rem;
   }
 
   .trust-items div:last-child {
@@ -1122,21 +1032,6 @@ textarea:focus-visible {
     padding: 42px 0;
   }
 
-  .section-title {
-    margin-bottom: 16px;
-  }
-
-  .section-title h2 {
-    font-size: 2.15rem;
-  }
-
-  .steps-grid,
-  .service-grid,
-  .contact-cards,
-  .three-grid {
-    gap: 14px;
-  }
-
   .steps-grid article,
   .service-card,
   .pricing-panel,
@@ -1144,25 +1039,6 @@ textarea:focus-visible {
   .contact-card,
   .promo-card {
     padding: 16px;
-    border-radius: 18px;
-  }
-
-  .testimonial-card {
-    padding: 20px 18px;
-  }
-
-  .testimonial-card blockquote {
-    font-size: 1.25rem;
-    line-height: 1.45;
-    margin: 12px auto;
-  }
-
-  .pricing-panel {
-    padding: 16px;
-  }
-
-  .pricing-row {
-    padding: 14px 0;
   }
 
   .footer-area-links {
@@ -1218,14 +1094,6 @@ textarea:focus-visible {
 
   .hero-copy h1 {
     font-size: 2.75rem;
-  }
-
-  .booking-card-head h2 {
-    font-size: 1.8rem;
-  }
-
-  .section-title h2 {
-    font-size: 2rem;
   }
 }
 
