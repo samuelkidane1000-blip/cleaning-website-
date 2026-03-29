@@ -1379,3 +1379,27 @@ textarea {
     font-size: 2rem;
   }
 }
+/* FINAL MOBILE HEADER TWEAK */
+@media (max-width: 768px) {
+  .nav-wrap {
+    min-height: 86px;
+    padding: 12px 0;
+  }
+
+  .logo {
+    width: 185px;
+    max-width: 185px;
+  }
+
+  .menu-toggle {
+    width: 54px;
+    height: 54px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 165px;
+    max-width: 165px;
+  }
+}
