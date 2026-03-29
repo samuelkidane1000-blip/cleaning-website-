@@ -15,9 +15,14 @@ const phoneInput = document.getElementById("phone");
 const emailInput = document.getElementById("email");
 const footerToggle = document.querySelector(".footer-toggle");
 const areasList = document.getElementById("areasList");
+
 const menu = document.getElementById("premiumMenu");
 const overlay = document.getElementById("menuOverlay");
+const menuToggle = document.getElementById("menuToggle");
+const menuClose = document.querySelector(".menu-close");
 const menuItems = document.querySelectorAll(".premium-menu-nav .menu-item");
+
+let lastFocusedElement = null;
 
 function formatGBP(value) {
   return new Intl.NumberFormat("en-GB", {
@@ -29,13 +34,21 @@ function formatGBP(value) {
 function getServiceName() {
   if (!serviceSelect) return "Cleaning";
   const selected = serviceSelect.options[serviceSelect.selectedIndex];
-  return selected?.dataset.label || selected?.text.split("—")[0].trim() || "Cleaning";
+  return selected?.dataset.label || selected?.textContent.split("—")[0].trim() || "Cleaning";
 }
 
 function getSafeHours() {
   if (!hoursInput) return 2;
   const hours = parseFloat(hoursInput.value || "2");
-  return hours < 2 ? 2 : hours;
+  return Number.isNaN(hours) || hours < 2 ? 2 : hours;
+}
+
+function getTodayLocalISODate() {
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const dd = String(today.getDate()).padStart(2, "0");
+  return `${yyyy}-${mm}-${dd}`;
 }
 
 function updateQuote() {
@@ -47,7 +60,7 @@ function updateQuote() {
   const hours = getSafeHours();
   const oven = ovenInput?.checked ? parseFloat(ovenInput.value || "0") : 0;
   const supplies = suppliesInput?.checked ? parseFloat(suppliesInput.value || "0") : 0;
-  const total = hourlyRate * hours + oven + supplies;
+  const total = (hourlyRate * hours) + oven + supplies;
 
   hoursInput.value = String(hours);
   quoteTotal.textContent = formatGBP(total);
@@ -56,47 +69,76 @@ function updateQuote() {
   if (oven) extras.push("Inside oven clean");
   if (supplies) extras.push("Hoover & mop provided by us");
 
+  const frequencyText = frequencySelect.value === "One payment"
+    ? "One-time service"
+    : `${frequencySelect.value} service`;
+
   quoteBreakdown.textContent =
-    `${hours} hour${hours > 1 ? "s" : ""} × ${formatGBP(hourlyRate)} • ${frequencySelect.value} service • No hidden fees` +
+    `${hours} hour${hours > 1 ? "s" : ""} × ${formatGBP(hourlyRate)} • ${frequencyText} • No hidden fees` +
     (extras.length ? ` • ${extras.join(" • ")}` : "");
 }
 
-[serviceSelect, hoursInput, ovenInput, suppliesInput, frequencySelect].forEach((el) => {
-  el?.addEventListener("input", updateQuote);
-  el?.addEventListener("change", updateQuote);
-});
+function saveBookingLocally(booking) {
+  try {
+    const existing = JSON.parse(localStorage.getItem("nestlynBookings") || "[]");
+    existing.unshift(booking);
+    localStorage.setItem("nestlynBookings", JSON.stringify(existing));
+  } catch (error) {
+    console.warn("Could not save booking to localStorage.", error);
+  }
+}
 
-bookingForm?.addEventListener("submit", function (event) {
-  event.preventDefault();
+function validateForm() {
+  if (!bookingForm) return false;
+
+  if (!bookingForm.checkValidity()) {
+    bookingForm.reportValidity();
+    return false;
+  }
+
+  if (dateInput?.value && dateInput.value < getTodayLocalISODate()) {
+    dateInput.setCustomValidity("Please choose today or a future date.");
+    dateInput.reportValidity();
+    return false;
+  } else {
+    dateInput?.setCustomValidity("");
+  }
+
+  if (hoursInput && getSafeHours() < 2) {
+    hoursInput.setCustomValidity("Minimum booking is 2 hours.");
+    hoursInput.reportValidity();
+    return false;
+  } else {
+    hoursInput?.setCustomValidity("");
+  }
+
+  return true;
+}
+
+function showSuccessMessage() {
+  if (!successMessage) return;
+  successMessage.hidden = false;
+  successMessage.focus();
+}
+
+function resetBookingForm() {
+  if (!bookingForm) return;
+
+  bookingForm.reset();
+
+  if (hoursInput) hoursInput.value = "2";
+  if (frequencySelect) frequencySelect.value = "Weekly";
+  if (timeInput) timeInput.value = "10:00";
 
   updateQuote();
+}
 
-  const booking = {
-    name: nameInput?.value.trim() || "",
-    phone: phoneInput?.value.trim() || "",
-    email: emailInput?.value.trim() || "",
-    service: getServiceName(),
-    frequency: frequencySelect?.value || "",
-    hours: hoursInput?.value || "2",
-    date: dateInput?.value || "",
-    time: timeInput?.value || "",
-    extras: {
-      oven: !!ovenInput?.checked,
-      supplies: !!suppliesInput?.checked
-    },
-    total: quoteTotal?.textContent || "",
-    createdAt: new Date().toISOString()
-  };
-
-  const bookings = JSON.parse(localStorage.getItem("nestlynBookings") || "[]");
-  bookings.unshift(booking);
-  localStorage.setItem("nestlynBookings", JSON.stringify(bookings));
-
+function buildWhatsAppMessage(booking) {
   const extrasList = [];
-  if (ovenInput?.checked) extrasList.push("Inside oven clean");
-  if (suppliesInput?.checked) extrasList.push("Hoover & mop provided by us");
+  if (booking.extras.oven) extrasList.push("Inside oven clean");
+  if (booking.extras.supplies) extrasList.push("Hoover & mop provided by us");
 
-  const message = `Hi Nestlyn Clean, I'd like to book:
+  return `Hi Nestlyn Clean, I'd like to book:
 
 Service: ${booking.service}
 Frequency: ${booking.frequency}
@@ -109,40 +151,38 @@ Estimated total: ${booking.total}
 Name: ${booking.name}
 Phone: ${booking.phone}
 Email: ${booking.email}`;
-
-  const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(message)}`;
-
-  if (successMessage) {
-    successMessage.hidden = false;
-  }
-
-  setTimeout(() => {
-    window.open(whatsappURL, "_blank");
-  }, 500);
-
-  bookingForm.reset();
-
-  if (hoursInput) hoursInput.value = "2";
-  if (frequencySelect) frequencySelect.value = "Weekly";
-  if (timeInput) timeInput.value = "10:00";
-
-  updateQuote();
-});
-
-function closeMenu() {
-  if (!menu || !overlay) return;
-  menu.classList.remove("is-open");
-  overlay.classList.remove("is-open");
-  menu.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
 }
 
 function openMenu() {
   if (!menu || !overlay) return;
+
+  lastFocusedElement = document.activeElement;
+
   menu.classList.add("is-open");
   overlay.classList.add("is-open");
   menu.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+  overlay.setAttribute("aria-hidden", "false");
+  menuToggle?.setAttribute("aria-expanded", "true");
+  document.body.classList.add("menu-open");
+
+  menuClose?.focus();
+}
+
+function closeMenu() {
+  if (!menu || !overlay) return;
+
+  menu.classList.remove("is-open");
+  overlay.classList.remove("is-open");
+  menu.setAttribute("aria-hidden", "true");
+  overlay.setAttribute("aria-hidden", "true");
+  menuToggle?.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("menu-open");
+
+  if (lastFocusedElement instanceof HTMLElement) {
+    lastFocusedElement.focus();
+  } else {
+    menuToggle?.focus();
+  }
 }
 
 function toggleMenu() {
@@ -155,10 +195,78 @@ function toggleMenu() {
   }
 }
 
+function trapFocusInMenu(event) {
+  if (!menu || menu.getAttribute("aria-hidden") === "true" || event.key !== "Tab") return;
+
+  const focusableElements = menu.querySelectorAll(
+    'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+  );
+
+  if (!focusableElements.length) return;
+
+  const first = focusableElements[0];
+  const last = focusableElements[focusableElements.length - 1];
+
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
+[serviceSelect, hoursInput, ovenInput, suppliesInput, frequencySelect].forEach((el) => {
+  el?.addEventListener("input", updateQuote);
+  el?.addEventListener("change", updateQuote);
+});
+
+bookingForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  updateQuote();
+
+  if (!validateForm()) {
+    return;
+  }
+
+  const booking = {
+    name: nameInput?.value.trim() || "",
+    phone: phoneInput?.value.trim() || "",
+    email: emailInput?.value.trim() || "",
+    service: getServiceName(),
+    frequency: frequencySelect?.value || "",
+    hours: String(getSafeHours()),
+    date: dateInput?.value || "",
+    time: timeInput?.value || "",
+    extras: {
+      oven: !!ovenInput?.checked,
+      supplies: !!suppliesInput?.checked
+    },
+    total: quoteTotal?.textContent || "",
+    createdAt: new Date().toISOString()
+  };
+
+  saveBookingLocally(booking);
+  showSuccessMessage();
+
+  const whatsappMessage = buildWhatsAppMessage(booking);
+  const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(whatsappMessage)}`;
+
+  window.open(whatsappURL, "_blank", "noopener");
+
+  resetBookingForm();
+});
+
+menuToggle?.addEventListener("click", toggleMenu);
+menuClose?.addEventListener("click", closeMenu);
+overlay?.addEventListener("click", closeMenu);
+
 menuItems.forEach((item) => {
   item.addEventListener("click", () => {
     menuItems.forEach((link) => link.classList.remove("is-active"));
     item.classList.add("is-active");
+    closeMenu();
   });
 });
 
@@ -166,6 +274,8 @@ window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeMenu();
   }
+
+  trapFocusInMenu(event);
 });
 
 footerToggle?.addEventListener("click", () => {
@@ -173,35 +283,39 @@ footerToggle?.addEventListener("click", () => {
 
   const expanded = footerToggle.getAttribute("aria-expanded") === "true";
   footerToggle.setAttribute("aria-expanded", String(!expanded));
-  areasList.classList.toggle("is-open");
+
+  if (expanded) {
+    areasList.classList.remove("is-open");
+    areasList.setAttribute("hidden", "");
+  } else {
+    areasList.classList.add("is-open");
+    areasList.removeAttribute("hidden");
+  }
 });
 
-const revealItems = document.querySelectorAll(".section, .booking-card, .trust-bar, .hero, .site-footer");
+const revealItems = document.querySelectorAll(".reveal");
 
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("is-visible");
-    }
-  });
-}, { threshold: 0.12 });
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
 
-revealItems.forEach((item) => {
-  item.classList.add("reveal");
-  revealObserver.observe(item);
-});
-
-const today = new Date();
-const yyyy = today.getFullYear();
-const mm = String(today.getMonth() + 1).padStart(2, "0");
-const dd = String(today.getDate()).padStart(2, "0");
+  revealItems.forEach((item) => revealObserver.observe(item));
+} else {
+  revealItems.forEach((item) => item.classList.add("is-visible"));
+}
 
 if (dateInput) {
-  dateInput.min = `${yyyy}-${mm}-${dd}`;
+  dateInput.min = getTodayLocalISODate();
 }
 
 if (year) {
-  year.textContent = yyyy;
+  year.textContent = new Date().getFullYear();
 }
 
 if (hoursInput) {
@@ -210,6 +324,10 @@ if (hoursInput) {
 
 if (timeInput) {
   timeInput.value = "10:00";
+}
+
+if (areasList && window.innerWidth <= 768) {
+  areasList.setAttribute("hidden", "");
 }
 
 updateQuote();
