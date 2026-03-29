@@ -309,11 +309,7 @@ textarea:focus-visible {
 }
 
 .hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(212, 175, 104, 0.08), transparent 22%),
-    radial-gradient(circle at 80% 70%, rgba(212, 175, 104, 0.05), transparent 24%);
+  display: none !important;
 }
 
 .hero-overlay {
