@@ -62,7 +62,7 @@ textarea {
   top: 0;
   z-index: 40;
   backdrop-filter: blur(18px);
-  background: rgba(7, 7, 9, 0.68);
+  background: rgba(7, 7, 9, 0.82);
   border-bottom: 1px solid rgba(212, 175, 104, 0.16);
 }
 
@@ -71,48 +71,22 @@ textarea {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  min-height: 78px;
+  min-height: 96px;
 }
 
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  color: var(--gold-soft);
   min-width: 0;
+  max-width: 320px;
 }
 
-.logo-mark {
-  flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold-soft), #9a7434);
-  box-shadow: 0 0 0 6px rgba(212, 175, 104, 0.08);
-}
-
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 0.9;
-}
-
-.logo strong,
-.logo small {
+.logo img {
   display: block;
-  font-family: "Cormorant Garamond", serif;
-  line-height: 0.9;
-}
-
-.logo strong {
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.logo small {
-  font-size: 1rem;
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
+  height: 72px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .header-right {
@@ -121,11 +95,11 @@ textarea {
 }
 
 .menu-toggle {
-  width: 50px;
-  height: 50px;
-  border-radius: 14px;
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
   border: 1px solid rgba(212, 175, 104, 0.18);
-  background: rgba(255,255,255,0.02);
+  background: rgba(255, 255, 255, 0.02);
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
@@ -142,7 +116,7 @@ textarea {
 
 .menu-toggle span {
   display: block;
-  width: 20px;
+  width: 22px;
   height: 2px;
   border-radius: 999px;
   background: var(--gold-soft);
@@ -203,6 +177,15 @@ textarea {
   align-items: center;
   gap: 14px;
   color: var(--gold-soft);
+}
+
+.premium-menu-brand .logo-mark {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-soft), #9a7434);
+  box-shadow: 0 0 0 6px rgba(212, 175, 104, 0.08);
 }
 
 .premium-menu-brand .logo-text {
@@ -277,7 +260,7 @@ textarea {
   font-weight: 500;
   font-family: "Inter", sans-serif;
   color: var(--text);
-  background: rgba(255,255,255,0.02);
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid transparent;
   transition: all 0.25s ease;
 }
@@ -322,16 +305,6 @@ textarea {
   margin: 26px 0;
 }
 
-.premium-menu-info {
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.7;
-}
-
-.premium-menu-info p {
-  margin: 0 0 8px;
-}
-
 .premium-menu-actions {
   margin-top: auto;
   display: flex;
@@ -359,7 +332,7 @@ textarea {
   min-height: 54px;
   border-radius: 16px;
   border: 1px solid var(--line);
-  background: rgba(255,255,255,0.02);
+  background: rgba(255, 255, 255, 0.02);
   color: var(--text);
   font-weight: 800;
 }
@@ -373,7 +346,7 @@ textarea {
 
 .hero {
   position: relative;
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -383,25 +356,25 @@ textarea {
   position: absolute;
   inset: 0;
   background: url("https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1600&q=80") center center / cover no-repeat;
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(5,5,7,0.74) 0%, rgba(5,5,7,0.46) 44%, rgba(5,5,7,0.28) 100%),
-    radial-gradient(circle at center, transparent 20%, rgba(0,0,0,0.10) 75%);
+    linear-gradient(90deg, rgba(5, 5, 7, 0.58) 0%, rgba(5, 5, 7, 0.35) 42%, rgba(5, 5, 7, 0.22) 100%),
+    radial-gradient(circle at center, transparent 20%, rgba(0, 0, 0, 0.08) 75%);
 }
 
 .hero-grid {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1.08fr 0.82fr;
-  gap: 54px;
+  grid-template-columns: minmax(0, 1.05fr) minmax(380px, 460px);
+  gap: 56px;
   align-items: center;
-  padding: 88px 0 72px;
+  padding: 110px 0 90px;
 }
 
 .hero-copy {
@@ -411,11 +384,11 @@ textarea {
 .hero-copy h1 {
   margin: 12px 0 18px;
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2.9rem, 5.2vw, 5rem);
-  line-height: 0.98;
+  font-size: clamp(3.4rem, 5.6vw, 5.4rem);
+  line-height: 0.96;
   font-weight: 600;
   letter-spacing: -0.02em;
-  max-width: 8.5ch;
+  max-width: 9ch;
 }
 
 .eyebrow,
@@ -997,13 +970,39 @@ textarea {
 
 /* Tablet */
 
-@media (max-width: 980px) {
+@media (max-width: 1100px) {
+  .logo {
+    max-width: 280px;
+  }
+
+  .logo img {
+    height: 64px;
+  }
+
+  .nav-wrap {
+    min-height: 88px;
+  }
+
   .hero-grid,
   .pricing-wrap,
   .steps-grid,
   .service-grid,
   .three-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-grid {
+    gap: 28px;
+    padding: 72px 0 52px;
+  }
+
+  .booking-card {
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  .hero-copy h1 {
+    max-width: none;
   }
 
   .trust-items {
@@ -1045,27 +1044,21 @@ textarea {
   }
 
   .nav-wrap {
-    min-height: auto;
-    padding: 12px 0;
+    min-height: 82px;
+    padding: 10px 0;
   }
 
-  .logo-mark {
-    width: 30px;
-    height: 30px;
+  .logo {
+    max-width: 220px;
   }
 
-  .logo strong {
-    font-size: 1.85rem;
-  }
-
-  .logo small {
-    font-size: 0.78rem;
-    letter-spacing: 0.26em;
+  .logo img {
+    height: 52px;
   }
 
   .menu-toggle {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     border-radius: 14px;
   }
 
@@ -1088,29 +1081,32 @@ textarea {
   }
 
   .hero-bg {
-    background-position: center center;
+    background-position: center top;
+    background-size: cover;
+    transform: scale(1.01);
   }
 
   .hero-overlay {
-    background: linear-gradient(180deg, rgba(5, 5, 7, 0.84) 0%, rgba(5, 5, 7, 0.7) 45%, rgba(5, 5, 7, 0.78) 100%);
+    background:
+      linear-gradient(180deg, rgba(5, 5, 7, 0.42) 0%, rgba(5, 5, 7, 0.55) 36%, rgba(5, 5, 7, 0.78) 100%);
   }
 
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 18px;
-    padding: 26px 0 22px;
+    padding: 34px 0 22px;
   }
 
   .hero-copy h1 {
-    font-size: 3rem;
+    font-size: 3.1rem;
     line-height: 0.96;
     margin-bottom: 14px;
     max-width: none;
   }
 
   .hero-sub {
-    font-size: 0.98rem;
-    line-height: 1.55;
+    font-size: 1rem;
+    line-height: 1.6;
     margin-bottom: 14px;
   }
 
@@ -1356,17 +1352,16 @@ textarea {
 /* Small phones */
 
 @media (max-width: 480px) {
+  .logo {
+    max-width: 180px;
+  }
+
+  .logo img {
+    height: 44px;
+  }
+
   .hero-copy h1 {
     font-size: 2.75rem;
-  }
-
-  .logo strong {
-    font-size: 1.7rem;
-  }
-
-  .logo small {
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
   }
 
   .booking-card-head h2 {
@@ -1376,44 +1371,4 @@ textarea {
   .section-title h2 {
     font-size: 2rem;
   }
-}
-.logo img {
-  height: 42px;
-  width: auto;
-  display: block;
-}
-@media (max-width: 768px) {
-  .logo img {
-    height: 36px;
-  }
-}
-.logo img {
-  height: 64px;
-  width: auto;
-  display: block;
-}
-
-@media (max-width: 768px) {
-  .logo img {
-    height: 52px;
-  }
-}
-.logo img {
-  height: 64px;   /* 🔥 bigger on desktop */
-  width: auto;
-  display: block;
-}
-
-@media (max-width: 768px) {
-  .logo img {
-    height: 52px; /* 🔥 bigger on mobile */
-  }
-}
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.nav-wrap {
-  min-height: 90px; /* gives logo breathing space */
 }
