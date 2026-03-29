@@ -1431,3 +1431,26 @@ textarea {
     height: 52px;
   }
 }
+/* FIX: REMOVE BACKGROUND BEHIND BOOKING */
+.booking-card {
+  background: #0b0b0d; /* solid dark */
+  backdrop-filter: none;
+}
+.booking-card {
+  background: linear-gradient(180deg, #0e0e12, #09090b);
+}
+/* STOP BACKGROUND BLEED */
+.hero {
+  overflow: hidden;
+}
+
+/* MAKE SECTIONS SOLID */
+.section {
+  background: #0b0b0d;
+}
+
+/* FIX BOOKING CARD (MOST IMPORTANT) */
+.booking-card {
+  background: linear-gradient(180deg, #0e0e12, #09090b);
+  backdrop-filter: none;
+}
