@@ -1,7 +1,6 @@
 :root {
   --bg: #0d0d0f;
   --bg-soft: #141417;
-  --panel: rgba(14, 14, 18, 0.86);
   --gold: #d4af68;
   --gold-soft: #f1dfaf;
   --line: rgba(212, 175, 104, 0.22);
@@ -75,7 +74,7 @@ textarea:focus-visible {
   top: 0;
   z-index: 40;
   backdrop-filter: blur(18px);
-  background: rgba(7, 7, 9, 0.86);
+  background: rgba(7, 7, 9, 0.92);
   border-bottom: 1px solid rgba(212, 175, 104, 0.16);
 }
 
@@ -84,19 +83,19 @@ textarea:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  min-height: 88px;
+  min-height: 92px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  width: 200px;
-  max-width: 200px;
+  width: auto;
+  max-width: none;
 }
 
 .logo img {
-  width: 100%;
-  height: auto;
+  height: 78px;
+  width: auto;
   display: block;
 }
 
@@ -106,8 +105,8 @@ textarea:focus-visible {
 }
 
 .menu-toggle {
-  width: 54px;
-  height: 54px;
+  width: 56px;
+  height: 56px;
   border-radius: 16px;
   border: 1px solid rgba(212, 175, 104, 0.18);
   background: rgba(255, 255, 255, 0.02);
@@ -127,7 +126,7 @@ textarea:focus-visible {
 
 .menu-toggle span {
   display: block;
-  width: 22px;
+  width: 24px;
   height: 2px;
   border-radius: 999px;
   background: var(--gold-soft);
@@ -184,58 +183,29 @@ textarea:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 24px 22px 18px;
+  padding: 26px 22px 18px;
   border-bottom: 1px solid var(--line);
 }
 
 .premium-menu-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  color: var(--gold-soft);
-}
-
-.premium-menu-brand .logo-mark {
-  flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold-soft), #9a7434);
-  box-shadow: 0 0 0 6px rgba(212, 175, 104, 0.08);
-}
-
-.premium-menu-brand .logo-text {
   display: flex;
-  flex-direction: column;
-  line-height: 0.9;
+  align-items: center;
 }
 
-.premium-menu-brand strong,
-.premium-menu-brand small {
+.menu-brand-logo {
+  height: 70px;
+  width: auto;
   display: block;
-  font-family: "Cormorant Garamond", serif;
-  line-height: 0.9;
-}
-
-.premium-menu-brand strong {
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.premium-menu-brand small {
-  font-size: 1rem;
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
 }
 
 .menu-close {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 14px;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.03);
   color: var(--text);
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   cursor: pointer;
   transition: 0.2s ease;
 }
@@ -267,13 +237,11 @@ textarea:focus-visible {
 }
 
 .premium-menu-nav.compact a {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 16px;
-  border-radius: 14px;
-  font-size: 1.05rem;
-  font-weight: 500;
+  display: block;
+  padding: 18px 20px;
+  border-radius: 18px;
+  font-size: 1.2rem;
+  font-weight: 600;
   font-family: "Inter", sans-serif;
   color: var(--text);
   background: rgba(255, 255, 255, 0.02);
@@ -286,32 +254,6 @@ textarea:focus-visible {
   background: rgba(212, 175, 104, 0.08);
   border-color: rgba(212, 175, 104, 0.25);
   color: var(--gold-soft);
-}
-
-.premium-menu-nav.compact a:hover {
-  transform: translateX(4px);
-}
-
-.premium-menu-nav.compact .icon {
-  width: 28px;
-  height: 28px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  background: rgba(212, 175, 104, 0.1);
-  color: var(--gold-soft);
-  flex: 0 0 28px;
-}
-
-.premium-menu-nav.compact .icon svg {
-  width: 18px;
-  height: 18px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
 }
 
 .premium-menu-divider {
@@ -332,11 +274,12 @@ textarea:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 54px;
-  border-radius: 16px;
+  min-height: 56px;
+  border-radius: 18px;
   background: linear-gradient(180deg, #ecd08a 0%, #c69548 100%);
   color: #111;
   font-weight: 800;
+  font-size: 1.1rem;
   box-shadow: 0 10px 30px rgba(212, 175, 104, 0.2);
 }
 
@@ -344,8 +287,8 @@ textarea:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 54px;
-  border-radius: 16px;
+  min-height: 56px;
+  border-radius: 18px;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.02);
   color: var(--text);
@@ -361,18 +304,22 @@ textarea:focus-visible {
 
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   align-items: center;
   overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(212, 175, 104, 0.14), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(212, 175, 104, 0.08), transparent 30%),
+    linear-gradient(135deg, #09090b 0%, #111114 45%, #1a1410 100%);
 }
 
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url("https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1600&q=80") center center / cover no-repeat;
-  transform: scale(1.03);
-  filter: brightness(0.52) contrast(1.05);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(212, 175, 104, 0.08), transparent 22%),
+    radial-gradient(circle at 80% 70%, rgba(212, 175, 104, 0.05), transparent 24%);
 }
 
 .hero-overlay {
@@ -381,10 +328,10 @@ textarea:focus-visible {
   background:
     linear-gradient(
       180deg,
-      rgba(5, 5, 7, 0.18) 0%,
-      rgba(5, 5, 7, 0.28) 28%,
-      rgba(5, 5, 7, 0.56) 62%,
-      rgba(5, 5, 7, 0.84) 100%
+      rgba(5, 5, 7, 0.24) 0%,
+      rgba(5, 5, 7, 0.36) 35%,
+      rgba(5, 5, 7, 0.56) 70%,
+      rgba(5, 5, 7, 0.72) 100%
     );
 }
 
@@ -394,8 +341,8 @@ textarea:focus-visible {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(380px, 460px);
   gap: 56px;
-  align-items: center;
-  padding: 110px 0 90px;
+  align-items: start;
+  padding: 64px 0 48px;
 }
 
 .hero-copy {
@@ -403,7 +350,7 @@ textarea:focus-visible {
 }
 
 .hero-copy h1 {
-  margin: 12px 0 18px;
+  margin: 8px 0 16px;
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(3.4rem, 5.6vw, 5.4rem);
   line-height: 0.96;
@@ -437,6 +384,7 @@ textarea:focus-visible {
   margin-bottom: 6px;
   color: var(--gold-soft);
   font-weight: 700;
+  flex-wrap: wrap;
 }
 
 .hero-actions {
@@ -482,8 +430,8 @@ textarea:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 16px;
-  padding: 14px 22px;
+  border-radius: 18px;
+  padding: 15px 24px;
   font-weight: 700;
   transition: 0.2s ease;
 }
@@ -663,11 +611,6 @@ textarea:focus-visible {
 
 .success-message h3 {
   margin-top: 0;
-}
-
-.success-message:focus {
-  outline: 3px solid rgba(75, 181, 67, 0.45);
-  outline-offset: 3px;
 }
 
 /* Trust strip */
@@ -924,7 +867,7 @@ textarea:focus-visible {
 .footer-summary p {
   font-size: 0.9rem;
   margin: 0 0 6px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .footer-summary a {
@@ -939,13 +882,13 @@ textarea:focus-visible {
 }
 
 .footer-toggle {
-  padding: 10px 14px;
-  border-radius: 12px;
+  padding: 12px 18px;
+  border-radius: 14px;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.04);
   color: var(--text);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.98rem;
   cursor: pointer;
 }
 
@@ -972,7 +915,7 @@ textarea:focus-visible {
   color: var(--gold-soft);
 }
 
-/* Reveal animation */
+/* Reveal */
 
 .reveal {
   opacity: 0;
@@ -985,22 +928,10 @@ textarea:focus-visible {
   transform: translateY(0);
 }
 
-/* Mobile sticky CTA */
+/* Sticky call */
 
 .mobile-sticky-book {
   display: none;
-}
-
-/* Desktop */
-
-@media (min-width: 981px) {
-  .hero-copy {
-    padding-top: 10px;
-  }
-
-  .hero-actions .btn {
-    min-width: 170px;
-  }
 }
 
 /* Tablet */
@@ -1016,7 +947,7 @@ textarea:focus-visible {
 
   .hero-grid {
     gap: 28px;
-    padding: 72px 0 52px;
+    padding: 40px 0 40px;
   }
 
   .booking-card {
@@ -1067,24 +998,17 @@ textarea:focus-visible {
   }
 
   .nav-wrap {
-    min-height: 82px;
+    min-height: 92px;
     padding: 10px 0;
   }
 
-  .logo {
-    width: auto;
-    max-width: none;
-  }
-
   .logo img {
-    height: 58px;
-    width: auto;
+    height: 74px;
   }
 
   .menu-toggle {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
+    width: 56px;
+    height: 56px;
   }
 
   .premium-menu {
@@ -1092,47 +1016,20 @@ textarea:focus-visible {
     max-width: 100%;
   }
 
-  .premium-menu-brand strong {
-    font-size: 1.8rem;
-  }
-
-  .premium-menu-brand small {
-    font-size: 0.8rem;
-    letter-spacing: 0.28em;
-  }
-
-  .hero {
-    min-height: auto;
-  }
-
-  .hero-bg {
-    background: url("https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80") center center / cover no-repeat;
-    transform: scale(1.01);
-    filter: brightness(0.34) contrast(1.08);
-  }
-
-  .hero-overlay {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(5, 5, 7, 0.42) 0%,
-        rgba(5, 5, 7, 0.48) 22%,
-        rgba(5, 5, 7, 0.62) 55%,
-        rgba(5, 5, 7, 0.82) 100%
-      );
+  .menu-brand-logo {
+    height: 76px;
   }
 
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 18px;
-    padding: 34px 0 22px;
+    padding: 20px 0 24px;
   }
 
   .hero-copy h1 {
     font-size: 3.1rem;
     line-height: 0.96;
     margin-bottom: 14px;
-    max-width: none;
   }
 
   .hero-sub {
@@ -1149,6 +1046,8 @@ textarea:focus-visible {
 
   .hero-actions .btn {
     width: 100%;
+    min-height: 58px;
+    font-size: 1.05rem;
   }
 
   .hero-call-text {
@@ -1177,17 +1076,6 @@ textarea:focus-visible {
     font-size: 1.95rem;
   }
 
-  .booking-trust {
-    gap: 6px;
-    margin-bottom: 12px;
-    font-size: 0.92rem;
-  }
-
-  .booking-form label,
-  .extras {
-    margin-bottom: 12px;
-  }
-
   .booking-form input,
   .booking-form select {
     padding: 12px 14px;
@@ -1204,7 +1092,6 @@ textarea:focus-visible {
     gap: 8px;
     align-items: flex-start;
     padding: 14px;
-    border-radius: 18px;
   }
 
   .quote-box p {
@@ -1241,7 +1128,6 @@ textarea:focus-visible {
 
   .section-title h2 {
     font-size: 2.15rem;
-    line-height: 1.02;
   }
 
   .steps-grid,
@@ -1261,29 +1147,6 @@ textarea:focus-visible {
     border-radius: 18px;
   }
 
-  .step-num {
-    width: 48px;
-    height: 48px;
-    font-size: 1.25rem;
-    margin-bottom: 12px;
-  }
-
-  .steps-grid h3,
-  .service-card h3 {
-    font-size: 1.05rem;
-    margin-bottom: 8px;
-  }
-
-  .steps-grid p,
-  .service-card p,
-  .pricing-copy,
-  .contact p,
-  .contact-card span,
-  .promo-card p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-
   .testimonial-card {
     padding: 20px 18px;
   }
@@ -1294,51 +1157,12 @@ textarea:focus-visible {
     margin: 12px auto;
   }
 
-  .testimonial-card p {
-    font-size: 0.95rem;
-  }
-
-  .contact-card {
-    gap: 8px;
-    padding: 16px;
-    min-height: auto;
-  }
-
-  .contact-card strong {
-    font-size: 1rem;
-  }
-
-  .contact-card span {
-    font-size: 0.92rem;
-    line-height: 1.5;
-  }
-
   .pricing-panel {
     padding: 16px;
   }
 
   .pricing-row {
     padding: 14px 0;
-  }
-
-  .pricing-row span,
-  .pricing-row strong {
-    font-size: 0.95rem;
-  }
-
-  .footer-wrap {
-    gap: 12px;
-  }
-
-  .footer-summary p {
-    font-size: 0.88rem;
-    margin-bottom: 4px;
-  }
-
-  .footer-toggle {
-    padding: 10px 12px;
-    font-size: 0.88rem;
-    border-radius: 12px;
   }
 
   .footer-area-links {
@@ -1362,8 +1186,8 @@ textarea:focus-visible {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 58px;
-    height: 58px;
+    width: 82px;
+    height: 82px;
     border-radius: 50%;
     background: linear-gradient(135deg, #d6b36a, #f0d48a);
     color: transparent;
@@ -1371,11 +1195,12 @@ textarea:focus-visible {
     position: relative;
     overflow: hidden;
     white-space: nowrap;
+    border: 2px solid rgba(255, 255, 255, 0.08);
   }
 
   .mobile-sticky-book a::before {
     content: "☎";
-    font-size: 1.25rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: #111;
     position: absolute;
@@ -1384,7 +1209,11 @@ textarea:focus-visible {
 
 @media (max-width: 480px) {
   .logo img {
-    height: 52px;
+    height: 66px;
+  }
+
+  .menu-brand-logo {
+    height: 68px;
   }
 
   .hero-copy h1 {
