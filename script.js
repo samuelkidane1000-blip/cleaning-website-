@@ -2,6 +2,27 @@ if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
 }
 
+function forceScrollTop() {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "auto"
+  });
+
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+}
+
+window.addEventListener("load", forceScrollTop);
+window.addEventListener("pageshow", forceScrollTop);
+document.addEventListener("DOMContentLoaded", forceScrollTop);
+
+setTimeout(forceScrollTop, 50);
+setTimeout(forceScrollTop, 150);
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
 window.addEventListener("pageshow", () => {
   window.scrollTo(0, 0);
 });
