@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" id="top">
+<html lang="en-GB" id="top">
 <head>
   <meta charset="UTF-8" />
   <meta name="google-site-verification" content="y312vlRjilt_j-ze3IG9xMd0ua33MomItyl-Ik7zaoI" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#0d0d0f" />
 
   <title>Nestlyn Clean | Luxury Home Cleaning in London</title>
   <meta
     name="description"
     content="Luxury home cleaning in London. Book regular, one-off, or deep cleaning with Nestlyn Clean."
   />
+  <link rel="canonical" href="https://www.nestlynclean.com/" />
 
   <meta property="og:title" content="Nestlyn Clean | Luxury Home Cleaning in London" />
   <meta
@@ -17,14 +20,34 @@
     content="Trusted home cleaning across London. Book regular, one-off, or deep cleaning in under 60 seconds."
   />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.nestlynclean.com" />
+  <meta property="og:url" content="https://www.nestlynclean.com/" />
+  <meta property="og:site_name" content="Nestlyn Clean" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:image" content="https://www.nestlynclean.com/og-image.jpg" />
+  <meta property="og:image:alt" content="Nestlyn Clean luxury home cleaning in London" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nestlyn Clean | Luxury Home Cleaning in London" />
+  <meta
+    name="twitter:description"
+    content="Trusted home cleaning across London. Book regular, one-off, or deep cleaning in under 60 seconds."
+  />
+  <meta name="twitter:image" content="https://www.nestlynclean.com/og-image.jpg" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "HouseCleaningService",
     "name": "Nestlyn Clean",
-    "image": "https://www.nestlynclean.com",
+    "url": "https://www.nestlynclean.com/",
+    "logo": "https://www.nestlynclean.com/76493DF9-3749-4DA8-9654-C7F5FC583F85.png",
+    "image": "https://www.nestlynclean.com/og-image.jpg",
+    "telephone": "+442081035100",
+    "email": "info@nestlynclean.com",
+    "priceRange": "££",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "128 City Road",
@@ -32,21 +55,10 @@
       "postalCode": "EC1V 2NX",
       "addressCountry": "GB"
     },
-    "telephone": "+447514718173",
-    "priceRange": "££",
-    "areaServed": [
-      "London",
-      "Camden",
-      "Chelsea",
-      "Westminster",
-      "Islington",
-      "Shoreditch",
-      "Canary Wharf",
-      "Kensington",
-      "Fulham",
-      "Hackney"
-    ],
-    "url": "https://www.nestlynclean.com"
+    "areaServed": {
+      "@type": "City",
+      "name": "London"
+    }
   }
   </script>
 
@@ -61,12 +73,19 @@
 <body>
   <header class="site-header">
     <div class="container nav-wrap">
-     <a href="#top" class="logo">
-  <img src="./76493DF9-3749-4DA8-9654-C7F5FC583F85.png" alt="Nestlyn Clean logo">
-</a>
+      <a href="#top" class="logo" aria-label="Nestlyn Clean home">
+        <img src="./76493DF9-3749-4DA8-9654-C7F5FC583F85.png" alt="Nestlyn Clean logo" />
+      </a>
 
       <div class="header-right">
-        <button class="menu-toggle" type="button" aria-label="Open menu" onclick="toggleMenu()">
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="premiumMenu"
+          aria-expanded="false"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -75,30 +94,35 @@
     </div>
   </header>
 
-  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
 
-  <aside class="premium-menu" id="premiumMenu" aria-hidden="true">
+  <aside
+    class="premium-menu"
+    id="premiumMenu"
+    aria-hidden="true"
+    aria-labelledby="menuTitle"
+  >
     <div class="premium-menu-top">
       <div class="premium-menu-brand">
-        <span class="logo-mark"></span>
+        <span class="logo-mark" aria-hidden="true"></span>
         <span class="logo-text">
           <strong>Nestlyn</strong>
           <small>Clean</small>
         </span>
       </div>
 
-      <button class="menu-close" type="button" aria-label="Close menu" onclick="toggleMenu()">
+      <button class="menu-close" type="button" aria-label="Close menu">
         ✕
       </button>
     </div>
 
     <div class="premium-menu-body">
-      <p class="premium-menu-eyebrow">Explore</p>
+      <p class="premium-menu-eyebrow" id="menuTitle">Explore</p>
 
-      <nav class="premium-menu-nav compact">
-        <a href="#top" class="menu-item is-active" onclick="toggleMenu()">
-          <span class="icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
+      <nav class="premium-menu-nav compact" aria-label="Mobile navigation">
+        <a href="#top" class="menu-item is-active">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
               <path d="M3 11.5 12 4l9 7.5"></path>
               <path d="M5.5 10.5V20h13V10.5"></path>
               <path d="M9.5 20v-6h5v6"></path>
@@ -107,9 +131,9 @@
           <span>Home</span>
         </a>
 
-        <a href="#services" class="menu-item" onclick="toggleMenu()">
-          <span class="icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
+        <a href="#services" class="menu-item">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
               <rect x="5" y="4" width="14" height="16" rx="2"></rect>
               <path d="M8 8h8"></path>
               <path d="M8 12h8"></path>
@@ -119,9 +143,9 @@
           <span>Services</span>
         </a>
 
-        <a href="#pricing" class="menu-item" onclick="toggleMenu()">
-          <span class="icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
+        <a href="#pricing" class="menu-item">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="9"></circle>
               <path d="M14.8 8.8c-.6-.6-1.4-.9-2.6-.9-1.8 0-3 1-3 2.5 0 1.2.8 2 2.4 2.4l1.4.3c1.1.2 1.7.7 1.7 1.5 0 1-1 1.7-2.5 1.7-1.2 0-2.3-.4-3.1-1.2"></path>
               <path d="M12 6.8v10.4"></path>
@@ -130,9 +154,9 @@
           <span>Pricing</span>
         </a>
 
-        <a href="#how" class="menu-item" onclick="toggleMenu()">
-          <span class="icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
+        <a href="#how" class="menu-item">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="3"></circle>
               <path d="M19.4 15a1 1 0 0 0 .2 1.1l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1 1 0 0 0-1.1-.2 1 1 0 0 0-.6.9V20a2 2 0 1 1-4 0v-.2a1 1 0 0 0-.6-.9 1 1 0 0 0-1.1.2l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1 1 0 0 0 .2-1.1 1 1 0 0 0-.9-.6H4a2 2 0 1 1 0-4h.2a1 1 0 0 0 .9-.6 1 1 0 0 0-.2-1.1l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1 1 0 0 0 1.1.2 1 1 0 0 0 .6-.9V4a2 2 0 1 1 4 0v.2a1 1 0 0 0 .6.9 1 1 0 0 0 1.1-.2l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1 1 0 0 0-.2 1.1 1 1 0 0 0 .9.6H20a2 2 0 1 1 0 4h-.2a1 1 0 0 0-.9.6Z"></path>
             </svg>
@@ -140,18 +164,18 @@
           <span>How It Works</span>
         </a>
 
-        <a href="#reviews" class="menu-item" onclick="toggleMenu()">
-          <span class="icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
+        <a href="#reviews" class="menu-item">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
               <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3Z"></path>
             </svg>
           </span>
           <span>Reviews</span>
         </a>
 
-        <a href="#contact" class="menu-item" onclick="toggleMenu()">
-          <span class="icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
+        <a href="#contact" class="menu-item">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
               <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7l.4 2.6a2 2 0 0 1-.6 1.8l-1.3 1.3a16 16 0 0 0 7 7l1.3-1.3a2 2 0 0 1 1.8-.6l2.6.4A2 2 0 0 1 22 16.9Z"></path>
             </svg>
           </span>
@@ -162,7 +186,7 @@
       <div class="premium-menu-divider"></div>
 
       <div class="premium-menu-actions">
-        <a href="#booking" class="premium-menu-btn" onclick="toggleMenu()">Book a Cleaning</a>
+        <a href="#booking" class="premium-menu-btn">Book a Cleaning</a>
         <a href="tel:+442081035100" class="premium-menu-call">Call: 020 8103 5100</a>
       </div>
     </div>
@@ -184,8 +208,8 @@
             Book in under 60 seconds.
           </p>
 
-          <div class="hero-rating">
-            <span>★★★★★</span>
+          <div class="hero-rating" aria-label="5-star rated across London">
+            <span aria-hidden="true">★★★★★</span>
             <span>5-star rated across London</span>
           </div>
 
@@ -214,10 +238,10 @@
             <span>✔ No hidden fees</span>
           </div>
 
-          <form id="bookingForm" class="booking-form">
-            <label>
+          <form id="bookingForm" class="booking-form" method="post" novalidate>
+            <label for="service">
               <span>Select Service</span>
-              <select id="service" required>
+              <select id="service" name="service" required>
                 <option value="16.95" data-label="Regular cleaning">Regular cleaning — £16.95/h</option>
                 <option value="19" data-label="One-off clean">One-off clean — £19/h</option>
                 <option value="23" data-label="Deep cleaning">Deep cleaning — £23/h</option>
@@ -225,48 +249,48 @@
             </label>
 
             <div class="form-row">
-              <label>
+              <label for="frequency">
                 <span>Frequency</span>
-                <select id="frequency">
+                <select id="frequency" name="frequency">
                   <option>Weekly</option>
                   <option>Fortnightly</option>
                   <option>One payment</option>
                 </select>
               </label>
 
-              <label>
+              <label for="hours">
                 <span>Hours</span>
-                <input id="hours" type="number" min="2" step="1" value="2" required />
+                <input id="hours" name="hours" type="number" min="2" step="1" value="2" required />
               </label>
             </div>
 
             <div class="form-row">
-              <label>
+              <label for="date">
                 <span>Date</span>
-                <input id="date" type="date" required />
+                <input id="date" name="date" type="date" required />
               </label>
 
-              <label>
+              <label for="time">
                 <span>Time</span>
-                <input id="time" type="time" min="08:00" max="18:00" value="10:00" required />
+                <input id="time" name="time" type="time" min="08:00" max="18:00" value="10:00" required />
               </label>
             </div>
 
             <fieldset class="extras">
               <legend>Add Extras</legend>
 
-              <label class="check">
-                <input type="checkbox" id="oven" value="25" />
+              <label class="check" for="oven">
+                <input type="checkbox" id="oven" name="extras_oven" value="25" />
                 <span>Inside oven clean <strong>+£25</strong></span>
               </label>
 
-              <label class="check">
-                <input type="checkbox" id="supplies" value="20" />
+              <label class="check" for="supplies">
+                <input type="checkbox" id="supplies" name="extras_supplies" value="20" />
                 <span>Hoover &amp; mop provided by us <strong>+£20</strong></span>
               </label>
             </fieldset>
 
-            <div class="quote-box">
+            <div class="quote-box" aria-live="polite">
               <div>
                 <small>Estimated total</small>
                 <strong id="quoteTotal">£33.90</strong>
@@ -275,20 +299,50 @@
             </div>
 
             <div class="form-row">
-              <label>
+              <label for="name">
                 <span>Name</span>
-                <input id="name" type="text" placeholder="Your full name" required />
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="Your full name"
+                  required
+                />
               </label>
 
-              <label>
+              <label for="phone">
                 <span>Phone</span>
-                <input id="phone" type="tel" placeholder="Your number" required />
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  inputmode="tel"
+                  placeholder="Your number"
+                  required
+                />
               </label>
             </div>
 
-            <label>
+            <label for="email">
               <span>Email Address</span>
-              <input id="email" type="email" placeholder="Your email address" required />
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="Your email address"
+                required
+              />
+            </label>
+
+            <label class="check consent-check" for="consent">
+              <input type="checkbox" id="consent" name="consent" required />
+              <span>
+                I agree to be contacted about my booking and have read the
+                <a href="privacy-policy.html">Privacy Policy</a>.
+              </span>
             </label>
 
             <button type="submit" class="btn btn-gold btn-full">Book My Cleaning</button>
@@ -298,7 +352,7 @@
             </p>
           </form>
 
-          <div id="successMessage" class="success-message" hidden>
+          <div id="successMessage" class="success-message" hidden aria-live="polite" tabindex="-1">
             <h3>Booking request received</h3>
             <p>
               Thank you for choosing Nestlyn Clean. We’ll confirm your booking by WhatsApp or phone.
@@ -499,17 +553,31 @@
           </p>
 
           <div class="contact-cards">
-            <a class="contact-card" href="https://wa.me/447514718173" target="_blank" rel="noopener">
+            <a
+              class="contact-card"
+              href="https://wa.me/447514718173"
+              target="_blank"
+              rel="noopener"
+              aria-label="Chat with Nestlyn Clean on WhatsApp"
+            >
               <strong>WhatsApp</strong>
               <span>07514 718173</span>
             </a>
 
-            <a class="contact-card" href="tel:+442081035100">
+            <a
+              class="contact-card"
+              href="tel:+442081035100"
+              aria-label="Call Nestlyn Clean on 020 8103 5100"
+            >
               <strong>Office</strong>
               <span>020 8103 5100</span>
             </a>
 
-            <a class="contact-card" href="mailto:info@nestlynclean.com">
+            <a
+              class="contact-card"
+              href="mailto:info@nestlynclean.com"
+              aria-label="Email Nestlyn Clean"
+            >
               <strong>Email</strong>
               <span>info@nestlynclean.com</span>
             </a>
@@ -560,8 +628,16 @@
   </footer>
 
   <div class="mobile-sticky-book">
-    <a href="tel:+442081035100" aria-label="Call Nestlyn Clean"></a>
+    <a href="tel:+442081035100" aria-label="Call Nestlyn Clean on 020 8103 5100">
+      Call 020 8103 5100
+    </a>
   </div>
+
+  <noscript>
+    <div style="padding: 12px; text-align: center; background: #111; color: #fff;">
+      JavaScript is required for the live quote and booking form.
+    </div>
+  </noscript>
 
   <script src="script.js"></script>
 </body>
