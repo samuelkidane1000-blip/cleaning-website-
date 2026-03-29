@@ -1433,3 +1433,36 @@ textarea {
   transform: scale(1.03);
   filter: brightness(0.55) contrast(1.05);
 }
+/* DESKTOP HERO IMAGE */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url("https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1600&q=80") center center / cover no-repeat;
+  transform: scale(1.03);
+  filter: brightness(0.52) contrast(1.05);
+}
+
+/* MOBILE HERO IMAGE */
+@media (max-width: 768px) {
+  .hero-bg {
+    background: url("https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80") center center / cover no-repeat;
+    transform: scale(1.01);
+    filter: brightness(0.34) contrast(1.08);
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(5, 5, 7, 0.42) 0%,
+        rgba(5, 5, 7, 0.48) 22%,
+        rgba(5, 5, 7, 0.62) 55%,
+        rgba(5, 5, 7, 0.82) 100%
+      );
+  }
+
+  .hero-grid {
+    padding-top: 34px;
+    padding-bottom: 22px;
+  }
+}
