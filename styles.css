@@ -107,12 +107,18 @@ textarea:focus-visible {
   padding-right: 20px;
 }
 
+main {
+  padding-top: 92px;
+}
+
 /* Header */
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 40;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   backdrop-filter: blur(18px);
   background: rgba(20, 20, 24, 0.88);
   border-bottom: 1px solid rgba(212, 175, 104, 0.14);
@@ -182,7 +188,7 @@ textarea:focus-visible {
   opacity: 0;
   pointer-events: none;
   transition: 0.28s ease;
-  z-index: 90;
+  z-index: 990;
 }
 
 .menu-overlay.is-open {
@@ -204,7 +210,7 @@ textarea:focus-visible {
   box-shadow: -20px 0 50px rgba(0, 0, 0, 0.35);
   transform: translateX(100%);
   transition: transform 0.32s ease;
-  z-index: 100;
+  z-index: 1001;
   display: flex;
   flex-direction: column;
   backdrop-filter: blur(20px);
@@ -819,7 +825,7 @@ textarea:focus-visible {
 /* Contact */
 
 #contact {
-  scroll-margin-top: 90px;
+  scroll-margin-top: 110px;
 }
 
 .contact-grid {
@@ -917,12 +923,17 @@ textarea:focus-visible {
 /* Reveal */
 
 .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.js-reveal .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-.reveal.is-visible {
+.js-reveal .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -987,6 +998,10 @@ textarea:focus-visible {
 /* Mobile */
 
 @media (max-width: 768px) {
+  main {
+    padding-top: 86px;
+  }
+
   body {
     padding-bottom: calc(84px + env(safe-area-inset-bottom));
     background:
@@ -1002,8 +1017,8 @@ textarea:focus-visible {
   }
 
   .nav-wrap {
-    min-height: 92px;
-    padding: 10px 0;
+    min-height: 86px;
+    padding: 8px 0;
   }
 
   .logo img {
@@ -1222,7 +1237,9 @@ textarea:focus-visible {
     transition: none !important;
   }
 
-  .reveal {
+  .reveal,
+  .js-reveal .reveal,
+  .js-reveal .reveal.is-visible {
     opacity: 1 !important;
     transform: none !important;
   }
