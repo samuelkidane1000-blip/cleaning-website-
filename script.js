@@ -1,3 +1,5 @@
+document.documentElement.classList.add("js-reveal");
+
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
 }
@@ -48,8 +50,10 @@ function getServiceName() {
 function getHoursValue() {
   if (!hoursInput) return 2;
   const raw = hoursInput.value.trim();
+
   if (raw === "") return "";
   const parsed = parseInt(raw, 10);
+
   if (Number.isNaN(parsed)) return "";
   return parsed;
 }
@@ -123,6 +127,7 @@ function validateForm() {
 
   if (hoursInput) {
     const currentHours = getHoursValue();
+
     if (currentHours === "" || currentHours < 2) {
       hoursInput.setCustomValidity("Minimum booking is 2 hours.");
       hoursInput.reportValidity();
@@ -143,6 +148,7 @@ function showSuccessMessage() {
 
 function resetBookingForm() {
   if (!bookingForm) return;
+
   bookingForm.reset();
 
   if (hoursInput) hoursInput.value = "2";
@@ -176,12 +182,14 @@ function openMenu() {
   if (!menu || !overlay) return;
 
   lastFocusedElement = document.activeElement;
+
   menu.classList.add("is-open");
   overlay.classList.add("is-open");
   menu.setAttribute("aria-hidden", "false");
   overlay.setAttribute("aria-hidden", "false");
   menuToggle?.setAttribute("aria-expanded", "true");
   document.body.classList.add("menu-open");
+
   menuClose?.focus();
 }
 
@@ -205,8 +213,11 @@ function closeMenu() {
 function toggleMenu() {
   if (!menu) return;
   const isOpen = menu.classList.contains("is-open");
-  if (isOpen) closeMenu();
-  else openMenu();
+  if (isOpen) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
 }
 
 function trapFocusInMenu(event) {
@@ -291,7 +302,10 @@ menuItems.forEach((item) => {
 });
 
 window.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeMenu();
+  if (event.key === "Escape") {
+    closeMenu();
+  }
+
   trapFocusInMenu(event);
 });
 
@@ -327,10 +341,24 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
-if (dateInput) dateInput.min = getTodayLocalISODate();
-if (year) year.textContent = new Date().getFullYear();
-if (hoursInput && !hoursInput.value) hoursInput.value = "2";
-if (timeInput && !timeInput.value) timeInput.value = "10:00";
-if (areasList && window.innerWidth <= 768) areasList.setAttribute("hidden", "");
+if (dateInput) {
+  dateInput.min = getTodayLocalISODate();
+}
+
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
+
+if (hoursInput && !hoursInput.value) {
+  hoursInput.value = "2";
+}
+
+if (timeInput && !timeInput.value) {
+  timeInput.value = "10:00";
+}
+
+if (areasList && window.innerWidth <= 768) {
+  areasList.setAttribute("hidden", "");
+}
 
 updateQuote();
