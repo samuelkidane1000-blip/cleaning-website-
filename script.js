@@ -2,34 +2,10 @@ if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
 }
 
-function forceScrollTop() {
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "auto"
-  });
-
-  document.documentElement.scrollTop = 0;
-  document.body.scrollTop = 0;
-}
-
-window.addEventListener("load", forceScrollTop);
-window.addEventListener("pageshow", forceScrollTop);
-document.addEventListener("DOMContentLoaded", forceScrollTop);
-
-setTimeout(forceScrollTop, 50);
-setTimeout(forceScrollTop, 150);
-if ("scrollRestoration" in history) {
-  history.scrollRestoration = "manual";
-}
-
-window.addEventListener("pageshow", () => {
-  window.scrollTo(0, 0);
-});
-
 window.addEventListener("load", () => {
   window.scrollTo(0, 0);
 });
+
 const serviceSelect = document.getElementById("service");
 const hoursInput = document.getElementById("hours");
 const ovenInput = document.getElementById("oven");
@@ -69,10 +45,21 @@ function getServiceName() {
   return selected?.dataset.label || selected?.textContent.split("—")[0].trim() || "Cleaning";
 }
 
-function getSafeHours() {
+function getHoursValue() {
   if (!hoursInput) return 2;
-  const hours = parseFloat(hoursInput.value || "2");
-  return Number.isNaN(hours) || hours < 2 ? 2 : hours;
+  const raw = hoursInput.value.trim();
+
+  if (raw === "") return "";
+  const parsed = parseInt(raw, 10);
+  if (Number.isNaN(parsed)) return "";
+
+  return parsed;
+}
+
+function getSafeHours() {
+  const hours = getHoursValue();
+  if (hours === "") return 2;
+  return Math.max(2, hours);
 }
 
 function getTodayLocalISODate() {
@@ -84,30 +71,30 @@ function getTodayLocalISODate() {
 }
 
 function updateQuote() {
-  if (!serviceSelect || !hoursInput || !frequencySelect || !quoteTotal || !quoteBreakdown) {
-    return;
-  }
+  if (!serviceSelect || !frequencySelect || !quoteTotal || !quoteBreakdown) return;
 
   const hourlyRate = parseFloat(serviceSelect.value || "0");
-  const hours = getSafeHours();
+  const rawHours = getHoursValue();
+  const hours = rawHours === "" ? 2 : Math.max(2, rawHours);
   const oven = ovenInput?.checked ? parseFloat(ovenInput.value || "0") : 0;
   const supplies = suppliesInput?.checked ? parseFloat(suppliesInput.value || "0") : 0;
   const total = (hourlyRate * hours) + oven + supplies;
 
-  hoursInput.value = String(hours);
   quoteTotal.textContent = formatGBP(total);
 
   const extras = [];
   if (oven) extras.push("Inside oven clean");
   if (supplies) extras.push("Hoover & mop provided by us");
 
-  const frequencyText = frequencySelect.value === "One payment"
-    ? "One-time service"
-    : `${frequencySelect.value} service`;
+  const frequencyText =
+    frequencySelect.value === "One payment"
+      ? "One-time service"
+      : `${frequencySelect.value} service`;
 
   quoteBreakdown.textContent =
-    `${hours} hour${hours > 1 ? "s" : ""} × ${formatGBP(hourlyRate)} • ${frequencyText} • No hidden fees` +
-    (extras.length ? ` • ${extras.join(" • ")}` : "");
+    `${hours} hour${hours > 1 ? "s" : ""} × ${formatGBP(hourlyRate)} • ${frequencyText}` +
+    (extras.length ? ` • ${extras.join(" • ")}` : "") +
+    ` • No hidden fees`;
 }
 
 function saveBookingLocally(booking) {
@@ -136,12 +123,16 @@ function validateForm() {
     dateInput?.setCustomValidity("");
   }
 
-  if (hoursInput && getSafeHours() < 2) {
-    hoursInput.setCustomValidity("Minimum booking is 2 hours.");
-    hoursInput.reportValidity();
-    return false;
-  } else {
-    hoursInput?.setCustomValidity("");
+  if (hoursInput) {
+    const currentHours = getHoursValue();
+
+    if (currentHours === "" || currentHours < 2) {
+      hoursInput.setCustomValidity("Minimum booking is 2 hours.");
+      hoursInput.reportValidity();
+      return false;
+    } else {
+      hoursInput.setCustomValidity("");
+    }
   }
 
   return true;
@@ -248,9 +239,19 @@ function trapFocusInMenu(event) {
   }
 }
 
-[serviceSelect, hoursInput, ovenInput, suppliesInput, frequencySelect].forEach((el) => {
+[serviceSelect, ovenInput, suppliesInput, frequencySelect].forEach((el) => {
   el?.addEventListener("input", updateQuote);
   el?.addEventListener("change", updateQuote);
+});
+
+hoursInput?.addEventListener("input", updateQuote);
+hoursInput?.addEventListener("change", updateQuote);
+hoursInput?.addEventListener("blur", () => {
+  const value = getHoursValue();
+  if (value === "" || value < 2) {
+    hoursInput.value = "2";
+  }
+  updateQuote();
 });
 
 bookingForm?.addEventListener("submit", (event) => {
@@ -258,9 +259,7 @@ bookingForm?.addEventListener("submit", (event) => {
 
   updateQuote();
 
-  if (!validateForm()) {
-    return;
-  }
+  if (!validateForm()) return;
 
   const booking = {
     name: nameInput?.value.trim() || "",
@@ -286,7 +285,6 @@ bookingForm?.addEventListener("submit", (event) => {
   const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(whatsappMessage)}`;
 
   window.open(whatsappURL, "_blank", "noopener");
-
   resetBookingForm();
 });
 
@@ -350,11 +348,11 @@ if (year) {
   year.textContent = new Date().getFullYear();
 }
 
-if (hoursInput) {
+if (hoursInput && !hoursInput.value) {
   hoursInput.value = "2";
 }
 
-if (timeInput) {
+if (timeInput && !timeInput.value) {
   timeInput.value = "10:00";
 }
 
