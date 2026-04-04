@@ -37,12 +37,6 @@
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-  <script>
-    if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
-    }
-  </script>
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -74,7 +68,7 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body>
   <header class="site-header">
@@ -84,6 +78,15 @@
       </a>
 
       <div class="header-right">
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a class="header-cta" href="#booking">Book Now</a>
+
         <button
           class="menu-toggle"
           id="menuToggle"
@@ -132,6 +135,7 @@
         <a href="#how" class="menu-item">How It Works</a>
         <a href="#reviews" class="menu-item">Reviews</a>
         <a href="#contact" class="menu-item">Contact</a>
+        <a href="#faq" class="menu-item">FAQ</a>
       </nav>
 
       <div class="premium-menu-divider"></div>
@@ -164,6 +168,17 @@
             <span>5-star rated across London</span>
           </div>
 
+          <div class="hero-proof">
+            <div class="proof-badge">Fully vetted cleaners</div>
+            <div class="proof-badge">Instant quote</div>
+            <div class="proof-badge">Available across London</div>
+          </div>
+
+          <div class="hero-google-proof" aria-label="Google review summary">
+            <strong>Google Reviews</strong>
+            <span>5-star rated by London clients</span>
+          </div>
+
           <div class="hero-actions">
             <a class="btn btn-gold" href="#booking">Book a Cleaning</a>
           </div>
@@ -178,6 +193,11 @@
         </div>
 
         <aside class="booking-card" id="booking">
+          <div class="booking-meta">
+            <span>Premium booking</span>
+            <small>Takes less than 60 seconds</small>
+          </div>
+
           <div class="booking-card-head">
             <h2>Book a Cleaning</h2>
             <p>Choose your service, date and extras in minutes.</p>
@@ -343,16 +363,19 @@
 
         <div class="service-grid three-grid">
           <article class="service-card">
+            <div class="card-icon" aria-hidden="true">✓</div>
             <h3>Trusted professionals</h3>
             <p>Carefully vetted cleaners with a dependable, respectful approach.</p>
           </article>
 
           <article class="service-card">
+            <div class="card-icon" aria-hidden="true">✓</div>
             <h3>Consistent quality</h3>
             <p>High standards on every visit, from regular cleans to detailed deep cleans.</p>
           </article>
 
           <article class="service-card">
+            <div class="card-icon" aria-hidden="true">✓</div>
             <h3>Flexible scheduling</h3>
             <p>Book around your routine with convenient London-wide availability.</p>
           </article>
@@ -490,6 +513,32 @@
       </div>
     </section>
 
+    <section class="section faq reveal" id="faq">
+      <div class="container">
+        <div class="section-title center">
+          <span>Frequently asked questions</span>
+          <h2>Everything you need to know</h2>
+        </div>
+
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3>How quickly can I book?</h3>
+            <p>Most bookings take less than 60 seconds to request online.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Are your cleaners vetted?</h3>
+            <p>Yes, all cleaners are carefully vetted before joining Nestlyn Clean.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Do you cover all London?</h3>
+            <p>We cover a wide range of London areas and continue expanding availability.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section contact reveal" id="contact">
       <div class="container contact-grid">
         <div>
@@ -502,6 +551,11 @@
             We provide luxury home cleaning across London, with bookings available Monday to
             Saturday from 8:00am to 6:00pm.
           </p>
+
+          <div class="contact-actions">
+            <a class="btn btn-gold" href="#booking">Book Now</a>
+            <a class="btn btn-secondary" href="tel:+442081035100">Call Us</a>
+          </div>
 
           <div class="contact-cards">
             <a
@@ -541,12 +595,25 @@
         </div>
       </div>
     </section>
+
+    <section class="section final-cta">
+      <div class="container final-cta-card">
+        <span>Book with confidence</span>
+        <h2>Premium home cleaning, ready when you are</h2>
+        <p>Choose your service, date and extras in under a minute.</p>
+        <div class="final-cta-actions">
+          <a class="btn btn-gold" href="#booking">Book a Cleaning</a>
+          <a class="btn btn-secondary" href="tel:+442081035100">Call 020 8103 5100</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-wrap">
       <div class="footer-summary">
         <p>© <span id="year"></span> Nestlyn Clean</p>
+        <p class="footer-tagline">Trusted premium home cleaning across London.</p>
         <p>
           Luxury home cleaning across London •
           <a href="privacy-policy.html">Privacy Policy</a> •
@@ -588,6 +655,6 @@
     </a>
   </div>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
