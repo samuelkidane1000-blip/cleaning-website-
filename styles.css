@@ -1489,3 +1489,75 @@ main {
     transform: none !important;
   }
 }
+html,
+body {
+  overflow-x: hidden !important;
+  max-width: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+main,
+section,
+div,
+form,
+aside,
+article,
+header,
+footer {
+  max-width: 100%;
+}
+
+input,
+select,
+textarea,
+button {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero-grid,
+  .form-row,
+  .contact-cards,
+  .steps-grid,
+  .service-grid,
+  .three-grid,
+  .faq-list,
+  .pricing-wrap,
+  .footer-wrap,
+  .trust-items {
+    grid-template-columns: 1fr !important;
+  }
+
+  .booking-card,
+  .service-card,
+  .contact-card,
+  .pricing-panel,
+  .promo-card,
+  .faq-item,
+  .testimonial-card,
+  .steps-grid article {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .booking-form input,
+  .booking-form select,
+  .booking-form textarea,
+  .btn,
+  .btn-full,
+  .quote-box {
+    max-width: 100%;
+  }
+}
