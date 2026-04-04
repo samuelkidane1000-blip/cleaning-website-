@@ -1,13 +1,5 @@
 document.documentElement.classList.add("js-reveal");
 
-if ("scrollRestoration" in history) {
-  history.scrollRestoration = "manual";
-}
-
-window.addEventListener("load", () => {
-  window.scrollTo(0, 0);
-});
-
 const serviceSelect = document.getElementById("service");
 const hoursInput = document.getElementById("hours");
 const ovenInput = document.getElementById("oven");
