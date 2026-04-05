@@ -1978,3 +1978,41 @@ main {
     color: var(--gold-soft);
   }
 }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Bigger logo */
+.logo img {
+  height: 42px; /* increase this */
+  width: auto;
+}
+
+/* Company name */
+.logo-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  color: #d4af7f; /* gold */
+  letter-spacing: 0.5px;
+}
+
+/* Make "Clean" slightly bolder */
+.logo-text strong {
+  font-weight: 700;
+}
+.logo-text {
+  font-size: 22px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+@media (max-width: 600px) {
+  .logo-text {
+    font-size: 16px;
+  }
+
+  .logo img {
+    height: 32px;
+  }
+}
