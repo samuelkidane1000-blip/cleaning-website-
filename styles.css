@@ -1386,3 +1386,22 @@ main {
     transform: none !important;
   }
 }
+.hero-call-now {
+  margin: 0 0 16px;
+  color: var(--gold-soft);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.hero-call-now a {
+  color: var(--gold-soft);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .hero-call-now {
+    font-size: 0.98rem;
+    margin: 0 0 14px;
+  }
+}
