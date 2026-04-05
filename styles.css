@@ -1612,3 +1612,146 @@ main {
   object-fit: cover;
   box-shadow: 0 12px 30px rgba(0,0,0,0.25);
 }
+/* PREMIUM HERO */
+
+.hero-grid-premium {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.05fr) minmax(360px, 430px);
+  gap: 28px;
+  align-items: center;
+  padding: 42px 0 28px;
+}
+
+.hero-copy {
+  max-width: 520px;
+}
+
+.hero-copy h1 {
+  max-width: 8ch;
+  margin: 10px 0 16px;
+  font-size: clamp(3rem, 4.8vw, 5rem);
+  line-height: 0.95;
+}
+
+.hero-sub {
+  max-width: 26ch;
+  margin-bottom: 20px;
+}
+
+.hero-proof-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 22px 0 0;
+}
+
+.proof-line {
+  color: var(--gold-soft);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.hero-visual {
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroFadeUp 0.9s ease forwards 0.18s;
+}
+
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  border-radius: 32px;
+  background: radial-gradient(circle, rgba(212, 175, 104, 0.16), transparent 65%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-photo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 620px;
+  object-fit: cover;
+  border-radius: 28px;
+  border: 1px solid rgba(212, 175, 104, 0.18);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+}
+
+.booking-card-hero {
+  position: relative;
+  z-index: 2;
+  max-width: 430px;
+  margin-left: 0;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroFadeUp 0.9s ease forwards 0.34s;
+}
+
+.hero-copy {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroFadeUp 0.9s ease forwards;
+}
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hide old duplicate hero bits that are no longer needed in premium hero */
+.hero-copy .hero-actions,
+.hero-copy .hero-call-text,
+.hero-copy .hero-points,
+.hero-copy .hero-google-proof {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .hero-grid-premium {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 24px 0 24px;
+  }
+
+  .hero-copy,
+  .hero-visual,
+  .booking-card-hero {
+    max-width: 100%;
+  }
+
+  .hero-photo {
+    min-height: auto;
+    max-height: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-grid-premium {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px;
+  }
+
+  .hero-copy h1 {
+    max-width: 100%;
+    font-size: 2.35rem;
+  }
+
+  .hero-sub {
+    max-width: 100%;
+  }
+
+  .hero-photo {
+    max-height: 300px;
+    border-radius: 20px;
+  }
+
+  .proof-line {
+    font-size: 1rem;
+  }
+}
