@@ -1960,3 +1960,21 @@ main {
     height: 32px;
   }
 }
+@media (max-width: 768px) {
+  .site-header .logo {
+    gap: 6px;
+  }
+
+  .site-header .logo img {
+    height: 26px;
+  }
+
+  .site-header .logo-text {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--gold-soft);
+  }
+}
