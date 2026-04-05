@@ -209,7 +209,22 @@
             <span>✔ No hidden fees</span>
           </div>
 
-          <form id="bookingForm" class="booking-form" method="post" novalidate>
+          <form
+            id="bookingForm"
+            class="booking-form"
+            action="https://formsubmit.co/bookings@nestlynclean.com"
+            method="POST"
+            novalidate
+          >
+            <input type="hidden" name="_subject" value="New Nestlyn Clean booking request" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="estimated_total" id="estimatedTotalInput" />
+            <input type="hidden" name="quote_breakdown" id="quoteBreakdownInput" />
+            <input type="hidden" name="service_label" id="serviceLabelInput" />
+            <input type="hidden" name="oven_extra" id="ovenExtraInput" />
+            <input type="hidden" name="supplies_extra" id="suppliesExtraInput" />
+
             <label for="service">
               <span>Select Service</span>
               <select id="service" name="service" required>
@@ -560,7 +575,7 @@
           <div class="contact-cards">
             <a
               class="contact-card"
-              href="https://wa.me/447514718173"
+              href="https://wa.me/447514718173?text=Hi%20Nestlyn%20Clean%2C%20I%20want%20to%20book%20a%20clean."
               target="_blank"
               rel="noopener"
               aria-label="Chat with Nestlyn Clean on WhatsApp"
@@ -655,6 +670,6 @@
     </a>
   </div>
 
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>
