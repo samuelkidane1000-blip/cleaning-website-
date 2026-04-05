@@ -1960,3 +1960,68 @@ main {
     height: 32px;
   }
 }
+/* HEADER LOGO FINAL FIX */
+
+.site-header .nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-header .logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.site-header .logo img {
+  display: block;
+  height: 34px;
+  width: auto;
+  object-fit: contain;
+}
+
+.site-header .logo-text {
+  display: inline-block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: var(--gold-soft);
+  white-space: nowrap;
+  margin: 0;
+}
+
+.site-header .header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+@media (min-width: 1101px) {
+  .site-header .logo img {
+    height: 36px;
+  }
+
+  .site-header .logo-text {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header .logo {
+    gap: 0;
+  }
+
+  .site-header .logo img {
+    height: 30px;
+  }
+
+  .site-header .logo-text {
+    display: none;
+  }
+}
