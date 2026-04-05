@@ -150,200 +150,167 @@
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-overlay" aria-hidden="true"></div>
 
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">Trusted across London</div>
+      <div class="container hero-grid hero-grid-premium">
+  <div class="hero-copy">
+    <div class="eyebrow">Trusted across London</div>
 
-          <h1>Reliable Home Cleaning in London</h1>
+    <div class="hero-rating" aria-label="5-star rated across London">
+      <span aria-hidden="true">★★★★★</span>
+      <span>5-star rated across London</span>
+    </div>
 
-          <p class="hero-sub">
-            Reliable regular, one-off and deep cleaning across London. Book in under 60 seconds.
-          </p>
+    <h1>Reliable Home Cleaning in London</h1>
 
-          <div class="hero-rating" aria-label="5-star rated across London">
-            <span aria-hidden="true">★★★★★</span>
-            <span>5-star rated across London</span>
-          </div>
-          <div class="hero-image">
-  <img src="A34D160A-371F-408D-9D8F-B62A08B67B2C.png" alt="Professional cleaner in a modern London home" />
-</div>
-          <div class="hero-proof">
-            <div class="proof-badge">Fully vetted cleaners</div>
-            <div class="proof-badge">Instant quote</div>
-            <div class="proof-badge">Available across London</div>
-            <div class="proof-badge">Same cleaner for regular cleaning</div>
-          </div>
+    <p class="hero-sub">
+      Reliable regular, one-off and deep cleaning across London. Book in under 60 seconds.
+    </p>
 
-          <div class="hero-google-proof" aria-label="Google review summary">
-            <strong>Google Reviews</strong>
-            <span>5-star rated by London clients</span>
-          </div>
+    <div class="hero-proof hero-proof-list">
+      <div class="proof-line">✔ Fully vetted cleaners</div>
+      <div class="proof-line">✔ Instant quote</div>
+      <div class="proof-line">✔ Available across London</div>
+      <div class="proof-line">✔ Same cleaner for regular cleaning</div>
+    </div>
+  </div>
 
-          <div class="hero-actions">
-            <a class="btn btn-gold" href="#booking">Check Availability &amp; Book</a>
-          </div>
+  <div class="hero-visual">
+    <img
+      src="A34D160A-371F-408D-9D8F-B62A08B67B2C.png"
+      alt="Professional cleaner in a modern London home"
+      class="hero-photo"
+    />
+  </div>
 
-          <p class="hero-call-text">
-            Prefer to speak? <a href="tel:+442081035100">Call 020 8103 5100</a>
-          </p>
+  <aside class="booking-card booking-card-hero" id="booking">
+    <div class="booking-meta">
+      <span>Check Availability &amp; Book</span>
+      <small>Takes less than 60 seconds</small>
+    </div>
 
-          <div class="hero-points">
-            <span>Fully vetted &amp; insured cleaners</span>
-          </div>
-        </div>
+    <div class="booking-card-head">
+      <h2>Check Availability &amp; Book</h2>
+      <p>Choose your service, date and extras in minutes.</p>
+    </div>
 
-        <aside class="booking-card" id="booking">
-          <div class="booking-meta">
-            <span>Premium booking</span>
-            <small>Takes less than 60 seconds</small>
-          </div>
+    <div class="booking-trust">
+      <span>✔ Same cleaner for regular cleaning</span>
+      <span>✔ No hidden fees</span>
+      <span>✔ We’ll confirm your booking shortly</span>
+    </div>
 
-          <div class="booking-card-head">
-            <h2>Book a Cleaning</h2>
-            <p>Choose your service, date and extras in minutes.</p>
-          </div>
+    <form
+      id="bookingForm"
+      class="booking-form"
+      action="https://formsubmit.co/bookings@nestlynclean.com"
+      method="POST"
+      novalidate
+    >
+      <input type="hidden" name="_subject" value="New Nestlyn Clean booking request" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="estimated_total" id="estimatedTotalInput" />
+      <input type="hidden" name="quote_breakdown" id="quoteBreakdownInput" />
+      <input type="hidden" name="service_label" id="serviceLabelInput" />
+      <input type="hidden" name="oven_extra" id="ovenExtraInput" />
+      <input type="hidden" name="supplies_extra" id="suppliesExtraInput" />
 
-          <div class="booking-trust">
-            <span>✔ Same cleaner for regular cleaning</span>
-            <span>✔ No hidden fees</span>
-            <span>✔ We’ll confirm your booking shortly</span>
-          </div>
+      <label for="service">
+        <span>Select Service</span>
+        <select id="service" name="service" required>
+          <option value="16.95" data-label="Regular cleaning">Regular cleaning — £16.95/h</option>
+          <option value="19" data-label="One-off clean">One-off clean — £19/h</option>
+          <option value="23" data-label="Deep cleaning">Deep cleaning — £23/h</option>
+        </select>
+      </label>
 
-          <form
-            id="bookingForm"
-            class="booking-form"
-            action="https://formsubmit.co/bookings@nestlynclean.com"
-            method="POST"
-            novalidate
-          >
-            <input type="hidden" name="_subject" value="New Nestlyn Clean booking request" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="estimated_total" id="estimatedTotalInput" />
-            <input type="hidden" name="quote_breakdown" id="quoteBreakdownInput" />
-            <input type="hidden" name="service_label" id="serviceLabelInput" />
-            <input type="hidden" name="oven_extra" id="ovenExtraInput" />
-            <input type="hidden" name="supplies_extra" id="suppliesExtraInput" />
+      <div class="form-row">
+        <label for="frequency">
+          <span>Frequency</span>
+          <select id="frequency" name="frequency">
+            <option>Weekly</option>
+            <option>Fortnightly</option>
+            <option>One payment</option>
+          </select>
+        </label>
 
-            <label for="service">
-              <span>Select Service</span>
-              <select id="service" name="service" required>
-                <option value="16.95" data-label="Regular cleaning">Regular cleaning — £16.95/h</option>
-                <option value="19" data-label="One-off clean">One-off clean — £19/h</option>
-                <option value="23" data-label="Deep cleaning">Deep cleaning — £23/h</option>
-              </select>
-            </label>
-
-            <div class="form-row">
-              <label for="frequency">
-                <span>Frequency</span>
-                <select id="frequency" name="frequency">
-                  <option>Weekly</option>
-                  <option>Fortnightly</option>
-                  <option>One payment</option>
-                </select>
-              </label>
-
-              <label for="hours">
-                <span>Hours</span>
-                <input id="hours" name="hours" type="number" min="2" step="1" value="2" required />
-              </label>
-            </div>
-
-            <div class="form-row">
-              <label for="date">
-                <span>Date</span>
-                <input id="date" name="date" type="date" required />
-              </label>
-
-              <label for="time">
-                <span>Time</span>
-                <input id="time" name="time" type="time" min="08:00" max="18:00" value="10:00" required />
-              </label>
-            </div>
-
-            <fieldset class="extras">
-              <legend>Add Extras</legend>
-
-              <label class="check" for="oven">
-                <input type="checkbox" id="oven" name="extras_oven" value="25" />
-                <span>Inside oven clean <strong>+£25</strong></span>
-              </label>
-
-              <label class="check" for="supplies">
-                <input type="checkbox" id="supplies" name="extras_supplies" value="20" />
-                <span>Hoover &amp; mop provided by us <strong>+£20</strong></span>
-              </label>
-            </fieldset>
-
-            <div class="quote-box" aria-live="polite">
-              <div>
-                <small>Estimated total</small>
-                <strong id="quoteTotal">£33.90</strong>
-              </div>
-              <p id="quoteBreakdown">2 hours × £16.95 • Weekly service • No hidden fees</p>
-            </div>
-
-            <div class="form-row">
-              <label for="name">
-                <span>Name</span>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  autocomplete="name"
-                  placeholder="Your full name"
-                  required
-                />
-              </label>
-
-              <label for="phone">
-                <span>Phone</span>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  autocomplete="tel"
-                  inputmode="tel"
-                  placeholder="Your number"
-                  required
-                />
-              </label>
-            </div>
-
-            <label for="email">
-              <span>Email Address</span>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autocomplete="email"
-                placeholder="Your email address"
-                required
-              />
-            </label>
-
-            <label class="check consent-check" for="consent">
-              <input type="checkbox" id="consent" name="consent" required />
-              <span>
-                I agree to be contacted about my booking and have read the
-                <a href="privacy-policy.html">Privacy Policy</a>.
-              </span>
-            </label>
-
-            <button type="submit" class="btn btn-gold btn-full">Check Availability &amp; Book</button>
-
-            <p class="booking-note">
-              No payment required today. Minimum booking is 2 hours. Opening hours: Monday to Saturday, 8:00am to 6:00pm.
-            </p>
-          </form>
-
-          <div id="successMessage" class="success-message" hidden aria-live="polite" tabindex="-1">
-            <h3>Booking request received</h3>
-            <p id="successText">Thank you. Your booking has been received — we’ll be in touch shortly.</p>
-          </div>
-        </aside>
+        <label for="hours">
+          <span>Hours</span>
+          <input id="hours" name="hours" type="number" min="2" step="1" value="2" required />
+        </label>
       </div>
+
+      <div class="form-row">
+        <label for="date">
+          <span>Date</span>
+          <input id="date" name="date" type="date" required />
+        </label>
+
+        <label for="time">
+          <span>Time</span>
+          <input id="time" name="time" type="time" min="08:00" max="18:00" value="10:00" required />
+        </label>
+      </div>
+
+      <fieldset class="extras">
+        <legend>Add Extras</legend>
+
+        <label class="check" for="oven">
+          <input type="checkbox" id="oven" name="extras_oven" value="25" />
+          <span>Inside oven clean <strong>+£25</strong></span>
+        </label>
+
+        <label class="check" for="supplies">
+          <input type="checkbox" id="supplies" name="extras_supplies" value="20" />
+          <span>Hoover &amp; mop provided by us <strong>+£20</strong></span>
+        </label>
+      </fieldset>
+
+      <div class="quote-box" aria-live="polite">
+        <div>
+          <small>Estimated total</small>
+          <strong id="quoteTotal">£33.90</strong>
+        </div>
+        <p id="quoteBreakdown">2 hours × £16.95 • Weekly service • No hidden fees</p>
+      </div>
+
+      <div class="form-row">
+        <label for="name">
+          <span>Name</span>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="Your full name" required />
+        </label>
+
+        <label for="phone">
+          <span>Phone</span>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Your number" required />
+        </label>
+      </div>
+
+      <label for="email">
+        <span>Email Address</span>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="Your email address" required />
+      </label>
+
+      <label class="check consent-check" for="consent">
+        <input type="checkbox" id="consent" name="consent" required />
+        <span>
+          I agree to be contacted about my booking and have read the
+          <a href="privacy-policy.html">Privacy Policy</a>.
+        </span>
+      </label>
+
+      <button type="submit" class="btn btn-gold btn-full">Check Availability &amp; Book</button>
+
+      <p class="booking-note">
+        No payment required today. Minimum booking is 2 hours. Opening hours: Monday to Saturday, 8:00am to 6:00pm.
+      </p>
+    </form>
+
+    <div id="successMessage" class="success-message" hidden aria-live="polite" tabindex="-1">
+      <h3>Booking request received</h3>
+      <p id="successText">Thank you. Your booking has been received — we’ll be in touch shortly.</p>
+    </div>
+  </aside>
+</div>
     </section>
 
     <section class="trust-bar reveal">
