@@ -1,1935 +1,647 @@
-:root {
-  --bg: #141417;
-  --bg-soft: #1a1a1f;
-  --panel: rgba(30, 30, 36, 0.96);
-  --panel-2: rgba(24, 24, 30, 0.94);
-  --gold: #d4af68;
-  --gold-soft: #ead7b0;
-  --line: rgba(212, 175, 104, 0.18);
-  --text: #f5f1e8;
-  --muted: #b7b0a3;
-  --white: #fff;
-  --shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
-  --radius: 22px;
-  --max: 1200px;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  min-width: 0;
-}
-
-html,
-body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden !important;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  background:
-    radial-gradient(circle at 12% 10%, rgba(212, 175, 104, 0.1), transparent 24%),
-    radial-gradient(circle at 88% 16%, rgba(212, 175, 104, 0.06), transparent 18%),
-    linear-gradient(180deg, #141417 0%, #1a1a1f 45%, #151519 100%);
-  color: var(--text);
-  position: relative;
-  overflow-x: hidden !important;
-}
-
-body.menu-open {
-  overflow: hidden;
-}
-
-img,
-svg,
-video,
-canvas,
-iframe {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
-
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-  outline: 3px solid rgba(212, 175, 104, 0.85);
-  outline-offset: 3px;
-}
-
-h1,
-h2,
-h3,
-p,
-span,
-a,
-strong,
-small,
-label,
-button {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
-
-.container,
-.hero,
-.hero-grid,
-.section,
-.site-header,
-.site-footer,
-.booking-card,
-.service-card,
-.contact-card,
-.testimonial-card,
-.promo-card,
-.pricing-panel,
-.steps-grid article,
-.form-row,
-.contact-cards,
-.service-grid,
-.steps-grid,
-main,
-section,
-aside,
-article,
-header,
-footer,
-form,
-div {
-  max-width: 100%;
-}
-
-.container {
-  width: 100%;
-  max-width: var(--max);
-  margin: 0 auto;
-  padding-inline: 20px;
-}
-
-main {
-  width: 100%;
-  padding-top: 92px;
-  overflow-x: hidden;
-}
-
-/* Header */
-
-.site-header {
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 1000;
-  backdrop-filter: blur(18px);
-  background: rgba(20, 20, 24, 0.88);
-  border-bottom: 1px solid rgba(212, 175, 104, 0.14);
-}
-
-.site-header .nav-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  min-height: 84px;
-}
-
-.site-header .logo,
-.premium-menu-brand {
-  display: flex;
-  align-items: center;
-}
-
-.site-header .logo {
-  gap: 10px;
-  flex: 0 0 auto;
-  text-decoration: none;
-}
-
-.site-header .logo img {
-  display: block;
-  width: auto;
-  height: 40px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.18));
-}
-
-.site-header .logo-text {
-  display: inline-block;
-  margin: 0;
-  white-space: nowrap;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gold-soft);
-  opacity: 0.95;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-left: auto;
-}
-
-.desktop-nav {
-  display: none;
-  align-items: center;
-  gap: 28px;
-  margin-right: 18px;
-}
-
-.desktop-nav a {
-  color: var(--muted);
-  font-size: 0.96rem;
-  font-weight: 600;
-  transition: color 0.2s ease;
-}
-
-.desktop-nav a:hover {
-  color: var(--gold-soft);
-}
-
-.header-cta {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0 18px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #e3c98d 0%, #c59b57 100%);
-  color: #111;
-  font-weight: 800;
-  box-shadow: 0 10px 26px rgba(197, 155, 87, 0.16);
-  transition: transform 0.2s ease;
-}
-
-.header-cta:hover,
-.btn-gold:hover,
-.btn-secondary:hover,
-.menu-toggle:hover {
-  transform: translateY(-1px);
-}
-
-.menu-toggle {
-  width: 56px;
-  height: 56px;
-  flex: 0 0 auto;
-  border-radius: 16px;
-  border: 1px solid rgba(212, 175, 104, 0.18);
-  background: rgba(255, 255, 255, 0.03);
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  transition: 0.25s ease;
-}
-
-.menu-toggle:hover {
-  border-color: rgba(212, 175, 104, 0.45);
-}
-
-.menu-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  border-radius: 999px;
-  background: var(--gold-soft);
-}
-
-/* Menu */
-
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 990;
-  background: rgba(0, 0, 0, 0.48);
-  backdrop-filter: blur(6px);
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.28s ease;
-}
-
-.menu-overlay.is-open {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.premium-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 1001;
-  width: min(420px, 92vw);
-  max-width: 100%;
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  background:
-    radial-gradient(circle at top right, rgba(212, 175, 104, 0.08), transparent 28%),
-    linear-gradient(180deg, #16161b 0%, #1e1e24 100%);
-  border-left: 1px solid var(--line);
-  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(20px);
-  transform: translateX(100%);
-  transition: transform 0.32s ease;
-}
-
-.premium-menu[aria-hidden="true"] {
-  visibility: hidden;
-}
-
-.premium-menu.is-open[aria-hidden="false"] {
-  visibility: visible;
-  transform: translateX(0);
-}
-
-.premium-menu-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 26px 22px 18px;
-  border-bottom: 1px solid var(--line);
-}
-
-.menu-brand-logo {
-  height: 70px;
-  width: auto;
-}
-
-.menu-close {
-  width: 48px;
-  height: 48px;
-  flex: 0 0 auto;
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--text);
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.menu-close:hover {
-  border-color: rgba(212, 175, 104, 0.45);
-}
-
-.premium-menu-body {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 24px 22px 28px;
-  overflow-y: auto;
-}
-
-.premium-menu-eyebrow,
-.eyebrow,
-.section-title span,
-.testimonial-card > span,
-.final-cta-card > span {
-  color: var(--gold-soft);
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  font-size: 0.75rem;
-}
-
-.premium-menu-eyebrow {
-  margin: 0 0 18px;
-}
-
-.premium-menu-nav.compact {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.premium-menu-nav.compact a {
-  display: block;
-  padding: 18px 20px;
-  border-radius: 18px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid transparent;
-  transition: all 0.25s ease;
-}
-
-.premium-menu-nav.compact a:hover,
-.premium-menu-nav.compact a.is-active {
-  background: rgba(212, 175, 104, 0.08);
-  border-color: rgba(212, 175, 104, 0.25);
-  color: var(--gold-soft);
-}
-
-.premium-menu-divider {
-  height: 1px;
-  margin: 26px 0;
-  background: var(--line);
-}
-
-.premium-menu-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: auto;
-  padding-top: 24px;
-}
-
-.premium-menu-btn,
-.premium-menu-call {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 56px;
-  border-radius: 18px;
-  font-weight: 800;
-}
-
-.premium-menu-btn {
-  background: linear-gradient(180deg, #e3c98d 0%, #c59b57 100%);
-  color: #111;
-  font-size: 1.1rem;
-  box-shadow: 0 10px 30px rgba(212, 175, 104, 0.16);
-}
-
-.premium-menu-call {
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.02);
-  color: var(--text);
-}
-
-/* Hero */
-
-.hero {
-  position: relative;
-  min-height: auto;
-  display: flex;
-  align-items: flex-start;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 16% 18%, rgba(212, 175, 104, 0.14), transparent 26%),
-    radial-gradient(circle at 84% 20%, rgba(212, 175, 104, 0.08), transparent 20%),
-    linear-gradient(135deg, #17171b 0%, #1f1f25 52%, #221c19 100%);
-}
-
-.hero-bg {
-  display: none !important;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(12, 12, 14, 0.12) 0%,
-      rgba(12, 12, 14, 0.18) 38%,
-      rgba(12, 12, 14, 0.24) 72%,
-      rgba(12, 12, 14, 0.32) 100%
-    );
-}
-
-.hero-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  width: 100%;
-  padding: 52px 0 40px;
-}
-
-.hero-grid-premium {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.05fr) minmax(360px, 430px);
-  gap: 20px;
-  align-items: start;
-  padding: 26px 0 18px;
-}
-
-.hero-copy {
-  max-width: 520px;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: heroFadeUp 0.9s ease forwards;
-}
-
-.hero-copy h1 {
-  max-width: 8ch;
-  margin: 8px 0 12px;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2.7rem, 4.2vw, 4.4rem);
-  line-height: 0.94;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-.hero-sub {
-  max-width: 24ch;
-  margin-bottom: 14px;
-  color: #ddd5c6;
-  font-size: 1.05rem;
-  line-height: 1.65;
-}
-
-.hero-rating {
-  display: inline-flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 8px 0 10px;
-  color: var(--gold-soft);
-  font-weight: 700;
-}
-
-.hero-proof,
-.hero-points,
-.hero-actions,
-.contact-actions,
-.final-cta-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.hero-proof {
-  margin: 14px 0 16px;
-}
-
-.hero-proof-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 14px 0 0;
-}
-
-.proof-badge,
-.hero-points span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 38px;
-  padding: 0 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(212, 175, 104, 0.14);
-  background: rgba(255, 255, 255, 0.03);
-  color: #e8dfd0;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.proof-line {
-  color: var(--gold-soft);
-  font-size: 0.98rem;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-.hero-google-proof {
-  display: inline-flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 0 0 18px;
-  padding: 12px 16px;
-  border-radius: 16px;
-  border: 1px solid rgba(212, 175, 104, 0.14);
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.hero-google-proof strong {
-  color: var(--gold-soft);
-  font-size: 0.95rem;
-}
-
-.hero-google-proof span {
-  color: var(--muted);
-  font-size: 0.94rem;
-}
-
-.hero-actions {
-  margin: 18px 0 8px;
-}
-
-.hero-call-text {
-  margin: 0 0 18px;
-  color: var(--muted);
-  font-size: 0.96rem;
-}
-
-.hero-call-text a {
-  color: var(--gold-soft);
-  font-weight: 700;
-}
-
-.hero-points {
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-.hero-visual {
-  position: relative;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: heroFadeUp 0.9s ease forwards 0.18s;
-}
-
-.hero-visual::before {
-  content: "";
-  position: absolute;
-  inset: -24px;
-  border-radius: 32px;
-  background: radial-gradient(circle, rgba(212, 175, 104, 0.16), transparent 65%);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.hero-photo {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  min-height: 500px;
-  max-height: 560px;
-  object-fit: cover;
-  border-radius: 28px;
-  border: 1px solid rgba(212, 175, 104, 0.18);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
-}
-
-.hero-copy .hero-actions,
-.hero-copy .hero-call-text,
-.hero-copy .hero-points,
-.hero-copy .hero-google-proof {
-  display: none;
-}
-
-@keyframes heroFadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Buttons */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 100%;
-  padding: 15px 24px;
-  border-radius: 18px;
-  font-weight: 700;
-  transition: 0.2s ease;
-}
-
-.btn-gold {
-  background: linear-gradient(180deg, #e3c98d 0%, #c59b57 100%);
-  color: #111;
-  box-shadow: 0 12px 26px rgba(197, 155, 87, 0.16);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--text);
-  border: 1px solid rgba(212, 175, 104, 0.16);
-}
-
-.btn-secondary:hover {
-  border-color: rgba(212, 175, 104, 0.32);
-}
-
-.btn-full {
-  width: 100%;
-}
-
-/* Booking */
-
-#booking,
-#contact {
-  scroll-margin-top: 110px;
-}
-
-.booking-card {
-  align-self: start;
-  justify-self: stretch;
-  width: 100%;
-  max-width: 460px;
-  min-width: 0;
-  margin-left: auto;
-  padding: 24px;
-  background: linear-gradient(180deg, rgba(30, 30, 36, 0.96), rgba(20, 20, 26, 0.98));
-  border: 1px solid rgba(212, 175, 104, 0.18);
-  border-radius: 28px;
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.24),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-}
-
-.booking-card-hero {
-  position: relative;
-  z-index: 2;
-  max-width: 430px;
-  margin-left: 0;
-  padding: 20px;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: heroFadeUp 0.9s ease forwards 0.34s;
-}
-
-.booking-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(212, 175, 104, 0.12);
-}
-
-.booking-meta span {
-  color: var(--gold-soft);
-  font-size: 0.82rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.booking-meta small {
-  color: var(--muted);
-  font-size: 0.84rem;
-}
-
-.booking-card-head h2 {
-  margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
-.booking-card-head p {
-  margin: 6px 0 12px;
-  color: var(--muted);
-}
-
-.booking-trust {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin: 0 0 10px;
-  color: var(--gold-soft);
-  font-size: 0.92rem;
-}
-
-.booking-form,
-.booking-form label,
-.extras {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-}
-
-.booking-form label,
-.extras {
-  margin-bottom: 10px;
-}
-
-.booking-form label > span,
-.booking-form legend {
-  display: block;
-  margin-bottom: 8px;
-  color: #ece5d8;
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.booking-form input,
-.booking-form select,
-.booking-form textarea {
-  width: 100%;
-  max-width: 100%;
-  min-height: 48px;
-  padding: 11px 13px;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--white);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 14px;
-  font-size: 0.98rem;
-  outline: none;
-  transition: border-color 0.2s ease, background 0.2s ease;
-}
-
-.booking-form input:focus,
-.booking-form select:focus,
-.booking-form textarea:focus {
-  border-color: rgba(212, 175, 104, 0.34);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.booking-form input::placeholder {
-  color: #a8a090;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  width: 100%;
-}
-
-.extras {
-  margin: 8px 0 10px;
-  padding: 14px 16px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-}
-
-.check,
-.consent-check {
-  display: grid !important;
-  grid-template-columns: 22px 1fr;
-  align-items: start;
-  gap: 12px;
-  width: 100%;
-}
-
-.check input,
-.consent-check input {
-  width: 22px;
-  height: 22px;
-  margin: 0;
-  accent-color: var(--gold);
-}
-
-.check span,
-.consent-check span {
-  display: block;
-  width: 100%;
-  min-width: 0;
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.5;
-  white-space: normal;
-  overflow-wrap: break-word;
-  word-break: normal;
-}
-
-.check strong {
-  color: var(--gold-soft);
-}
-
-.consent-check a {
-  color: var(--gold-soft);
-  text-decoration: underline;
-}
-
-.extras .check + .check {
-  margin-top: 14px;
-}
-
-.quote-box {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 14px;
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 12px;
-  background: rgba(212, 175, 104, 0.08);
-  border: 1px solid rgba(212, 175, 104, 0.16);
-  border-radius: 18px;
-}
-
-.quote-box small {
-  display: block;
-  margin-bottom: 4px;
-  color: var(--muted);
-}
-
-.quote-box strong {
-  font-size: 1.45rem;
-  color: var(--gold-soft);
-}
-
-.quote-box p {
-  margin: 0;
-  max-width: 230px;
-  text-align: right;
-  color: var(--muted);
-}
-
-.booking-note {
-  margin-bottom: 0;
-  color: var(--muted);
-  font-size: 0.8rem;
-  line-height: 1.45;
-}
-
-.success-message {
-  margin-top: 18px;
-  padding: 18px;
-  background: rgba(75, 181, 67, 0.12);
-  border: 1px solid rgba(75, 181, 67, 0.32);
-  border-radius: 18px;
-}
-
-/* Trust bar */
-
-.trust-bar {
-  width: 100%;
-  overflow-x: hidden;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.trust-items {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  text-align: center;
-  width: 100%;
-}
-
-.trust-items div {
-  padding: 20px 18px;
-  color: var(--gold-soft);
-  border-right: 1px solid var(--line);
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.trust-items div:last-child {
-  border-right: none;
-}
-
-/* Sections */
-
-.section {
-  width: 100%;
-  padding: 68px 0;
-  overflow-x: hidden;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.012), rgba(255, 255, 255, 0.004));
-}
-
-.section-title {
-  margin-bottom: 20px;
-}
-
-.section-title h2 {
-  margin: 10px 0 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2rem, 3vw, 3rem);
-  font-weight: 600;
-  line-height: 1.04;
-}
-
-.section-title.center {
-  text-align: center;
-}
-
-.steps-grid,
-.service-grid,
-.faq-list {
-  display: grid;
-  gap: 16px;
-  width: 100%;
-}
-
-.steps-grid,
-.service-grid,
-.three-grid,
-.faq-list {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.steps-grid article,
-.service-card,
-.pricing-panel,
-.testimonial-card,
-.contact-card,
-.promo-card,
-.faq-item {
-  width: 100%;
-  min-width: 0;
-  background: linear-gradient(180deg, rgba(34, 34, 40, 0.92), rgba(24, 24, 30, 0.94));
-  border: 1px solid rgba(212, 175, 104, 0.14);
-  border-radius: var(--radius);
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.steps-grid article,
-.service-card,
-.contact-card,
-.promo-card,
-.faq-item {
-  padding: 20px;
-}
-
-.card-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  margin-bottom: 14px;
-  border-radius: 50%;
-  background: rgba(212, 175, 104, 0.1);
-  color: var(--gold-soft);
-  font-size: 1.1rem;
-  font-weight: 800;
-}
-
-.step-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 58px;
-  height: 58px;
-  margin-bottom: 14px;
-  border-radius: 50%;
-  background: rgba(212, 175, 104, 0.1);
-  color: var(--gold-soft);
-  font-size: 1.55rem;
-  font-weight: 800;
-}
-
-.steps-grid p,
-.service-card p,
-.pricing-copy,
-.contact p,
-.contact-card span,
-.promo-card p,
-.faq-item p,
-.final-cta-card p {
-  color: var(--muted);
-  line-height: 1.75;
-}
-
-.service-card h3,
-.faq-item h3 {
-  margin-top: 0;
-  font-size: 1.35rem;
-}
-
-.price {
-  color: var(--gold-soft) !important;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-
-.promo-card span {
-  display: block;
-  margin-bottom: 10px;
-  color: var(--gold-soft);
-  font-weight: 700;
-  font-size: 1.05rem;
-}
-
-.promo-btn {
-  margin-top: 18px;
-}
-
-/* Pricing */
-
-.pricing-wrap {
-  display: grid;
-  grid-template-columns: 1fr 0.95fr;
-  gap: 20px;
-  align-items: start;
-  width: 100%;
-}
-
-.pricing-panel {
-  padding: 20px;
-}
-
-.pricing-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.pricing-row:last-child {
-  border-bottom: none;
-}
-
-/* Testimonial */
-
-.testimonial-card {
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 28px;
-  text-align: center;
-}
-
-.testimonial-card blockquote {
-  margin: 16px auto;
-  max-width: 22ch;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(1.35rem, 2.2vw, 2rem);
-  line-height: 1.3;
-}
-
-.testimonial-card p {
-  margin-bottom: 0;
-  color: var(--muted);
-}
-
-#reviews .service-card p:first-child {
-  margin-top: 0;
-}
-
-#reviews .service-card strong {
-  display: inline-block;
-  margin-top: 8px;
-}
-
-/* Contact */
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
-  width: 100%;
-}
-
-.contact-actions {
-  margin: 18px 0 10px;
-  gap: 10px;
-}
-
-.contact-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  width: 100%;
-  margin-top: 24px;
-}
-
-.contact-card {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 20px;
-}
-
-.contact-card strong {
-  color: var(--gold-soft);
-  font-size: 1.15rem;
-}
-
-.contact-card span {
-  word-break: break-word;
-}
-
-/* Final CTA */
-
-.final-cta-card {
-  width: 100%;
-  padding: 30px 22px;
-  text-align: center;
-  border-radius: 30px;
-  border: 1px solid rgba(212, 175, 104, 0.16);
-  background:
-    radial-gradient(circle at right top, rgba(212, 175, 104, 0.08), transparent 26%),
-    linear-gradient(180deg, rgba(34, 34, 40, 0.94), rgba(24, 24, 30, 0.96));
-  box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
-}
-
-.final-cta-card h2 {
-  margin: 0 0 10px;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(2rem, 3.2vw, 3.1rem);
-  line-height: 1.02;
-}
-
-.final-cta-card p {
-  max-width: 620px;
-  margin: 0 auto 16px;
-}
-
-.final-cta-actions {
-  justify-content: center;
-  gap: 10px;
-}
-
-/* Footer */
-
-.site-footer {
-  width: 100%;
-  padding: 18px 0 42px;
-  overflow-x: hidden;
-  border-top: 1px solid var(--line);
-  background: rgba(0, 0, 0, 0.18);
-}
-
-.footer-wrap {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 16px;
-  align-items: start;
-  width: 100%;
-  color: var(--muted);
-}
-
-.footer-summary p {
-  margin: 0 0 6px;
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.footer-summary a {
-  color: var(--gold-soft);
-}
-
-.footer-tagline {
-  color: var(--muted);
-  opacity: 0.92;
-}
-
-.footer-areas {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-start;
-}
-
-.footer-toggle {
-  padding: 12px 18px;
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text);
-  font-weight: 700;
-  font-size: 0.98rem;
-  cursor: pointer;
-}
-
-.footer-area-links {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 6px 14px;
-  max-width: 600px;
-  margin-top: 8px;
-}
-
-.footer-area-links[hidden] {
-  display: none !important;
-}
-
-.footer-area-links a {
-  color: var(--muted);
-  line-height: 1.5;
-  font-size: 0.85rem;
-}
-
-/* Reveal */
-
-.reveal {
-  opacity: 1;
-  transform: none;
-}
-
-.js-reveal .reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.js-reveal .reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Mobile sticky CTA */
-
-.mobile-sticky-book {
-  display: none;
-}
-
-/* Desktop nav */
-
-@media (min-width: 1101px) {
-  .desktop-nav,
-  .header-cta {
-    display: inline-flex;
-  }
-}
-
-/* Tablet + below */
-
-@media (max-width: 1100px) {
-  .hero-grid,
-  .pricing-wrap,
-  .steps-grid,
-  .service-grid,
-  .three-grid,
-  .faq-list,
-  .contact-cards,
-  .footer-wrap,
-  .trust-items,
-  .form-row {
-    grid-template-columns: 1fr !important;
-  }
-
-  .hero-grid {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    gap: 28px;
-    padding: 24px 0;
-  }
-
-  .hero-grid-premium {
-    grid-template-columns: 1fr;
-    gap: 22px;
-    padding: 24px 0;
-  }
-
-  .hero-copy,
-  .booking-card,
-  .pricing-panel,
-  .service-card,
-  .contact-card,
-  .promo-card,
-  .faq-item,
-  .testimonial-card,
-  .steps-grid article,
-  .hero-visual,
-  .booking-card-hero {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    margin-inline: 0;
-  }
-
-  .hero {
-    min-height: auto;
-  }
-
-  .hero-copy h1 {
-    max-width: none;
-  }
-
-  .hero-photo {
-    min-height: auto;
-    max-height: 420px;
-  }
-
-  .booking-card {
-    max-width: 100%;
-    margin-top: 20px !important;
-  }
-
-  .desktop-nav,
-  .header-cta {
-    display: none;
-  }
-}
-
-/* Mobile */
-
-@media (max-width: 768px) {
-  body {
-    padding-bottom: calc(84px + env(safe-area-inset-bottom));
-  }
-
-  main {
-    padding-top: 86px;
-  }
-
-  .container {
-    padding-inline: 16px;
-  }
-
-  .site-header .nav-wrap {
-    min-height: 82px;
-    padding: 8px 0;
-  }
-
-  .site-header .logo {
-    gap: 8px;
-  }
-
-  .site-header .logo img {
-    height: 28px;
-  }
-
-  .site-header .logo-text {
-    display: inline-block;
-    font-size: 0.82rem;
-    letter-spacing: 0.06em;
-  }
-
-  .menu-brand-logo {
-    height: 68px;
-  }
-
-  .hero-grid {
-    display: block !important;
-    padding: 18px 0 !important;
-  }
-
-  .hero-grid-premium {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 18px;
-  }
-
-  .hero-copy,
-  .booking-card,
-  .booking-form,
-  .form-row,
-  .extras,
-  .quote-box,
-  .hero,
-  main {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    overflow-x: hidden !important;
-  }
-
-  .hero-copy h1 {
-    max-width: 100%;
-    font-size: 2.35rem;
-    line-height: 1;
-  }
-
-  .hero-sub {
-    max-width: 100%;
-    margin-bottom: 12px;
-    font-size: 0.98rem;
-    line-height: 1.5;
-  }
-
-  .hero-photo {
-    max-height: 300px;
-    border-radius: 20px;
-  }
-
-  .proof-line {
-    font-size: 1rem;
-  }
-
-  .hero-proof,
-  .final-cta-actions,
-  .contact-actions,
-  .hero-points,
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-    width: 100%;
-  }
-
-  .hero-actions {
-    margin: 14px 0 8px;
-  }
-
-  .hero-actions .btn,
-  .btn,
-  .btn-full,
-  .btn-secondary,
-  .btn-gold {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .hero-google-proof {
-    width: 100%;
-  }
-
-  .booking-card {
-    padding: 18px 16px;
-    border-radius: 22px;
-  }
-
-  .booking-card-head h2 {
-    font-size: 1.95rem;
-  }
-
-  .booking-meta {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .form-row {
-    display: block !important;
-  }
-
-  .form-row > * + * {
-    margin-top: 14px !important;
-  }
-
-  .booking-form input,
-  .booking-form select,
-  .booking-form textarea,
-  .booking-form button {
-    min-height: 52px;
-    padding: 12px 14px;
-    font-size: 16px !important;
-  }
-
-  .quote-box {
-    display: grid;
-    gap: 8px;
-  }
-
-  .quote-box p {
-    max-width: 100%;
-    text-align: left;
-  }
-
-  .section {
-    padding: 56px 0;
-  }
-
-  .steps-grid article,
-  .service-card,
-  .pricing-panel,
-  .testimonial-card,
-  .contact-card,
-  .promo-card,
-  .faq-item,
-  .final-cta-card {
-    padding: 16px;
-    overflow: hidden;
-  }
-
-  .final-cta-card {
-    padding: 26px 18px;
-  }
-
-  .trust-items div {
-    border-right: none;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .trust-items div:last-child {
-    border-bottom: none;
-  }
-
-  .footer-area-links {
-    display: none;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .footer-area-links.is-open {
-    display: grid;
-  }
-
-  .mobile-sticky-book {
-    display: block;
-    position: fixed;
-    right: 12px;
-    bottom: calc(120px + env(safe-area-inset-bottom));
-    z-index: 50;
-  }
-
-  .mobile-sticky-book a {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 54px;
-    height: 54px;
-    overflow: hidden;
-    white-space: nowrap;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(135deg, #d6b36a, #f0d48a);
-    color: transparent;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-  }
-
-  .mobile-sticky-book a::before {
-    content: "☎";
-    position: absolute;
-    color: #111;
-    font-size: 1.25rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .site-header .logo {
-    gap: 6px;
-  }
-
-  .site-header .logo img {
-    height: 24px;
-  }
-
-  .site-header .logo-text {
-    font-size: 0.72rem;
-    letter-spacing: 0.05em;
-  }
-
-  .menu-brand-logo {
-    height: 64px;
-  }
-
-  .hero-copy h1 {
-    font-size: 2.05rem;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-  }
-
-  .reveal,
-  .js-reveal .reveal,
-  .js-reveal .reveal.is-visible,
-  .hero-copy,
-  .hero-visual,
-  .booking-card-hero {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-/* ===== FINAL IPHONE OVERFLOW FIX ===== */
-
-html,
-body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden !important;
-}
-
-body {
-  position: relative;
-}
-
-@media (max-width: 768px) {
-  body,
-  main,
-  .site-header,
-  .hero,
-  .hero-overlay,
-  .hero-grid,
-  .hero-grid-premium,
-  .hero-copy,
-  .hero-visual,
-  .hero-photo,
-  .booking-card,
-  .booking-card-hero,
-  .section,
-  .container,
-  .contact-grid,
-  .contact-cards,
-  .contact-card,
-  .final-cta-card,
-  .footer-wrap,
-  .footer-areas,
-  .footer-area-links {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    overflow-x: hidden !important;
-  }
-
-  .container {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
-
-  .hero-grid-premium {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 18px !important;
-    padding: 18px 0 !important;
-  }
-
-  .hero-copy h1 {
-    font-size: 2.2rem !important;
-    line-height: 1.02 !important;
-    max-width: 100% !important;
-    word-break: break-word !important;
-  }
-
-  .hero-sub,
-  .hero-rating,
-  .hero-proof-list,
-  .proof-line {
-    max-width: 100% !important;
-  }
-
-  .hero-photo {
-    width: 100% !important;
-    max-width: 100% !important;
-    max-height: 320px !important;
-    object-fit: cover !important;
-    border-radius: 20px !important;
-  }
-
-  .site-header .nav-wrap {
-    min-height: 82px !important;
-    gap: 10px !important;
-  }
-
-  .site-header .logo {
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-    overflow: hidden !important;
-  }
-
-  .site-header .logo img {
-    height: 24px !important;
-    width: auto !important;
-    flex: 0 0 auto !important;
-  }
-
-  .site-header .logo-text {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.04em !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    max-width: 145px !important;
-  }
-
-  .site-header .header-right {
-    flex: 0 0 auto !important;
-    margin-left: 0 !important;
-  }
-
-  .site-header .menu-toggle {
-    width: 54px !important;
-    height: 54px !important;
-  }
-
-  .contact-card span,
-  .footer-summary p,
-  .pricing-row span,
-  .pricing-row strong,
-  .booking-note,
-  .quote-box p {
-    overflow-wrap: anywhere !important;
-    word-break: break-word !important;
-  }
-
-  .mobile-sticky-book {
-    right: 12px !important;
-    bottom: calc(120px + env(safe-area-inset-bottom)) !important;
-  }
-}
-/* ===== FINAL REAL MOBILE FIX ===== */
-
-@media (max-width: 768px) {
-  html,
-  body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden !important;
-  }
-
-  body {
-    position: relative;
-  }
-
-  .container {
-    width: 100%;
-    max-width: 100%;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-    overflow-x: hidden !important;
-  }
-
-  .site-header,
-  main,
-  .hero,
-  .hero-overlay,
-  .hero-grid-premium,
-  .hero-copy,
-  .hero-visual,
-  .booking-card-hero,
-  .section,
-  .contact-grid,
-  .contact-cards,
-  .footer-wrap,
-  .final-cta-card,
-  .trust-items {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    overflow-x: hidden !important;
-  }
-
-  .hero-grid-premium {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 18px !important;
-    padding: 18px 0 24px !important;
-  }
-
-  .hero-copy {
-    order: 1;
-  }
-
-  .hero-visual {
-    order: 2;
-  }
-
-  .booking-card-hero {
-    order: 3;
-  }
-
-  .hero-copy h1 {
-    font-size: 2.15rem !important;
-    line-height: 1.02 !important;
-    max-width: 100% !important;
-    margin: 8px 0 14px !important;
-  }
-
-  .hero-sub {
-    max-width: 100% !important;
-    font-size: 0.98rem !important;
-    line-height: 1.5 !important;
-  }
-
-  .hero-rating,
-  .hero-proof-list,
-  .proof-line {
-    max-width: 100% !important;
-  }
-
-  .hero-photo {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    max-height: none !important;
-    min-height: 0 !important;
-    object-fit: cover !important;
-    border-radius: 20px !important;
-  }
-
-  .booking-card-hero,
-  .booking-card {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-  }
-
-  .site-header .nav-wrap {
-    min-height: 82px !important;
-    gap: 10px !important;
-  }
-
-  .site-header .logo {
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-    overflow: hidden !important;
-  }
-
-  .site-header .logo img {
-    width: auto !important;
-    height: 24px !important;
-    flex: 0 0 auto !important;
-  }
-
-  .site-header .logo-text {
-    display: inline-block !important;
-    max-width: 150px !important;
-    min-width: 0 !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    white-space: nowrap !important;
-    font-size: 0.72rem !important;
-    letter-spacing: 0.04em !important;
-  }
-
-  .site-header .header-right {
-    flex: 0 0 auto !important;
-    margin-left: 0 !important;
-  }
-
-  .site-header .menu-toggle {
-    width: 54px !important;
-    height: 54px !important;
-  }
-
-  .contact-card,
-  .service-card,
-  .faq-item,
-  .promo-card,
-  .pricing-panel,
-  .final-cta-card,
-  .testimonial-card {
-    overflow: hidden !important;
-  }
-
-  .contact-card span,
-  .footer-summary p,
-  .quote-box p,
-  .pricing-row span,
-  .pricing-row strong {
-    overflow-wrap: anywhere !important;
-    word-break: break-word !important;
-  }
-}
-/* FINAL MOBILE FIX - MUST BE LAST */
-
-html, body {
-  overflow-x: hidden !important;
-  width: 100% !important;
-  max-width: 100% !important;
-}
-
-/* Stop sideways movement from grid */
-.hero-grid-premium {
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-/* Prevent any element from stretching page */
-* {
-  max-width: 100%;
-}
+<!DOCTYPE html>
+<html lang="en-GB" id="top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="google-site-verification" content="y312vlRjilt_j-ze3IG9xMd0ua33MomItyl-Ik7zaoI" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#141417" />
+
+  <title>Nestlyn Clean | Reliable Home Cleaning in London</title>
+  <meta
+    name="description"
+    content="Reliable home cleaning across London. Book regular, one-off, or deep cleaning with Nestlyn Clean in under 60 seconds."
+  />
+  <link rel="canonical" href="https://www.nestlynclean.com/" />
+
+  <meta property="og:title" content="Nestlyn Clean | Reliable Home Cleaning in London" />
+  <meta
+    property="og:description"
+    content="Reliable regular, one-off and deep cleaning across London. Book in under 60 seconds."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.nestlynclean.com/" />
+  <meta property="og:site_name" content="Nestlyn Clean" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:image" content="https://www.nestlynclean.com/og-image.jpg" />
+  <meta property="og:image:alt" content="Nestlyn Clean reliable home cleaning in London" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nestlyn Clean | Reliable Home Cleaning in London" />
+  <meta
+    name="twitter:description"
+    content="Reliable regular, one-off and deep cleaning across London. Book in under 60 seconds."
+  />
+  <meta name="twitter:image" content="https://www.nestlynclean.com/og-image.jpg" />
+
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HouseCleaningService",
+    "name": "Nestlyn Clean",
+    "url": "https://www.nestlynclean.com/",
+    "logo": "https://www.nestlynclean.com/76493DF9-3749-4DA8-9654-C7F5FC583F85.png",
+    "image": "https://www.nestlynclean.com/og-image.jpg",
+    "telephone": "+442081035100",
+    "email": "info@nestlynclean.com",
+    "priceRange": "££",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "128 City Road",
+      "addressLocality": "London",
+      "postalCode": "EC1V 2NX",
+      "addressCountry": "GB"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "London"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css?v=20" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#top" class="logo" aria-label="Nestlyn Clean home">
+  <img src="./76493DF9-3749-4DA8-9654-C7F5FC583F85.png" alt="Nestlyn Clean logo" />
+
+  <span class="logo-text">
+    Nestlyn <strong>Clean</strong>
+  </span>
+</a>
+
+      <div class="header-right">
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a class="header-cta" href="#booking">Check Availability</a>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-label="Open menu"
+          aria-controls="premiumMenu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+
+  <aside
+    class="premium-menu"
+    id="premiumMenu"
+    aria-hidden="true"
+    aria-labelledby="menuTitle"
+  >
+    <div class="premium-menu-top">
+      <div class="premium-menu-brand">
+        <img
+          src="./76493DF9-3749-4DA8-9654-C7F5FC583F85.png"
+          alt="Nestlyn Clean logo"
+          class="menu-brand-logo"
+        />
+      </div>
+
+      <button class="menu-close" type="button" aria-label="Close menu">✕</button>
+    </div>
+
+    <div class="premium-menu-body">
+      <p class="premium-menu-eyebrow" id="menuTitle">Explore</p>
+
+      <nav class="premium-menu-nav compact" aria-label="Mobile navigation">
+        <a href="#top" class="menu-item is-active">Home</a>
+        <a href="#services" class="menu-item">Services</a>
+        <a href="#pricing" class="menu-item">Pricing</a>
+        <a href="#how" class="menu-item">How It Works</a>
+        <a href="#reviews" class="menu-item">Reviews</a>
+        <a href="#contact" class="menu-item">Contact</a>
+        <a href="#faq" class="menu-item">FAQ</a>
+      </nav>
+
+      <div class="premium-menu-divider"></div>
+
+      <div class="premium-menu-actions">
+        <a href="#booking" class="premium-menu-btn">Check Availability &amp; Book</a>
+        <a href="tel:02081035100" class="premium-menu-call">Call: 020 8103 5100</a>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="container hero-grid hero-grid-premium">
+  <div class="hero-copy">
+    <div class="eyebrow">Trusted across London</div>
+
+    <div class="hero-rating" aria-label="5-star rated across London">
+      <span aria-hidden="true">★★★★★</span>
+      <span>5-star rated across London</span>
+    </div>
+
+    <h1>Reliable Home Cleaning in London</h1>
+
+    <p class="hero-sub">
+      Reliable regular, one-off and deep cleaning across London. Book in under 60 seconds.
+    </p>
+
+    <div class="hero-proof hero-proof-list">
+      <div class="proof-line">✔ Fully vetted cleaners</div>
+      <div class="proof-line">✔ Instant quote</div>
+      <div class="proof-line">✔ Available across London</div>
+      <div class="proof-line">✔ Same cleaner for regular cleaning</div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <img
+      src="A34D160A-371F-408D-9D8F-B62A08B67B2C.png"
+      alt="Professional cleaner in a modern London home"
+      class="hero-photo"
+    />
+  </div>
+
+  <aside class="booking-card booking-card-hero" id="booking">
+    <div class="booking-meta">
+      <span>Check Availability &amp; Book</span>
+      <small>Takes less than 60 seconds</small>
+    </div>
+
+    <div class="booking-card-head">
+      <h2>Check Availability &amp; Book</h2>
+      <p>Choose your service, date and extras in minutes.</p>
+    </div>
+
+    <div class="booking-trust">
+      <span>✔ Same cleaner for regular cleaning</span>
+      <span>✔ No hidden fees</span>
+      <span>✔ We’ll confirm your booking shortly</span>
+    </div>
+
+    <form
+      id="bookingForm"
+      class="booking-form"
+      action="https://formsubmit.co/bookings@nestlynclean.com"
+      method="POST"
+      novalidate
+    >
+      <input type="hidden" name="_subject" value="New Nestlyn Clean booking request" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="estimated_total" id="estimatedTotalInput" />
+      <input type="hidden" name="quote_breakdown" id="quoteBreakdownInput" />
+      <input type="hidden" name="service_label" id="serviceLabelInput" />
+      <input type="hidden" name="oven_extra" id="ovenExtraInput" />
+      <input type="hidden" name="supplies_extra" id="suppliesExtraInput" />
+
+      <label for="service">
+        <span>Select Service</span>
+        <select id="service" name="service" required>
+          <option value="16.95" data-label="Regular cleaning">Regular cleaning — £16.95/h</option>
+          <option value="19" data-label="One-off clean">One-off clean — £19/h</option>
+          <option value="23" data-label="Deep cleaning">Deep cleaning — £23/h</option>
+        </select>
+      </label>
+
+      <div class="form-row">
+        <label for="frequency">
+          <span>Frequency</span>
+          <select id="frequency" name="frequency">
+            <option>Weekly</option>
+            <option>Fortnightly</option>
+            <option>One payment</option>
+          </select>
+        </label>
+
+        <label for="hours">
+          <span>Hours</span>
+          <input id="hours" name="hours" type="number" min="2" step="1" value="2" required />
+        </label>
+      </div>
+
+      <div class="form-row">
+        <label for="date">
+          <span>Date</span>
+          <input id="date" name="date" type="date" required />
+        </label>
+
+        <label for="time">
+          <span>Time</span>
+          <input id="time" name="time" type="time" min="08:00" max="18:00" value="10:00" required />
+        </label>
+      </div>
+
+      <fieldset class="extras">
+        <legend>Add Extras</legend>
+
+        <label class="check" for="oven">
+          <input type="checkbox" id="oven" name="extras_oven" value="25" />
+          <span>Inside oven clean <strong>+£25</strong></span>
+        </label>
+
+        <label class="check" for="supplies">
+          <input type="checkbox" id="supplies" name="extras_supplies" value="20" />
+          <span>Hoover &amp; mop provided by us <strong>+£20</strong></span>
+        </label>
+      </fieldset>
+
+      <div class="quote-box" aria-live="polite">
+        <div>
+          <small>Estimated total</small>
+          <strong id="quoteTotal">£33.90</strong>
+        </div>
+        <p id="quoteBreakdown">2 hours × £16.95 • Weekly service • No hidden fees</p>
+      </div>
+
+      <div class="form-row">
+        <label for="name">
+          <span>Name</span>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="Your full name" required />
+        </label>
+
+        <label for="phone">
+          <span>Phone</span>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Your number" required />
+        </label>
+      </div>
+
+      <label for="email">
+        <span>Email Address</span>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="Your email address" required />
+      </label>
+
+      <label class="check consent-check" for="consent">
+        <input type="checkbox" id="consent" name="consent" required />
+        <span>
+          I agree to be contacted about my booking and have read the
+          <a href="privacy-policy.html">Privacy Policy</a>.
+        </span>
+      </label>
+
+      <button type="submit" class="btn btn-gold btn-full">Check Availability &amp; Book</button>
+
+      <p class="booking-note">
+        No payment required today. Minimum booking is 2 hours. Opening hours: Monday to Saturday, 8:00am to 6:00pm.
+      </p>
+    </form>
+
+    <div id="successMessage" class="success-message" hidden aria-live="polite" tabindex="-1">
+      <h3>Booking request received</h3>
+      <p id="successText">Thank you. Your booking has been received — we’ll be in touch shortly.</p>
+    </div>
+  </aside>
+</div>
+    </section>
+
+    <section class="trust-bar reveal">
+      <div class="container trust-items">
+        <div>Fully vetted cleaners</div>
+        <div>No hidden fees</div>
+        <div>Instant quote</div>
+        <div>Available across London</div>
+      </div>
+    </section>
+
+    <section class="section promo-section reveal">
+      <div class="container">
+        <div class="promo-card">
+          <span>🌿 Spring Offer: £10 OFF your first clean</span>
+          <p>
+            Limited slots available this week. Refresh your home this season with reliable cleaning across London.
+          </p>
+          <a class="btn btn-gold promo-btn" href="#booking">Check Availability &amp; Book</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why-us reveal">
+      <div class="container">
+        <div class="section-title center">
+          <span>Why Nestlyn Clean</span>
+          <h2>Reliable cleaning, without the hassle</h2>
+        </div>
+
+        <div class="service-grid three-grid">
+          <article class="service-card">
+            <div class="card-icon" aria-hidden="true">✓</div>
+            <h3>Trusted professionals</h3>
+            <p>Carefully vetted cleaners with a dependable, respectful approach.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="card-icon" aria-hidden="true">✓</div>
+            <h3>Consistent quality</h3>
+            <p>High standards on every visit, from regular cleans to detailed deep cleans.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="card-icon" aria-hidden="true">✓</div>
+            <h3>Flexible scheduling</h3>
+            <p>Book around your routine with convenient London-wide availability.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro-steps reveal" id="how">
+      <div class="container">
+        <div class="section-title">
+          <span>How it works</span>
+          <h2>Simple, seamless, spotless</h2>
+        </div>
+
+        <div class="steps-grid">
+          <article>
+            <span class="step-num">1</span>
+            <h3>Choose your service</h3>
+            <p>Select regular, one-off, or deep cleaning and add the extras you need.</p>
+          </article>
+
+          <article>
+            <span class="step-num">2</span>
+            <h3>Pick date &amp; time</h3>
+            <p>Book anytime from 8:00am to 6:00pm, Monday to Saturday.</p>
+          </article>
+
+          <article>
+            <span class="step-num">3</span>
+            <h3>Confirm &amp; relax</h3>
+            <p>Sit back and enjoy a beautifully refreshed home delivered with care.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services reveal" id="services">
+      <div class="container">
+        <div class="section-title center">
+          <span>Professional services</span>
+          <h2>Cleaning tailored to your lifestyle</h2>
+        </div>
+
+        <div class="service-grid">
+          <a class="service-card" href="regular-cleaning-london.html">
+            <h3>Regular Cleaning London</h3>
+            <p>Weekly and fortnightly cleaning across London.</p>
+          </a>
+
+          <a class="service-card" href="deep-cleaning-london.html">
+            <h3>Deep Cleaning London</h3>
+            <p>Detailed top-to-bottom cleaning with professional results.</p>
+          </a>
+
+          <a class="service-card" href="one-off-cleaning-london.html">
+            <h3>One-Off Cleaning London</h3>
+            <p>Flexible one-time cleaning for homes across London.</p>
+          </a>
+
+          <a class="service-card" href="end-of-tenancy-cleaning-london.html">
+            <h3>End of Tenancy Cleaning London</h3>
+            <p>Move-out cleaning with a professional finish.</p>
+          </a>
+
+          <a class="service-card" href="after-builders-cleaning-london.html">
+            <h3>After Builders Cleaning London</h3>
+            <p>Post-renovation cleaning across London.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pricing reveal" id="pricing">
+      <div class="container pricing-wrap">
+        <div>
+          <div class="section-title">
+            <span>Transparent pricing</span>
+            <h2>Simple, clear, and easy to understand</h2>
+          </div>
+
+          <p class="pricing-copy">
+            Minimum booking is 2 hours. One-off and deep cleaning are charged as a one-time payment.
+            Regular cleaning is ideal for weekly or fortnightly visits. Every quote on the booking
+            form updates instantly.
+          </p>
+        </div>
+
+        <div class="pricing-panel">
+          <div class="pricing-row"><span>Regular cleaning</span><strong>£16.95/h</strong></div>
+          <div class="pricing-row"><span>One-off clean</span><strong>£19/h</strong></div>
+          <div class="pricing-row"><span>Deep cleaning</span><strong>£23/h</strong></div>
+          <div class="pricing-row"><span>Inside oven clean</span><strong>+£25</strong></div>
+          <div class="pricing-row"><span>Hoover &amp; mop provided by us</span><strong>+£20</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonial reveal" id="reviews">
+      <div class="container">
+        <div class="section-title center">
+          <span>Google Reviews</span>
+          <h2>Rated 5 stars by happy London clients</h2>
+        </div>
+
+        <div class="service-grid three-grid">
+          <article class="service-card">
+            <p class="price">★★★★★</p>
+            <p>“Amazing service, very professional and my flat looked spotless. Booking was simple and the cleaner arrived on time.”</p>
+            <p><strong>— Sarah M., Chelsea</strong></p>
+          </article>
+
+          <article class="service-card">
+            <p class="price">★★★★★</p>
+            <p>“Easy booking and a very friendly cleaner. Highly recommend Nestlyn Clean.”</p>
+            <p><strong>— Daniel K., Islington</strong></p>
+          </article>
+
+          <article class="service-card">
+            <p class="price">★★★★★</p>
+            <p>“Excellent deep clean, worth every penny.”</p>
+            <p><strong>— Alan C., Camden</strong></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq reveal" id="faq">
+      <div class="container">
+        <div class="section-title center">
+          <span>Frequently asked questions</span>
+          <h2>Everything you need to know</h2>
+        </div>
+
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3>How quickly can I book?</h3>
+            <p>Most bookings take less than 60 seconds to request online.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Are your cleaners vetted?</h3>
+            <p>Yes, all cleaners are carefully vetted before joining Nestlyn Clean.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Do you cover all London?</h3>
+            <p>We cover a wide range of London areas and continue expanding availability.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Do I get the same cleaner each time?</h3>
+            <p>We aim to send the same cleaner for each regular booking where possible.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>How quickly will you confirm my booking?</h3>
+            <p>We review bookings promptly and confirm availability shortly during opening hours.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Do I need to provide cleaning supplies?</h3>
+            <p>You can provide your own, or select our hoover and mop add-on during booking.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact reveal" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <div class="section-title">
+            <span>Contact Nestlyn Clean</span>
+            <h2>Serving homes across London</h2>
+          </div>
+
+          <p>
+            We provide reliable domestic cleaning across London, with bookings available Monday to Saturday from 8:00am to 6:00pm.
+          </p>
+
+          <div class="contact-actions">
+            <a class="btn btn-gold" href="#booking">Check Availability &amp; Book</a>
+            <a class="btn btn-secondary" href="https://wa.me/447514718173?text=Hi%20Nestlyn%20Clean%2C%20I%20want%20to%20book%20a%20clean." target="_blank" rel="noopener">Chat on WhatsApp</a>
+          </div>
+
+          <div class="contact-cards">
+            <a
+              class="contact-card"
+              href="https://wa.me/447514718173?text=Hi%20Nestlyn%20Clean%2C%20I%20want%20to%20book%20a%20clean."
+              target="_blank"
+              rel="noopener"
+              aria-label="Chat with Nestlyn Clean on WhatsApp"
+            >
+              <strong>WhatsApp</strong>
+              <span>07514 718173</span>
+            </a>
+
+            <a
+              class="contact-card"
+              href="tel:+442081035100"
+              aria-label="Call Nestlyn Clean on 020 8103 5100"
+            >
+              <strong>Office</strong>
+              <span>020 8103 5100</span>
+            </a>
+
+            <a
+              class="contact-card"
+              href="mailto:info@nestlynclean.com"
+              aria-label="Email Nestlyn Clean"
+            >
+              <strong>Email</strong>
+              <span>info@nestlynclean.com</span>
+            </a>
+
+            <div class="contact-card">
+              <strong>Address</strong>
+              <span>128 City Road, London, EC1V 2NX, United Kingdom</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <div class="container final-cta-card">
+        <span>Book with confidence</span>
+        <h2>Ready to book your clean?</h2>
+        <p>Choose your service, preferred date and extras in under a minute. Limited slots available this week.</p>
+        <div class="final-cta-actions">
+          <a class="btn btn-gold" href="#booking">Check Availability &amp; Book</a>
+          <a class="btn btn-secondary" href="tel:+442081035100">Call 020 8103 5100</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <div class="footer-summary">
+        <p>© <span id="year"></span> Nestlyn Clean</p>
+        <p class="footer-tagline">Trusted domestic cleaning across London.</p>
+        <p>
+          Reliable home cleaning across London •
+          <a href="privacy-policy.html">Privacy Policy</a> •
+          <a href="terms.html">Terms &amp; Conditions</a>
+        </p>
+      </div>
+
+      <div class="footer-areas">
+        <button class="footer-toggle" type="button" aria-expanded="false" aria-controls="areasList">
+          Areas we cover
+        </button>
+
+        <div id="areasList" class="footer-area-links">
+          <a href="cleaning-camden.html">Camden</a>
+          <a href="cleaning-chelsea.html">Chelsea</a>
+          <a href="cleaning-westminster.html">Westminster</a>
+          <a href="cleaning-islington.html">Islington</a>
+          <a href="cleaning-shoreditch.html">Shoreditch</a>
+          <a href="cleaning-canary-wharf.html">Canary Wharf</a>
+          <a href="cleaning-kensington.html">Kensington</a>
+          <a href="cleaning-notting-hill.html">Notting Hill</a>
+          <a href="cleaning-fulham.html">Fulham</a>
+          <a href="cleaning-southwark.html">Southwark</a>
+          <a href="cleaning-lambeth.html">Lambeth</a>
+          <a href="cleaning-marylebone.html">Marylebone</a>
+          <a href="cleaning-hackney.html">Hackney</a>
+          <a href="cleaning-battersea.html">Battersea</a>
+          <a href="cleaning-clapham.html">Clapham</a>
+          <a href="cleaning-greenwich.html">Greenwich</a>
+          <a href="cleaning-hammersmith.html">Hammersmith</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-sticky-book">
+    <a href="tel:+442081035100" aria-label="Call Nestlyn Clean on 020 8103 5100">
+      Call 020 8103 5100
+    </a>
+  </div>
+
+  <script src="script.js?v=20"></script>
+</body>
+</html>
