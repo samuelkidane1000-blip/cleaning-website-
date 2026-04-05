@@ -1214,16 +1214,13 @@ main {
 
   .logo img {
     height: 30px;
+    width: auto;
   }
 
   .logo-text {
     font-size: 0.82rem;
     font-weight: 600;
     letter-spacing: 0.08em;
-  }
-
-  .menu-brand-logo {
-    height: 30px;
   }
 
   .menu-toggle {
@@ -1236,55 +1233,72 @@ main {
     width: 20px;
   }
 
+  .menu-brand-logo {
+    height: 24px;
+    width: auto;
+  }
+
   .premium-menu {
-    width: 82vw;
+    width: 78vw;
     max-width: 280px;
   }
 
   .premium-menu-top {
-    padding: 14px 14px 12px;
+    padding: 12px 12px 10px;
   }
 
   .premium-menu-body {
-    padding: 14px 14px 18px;
+    padding: 12px;
   }
 
   .premium-menu-eyebrow {
     margin: 0 0 10px;
-    font-size: 0.66rem;
-    letter-spacing: 0.16em;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
   }
 
   .premium-menu-nav.compact {
-    gap: 8px;
+    gap: 6px;
   }
 
   .premium-menu-nav.compact a {
-    padding: 12px 14px;
-    border-radius: 14px;
-    font-size: 0.9rem;
+    padding: 10px 12px;
+    min-height: 44px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: none;
+  }
+
+  .premium-menu-nav.compact a:hover,
+  .premium-menu-nav.compact a.is-active {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(212, 175, 104, 0.18);
+    color: var(--gold-soft);
   }
 
   .premium-menu-divider {
-    margin: 14px 0;
+    margin: 12px 0;
   }
 
   .premium-menu-actions {
     gap: 8px;
-    padding-top: 14px;
+    padding-top: 12px;
   }
 
   .premium-menu-btn,
   .premium-menu-call {
-    min-height: 46px;
-    font-size: 0.9rem;
-    border-radius: 14px;
+    min-height: 42px;
+    font-size: 0.85rem;
+    border-radius: 12px;
   }
 
   .menu-close {
-    width: 42px;
-    height: 42px;
-    font-size: 1.1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
 
   .hero-grid-premium {
@@ -1299,9 +1313,14 @@ main {
   }
 
   .hero-sub {
+    max-width: 100%;
     font-size: 0.98rem;
     line-height: 1.55;
-    max-width: 100%;
+  }
+
+  .hero-call-now {
+    font-size: 0.98rem;
+    margin: 0 0 14px;
   }
 
   .proof-line {
@@ -1388,9 +1407,10 @@ main {
     position: fixed;
     left: 12px;
     right: 12px;
-    bottom: 110px;
+    bottom: 120px;
     z-index: 9999;
     gap: 8px;
+    transform: translateZ(0);
   }
 
   .mobile-sticky-book a {
@@ -1402,6 +1422,7 @@ main {
     justify-content: center;
     font-size: 0.95rem;
     font-weight: 800;
+    backdrop-filter: blur(10px);
   }
 
   .mobile-sticky-book a:first-child {
@@ -1421,9 +1442,40 @@ main {
     opacity: 0;
     pointer-events: none;
   }
+}
 
-  .hero-call-now {
-    font-size: 0.98rem;
-    margin: 0 0 14px;
+@media (max-width: 480px) {
+  .logo img {
+    height: 28px;
+  }
+
+  .logo-text {
+    font-size: 0.78rem;
+  }
+
+  .hero-copy h1 {
+    font-size: 2rem;
+  }
+
+  .premium-menu {
+    max-width: 260px;
+  }
+
+  .premium-menu-nav.compact a {
+    padding: 9px 11px;
+    font-size: 0.84rem;
+    min-height: 40px;
+  }
+
+  .mobile-sticky-book {
+    bottom: 130px;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 768px) {
+    .mobile-sticky-book {
+      bottom: 140px;
+    }
   }
 }
