@@ -98,25 +98,11 @@ function updateQuote() {
     (extras.length ? ` • ${extras.join(" • ")}` : "") +
     " • No hidden fees";
 
-  if (estimatedTotalInput) {
-    estimatedTotalInput.value = quoteTotal.textContent;
-  }
-
-  if (quoteBreakdownInput) {
-    quoteBreakdownInput.value = quoteBreakdown.textContent;
-  }
-
-  if (serviceLabelInput) {
-    serviceLabelInput.value = getServiceName();
-  }
-
-  if (ovenExtraInput) {
-    ovenExtraInput.value = ovenInput?.checked ? "Yes" : "No";
-  }
-
-  if (suppliesExtraInput) {
-    suppliesExtraInput.value = suppliesInput?.checked ? "Yes" : "No";
-  }
+  if (estimatedTotalInput) estimatedTotalInput.value = quoteTotal.textContent;
+  if (quoteBreakdownInput) quoteBreakdownInput.value = quoteBreakdown.textContent;
+  if (serviceLabelInput) serviceLabelInput.value = getServiceName();
+  if (ovenExtraInput) ovenExtraInput.value = ovenInput?.checked ? "Yes" : "No";
+  if (suppliesExtraInput) suppliesExtraInput.value = suppliesInput?.checked ? "Yes" : "No";
 }
 
 function saveBookingLocally(booking) {
@@ -295,25 +281,11 @@ bookingForm?.addEventListener("submit", async (event) => {
 
   saveBookingLocally(booking);
 
-  if (estimatedTotalInput) {
-    estimatedTotalInput.value = booking.total;
-  }
-
-  if (quoteBreakdownInput) {
-    quoteBreakdownInput.value = booking.breakdown;
-  }
-
-  if (serviceLabelInput) {
-    serviceLabelInput.value = booking.service;
-  }
-
-  if (ovenExtraInput) {
-    ovenExtraInput.value = booking.extras.oven ? "Yes" : "No";
-  }
-
-  if (suppliesExtraInput) {
-    suppliesExtraInput.value = booking.extras.supplies ? "Yes" : "No";
-  }
+  if (estimatedTotalInput) estimatedTotalInput.value = booking.total;
+  if (quoteBreakdownInput) quoteBreakdownInput.value = booking.breakdown;
+  if (serviceLabelInput) serviceLabelInput.value = booking.service;
+  if (ovenExtraInput) ovenExtraInput.value = booking.extras.oven ? "Yes" : "No";
+  if (suppliesExtraInput) suppliesExtraInput.value = booking.extras.supplies ? "Yes" : "No";
 
   const formData = new FormData(bookingForm);
 
@@ -390,24 +362,10 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
-if (dateInput) {
-  dateInput.min = getTodayLocalISODate();
-}
-
-if (year) {
-  year.textContent = new Date().getFullYear();
-}
-
-if (hoursInput && !hoursInput.value) {
-  hoursInput.value = "2";
-}
-
-if (timeInput && !timeInput.value) {
-  timeInput.value = "10:00";
-}
-
-if (areasList && window.innerWidth <= 768) {
-  areasList.setAttribute("hidden", "");
-}
+if (dateInput) dateInput.min = getTodayLocalISODate();
+if (year) year.textContent = new Date().getFullYear();
+if (hoursInput && !hoursInput.value) hoursInput.value = "2";
+if (timeInput && !timeInput.value) timeInput.value = "10:00";
+if (areasList && window.innerWidth <= 768) areasList.setAttribute("hidden", "");
 
 updateQuote();
