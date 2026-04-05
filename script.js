@@ -18,6 +18,12 @@ const emailInput = document.getElementById("email");
 const footerToggle = document.querySelector(".footer-toggle");
 const areasList = document.getElementById("areasList");
 
+const estimatedTotalInput = document.getElementById("estimatedTotalInput");
+const quoteBreakdownInput = document.getElementById("quoteBreakdownInput");
+const serviceLabelInput = document.getElementById("serviceLabelInput");
+const ovenExtraInput = document.getElementById("ovenExtraInput");
+const suppliesExtraInput = document.getElementById("suppliesExtraInput");
+
 const menu = document.getElementById("premiumMenu");
 const overlay = document.getElementById("menuOverlay");
 const menuToggle = document.getElementById("menuToggle");
@@ -89,6 +95,26 @@ function updateQuote() {
     `${hours} hour${hours > 1 ? "s" : ""} × ${formatGBP(hourlyRate)} • ${frequencyText}` +
     (extras.length ? ` • ${extras.join(" • ")}` : "") +
     ` • No hidden fees`;
+
+  if (estimatedTotalInput) {
+    estimatedTotalInput.value = quoteTotal.textContent;
+  }
+
+  if (quoteBreakdownInput) {
+    quoteBreakdownInput.value = quoteBreakdown.textContent;
+  }
+
+  if (serviceLabelInput) {
+    serviceLabelInput.value = getServiceName();
+  }
+
+  if (ovenExtraInput) {
+    ovenExtraInput.value = ovenInput?.checked ? "Yes" : "No";
+  }
+
+  if (suppliesExtraInput) {
+    suppliesExtraInput.value = suppliesInput?.checked ? "Yes" : "No";
+  }
 }
 
 function saveBookingLocally(booking) {
@@ -248,7 +274,7 @@ hoursInput?.addEventListener("blur", () => {
   updateQuote();
 });
 
-bookingForm?.addEventListener("submit", (event) => {
+bookingForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   updateQuote();
 
@@ -268,17 +294,59 @@ bookingForm?.addEventListener("submit", (event) => {
       supplies: !!suppliesInput?.checked
     },
     total: quoteTotal?.textContent || "",
+    breakdown: quoteBreakdown?.textContent || "",
     createdAt: new Date().toISOString()
   };
 
   saveBookingLocally(booking);
-  showSuccessMessage();
 
-  const whatsappMessage = buildWhatsAppMessage(booking);
-  const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(whatsappMessage)}`;
+  if (estimatedTotalInput) {
+    estimatedTotalInput.value = booking.total;
+  }
 
-  window.open(whatsappURL, "_blank", "noopener");
-  resetBookingForm();
+  if (quoteBreakdownInput) {
+    quoteBreakdownInput.value = booking.breakdown;
+  }
+
+  if (serviceLabelInput) {
+    serviceLabelInput.value = booking.service;
+  }
+
+  if (ovenExtraInput) {
+    ovenExtraInput.value = booking.extras.oven ? "Yes" : "No";
+  }
+
+  if (suppliesExtraInput) {
+    suppliesExtraInput.value = booking.extras.supplies ? "Yes" : "No";
+  }
+
+  const formData = new FormData(bookingForm);
+
+  try {
+    const response = await fetch(bookingForm.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("Email submission failed.");
+    }
+
+    showSuccessMessage();
+
+    const whatsappMessage = buildWhatsAppMessage(booking);
+    const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(whatsappURL, "_blank", "noopener");
+
+    resetBookingForm();
+  } catch (error) {
+    alert("There was a problem sending your booking. Please try again or call us.");
+    console.error(error);
+  }
 });
 
 menuToggle?.addEventListener("click", toggleMenu);
