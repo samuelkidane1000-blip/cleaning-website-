@@ -2016,3 +2016,6 @@ main {
     height: 32px;
   }
 }
+.logo-text {
+  opacity: 0.9;
+}
