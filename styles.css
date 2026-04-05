@@ -1631,3 +1631,86 @@ main {
     transform: none !important;
   }
 }
+/* MOBILE OVERFLOW FIX */
+
+@media (max-width: 768px) {
+  html,
+  body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+  }
+
+  .site-header,
+  .hero,
+  .section,
+  .site-footer,
+  .container,
+  .hero-grid,
+  .hero-grid-premium,
+  .contact-grid,
+  .contact-cards,
+  .contact-card,
+  .final-cta-card,
+  .footer-wrap,
+  .footer-areas,
+  .footer-area-links {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  .site-header .nav-wrap {
+    gap: 10px;
+    min-height: 82px;
+  }
+
+  .site-header .logo {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .site-header .logo img {
+    height: 24px;
+    flex: 0 0 auto;
+  }
+
+  .site-header .logo-text {
+    min-width: 0;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+  }
+
+  .site-header .header-right {
+    flex: 0 0 auto;
+    margin-left: 0;
+  }
+
+  .site-header .menu-toggle {
+    width: 54px;
+    height: 54px;
+  }
+
+  .contact-card,
+  .faq-item,
+  .service-card,
+  .promo-card,
+  .final-cta-card,
+  .testimonial-card,
+  .pricing-panel,
+  .booking-card {
+    overflow: hidden;
+  }
+
+  .contact-card span,
+  .footer-summary p,
+  .pricing-row span,
+  .pricing-row strong {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+}
