@@ -1386,3 +1386,121 @@ main {
     transform: none !important;
   }
 }
+@media (max-width: 768px) {
+  .nav-wrap {
+    min-height: 78px;
+    padding: 6px 0;
+  }
+
+  .logo img {
+    height: 30px;
+  }
+
+  .logo-text {
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+  }
+
+  .menu-toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+  }
+
+  .menu-toggle span {
+    width: 22px;
+  }
+
+  .premium-menu {
+    width: min(360px, 88vw);
+  }
+
+  .premium-menu-top {
+    padding: 18px 16px 14px;
+  }
+
+  .premium-menu-body {
+    padding: 18px 16px 20px;
+  }
+
+  .premium-menu-eyebrow {
+    margin: 0 0 12px;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+  }
+
+  .premium-menu-nav.compact {
+    gap: 10px;
+  }
+
+  .premium-menu-nav.compact a {
+    padding: 14px 16px;
+    border-radius: 16px;
+    font-size: 0.98rem;
+  }
+
+  .premium-menu-divider {
+    margin: 18px 0;
+  }
+
+  .premium-menu-actions {
+    gap: 10px;
+    padding-top: 18px;
+  }
+
+  .premium-menu-btn,
+  .premium-menu-call {
+    min-height: 50px;
+    font-size: 0.95rem;
+  }
+
+  .menu-close {
+    width: 44px;
+    height: 44px;
+    font-size: 1.25rem;
+  }
+
+  .mobile-sticky-book {
+    display: flex;
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: calc(72px + env(safe-area-inset-bottom));
+    z-index: 1200;
+    gap: 10px;
+    padding: 0;
+  }
+
+  .mobile-sticky-book a {
+    flex: 1;
+    min-height: 52px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 800;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  }
+
+  .mobile-sticky-book a:first-child {
+    background: linear-gradient(135deg, #d6b36a, #f0d48a);
+    color: #111;
+    border: none;
+  }
+
+  .mobile-sticky-book a:last-child {
+    background: rgba(31, 31, 40, 0.96);
+    color: #fff;
+    border: 1px solid rgba(212, 175, 104, 0.22);
+  }
+
+  body {
+    padding-bottom: calc(150px + env(safe-area-inset-bottom));
+  }
+
+  body.menu-open .mobile-sticky-book {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
