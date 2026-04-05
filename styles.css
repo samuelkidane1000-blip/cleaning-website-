@@ -1962,19 +1962,18 @@ main {
 }
 @media (max-width: 768px) {
   .site-header .logo {
-    gap: 6px;
+    gap: 8px;
   }
 
   .site-header .logo img {
-    height: 26px;
+    height: 36px; /* bigger logo */
   }
 
   .site-header .logo-text {
     display: inline-block;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    line-height: 1;
-    white-space: nowrap;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     color: var(--gold-soft);
   }
 }
@@ -2018,4 +2017,7 @@ main {
 }
 .logo-text {
   opacity: 0.9;
+}
+.site-header .logo img {
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.25));
 }
