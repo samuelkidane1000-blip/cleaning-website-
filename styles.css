@@ -1600,3 +1600,15 @@ main {
     gap: 18px;
   }
 }
+.hero-image {
+  margin: 18px 0 20px;
+  width: 100%;
+}
+
+.hero-image img {
+  width: 100%;
+  border-radius: 18px;
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
