@@ -7,30 +7,30 @@
   <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#141417" />
 
-  <title>Nestlyn Clean | Luxury Home Cleaning in London</title>
+  <title>Nestlyn Clean | Reliable Home Cleaning in London</title>
   <meta
     name="description"
-    content="Luxury home cleaning in London. Book regular, one-off, or deep cleaning with Nestlyn Clean."
+    content="Reliable home cleaning across London. Book regular, one-off, or deep cleaning with Nestlyn Clean in under 60 seconds."
   />
   <link rel="canonical" href="https://www.nestlynclean.com/" />
 
-  <meta property="og:title" content="Nestlyn Clean | Luxury Home Cleaning in London" />
+  <meta property="og:title" content="Nestlyn Clean | Reliable Home Cleaning in London" />
   <meta
     property="og:description"
-    content="Trusted home cleaning across London. Book regular, one-off, or deep cleaning in under 60 seconds."
+    content="Reliable regular, one-off and deep cleaning across London. Book in under 60 seconds."
   />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.nestlynclean.com/" />
   <meta property="og:site_name" content="Nestlyn Clean" />
   <meta property="og:locale" content="en_GB" />
   <meta property="og:image" content="https://www.nestlynclean.com/og-image.jpg" />
-  <meta property="og:image:alt" content="Nestlyn Clean luxury home cleaning in London" />
+  <meta property="og:image:alt" content="Nestlyn Clean reliable home cleaning in London" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Nestlyn Clean | Luxury Home Cleaning in London" />
+  <meta name="twitter:title" content="Nestlyn Clean | Reliable Home Cleaning in London" />
   <meta
     name="twitter:description"
-    content="Trusted home cleaning across London. Book regular, one-off, or deep cleaning in under 60 seconds."
+    content="Reliable regular, one-off and deep cleaning across London. Book in under 60 seconds."
   />
   <meta name="twitter:image" content="https://www.nestlynclean.com/og-image.jpg" />
 
@@ -68,7 +68,7 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=20" />
 </head>
 <body>
   <header class="site-header">
@@ -85,7 +85,7 @@
           <a href="#contact">Contact</a>
         </nav>
 
-        <a class="header-cta" href="#booking">Book Now</a>
+        <a class="header-cta" href="#booking">Check Availability</a>
 
         <button
           class="menu-toggle"
@@ -120,9 +120,7 @@
         />
       </div>
 
-      <button class="menu-close" type="button" aria-label="Close menu">
-        ✕
-      </button>
+      <button class="menu-close" type="button" aria-label="Close menu">✕</button>
     </div>
 
     <div class="premium-menu-body">
@@ -141,7 +139,7 @@
       <div class="premium-menu-divider"></div>
 
       <div class="premium-menu-actions">
-        <a href="#booking" class="premium-menu-btn">Book a Cleaning</a>
+        <a href="#booking" class="premium-menu-btn">Check Availability &amp; Book</a>
         <a href="tel:+442081035100" class="premium-menu-call">Call: 020 8103 5100</a>
       </div>
     </div>
@@ -156,11 +154,10 @@
         <div class="hero-copy">
           <div class="eyebrow">Trusted across London</div>
 
-          <h1>Luxury Home Cleaning in London</h1>
+          <h1>Reliable Home Cleaning in London</h1>
 
           <p class="hero-sub">
-            Trusted by busy London households for premium regular, one-off, and deep cleaning.
-            Book in under 60 seconds.
+            Reliable regular, one-off and deep cleaning across London. Book in under 60 seconds.
           </p>
 
           <div class="hero-rating" aria-label="5-star rated across London">
@@ -172,6 +169,7 @@
             <div class="proof-badge">Fully vetted cleaners</div>
             <div class="proof-badge">Instant quote</div>
             <div class="proof-badge">Available across London</div>
+            <div class="proof-badge">Same cleaner for regular cleaning</div>
           </div>
 
           <div class="hero-google-proof" aria-label="Google review summary">
@@ -180,7 +178,7 @@
           </div>
 
           <div class="hero-actions">
-            <a class="btn btn-gold" href="#booking">Book a Cleaning</a>
+            <a class="btn btn-gold" href="#booking">Check Availability &amp; Book</a>
           </div>
 
           <p class="hero-call-text">
@@ -204,9 +202,9 @@
           </div>
 
           <div class="booking-trust">
-            <span>✔ Fully vetted cleaners</span>
-            <span>✔ Instant quote</span>
+            <span>✔ Same cleaner for regular cleaning</span>
             <span>✔ No hidden fees</span>
+            <span>✔ We’ll confirm your booking shortly</span>
           </div>
 
           <form
@@ -331,18 +329,16 @@
               </span>
             </label>
 
-            <button type="submit" class="btn btn-gold btn-full">Book My Cleaning</button>
+            <button type="submit" class="btn btn-gold btn-full">Check Availability &amp; Book</button>
 
             <p class="booking-note">
-              Takes less than 60 seconds. Minimum booking is 2 hours. Opening hours: Monday to Saturday, 8:00am to 6:00pm.
+              No payment required today. Minimum booking is 2 hours. Opening hours: Monday to Saturday, 8:00am to 6:00pm.
             </p>
           </form>
 
           <div id="successMessage" class="success-message" hidden aria-live="polite" tabindex="-1">
             <h3>Booking request received</h3>
-            <p>
-              Thank you for choosing Nestlyn Clean. We’ll confirm your booking shortly.
-            </p>
+            <p id="successText">Thank you. Your booking has been received — we’ll be in touch shortly.</p>
           </div>
         </aside>
       </div>
@@ -362,9 +358,9 @@
         <div class="promo-card">
           <span>🌿 Spring Offer: £10 OFF your first clean</span>
           <p>
-            Limited time only. Refresh your home this season with premium cleaning across London.
+            Limited slots available this week. Refresh your home this season with reliable cleaning across London.
           </p>
-          <a class="btn btn-gold promo-btn" href="#booking">Book a Cleaning</a>
+          <a class="btn btn-gold promo-btn" href="#booking">Check Availability &amp; Book</a>
         </div>
       </div>
     </section>
@@ -373,7 +369,7 @@
       <div class="container">
         <div class="section-title center">
           <span>Why Nestlyn Clean</span>
-          <h2>Premium cleaning, without the hassle</h2>
+          <h2>Reliable cleaning, without the hassle</h2>
         </div>
 
         <div class="service-grid three-grid">
@@ -430,7 +426,7 @@
     <section class="section services reveal" id="services">
       <div class="container">
         <div class="section-title center">
-          <span>Premium services</span>
+          <span>Professional services</span>
           <h2>Cleaning tailored to your lifestyle</h2>
         </div>
 
@@ -442,7 +438,7 @@
 
           <a class="service-card" href="deep-cleaning-london.html">
             <h3>Deep Cleaning London</h3>
-            <p>Detailed top-to-bottom cleaning with premium results.</p>
+            <p>Detailed top-to-bottom cleaning with professional results.</p>
           </a>
 
           <a class="service-card" href="one-off-cleaning-london.html">
@@ -468,7 +464,7 @@
         <div>
           <div class="section-title">
             <span>Transparent pricing</span>
-            <h2>Simple, premium, and easy to understand</h2>
+            <h2>Simple, clear, and easy to understand</h2>
           </div>
 
           <p class="pricing-copy">
@@ -488,17 +484,6 @@
       </div>
     </section>
 
-    <section class="section testimonial reveal">
-      <div class="container testimonial-card">
-        <span>What our clients are saying</span>
-        <blockquote>
-          “Nestlyn Clean exceeded expectations. The booking felt effortless and the finish looked
-          premium from the moment they arrived.”
-        </blockquote>
-        <p>— Susan A.</p>
-      </div>
-    </section>
-
     <section class="section testimonial reveal" id="reviews">
       <div class="container">
         <div class="section-title center">
@@ -509,13 +494,13 @@
         <div class="service-grid three-grid">
           <article class="service-card">
             <p class="price">★★★★★</p>
-            <p>“Amazing service, very professional and my flat looked spotless.”</p>
+            <p>“Amazing service, very professional and my flat looked spotless. Booking was simple and the cleaner arrived on time.”</p>
             <p><strong>— Sarah M., Chelsea</strong></p>
           </article>
 
           <article class="service-card">
             <p class="price">★★★★★</p>
-            <p>“Easy booking and very friendly cleaner. Highly recommend Nestlyn Clean.”</p>
+            <p>“Easy booking and a very friendly cleaner. Highly recommend Nestlyn Clean.”</p>
             <p><strong>— Daniel K., Islington</strong></p>
           </article>
 
@@ -550,6 +535,21 @@
             <h3>Do you cover all London?</h3>
             <p>We cover a wide range of London areas and continue expanding availability.</p>
           </article>
+
+          <article class="faq-item">
+            <h3>Do I get the same cleaner each time?</h3>
+            <p>We aim to send the same cleaner for each regular booking where possible.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>How quickly will you confirm my booking?</h3>
+            <p>We review bookings promptly and confirm availability shortly during opening hours.</p>
+          </article>
+
+          <article class="faq-item">
+            <h3>Do I need to provide cleaning supplies?</h3>
+            <p>You can provide your own, or select our hoover and mop add-on during booking.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -559,17 +559,16 @@
         <div>
           <div class="section-title">
             <span>Contact Nestlyn Clean</span>
-            <h2>Serving all London</h2>
+            <h2>Serving homes across London</h2>
           </div>
 
           <p>
-            We provide luxury home cleaning across London, with bookings available Monday to
-            Saturday from 8:00am to 6:00pm.
+            We provide reliable domestic cleaning across London, with bookings available Monday to Saturday from 8:00am to 6:00pm.
           </p>
 
           <div class="contact-actions">
-            <a class="btn btn-gold" href="#booking">Book Now</a>
-            <a class="btn btn-secondary" href="tel:+442081035100">Call Us</a>
+            <a class="btn btn-gold" href="#booking">Check Availability &amp; Book</a>
+            <a class="btn btn-secondary" href="https://wa.me/447514718173?text=Hi%20Nestlyn%20Clean%2C%20I%20want%20to%20book%20a%20clean." target="_blank" rel="noopener">Chat on WhatsApp</a>
           </div>
 
           <div class="contact-cards">
@@ -614,10 +613,10 @@
     <section class="section final-cta">
       <div class="container final-cta-card">
         <span>Book with confidence</span>
-        <h2>Premium home cleaning, ready when you are</h2>
-        <p>Choose your service, date and extras in under a minute.</p>
+        <h2>Ready to book your clean?</h2>
+        <p>Choose your service, preferred date and extras in under a minute. Limited slots available this week.</p>
         <div class="final-cta-actions">
-          <a class="btn btn-gold" href="#booking">Book a Cleaning</a>
+          <a class="btn btn-gold" href="#booking">Check Availability &amp; Book</a>
           <a class="btn btn-secondary" href="tel:+442081035100">Call 020 8103 5100</a>
         </div>
       </div>
@@ -628,9 +627,9 @@
     <div class="container footer-wrap">
       <div class="footer-summary">
         <p>© <span id="year"></span> Nestlyn Clean</p>
-        <p class="footer-tagline">Trusted premium home cleaning across London.</p>
+        <p class="footer-tagline">Trusted domestic cleaning across London.</p>
         <p>
-          Luxury home cleaning across London •
+          Reliable home cleaning across London •
           <a href="privacy-policy.html">Privacy Policy</a> •
           <a href="terms.html">Terms &amp; Conditions</a>
         </p>
@@ -670,6 +669,6 @@
     </a>
   </div>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=20"></script>
 </body>
 </html>
