@@ -1757,3 +1757,161 @@ body {
     bottom: calc(120px + env(safe-area-inset-bottom)) !important;
   }
 }
+/* ===== FINAL REAL MOBILE FIX ===== */
+
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  body {
+    position: relative;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    overflow-x: hidden !important;
+  }
+
+  .site-header,
+  main,
+  .hero,
+  .hero-overlay,
+  .hero-grid-premium,
+  .hero-copy,
+  .hero-visual,
+  .booking-card-hero,
+  .section,
+  .contact-grid,
+  .contact-cards,
+  .footer-wrap,
+  .final-cta-card,
+  .trust-items {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  .hero-grid-premium {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+    padding: 18px 0 24px !important;
+  }
+
+  .hero-copy {
+    order: 1;
+  }
+
+  .hero-visual {
+    order: 2;
+  }
+
+  .booking-card-hero {
+    order: 3;
+  }
+
+  .hero-copy h1 {
+    font-size: 2.15rem !important;
+    line-height: 1.02 !important;
+    max-width: 100% !important;
+    margin: 8px 0 14px !important;
+  }
+
+  .hero-sub {
+    max-width: 100% !important;
+    font-size: 0.98rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .hero-rating,
+  .hero-proof-list,
+  .proof-line {
+    max-width: 100% !important;
+  }
+
+  .hero-photo {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    object-fit: cover !important;
+    border-radius: 20px !important;
+  }
+
+  .booking-card-hero,
+  .booking-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .site-header .nav-wrap {
+    min-height: 82px !important;
+    gap: 10px !important;
+  }
+
+  .site-header .logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .site-header .logo img {
+    width: auto !important;
+    height: 24px !important;
+    flex: 0 0 auto !important;
+  }
+
+  .site-header .logo-text {
+    display: inline-block !important;
+    max-width: 150px !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  .site-header .header-right {
+    flex: 0 0 auto !important;
+    margin-left: 0 !important;
+  }
+
+  .site-header .menu-toggle {
+    width: 54px !important;
+    height: 54px !important;
+  }
+
+  .contact-card,
+  .service-card,
+  .faq-item,
+  .promo-card,
+  .pricing-panel,
+  .final-cta-card,
+  .testimonial-card {
+    overflow: hidden !important;
+  }
+
+  .contact-card span,
+  .footer-summary p,
+  .quote-box p,
+  .pricing-row span,
+  .pricing-row strong {
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+}
