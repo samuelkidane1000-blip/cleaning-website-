@@ -1631,3 +1631,129 @@ main {
     transform: none !important;
   }
 }
+/* ===== FINAL IPHONE OVERFLOW FIX ===== */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+body {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  body,
+  main,
+  .site-header,
+  .hero,
+  .hero-overlay,
+  .hero-grid,
+  .hero-grid-premium,
+  .hero-copy,
+  .hero-visual,
+  .hero-photo,
+  .booking-card,
+  .booking-card-hero,
+  .section,
+  .container,
+  .contact-grid,
+  .contact-cards,
+  .contact-card,
+  .final-cta-card,
+  .footer-wrap,
+  .footer-areas,
+  .footer-area-links {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .hero-grid-premium {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    padding: 18px 0 !important;
+  }
+
+  .hero-copy h1 {
+    font-size: 2.2rem !important;
+    line-height: 1.02 !important;
+    max-width: 100% !important;
+    word-break: break-word !important;
+  }
+
+  .hero-sub,
+  .hero-rating,
+  .hero-proof-list,
+  .proof-line {
+    max-width: 100% !important;
+  }
+
+  .hero-photo {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 320px !important;
+    object-fit: cover !important;
+    border-radius: 20px !important;
+  }
+
+  .site-header .nav-wrap {
+    min-height: 82px !important;
+    gap: 10px !important;
+  }
+
+  .site-header .logo {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .site-header .logo img {
+    height: 24px !important;
+    width: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  .site-header .logo-text {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.04em !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 145px !important;
+  }
+
+  .site-header .header-right {
+    flex: 0 0 auto !important;
+    margin-left: 0 !important;
+  }
+
+  .site-header .menu-toggle {
+    width: 54px !important;
+    height: 54px !important;
+  }
+
+  .contact-card span,
+  .footer-summary p,
+  .pricing-row span,
+  .pricing-row strong,
+  .booking-note,
+  .quote-box p {
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+
+  .mobile-sticky-book {
+    right: 12px !important;
+    bottom: calc(120px + env(safe-area-inset-bottom)) !important;
+  }
+}
