@@ -6,211 +6,178 @@
 
 document.documentElement.classList.add("js-reveal");
 
+const $ = (id) => document.getElementById(id);
+
 /* =============================
    ELEMENTS
 ============================= */
 
-const el = (id) => document.getElementById(id);
+const form = $("bookingForm");
+const submitBtn = form?.querySelector("button[type='submit']");
 
-const serviceSelect = el("service");
-const hoursInput = el("hours");
-const ovenInput = el("oven");
-const suppliesInput = el("supplies");
-const frequencySelect = el("frequency");
+const service = $("service");
+const hours = $("hours");
+const oven = $("oven");
+const supplies = $("supplies");
+const frequency = $("frequency");
 
-const quoteTotal = el("quoteTotal");
-const quoteBreakdown = el("quoteBreakdown");
+const totalEl = $("quoteTotal");
+const breakdownEl = $("quoteBreakdown");
 
-const bookingForm = el("bookingForm");
-const successMessage = el("successMessage");
-const successText = el("successText");
+const successBox = $("successMessage");
+const successText = $("successText");
 
-const year = el("year");
+const nameInput = $("name");
+const phoneInput = $("phone");
+const emailInput = $("email");
+const dateInput = $("date");
+const timeInput = $("time");
 
-const dateInput = el("date");
-const timeInput = el("time");
-
-const nameInput = el("name");
-const phoneInput = el("phone");
-const emailInput = el("email");
-
-const footerToggle = document.querySelector(".footer-toggle");
-const areasList = el("areasList");
-
-const estimatedTotalInput = el("estimatedTotalInput");
-const quoteBreakdownInput = el("quoteBreakdownInput");
-const serviceLabelInput = el("serviceLabelInput");
-const ovenExtraInput = el("ovenExtraInput");
-const suppliesExtraInput = el("suppliesExtraInput");
-
-const menu = el("premiumMenu");
-const overlay = el("menuOverlay");
-const menuToggle = el("menuToggle");
-const menuClose = document.querySelector(".menu-close");
-const menuItems = document.querySelectorAll(".premium-menu-nav .menu-item");
-
-let lastFocusedElement = null;
+const year = $("year");
 
 /* =============================
    HELPERS
 ============================= */
 
-const formatGBP = (value) =>
+const GBP = (v) =>
   new Intl.NumberFormat("en-GB", {
     style: "currency",
     currency: "GBP"
-  }).format(value);
+  }).format(v);
 
-const getServiceName = () => {
-  if (!serviceSelect) return "Cleaning";
-  const selected = serviceSelect.options[serviceSelect.selectedIndex];
-  return selected?.dataset.label || selected?.textContent.split("—")[0].trim();
+const todayISO = () => new Date().toISOString().split("T")[0];
+
+const safeHours = () => {
+  const val = parseInt(hours.value, 10);
+  return isNaN(val) || val < 2 ? 2 : val;
 };
 
-const getHoursValue = () => {
-  if (!hoursInput) return 2;
-
-  const raw = hoursInput.value.trim();
-  if (raw === "") return "";
-
-  const parsed = parseInt(raw, 10);
-  return Number.isNaN(parsed) ? "" : parsed;
-};
-
-const getSafeHours = () => {
-  const h = getHoursValue();
-  return h === "" ? 2 : Math.max(2, h);
-};
-
-const getTodayISO = () => {
-  const d = new Date();
-  return d.toISOString().split("T")[0];
+const serviceName = () => {
+  const s = service.options[service.selectedIndex];
+  return s.dataset.label || s.textContent.split("—")[0].trim();
 };
 
 /* =============================
-   QUOTE CALCULATION
+   QUOTE
 ============================= */
 
 function updateQuote() {
-  if (!serviceSelect || !quoteTotal || !quoteBreakdown) return;
+  if (!service) return;
 
-  const rate = parseFloat(serviceSelect.value || "0");
-  const hours = getSafeHours();
+  const rate = parseFloat(service.value);
+  const h = safeHours();
 
-  const oven = ovenInput?.checked ? Number(ovenInput.value) : 0;
-  const supplies = suppliesInput?.checked ? Number(suppliesInput.value) : 0;
+  const extraOven = oven?.checked ? 25 : 0;
+  const extraSupplies = supplies?.checked ? 20 : 0;
 
-  const total = rate * hours + oven + supplies;
+  const total = rate * h + extraOven + extraSupplies;
 
-  quoteTotal.textContent = formatGBP(total);
+  totalEl.textContent = GBP(total);
 
   const extras = [];
-  if (oven) extras.push("Inside oven clean");
-  if (supplies) extras.push("Hoover & mop");
+  if (extraOven) extras.push("Oven");
+  if (extraSupplies) extras.push("Supplies");
 
   const freq =
-    frequencySelect?.value === "One payment"
-      ? "One-time service"
-      : `${frequencySelect?.value} service`;
+    frequency.value === "One payment"
+      ? "One-time"
+      : frequency.value;
 
-  quoteBreakdown.textContent =
-    `${hours}h × ${formatGBP(rate)} • ${freq}` +
-    (extras.length ? ` • ${extras.join(" • ")}` : "") +
+  breakdownEl.textContent =
+    `${h}h × ${GBP(rate)} • ${freq}` +
+    (extras.length ? ` • ${extras.join(", ")}` : "") +
     " • No hidden fees";
-
-  /* hidden inputs */
-  if (estimatedTotalInput) estimatedTotalInput.value = quoteTotal.textContent;
-  if (quoteBreakdownInput) quoteBreakdownInput.value = quoteBreakdown.textContent;
-  if (serviceLabelInput) serviceLabelInput.value = getServiceName();
-  if (ovenExtraInput) ovenExtraInput.value = oven ? "Yes" : "No";
-  if (suppliesExtraInput) suppliesExtraInput.value = supplies ? "Yes" : "No";
 }
 
 /* =============================
    VALIDATION
 ============================= */
 
-function validateForm() {
-  if (!bookingForm) return false;
-
-  if (!bookingForm.checkValidity()) {
-    bookingForm.reportValidity();
+function validate() {
+  if (!form.checkValidity()) {
+    form.reportValidity();
     return false;
   }
 
-  if (dateInput.value < getTodayISO()) {
-    dateInput.setCustomValidity("Please choose a future date.");
-    dateInput.reportValidity();
+  if (dateInput.value < todayISO()) {
+    showError("Please choose a future date.");
     return false;
-  } else {
-    dateInput.setCustomValidity("");
   }
 
-  const hours = getHoursValue();
-  if (hours === "" || hours < 2) {
-    hoursInput.setCustomValidity("Minimum is 2 hours.");
-    hoursInput.reportValidity();
+  if (safeHours() < 2) {
+    showError("Minimum booking is 2 hours.");
     return false;
-  } else {
-    hoursInput.setCustomValidity("");
   }
 
   return true;
 }
 
 /* =============================
-   SUCCESS
+   UI FEEDBACK
 ============================= */
 
-function showSuccess() {
-  if (!successMessage) return;
+function setLoading(state) {
+  if (!submitBtn) return;
 
-  const name = nameInput.value.trim();
-  const first = name.split(" ")[0];
-
-  successText.textContent = name
-    ? `Thank you, ${first}. We’ll contact you shortly.`
-    : "Thank you. We’ll contact you shortly.";
-
-  successMessage.hidden = false;
-  successMessage.focus();
+  submitBtn.disabled = state;
+  submitBtn.textContent = state
+    ? "Checking availability..."
+    : "Check Availability & Book";
 }
 
-function resetForm() {
-  bookingForm.reset();
+function showSuccess() {
+  successBox.hidden = false;
+  successText.textContent = `Thank you${
+    nameInput.value ? ", " + nameInput.value.split(" ")[0] : ""
+  }. We'll contact you shortly.`;
 
-  hoursInput.value = "2";
-  frequencySelect.value = "Weekly";
-  timeInput.value = "10:00";
+  successBox.focus();
+}
 
-  updateQuote();
+function showError(msg) {
+  let err = document.querySelector(".form-error");
+
+  if (!err) {
+    err = document.createElement("div");
+    err.className = "form-error";
+    err.style.cssText =
+      "margin-top:10px;padding:12px;border-radius:12px;background:#ff4d4d22;border:1px solid #ff4d4d;color:#fff;font-size:14px;";
+    form.appendChild(err);
+  }
+
+  err.textContent = msg;
 }
 
 /* =============================
-   FORM SUBMIT
+   SUBMIT
 ============================= */
 
-bookingForm?.addEventListener("submit", async (e) => {
+form?.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   updateQuote();
-  if (!validateForm()) return;
 
-  const formData = new FormData(bookingForm);
+  if (!validate()) return;
+
+  setLoading(true);
 
   try {
-    const res = await fetch(bookingForm.action, {
+    const res = await fetch(form.action, {
       method: "POST",
-      body: formData,
+      body: new FormData(form),
       headers: { Accept: "application/json" }
     });
 
     if (!res.ok) throw new Error();
 
     showSuccess();
-    resetForm();
+    form.reset();
+    hours.value = 2;
+    updateQuote();
   } catch {
-    alert("Something went wrong. Please try again.");
+    showError("Something went wrong. Please try again or call us.");
+  } finally {
+    setLoading(false);
   }
 });
 
@@ -218,78 +185,55 @@ bookingForm?.addEventListener("submit", async (e) => {
    MENU
 ============================= */
 
-function openMenu() {
-  lastFocusedElement = document.activeElement;
+const menu = $("premiumMenu");
+const overlay = $("menuOverlay");
+const toggle = $("menuToggle");
+const closeBtn = document.querySelector(".menu-close");
 
-  menu.classList.add("is-open");
-  overlay.classList.add("is-open");
-  menuToggle.setAttribute("aria-expanded", "true");
-  document.body.classList.add("menu-open");
+toggle?.addEventListener("click", () => {
+  menu.classList.toggle("is-open");
+  overlay.classList.toggle("is-open");
+  document.body.classList.toggle("menu-open");
+});
 
-  menuClose.focus();
-}
+closeBtn?.addEventListener("click", closeMenu);
+overlay?.addEventListener("click", closeMenu);
 
 function closeMenu() {
   menu.classList.remove("is-open");
   overlay.classList.remove("is-open");
-  menuToggle.setAttribute("aria-expanded", "false");
   document.body.classList.remove("menu-open");
-
-  lastFocusedElement?.focus();
 }
-
-menuToggle?.addEventListener("click", () =>
-  menu.classList.contains("is-open") ? closeMenu() : openMenu()
-);
-
-menuClose?.addEventListener("click", closeMenu);
-overlay?.addEventListener("click", closeMenu);
-
-window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeMenu();
-});
-
-/* =============================
-   FOOTER
-============================= */
-
-footerToggle?.addEventListener("click", () => {
-  const open = footerToggle.getAttribute("aria-expanded") === "true";
-  footerToggle.setAttribute("aria-expanded", String(!open));
-
-  areasList.toggleAttribute("hidden");
-  areasList.classList.toggle("is-open");
-});
 
 /* =============================
    REVEAL
 ============================= */
 
-const revealItems = document.querySelectorAll(".reveal");
+const reveals = document.querySelectorAll(".reveal");
 
 if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          obs.unobserve(entry.target);
+  const obs = new IntersectionObserver(
+    (entries, o) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-visible");
+          o.unobserve(e.target);
         }
       });
     },
     { threshold: 0.12 }
   );
 
-  revealItems.forEach((el) => observer.observe(el));
+  reveals.forEach((r) => obs.observe(r));
 } else {
-  revealItems.forEach((el) => el.classList.add("is-visible"));
+  reveals.forEach((r) => r.classList.add("is-visible"));
 }
 
 /* =============================
-   INIT VALUES
+   INIT
 ============================= */
 
-if (dateInput) dateInput.min = getTodayISO();
+if (dateInput) dateInput.min = todayISO();
 if (year) year.textContent = new Date().getFullYear();
 
 updateQuote();
