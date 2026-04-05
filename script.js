@@ -9,6 +9,7 @@ const quoteTotal = document.getElementById("quoteTotal");
 const quoteBreakdown = document.getElementById("quoteBreakdown");
 const bookingForm = document.getElementById("bookingForm");
 const successMessage = document.getElementById("successMessage");
+const successText = document.getElementById("successText");
 const year = document.getElementById("year");
 const dateInput = document.getElementById("date");
 const timeInput = document.getElementById("time");
@@ -47,12 +48,13 @@ function getServiceName() {
 
 function getHoursValue() {
   if (!hoursInput) return 2;
+
   const raw = hoursInput.value.trim();
-
   if (raw === "") return "";
-  const parsed = parseInt(raw, 10);
 
+  const parsed = parseInt(raw, 10);
   if (Number.isNaN(parsed)) return "";
+
   return parsed;
 }
 
@@ -78,7 +80,7 @@ function updateQuote() {
   const hours = rawHours === "" ? 2 : Math.max(2, rawHours);
   const oven = ovenInput?.checked ? parseFloat(ovenInput.value || "0") : 0;
   const supplies = suppliesInput?.checked ? parseFloat(suppliesInput.value || "0") : 0;
-  const total = (hourlyRate * hours) + oven + supplies;
+  const total = hourlyRate * hours + oven + supplies;
 
   quoteTotal.textContent = formatGBP(total);
 
@@ -94,7 +96,7 @@ function updateQuote() {
   quoteBreakdown.textContent =
     `${hours} hour${hours > 1 ? "s" : ""} × ${formatGBP(hourlyRate)} • ${frequencyText}` +
     (extras.length ? ` • ${extras.join(" • ")}` : "") +
-    ` • No hidden fees`;
+    " • No hidden fees";
 
   if (estimatedTotalInput) {
     estimatedTotalInput.value = quoteTotal.textContent;
@@ -160,6 +162,18 @@ function validateForm() {
 
 function showSuccessMessage() {
   if (!successMessage) return;
+
+  const name = nameInput?.value.trim() || "";
+
+  if (successText) {
+    if (name) {
+      const firstName = name.split(" ")[0];
+      successText.textContent = `Thank you, ${firstName}. Your booking has been received — we’ll be in touch shortly.`;
+    } else {
+      successText.textContent = "Thank you. Your booking has been received — we’ll be in touch shortly.";
+    }
+  }
+
   successMessage.hidden = false;
   successMessage.focus();
 }
@@ -174,26 +188,6 @@ function resetBookingForm() {
   if (timeInput) timeInput.value = "10:00";
 
   updateQuote();
-}
-
-function buildWhatsAppMessage(booking) {
-  const extrasList = [];
-  if (booking.extras.oven) extrasList.push("Inside oven clean");
-  if (booking.extras.supplies) extrasList.push("Hoover & mop provided by us");
-
-  return `Hi Nestlyn Clean, I'd like to book:
-
-Service: ${booking.service}
-Frequency: ${booking.frequency}
-Hours: ${booking.hours}
-Date: ${booking.date}
-Time: ${booking.time}
-Extras: ${extrasList.length ? extrasList.join(", ") : "None"}
-Estimated total: ${booking.total}
-
-Name: ${booking.name}
-Phone: ${booking.phone}
-Email: ${booking.email}`;
 }
 
 function openMenu() {
@@ -230,6 +224,7 @@ function closeMenu() {
 
 function toggleMenu() {
   if (!menu) return;
+
   const isOpen = menu.classList.contains("is-open");
   if (isOpen) {
     closeMenu();
@@ -259,9 +254,9 @@ function trapFocusInMenu(event) {
   }
 }
 
-[serviceSelect, ovenInput, suppliesInput, frequencySelect].forEach((el) => {
-  el?.addEventListener("input", updateQuote);
-  el?.addEventListener("change", updateQuote);
+[serviceSelect, ovenInput, suppliesInput, frequencySelect].forEach((element) => {
+  element?.addEventListener("input", updateQuote);
+  element?.addEventListener("change", updateQuote);
 });
 
 hoursInput?.addEventListener("input", updateQuote);
@@ -336,12 +331,6 @@ bookingForm?.addEventListener("submit", async (event) => {
     }
 
     showSuccessMessage();
-
-    const whatsappMessage = buildWhatsAppMessage(booking);
-    const whatsappURL = `https://wa.me/447514718173?text=${encodeURIComponent(whatsappMessage)}`;
-
-    window.open(whatsappURL, "_blank", "noopener");
-
     resetBookingForm();
   } catch (error) {
     alert("There was a problem sending your booking. Please try again or call us.");
