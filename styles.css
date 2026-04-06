@@ -1845,3 +1845,95 @@ main {
 .header-right {
   margin-left: auto;
 }
+@media (max-width: 768px) {
+  .final-cta {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .final-cta-card {
+    padding: 24px 18px;
+    border-radius: 22px;
+  }
+
+  .final-cta-card > span {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+  }
+
+  .final-cta-card h2 {
+    font-size: 2rem;
+    line-height: 1.02;
+    margin-bottom: 10px;
+  }
+
+  .final-cta-card p {
+    margin-bottom: 16px;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .final-cta-actions {
+    gap: 10px;
+  }
+
+  .final-cta-actions .btn {
+    min-height: 50px;
+  }
+
+  .site-footer {
+    padding: 20px 0 28px;
+  }
+
+  .footer-wrap {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .footer-summary {
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(212, 175, 104, 0.08);
+  }
+
+  .footer-summary p {
+    margin: 0 0 8px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .footer-tagline {
+    margin-bottom: 10px;
+  }
+
+  .footer-summary a {
+    white-space: normal;
+  }
+
+  .footer-areas {
+    gap: 12px;
+  }
+
+  .footer-toggle {
+    width: auto;
+    min-height: 48px;
+    padding: 12px 18px;
+    font-size: 0.95rem;
+    border-radius: 14px;
+  }
+
+  .footer-area-links {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 18px;
+    margin-top: 4px;
+  }
+
+  .footer-area-links.is-open {
+    display: grid;
+  }
+
+  .footer-area-links a {
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+}
