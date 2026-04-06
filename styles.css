@@ -1869,3 +1869,10 @@ main {
     transform: none !important;
   }
 }
+.reviews-slider {
+  min-height: 430px;
+}
+
+.review-card {
+  min-height: 430px;
+}
