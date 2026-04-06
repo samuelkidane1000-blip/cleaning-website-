@@ -10,6 +10,13 @@ const menuToggle = document.getElementById("menuToggle");
 const menuClose = document.querySelector(".menu-close");
 const menuItems = document.querySelectorAll(".premium-menu-nav a");
 
+const menuBookBtn = document.querySelector(".premium-menu-btn");
+const menuCallBtn = document.querySelector(".premium-menu-call");
+
+const menuAreasToggle = document.querySelector(".menu-areas-toggle");
+const menuAreasList = document.getElementById("menuAreasList");
+const premiumMenuBody = document.querySelector(".premium-menu-body");
+
 const serviceSelect = document.getElementById("service");
 const hoursInput = document.getElementById("hours");
 const ovenInput = document.getElementById("oven");
@@ -17,6 +24,7 @@ const suppliesInput = document.getElementById("supplies");
 const frequencySelect = document.getElementById("frequency");
 const quoteTotal = document.getElementById("quoteTotal");
 const quoteBreakdown = document.getElementById("quoteBreakdown");
+
 const bookingForm = document.getElementById("bookingForm");
 const successMessage = document.getElementById("successMessage");
 const successText = document.getElementById("successText");
@@ -31,14 +39,13 @@ const ovenExtraInput = document.getElementById("ovenExtraInput");
 const suppliesExtraInput = document.getElementById("suppliesExtraInput");
 
 const nameInput = document.getElementById("name");
+const phoneInput = document.getElementById("phone");
+const emailInput = document.getElementById("email");
 const dateInput = document.getElementById("date");
 const timeInput = document.getElementById("time");
+const consentInput = document.getElementById("consent");
 
 const year = document.getElementById("year");
-
-const menuAreasToggle = document.querySelector(".menu-areas-toggle");
-const menuAreasList = document.getElementById("menuAreasList");
-const premiumMenuBody = document.querySelector(".premium-menu-body");
 
 /* =========================
    HELPERS
@@ -81,6 +88,7 @@ function showError(message) {
   if (!errorMessage || !errorText) return;
   errorText.textContent = message;
   errorMessage.hidden = false;
+  errorMessage.focus();
 }
 
 function showSuccess() {
@@ -148,18 +156,59 @@ function updateQuote() {
 function validateBookingForm() {
   if (!bookingForm) return false;
 
-  if (!bookingForm.checkValidity()) {
-    bookingForm.reportValidity();
+  hideMessages();
+
+  if (!nameInput?.value.trim()) {
+    showError("Please enter your name.");
+    nameInput?.focus();
     return false;
   }
 
-  if (dateInput?.value && dateInput.value < getTodayISO()) {
+  if (!phoneInput?.value.trim()) {
+    showError("Please enter your phone number.");
+    phoneInput?.focus();
+    return false;
+  }
+
+  if (!emailInput?.value.trim()) {
+    showError("Please enter your email address.");
+    emailInput?.focus();
+    return false;
+  }
+
+  if (!emailInput.checkValidity()) {
+    showError("Please enter a valid email address.");
+    emailInput?.focus();
+    return false;
+  }
+
+  if (!dateInput?.value) {
+    showError("Please select a booking date.");
+    dateInput?.focus();
+    return false;
+  }
+
+  if (!timeInput?.value) {
+    showError("Please select a booking time.");
+    timeInput?.focus();
+    return false;
+  }
+
+  if (dateInput.value < getTodayISO()) {
     showError("Please choose today or a future date.");
+    dateInput?.focus();
     return false;
   }
 
   if (hoursInput && getSafeHours() < 2) {
     showError("Minimum booking is 2 hours.");
+    hoursInput?.focus();
+    return false;
+  }
+
+  if (consentInput && !consentInput.checked) {
+    showError("Please accept the Privacy Policy before submitting.");
+    consentInput?.focus();
     return false;
   }
 
@@ -250,8 +299,57 @@ menuItems.forEach((item) => {
   });
 });
 
+menuBookBtn?.addEventListener("click", (e) => {
+  const target = document.querySelector("#booking");
+  if (!target) return;
+
+  e.preventDefault();
+  closeMenu();
+
+  setTimeout(() => {
+    const top = target.getBoundingClientRect().top + window.scrollY - 90;
+    window.scrollTo({
+      top,
+      behavior: "smooth"
+    });
+  }, 250);
+});
+
+menuCallBtn?.addEventListener("click", () => {
+  closeMenu();
+});
+
 window.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeMenu();
+});
+
+/* =========================
+   MENU AREAS TOGGLE
+========================= */
+
+menuAreasToggle?.addEventListener("click", () => {
+  const expanded = menuAreasToggle.getAttribute("aria-expanded") === "true";
+
+  menuAreasToggle.setAttribute("aria-expanded", String(!expanded));
+
+  if (expanded) {
+    menuAreasList?.setAttribute("hidden", "");
+  } else {
+    menuAreasList?.removeAttribute("hidden");
+
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        if (premiumMenuBody && menuAreasList) {
+          const top = menuAreasList.offsetTop - premiumMenuBody.offsetTop - 12;
+
+          premiumMenuBody.scrollTo({
+            top,
+            behavior: "smooth"
+          });
+        }
+      }, 80);
+    });
+  }
 });
 
 /* =========================
@@ -273,7 +371,7 @@ anchorLinks.forEach((link) => {
 
     const target = document.querySelector(targetId);
 
-    if (target) {
+    if (target && !this.classList.contains("premium-menu-btn")) {
       e.preventDefault();
       const offset = 90;
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
@@ -408,35 +506,6 @@ window.addEventListener("load", () => {
 
   showSlide(0);
   startAutoSlide();
-});
-
-/* =========================
-   MENU AREAS TOGGLE
-========================= */
-
-menuAreasToggle?.addEventListener("click", () => {
-  const expanded = menuAreasToggle.getAttribute("aria-expanded") === "true";
-
-  menuAreasToggle.setAttribute("aria-expanded", String(!expanded));
-
-  if (expanded) {
-    menuAreasList?.setAttribute("hidden", "");
-  } else {
-    menuAreasList?.removeAttribute("hidden");
-
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        if (premiumMenuBody && menuAreasList) {
-          const top = menuAreasList.offsetTop - premiumMenuBody.offsetTop - 12;
-
-          premiumMenuBody.scrollTo({
-            top,
-            behavior: "smooth"
-          });
-        }
-      }, 80);
-    });
-  }
 });
 
 /* =========================
