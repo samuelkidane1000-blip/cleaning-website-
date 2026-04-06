@@ -1873,7 +1873,6 @@ main {
   position: relative;
   overflow: hidden;
   touch-action: pan-y;
-  min-height: 430px;
 }
 
 .review-card {
@@ -1884,7 +1883,6 @@ main {
   pointer-events: none;
   transform: translateX(18px);
   transition: opacity 0.35s ease, transform 0.35s ease;
-  min-height: 430px;
   display: block;
 }
 
@@ -1894,4 +1892,12 @@ main {
   visibility: visible;
   pointer-events: auto;
   transform: translateX(0);
+}
+.reviews-slider {
+  min-height: 0;
+}
+@media (max-width: 768px) {
+  .reviews-slider {
+    min-height: 360px;
+  }
 }
