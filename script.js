@@ -106,3 +106,95 @@ if ("IntersectionObserver" in window) {
 
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.getElementById("reviewsSlider");
+  const slides = document.querySelectorAll(".review-card");
+  const dotsContainer = document.getElementById("reviewDots");
+
+  if (!slider || !slides.length || !dotsContainer) return;
+
+  let currentIndex = 0;
+  let autoSlide;
+  let startX = 0;
+  let endX = 0;
+
+  slides.forEach((_, index) => {
+    const dot = document.createElement("span");
+    if (index === 0) dot.classList.add("active");
+
+    dot.addEventListener("click", () => {
+      showSlide(index);
+      restartAutoSlide();
+    });
+
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll("span");
+
+  function showSlide(index) {
+    slides.forEach((slide) => slide.classList.remove("active"));
+    dots.forEach((dot) => dot.classList.remove("active"));
+
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
+
+    currentIndex = index;
+  }
+
+  function nextSlide() {
+    const nextIndex = (currentIndex + 1) % slides.length;
+    showSlide(nextIndex);
+  }
+
+  function prevSlide() {
+    const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(prevIndex);
+  }
+
+  function startAutoSlide() {
+    autoSlide = setInterval(() => {
+      nextSlide();
+    }, 4000);
+  }
+
+  function restartAutoSlide() {
+    clearInterval(autoSlide);
+    startAutoSlide();
+  }
+
+  slider.addEventListener(
+    "touchstart",
+    (e) => {
+      startX = e.touches[0].clientX;
+    },
+    { passive: true }
+  );
+
+  slider.addEventListener(
+    "touchmove",
+    (e) => {
+      endX = e.touches[0].clientX;
+    },
+    { passive: true }
+  );
+
+  slider.addEventListener("touchend", () => {
+    const diff = startX - endX;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+      restartAutoSlide();
+    }
+
+    startX = 0;
+    endX = 0;
+  });
+
+  showSlide(0);
+  startAutoSlide();
+});
