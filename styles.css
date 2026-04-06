@@ -1565,3 +1565,19 @@ main {
 .hero-call-now a:hover {
   opacity: 0.85;
 }
+.hero-call-now {
+  animation: subtleGlow 3.5s ease-in-out infinite;
+}
+
+@keyframes subtleGlow {
+  0%, 100% {
+    box-shadow:
+      0 6px 18px rgba(0, 0, 0, 0.18),
+      0 0 12px rgba(212, 175, 104, 0.05);
+  }
+  50% {
+    box-shadow:
+      0 8px 22px rgba(0, 0, 0, 0.22),
+      0 0 22px rgba(212, 175, 104, 0.12);
+  }
+}
