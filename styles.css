@@ -1937,3 +1937,53 @@ main {
     line-height: 1.45;
   }
 }
+.menu-section {
+  margin-top: 4px;
+}
+
+.menu-section-title {
+  margin: 0 0 10px;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(212, 175, 104, 0.62);
+}
+
+.menu-areas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+}
+
+.menu-areas a {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.78);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.menu-areas a:hover {
+  color: var(--gold-soft);
+  transform: translateX(2px);
+}
+
+.mobile-sticky-book {
+  display: none !important;
+}
+
+.footer-areas,
+.footer-area-links,
+.footer-toggle {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .menu-areas {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 12px;
+  }
+
+  .menu-areas a {
+    font-size: 0.88rem;
+  }
+}
