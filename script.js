@@ -299,20 +299,8 @@ menuItems.forEach((item) => {
   });
 });
 
-menuBookBtn?.addEventListener("click", (e) => {
-  const target = document.querySelector("#booking");
-  if (!target) return;
-
-  e.preventDefault();
+menuBookBtn?.addEventListener("click", () => {
   closeMenu();
-
-  setTimeout(() => {
-    const top = target.getBoundingClientRect().top + window.scrollY - 90;
-    window.scrollTo({
-      top,
-      behavior: "smooth"
-    });
-  }, 250);
 });
 
 menuCallBtn?.addEventListener("click", () => {
@@ -350,38 +338,6 @@ menuAreasToggle?.addEventListener("click", () => {
       }, 80);
     });
   }
-});
-
-/* =========================
-   SMOOTH SCROLL
-========================= */
-
-const anchorLinks = document.querySelectorAll('a[href^="#"]');
-
-anchorLinks.forEach((link) => {
-  link.addEventListener("click", function (e) {
-    const targetId = this.getAttribute("href");
-
-    if (!targetId || targetId === "#") return;
-    if (targetId === "#top") {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
-
-    const target = document.querySelector(targetId);
-
-    if (target && !this.classList.contains("premium-menu-btn")) {
-      e.preventDefault();
-      const offset = 90;
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-
-      window.scrollTo({
-        top,
-        behavior: "smooth"
-      });
-    }
-  });
 });
 
 /* =========================
