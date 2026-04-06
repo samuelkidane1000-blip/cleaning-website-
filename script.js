@@ -10,8 +10,217 @@ const menuToggle = document.getElementById("menuToggle");
 const menuClose = document.querySelector(".menu-close");
 const menuItems = document.querySelectorAll(".premium-menu-nav a");
 
+const serviceSelect = document.getElementById("service");
+const hoursInput = document.getElementById("hours");
+const ovenInput = document.getElementById("oven");
+const suppliesInput = document.getElementById("supplies");
+const frequencySelect = document.getElementById("frequency");
+const quoteTotal = document.getElementById("quoteTotal");
+const quoteBreakdown = document.getElementById("quoteBreakdown");
+const bookingForm = document.getElementById("bookingForm");
+const successMessage = document.getElementById("successMessage");
+const successText = document.getElementById("successText");
+const errorMessage = document.getElementById("errorMessage");
+const errorText = document.getElementById("errorText");
+const submitBookingBtn = document.getElementById("submitBookingBtn");
+
+const estimatedTotalInput = document.getElementById("estimatedTotalInput");
+const quoteBreakdownInput = document.getElementById("quoteBreakdownInput");
+const serviceLabelInput = document.getElementById("serviceLabelInput");
+const ovenExtraInput = document.getElementById("ovenExtraInput");
+const suppliesExtraInput = document.getElementById("suppliesExtraInput");
+
+const nameInput = document.getElementById("name");
+const dateInput = document.getElementById("date");
+const timeInput = document.getElementById("time");
+
+const footerToggle = document.querySelector(".footer-toggle");
+const areasList = document.getElementById("areasList");
+
+const year = document.getElementById("year");
+
 /* =========================
-   MENU FUNCTIONS
+   HELPERS
+========================= */
+
+function formatGBP(value) {
+  return new Intl.NumberFormat("en-GB", {
+    style: "currency",
+    currency: "GBP"
+  }).format(value);
+}
+
+function getTodayISO() {
+  const d = new Date();
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+function getSafeHours() {
+  if (!hoursInput) return 2;
+  const val = parseInt(hoursInput.value, 10);
+  if (Number.isNaN(val) || val < 2) return 2;
+  return val;
+}
+
+function getServiceName() {
+  if (!serviceSelect) return "Cleaning";
+  const selected = serviceSelect.options[serviceSelect.selectedIndex];
+  return selected?.dataset.label || selected?.textContent.split("—")[0].trim() || "Cleaning";
+}
+
+function hideMessages() {
+  if (successMessage) successMessage.hidden = true;
+  if (errorMessage) errorMessage.hidden = true;
+}
+
+function showError(message) {
+  if (!errorMessage || !errorText) return;
+  errorText.textContent = message;
+  errorMessage.hidden = false;
+}
+
+function showSuccess() {
+  if (!successMessage || !successText) return;
+
+  const name = nameInput?.value.trim() || "";
+  const firstName = name ? name.split(" ")[0] : "";
+
+  successText.textContent = firstName
+    ? `Thank you, ${firstName}. We’ll contact you shortly.`
+    : "Thank you. We’ll contact you shortly.";
+
+  successMessage.hidden = false;
+  successMessage.focus();
+}
+
+function setSubmitLoading(isLoading) {
+  if (!submitBookingBtn) return;
+  submitBookingBtn.disabled = isLoading;
+  submitBookingBtn.textContent = isLoading
+    ? "Checking availability..."
+    : "Check Availability & Book";
+}
+
+/* =========================
+   QUOTE CALCULATOR
+========================= */
+
+function updateQuote() {
+  if (!serviceSelect || !quoteTotal || !quoteBreakdown || !frequencySelect) return;
+
+  const hourlyRate = parseFloat(serviceSelect.value || "0");
+  const hours = getSafeHours();
+  const oven = ovenInput?.checked ? parseFloat(ovenInput.value || "0") : 0;
+  const supplies = suppliesInput?.checked ? parseFloat(suppliesInput.value || "0") : 0;
+  const total = hourlyRate * hours + oven + supplies;
+
+  quoteTotal.textContent = formatGBP(total);
+
+  const extras = [];
+  if (oven) extras.push("Inside oven clean");
+  if (supplies) extras.push("Hoover & mop provided by us");
+
+  const frequencyText =
+    frequencySelect.value === "One payment"
+      ? "One-time service"
+      : `${frequencySelect.value} service`;
+
+  quoteBreakdown.textContent =
+    `${hours} hour${hours > 1 ? "s" : ""} × ${formatGBP(hourlyRate)} • ${frequencyText}` +
+    (extras.length ? ` • ${extras.join(" • ")}` : "") +
+    " • No hidden fees";
+
+  if (estimatedTotalInput) estimatedTotalInput.value = quoteTotal.textContent;
+  if (quoteBreakdownInput) quoteBreakdownInput.value = quoteBreakdown.textContent;
+  if (serviceLabelInput) serviceLabelInput.value = getServiceName();
+  if (ovenExtraInput) ovenExtraInput.value = ovenInput?.checked ? "Yes" : "No";
+  if (suppliesExtraInput) suppliesExtraInput.value = suppliesInput?.checked ? "Yes" : "No";
+}
+
+/* =========================
+   BOOKING FORM
+========================= */
+
+function validateBookingForm() {
+  if (!bookingForm) return false;
+
+  if (!bookingForm.checkValidity()) {
+    bookingForm.reportValidity();
+    return false;
+  }
+
+  if (dateInput?.value && dateInput.value < getTodayISO()) {
+    showError("Please choose today or a future date.");
+    return false;
+  }
+
+  if (hoursInput && getSafeHours() < 2) {
+    showError("Minimum booking is 2 hours.");
+    return false;
+  }
+
+  return true;
+}
+
+if (bookingForm) {
+  bookingForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    hideMessages();
+    updateQuote();
+
+    if (!validateBookingForm()) return;
+
+    setSubmitLoading(true);
+
+    try {
+      const response = await fetch(bookingForm.action, {
+        method: "POST",
+        body: new FormData(bookingForm),
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
+
+      showSuccess();
+      bookingForm.reset();
+
+      if (hoursInput) hoursInput.value = "2";
+      if (timeInput) timeInput.value = "10:00";
+
+      updateQuote();
+    } catch (error) {
+      showError("There was a problem sending your booking. Please try again or call us.");
+    } finally {
+      setSubmitLoading(false);
+    }
+  });
+}
+
+/* quote listeners */
+[serviceSelect, ovenInput, suppliesInput, frequencySelect].forEach((el) => {
+  el?.addEventListener("change", updateQuote);
+  el?.addEventListener("input", updateQuote);
+});
+
+hoursInput?.addEventListener("input", updateQuote);
+hoursInput?.addEventListener("change", updateQuote);
+hoursInput?.addEventListener("blur", () => {
+  if (hoursInput && (!hoursInput.value || parseInt(hoursInput.value, 10) < 2)) {
+    hoursInput.value = "2";
+  }
+  updateQuote();
+});
+
+/* =========================
+   MENU
 ========================= */
 
 function openMenu() {
@@ -31,52 +240,69 @@ function toggleMenu() {
   isOpen ? closeMenu() : openMenu();
 }
 
-/* =========================
-   MENU EVENTS (FIXED)
-========================= */
-
 menuToggle?.addEventListener("click", toggleMenu);
 menuClose?.addEventListener("click", closeMenu);
 overlay?.addEventListener("click", closeMenu);
 
-/* 🔥 THIS IS THE FIX YOU NEEDED */
 menuItems.forEach((item) => {
   item.addEventListener("click", () => {
     closeMenu();
   });
 });
 
-/* Close with ESC */
 window.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeMenu();
 });
 
 /* =========================
-   SMOOTH SCROLL OFFSET FIX
+   SMOOTH SCROLL
 ========================= */
 
-const links = document.querySelectorAll('a[href^="#"]');
+const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
-links.forEach((link) => {
+anchorLinks.forEach((link) => {
   link.addEventListener("click", function (e) {
     const targetId = this.getAttribute("href");
 
-    if (targetId.length > 1) {
-      const target = document.querySelector(targetId);
+    if (!targetId || targetId === "#") return;
+    if (targetId === "#top") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
 
-      if (target) {
-        e.preventDefault();
+    const target = document.querySelector(targetId);
 
-        const offset = 90;
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    if (target) {
+      e.preventDefault();
+      const offset = 90;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
 
-        window.scrollTo({
-          top,
-          behavior: "smooth"
-        });
-      }
+      window.scrollTo({
+        top,
+        behavior: "smooth"
+      });
     }
   });
+});
+
+/* =========================
+   FOOTER TOGGLE
+========================= */
+
+footerToggle?.addEventListener("click", () => {
+  if (!areasList) return;
+
+  const expanded = footerToggle.getAttribute("aria-expanded") === "true";
+  footerToggle.setAttribute("aria-expanded", String(!expanded));
+
+  if (expanded) {
+    areasList.setAttribute("hidden", "");
+    areasList.classList.remove("is-open");
+  } else {
+    areasList.removeAttribute("hidden");
+    areasList.classList.add("is-open");
+  }
 });
 
 /* =========================
@@ -101,22 +327,22 @@ if ("IntersectionObserver" in window) {
 }
 
 /* =========================
-   YEAR AUTO UPDATE
+   REVIEWS SLIDER
 ========================= */
 
-const year = document.getElementById("year");
-if (year) year.textContent = new Date().getFullYear();
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   const slider = document.getElementById("reviewsSlider");
-  const slides = document.querySelectorAll(".review-card");
+  const slides = document.querySelectorAll("#reviewsSlider .review-card");
   const dotsContainer = document.getElementById("reviewDots");
 
   if (!slider || !slides.length || !dotsContainer) return;
 
   let currentIndex = 0;
-  let autoSlide;
+  let autoSlide = null;
   let startX = 0;
   let endX = 0;
+
+  dotsContainer.innerHTML = "";
 
   slides.forEach((_, index) => {
     const dot = document.createElement("span");
@@ -133,11 +359,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const dots = dotsContainer.querySelectorAll("span");
 
   function showSlide(index) {
-    slides.forEach((slide) => slide.classList.remove("active"));
-    dots.forEach((dot) => dot.classList.remove("active"));
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+    });
 
-    slides[index].classList.add("active");
-    dots[index].classList.add("active");
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
 
     currentIndex = index;
   }
@@ -153,48 +381,62 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function startAutoSlide() {
-    autoSlide = setInterval(() => {
-      nextSlide();
-    }, 4000);
+    stopAutoSlide();
+    autoSlide = setInterval(nextSlide, 3500);
+  }
+
+  function stopAutoSlide() {
+    if (autoSlide) {
+      clearInterval(autoSlide);
+      autoSlide = null;
+    }
   }
 
   function restartAutoSlide() {
-    clearInterval(autoSlide);
     startAutoSlide();
   }
 
-  slider.addEventListener(
-    "touchstart",
-    (e) => {
-      startX = e.touches[0].clientX;
-    },
-    { passive: true }
-  );
+  slider.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    endX = startX;
+    stopAutoSlide();
+  }, { passive: true });
 
-  slider.addEventListener(
-    "touchmove",
-    (e) => {
-      endX = e.touches[0].clientX;
-    },
-    { passive: true }
-  );
+  slider.addEventListener("touchmove", (e) => {
+    endX = e.touches[0].clientX;
+  }, { passive: true });
 
   slider.addEventListener("touchend", () => {
     const diff = startX - endX;
 
-    if (Math.abs(diff) > 50) {
+    if (Math.abs(diff) > 40) {
       if (diff > 0) {
         nextSlide();
       } else {
         prevSlide();
       }
-      restartAutoSlide();
     }
 
     startX = 0;
     endX = 0;
+    restartAutoSlide();
   });
+
+  slider.addEventListener("mouseenter", stopAutoSlide);
+  slider.addEventListener("mouseleave", restartAutoSlide);
 
   showSlide(0);
   startAutoSlide();
 });
+
+/* =========================
+   INIT
+========================= */
+
+if (dateInput) dateInput.min = getTodayISO();
+if (year) year.textContent = new Date().getFullYear();
+if (hoursInput && !hoursInput.value) hoursInput.value = "2";
+if (timeInput && !timeInput.value) timeInput.value = "10:00";
+
+updateQuote();
+hideMessages();
