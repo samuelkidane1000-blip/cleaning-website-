@@ -1828,3 +1828,20 @@ main {
   font-size: 1.2em;
   letter-spacing: 0.05em;
 }
+.nav-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Center logo */
+.center-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Menu button right */
+.header-right {
+  margin-left: auto;
+}
