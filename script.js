@@ -34,10 +34,11 @@ const nameInput = document.getElementById("name");
 const dateInput = document.getElementById("date");
 const timeInput = document.getElementById("time");
 
-const footerToggle = document.querySelector(".footer-toggle");
-const areasList = document.getElementById("areasList");
-
 const year = document.getElementById("year");
+
+const menuAreasToggle = document.querySelector(".menu-areas-toggle");
+const menuAreasList = document.getElementById("menuAreasList");
+const premiumMenuBody = document.querySelector(".premium-menu-body");
 
 /* =========================
    HELPERS
@@ -204,7 +205,6 @@ if (bookingForm) {
   });
 }
 
-/* quote listeners */
 [serviceSelect, ovenInput, suppliesInput, frequencySelect].forEach((el) => {
   el?.addEventListener("change", updateQuote);
   el?.addEventListener("input", updateQuote);
@@ -284,25 +284,6 @@ anchorLinks.forEach((link) => {
       });
     }
   });
-});
-
-/* =========================
-   FOOTER TOGGLE
-========================= */
-
-footerToggle?.addEventListener("click", () => {
-  if (!areasList) return;
-
-  const expanded = footerToggle.getAttribute("aria-expanded") === "true";
-  footerToggle.setAttribute("aria-expanded", String(!expanded));
-
-  if (expanded) {
-    areasList.setAttribute("hidden", "");
-    areasList.classList.remove("is-open");
-  } else {
-    areasList.removeAttribute("hidden");
-    areasList.classList.add("is-open");
-  }
 });
 
 /* =========================
@@ -430,19 +411,8 @@ window.addEventListener("load", () => {
 });
 
 /* =========================
-   INIT
+   MENU AREAS TOGGLE
 ========================= */
-
-if (dateInput) dateInput.min = getTodayISO();
-if (year) year.textContent = new Date().getFullYear();
-if (hoursInput && !hoursInput.value) hoursInput.value = "2";
-if (timeInput && !timeInput.value) timeInput.value = "10:00";
-
-updateQuote();
-hideMessages();
-const menuAreasToggle = document.querySelector(".menu-areas-toggle");
-const menuAreasList = document.getElementById("menuAreasList");
-const premiumMenuBody = document.querySelector(".premium-menu-body");
 
 menuAreasToggle?.addEventListener("click", () => {
   const expanded = menuAreasToggle.getAttribute("aria-expanded") === "true";
@@ -456,14 +426,8 @@ menuAreasToggle?.addEventListener("click", () => {
 
     requestAnimationFrame(() => {
       setTimeout(() => {
-        menuAreasToggle.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-
         if (premiumMenuBody && menuAreasList) {
-          const top =
-            menuAreasList.offsetTop - premiumMenuBody.offsetTop - 12;
+          const top = menuAreasList.offsetTop - premiumMenuBody.offsetTop - 12;
 
           premiumMenuBody.scrollTo({
             top,
@@ -474,3 +438,15 @@ menuAreasToggle?.addEventListener("click", () => {
     });
   }
 });
+
+/* =========================
+   INIT
+========================= */
+
+if (dateInput) dateInput.min = getTodayISO();
+if (year) year.textContent = new Date().getFullYear();
+if (hoursInput && !hoursInput.value) hoursInput.value = "2";
+if (timeInput && !timeInput.value) timeInput.value = "10:00";
+
+updateQuote();
+hideMessages();
