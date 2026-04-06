@@ -440,3 +440,37 @@ if (timeInput && !timeInput.value) timeInput.value = "10:00";
 
 updateQuote();
 hideMessages();
+const menuAreasToggle = document.querySelector(".menu-areas-toggle");
+const menuAreasList = document.getElementById("menuAreasList");
+const premiumMenuBody = document.querySelector(".premium-menu-body");
+
+menuAreasToggle?.addEventListener("click", () => {
+  const expanded = menuAreasToggle.getAttribute("aria-expanded") === "true";
+
+  menuAreasToggle.setAttribute("aria-expanded", String(!expanded));
+
+  if (expanded) {
+    menuAreasList?.setAttribute("hidden", "");
+  } else {
+    menuAreasList?.removeAttribute("hidden");
+
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        menuAreasToggle.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+        if (premiumMenuBody && menuAreasList) {
+          const top =
+            menuAreasList.offsetTop - premiumMenuBody.offsetTop - 12;
+
+          premiumMenuBody.scrollTo({
+            top,
+            behavior: "smooth"
+          });
+        }
+      }, 80);
+    });
+  }
+});
