@@ -303,6 +303,8 @@ if ("IntersectionObserver" in window) {
 /* =========================
    REVIEW FORM
 ========================= */
+const reviewForm = document.getElementById("reviewForm");
+const reviewSuccessMessage = document.getElementById("reviewSuccessMessage");
 
 if (reviewForm) {
   reviewForm.addEventListener("submit", async (e) => {
@@ -320,21 +322,10 @@ if (reviewForm) {
       reviewForm.reset();
 
       if (reviewSuccessMessage) {
-        reviewForm.style.display = "none";
-        reviewSuccessMessage.hidden = false;
+        reviewSuccessMessage.classList.add("active");
       }
     } catch {
-      alert("There was a problem sending your review. Please try again.");
+      alert("There was a problem sending your review.");
     }
   });
 }
-
-/* =========================
-   INIT
-========================= */
-
-if (dateInput) dateInput.min = getTodayISO();
-if (year) year.textContent = new Date().getFullYear();
-
-updateQuote();
-hideMessages();
