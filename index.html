@@ -586,6 +586,8 @@
       >
         <input type="hidden" name="_subject" value="New Nestlyn Clean review submission" />
         <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://www.nestlynclean.com/#write-review" />
+        <input type="hidden" name="_autoresponse" value="Thank you for your review." />
 
         <div class="form-row">
           <label for="reviewName">
@@ -646,8 +648,11 @@
         </button>
       </form>
 
-      <div id="reviewSuccessMessage" class="review-success-inline" hidden>
-        Thank you — your review has been submitted for approval.
+      <div id="reviewSuccessMessage" class="review-success-inline">
+        <div>
+          <h3>Review sent</h3>
+          <p>Thank you. Your review has been submitted for approval.</p>
+        </div>
       </div>
     </div>
   </div>
