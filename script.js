@@ -10,12 +10,8 @@ const menuToggle = document.getElementById("menuToggle");
 const menuClose = document.querySelector(".menu-close");
 const menuItems = document.querySelectorAll(".premium-menu-nav a");
 
-const menuBookBtn = document.querySelector(".premium-menu-btn");
-const menuCallBtn = document.querySelector(".premium-menu-call");
-
 const menuAreasToggle = document.querySelector(".menu-areas-toggle");
 const menuAreasList = document.getElementById("menuAreasList");
-const premiumMenuBody = document.querySelector(".premium-menu-body");
 
 const serviceSelect = document.getElementById("service");
 const hoursInput = document.getElementById("hours");
@@ -30,7 +26,6 @@ const successMessage = document.getElementById("successMessage");
 const successText = document.getElementById("successText");
 const errorMessage = document.getElementById("errorMessage");
 const errorText = document.getElementById("errorText");
-const submitBookingBtn = document.getElementById("submitBookingBtn");
 
 const estimatedTotalInput = document.getElementById("estimatedTotalInput");
 const quoteBreakdownInput = document.getElementById("quoteBreakdownInput");
@@ -46,6 +41,9 @@ const timeInput = document.getElementById("time");
 const consentInput = document.getElementById("consent");
 
 const year = document.getElementById("year");
+
+const reviewForm = document.getElementById("reviewForm");
+const reviewSuccessMessage = document.getElementById("reviewSuccessMessage");
 
 /* =========================
    HELPERS
@@ -74,20 +72,20 @@ function getServiceName() {
 }
 
 function hideMessages() {
-  successMessage && (successMessage.hidden = true);
-  errorMessage && (errorMessage.hidden = true);
+  if (successMessage) successMessage.hidden = true;
+  if (errorMessage) errorMessage.hidden = true;
 }
 
 function showError(message) {
-  if (!errorMessage) return;
+  if (!errorMessage || !errorText) return;
   errorText.textContent = message;
   errorMessage.hidden = false;
 }
 
 function showSuccess() {
-  if (!successMessage) return;
+  if (!successMessage || !successText) return;
 
-  const firstName = nameInput?.value?.split(" ")[0] || "";
+  const firstName = nameInput?.value?.trim().split(" ")[0] || "";
 
   successText.textContent = firstName
     ? `Thank you, ${firstName}. We’ll contact you shortly.`
@@ -101,31 +99,108 @@ function showSuccess() {
 ========================= */
 
 function updateQuote() {
+  if (!quoteTotal || !quoteBreakdown) return;
+
   const rate = parseFloat(serviceSelect?.value || "0");
   const hours = getSafeHours();
   const oven = ovenInput?.checked ? 25 : 0;
   const supplies = suppliesInput?.checked ? 20 : 0;
-
   const total = rate * hours + oven + supplies;
 
   quoteTotal.textContent = formatGBP(total);
 
-  quoteBreakdown.textContent =
-    `${hours}h × ${formatGBP(rate)} • ${frequencySelect.value}`;
+  const extras = [];
+  if (oven) extras.push("Inside oven clean");
+  if (supplies) extras.push("Hoover & mop provided by us");
 
-  estimatedTotalInput.value = quoteTotal.textContent;
+  const frequencyText =
+    frequencySelect?.value === "One payment"
+      ? "One-time service"
+      : `${frequencySelect?.value || "Weekly"} service`;
+
+  quoteBreakdown.textContent =
+    `${hours} hour${hours > 1 ? "s" : ""} × ${formatGBP(rate)} • ${frequencyText}` +
+    (extras.length ? ` • ${extras.join(" • ")}` : "") +
+    " • No hidden fees";
+
+  if (estimatedTotalInput) estimatedTotalInput.value = quoteTotal.textContent;
+  if (quoteBreakdownInput) quoteBreakdownInput.value = quoteBreakdown.textContent;
+  if (serviceLabelInput) serviceLabelInput.value = getServiceName();
+  if (ovenExtraInput) ovenExtraInput.value = ovenInput?.checked ? "Yes" : "No";
+  if (suppliesExtraInput) suppliesExtraInput.value = suppliesInput?.checked ? "Yes" : "No";
 }
 
 /* =========================
    BOOKING FORM
 ========================= */
 
+function validateBookingForm() {
+  hideMessages();
+
+  if (!nameInput?.value.trim()) {
+    showError("Please enter your name.");
+    nameInput?.focus();
+    return false;
+  }
+
+  if (!phoneInput?.value.trim()) {
+    showError("Please enter your phone number.");
+    phoneInput?.focus();
+    return false;
+  }
+
+  if (!emailInput?.value.trim()) {
+    showError("Please enter your email address.");
+    emailInput?.focus();
+    return false;
+  }
+
+  if (!emailInput.checkValidity()) {
+    showError("Please enter a valid email address.");
+    emailInput?.focus();
+    return false;
+  }
+
+  if (!dateInput?.value) {
+    showError("Please select a booking date.");
+    dateInput?.focus();
+    return false;
+  }
+
+  if (!timeInput?.value) {
+    showError("Please select a booking time.");
+    timeInput?.focus();
+    return false;
+  }
+
+  if (dateInput.value < getTodayISO()) {
+    showError("Please choose today or a future date.");
+    dateInput?.focus();
+    return false;
+  }
+
+  if (getSafeHours() < 2) {
+    showError("Minimum booking is 2 hours.");
+    hoursInput?.focus();
+    return false;
+  }
+
+  if (consentInput && !consentInput.checked) {
+    showError("Please accept the Privacy Policy before submitting.");
+    consentInput?.focus();
+    return false;
+  }
+
+  return true;
+}
+
 if (bookingForm) {
   bookingForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    hideMessages();
     updateQuote();
+
+    if (!validateBookingForm()) return;
 
     try {
       const response = await fetch(bookingForm.action, {
@@ -138,13 +213,30 @@ if (bookingForm) {
 
       bookingForm.reset();
       showSuccess();
-      updateQuote();
 
+      if (hoursInput) hoursInput.value = "2";
+      if (timeInput) timeInput.value = "10:00";
+
+      updateQuote();
     } catch {
       showError("Something went wrong. Please try again.");
     }
   });
 }
+
+[serviceSelect, ovenInput, suppliesInput, frequencySelect].forEach((el) => {
+  el?.addEventListener("change", updateQuote);
+  el?.addEventListener("input", updateQuote);
+});
+
+hoursInput?.addEventListener("input", updateQuote);
+hoursInput?.addEventListener("change", updateQuote);
+hoursInput?.addEventListener("blur", () => {
+  if (!hoursInput.value || parseInt(hoursInput.value, 10) < 2) {
+    hoursInput.value = "2";
+  }
+  updateQuote();
+});
 
 /* =========================
    MENU
@@ -165,8 +257,11 @@ function closeMenu() {
 menuToggle?.addEventListener("click", openMenu);
 menuClose?.addEventListener("click", closeMenu);
 overlay?.addEventListener("click", closeMenu);
+menuItems.forEach((item) => item.addEventListener("click", closeMenu));
 
-menuItems.forEach(i => i.addEventListener("click", closeMenu));
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeMenu();
+});
 
 /* =========================
    MENU AREAS
@@ -174,9 +269,15 @@ menuItems.forEach(i => i.addEventListener("click", closeMenu));
 
 menuAreasToggle?.addEventListener("click", () => {
   const expanded = menuAreasToggle.getAttribute("aria-expanded") === "true";
+  menuAreasToggle.setAttribute("aria-expanded", String(!expanded));
 
-  menuAreasToggle.setAttribute("aria-expanded", !expanded);
-  menuAreasList.toggleAttribute("hidden");
+  if (menuAreasList) {
+    if (expanded) {
+      menuAreasList.setAttribute("hidden", "");
+    } else {
+      menuAreasList.removeAttribute("hidden");
+    }
+  }
 });
 
 /* =========================
@@ -185,22 +286,23 @@ menuAreasToggle?.addEventListener("click", () => {
 
 const revealItems = document.querySelectorAll(".reveal");
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("is-visible");
-    }
-  });
-});
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  }, { threshold: 0.12 });
 
-revealItems.forEach(el => observer.observe(el));
+  revealItems.forEach((el) => observer.observe(el));
+} else {
+  revealItems.forEach((el) => el.classList.add("is-visible"));
+}
 
 /* =========================
-   REVIEW FORM (FIXED)
+   REVIEW FORM
 ========================= */
-
-const reviewForm = document.getElementById("reviewForm");
-const reviewSuccessMessage = document.getElementById("reviewSuccessMessage");
 
 if (reviewForm) {
   reviewForm.addEventListener("submit", async (e) => {
@@ -218,11 +320,11 @@ if (reviewForm) {
       reviewForm.reset();
 
       if (reviewSuccessMessage) {
+        reviewForm.style.display = "none";
         reviewSuccessMessage.hidden = false;
       }
-
     } catch {
-      alert("Error sending review. Try again.");
+      alert("There was a problem sending your review. Please try again.");
     }
   });
 }
@@ -231,8 +333,8 @@ if (reviewForm) {
    INIT
 ========================= */
 
-dateInput && (dateInput.min = getTodayISO());
-year && (year.textContent = new Date().getFullYear());
+if (dateInput) dateInput.min = getTodayISO();
+if (year) year.textContent = new Date().getFullYear();
 
 updateQuote();
 hideMessages();
