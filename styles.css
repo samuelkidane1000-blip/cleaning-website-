@@ -1901,3 +1901,34 @@ main {
     min-height: 360px;
   }
 }
+.review-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.review-link:hover {
+  border-color: rgba(212, 175, 104, 0.28);
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.2),
+    0 0 18px rgba(212, 175, 104, 0.08);
+}
+
+.review-link:active {
+  transform: scale(0.995);
+}
+
+.review-link .review-top img {
+  transition: transform 0.2s ease;
+}
+
+.review-link:hover .review-top img {
+  transform: scale(1.06);
+}
+
+.reviews-note {
+  margin-top: 10px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+}
