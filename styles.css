@@ -2160,3 +2160,38 @@ main {
     border-radius: 22px;
   }
 }
+.review-submit-card,
+.review-submit-form,
+.review-success-inline {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.review-success-inline {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(75, 181, 67, 0.12);
+  border: 1px solid rgba(75, 181, 67, 0.32);
+  color: var(--text);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .review-submit-card {
+    overflow-x: hidden;
+  }
+
+  .review-submit-form,
+  .review-submit-form label,
+  .review-submit-form input,
+  .review-submit-form select,
+  .review-submit-form textarea,
+  .review-submit-form button,
+  .review-success-inline {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
