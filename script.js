@@ -60,57 +60,40 @@ function formatGBP(value) {
 
 function getTodayISO() {
   const d = new Date();
-  const yyyy = d.getFullYear();
-  const mm = String(d.getMonth() + 1).padStart(2, "0");
-  const dd = String(d.getDate()).padStart(2, "0");
-  return `${yyyy}-${mm}-${dd}`;
+  return d.toISOString().split("T")[0];
 }
 
 function getSafeHours() {
-  if (!hoursInput) return 2;
-  const val = parseInt(hoursInput.value, 10);
-  if (Number.isNaN(val) || val < 2) return 2;
-  return val;
+  const val = parseInt(hoursInput?.value || "2", 10);
+  return Number.isNaN(val) || val < 2 ? 2 : val;
 }
 
 function getServiceName() {
-  if (!serviceSelect) return "Cleaning";
-  const selected = serviceSelect.options[serviceSelect.selectedIndex];
-  return selected?.dataset.label || selected?.textContent.split("—")[0].trim() || "Cleaning";
+  const selected = serviceSelect?.options[serviceSelect.selectedIndex];
+  return selected?.dataset.label || "Cleaning";
 }
 
 function hideMessages() {
-  if (successMessage) successMessage.hidden = true;
-  if (errorMessage) errorMessage.hidden = true;
+  successMessage && (successMessage.hidden = true);
+  errorMessage && (errorMessage.hidden = true);
 }
 
 function showError(message) {
-  if (!errorMessage || !errorText) return;
+  if (!errorMessage) return;
   errorText.textContent = message;
   errorMessage.hidden = false;
-  errorMessage.focus();
 }
 
 function showSuccess() {
-  if (!successMessage || !successText) return;
+  if (!successMessage) return;
 
-  const name = nameInput?.value.trim() || "";
-  const firstName = name ? name.split(" ")[0] : "";
+  const firstName = nameInput?.value?.split(" ")[0] || "";
 
   successText.textContent = firstName
     ? `Thank you, ${firstName}. We’ll contact you shortly.`
     : "Thank you. We’ll contact you shortly.";
 
   successMessage.hidden = false;
-  successMessage.focus();
-}
-
-function setSubmitLoading(isLoading) {
-  if (!submitBookingBtn) return;
-  submitBookingBtn.disabled = isLoading;
-  submitBookingBtn.textContent = isLoading
-    ? "Checking availability..."
-    : "Check Availability & Book";
 }
 
 /* =========================
@@ -118,102 +101,24 @@ function setSubmitLoading(isLoading) {
 ========================= */
 
 function updateQuote() {
-  if (!serviceSelect || !quoteTotal || !quoteBreakdown || !frequencySelect) return;
-
-  const hourlyRate = parseFloat(serviceSelect.value || "0");
+  const rate = parseFloat(serviceSelect?.value || "0");
   const hours = getSafeHours();
-  const oven = ovenInput?.checked ? parseFloat(ovenInput.value || "0") : 0;
-  const supplies = suppliesInput?.checked ? parseFloat(suppliesInput.value || "0") : 0;
-  const total = hourlyRate * hours + oven + supplies;
+  const oven = ovenInput?.checked ? 25 : 0;
+  const supplies = suppliesInput?.checked ? 20 : 0;
+
+  const total = rate * hours + oven + supplies;
 
   quoteTotal.textContent = formatGBP(total);
 
-  const extras = [];
-  if (oven) extras.push("Inside oven clean");
-  if (supplies) extras.push("Hoover & mop provided by us");
-
-  const frequencyText =
-    frequencySelect.value === "One payment"
-      ? "One-time service"
-      : `${frequencySelect.value} service`;
-
   quoteBreakdown.textContent =
-    `${hours} hour${hours > 1 ? "s" : ""} × ${formatGBP(hourlyRate)} • ${frequencyText}` +
-    (extras.length ? ` • ${extras.join(" • ")}` : "") +
-    " • No hidden fees";
+    `${hours}h × ${formatGBP(rate)} • ${frequencySelect.value}`;
 
-  if (estimatedTotalInput) estimatedTotalInput.value = quoteTotal.textContent;
-  if (quoteBreakdownInput) quoteBreakdownInput.value = quoteBreakdown.textContent;
-  if (serviceLabelInput) serviceLabelInput.value = getServiceName();
-  if (ovenExtraInput) ovenExtraInput.value = ovenInput?.checked ? "Yes" : "No";
-  if (suppliesExtraInput) suppliesExtraInput.value = suppliesInput?.checked ? "Yes" : "No";
+  estimatedTotalInput.value = quoteTotal.textContent;
 }
 
 /* =========================
    BOOKING FORM
 ========================= */
-
-function validateBookingForm() {
-  if (!bookingForm) return false;
-
-  hideMessages();
-
-  if (!nameInput?.value.trim()) {
-    showError("Please enter your name.");
-    nameInput?.focus();
-    return false;
-  }
-
-  if (!phoneInput?.value.trim()) {
-    showError("Please enter your phone number.");
-    phoneInput?.focus();
-    return false;
-  }
-
-  if (!emailInput?.value.trim()) {
-    showError("Please enter your email address.");
-    emailInput?.focus();
-    return false;
-  }
-
-  if (!emailInput.checkValidity()) {
-    showError("Please enter a valid email address.");
-    emailInput?.focus();
-    return false;
-  }
-
-  if (!dateInput?.value) {
-    showError("Please select a booking date.");
-    dateInput?.focus();
-    return false;
-  }
-
-  if (!timeInput?.value) {
-    showError("Please select a booking time.");
-    timeInput?.focus();
-    return false;
-  }
-
-  if (dateInput.value < getTodayISO()) {
-    showError("Please choose today or a future date.");
-    dateInput?.focus();
-    return false;
-  }
-
-  if (hoursInput && getSafeHours() < 2) {
-    showError("Minimum booking is 2 hours.");
-    hoursInput?.focus();
-    return false;
-  }
-
-  if (consentInput && !consentInput.checked) {
-    showError("Please accept the Privacy Policy before submitting.");
-    consentInput?.focus();
-    return false;
-  }
-
-  return true;
-}
 
 if (bookingForm) {
   bookingForm.addEventListener("submit", async (e) => {
@@ -222,51 +127,24 @@ if (bookingForm) {
     hideMessages();
     updateQuote();
 
-    if (!validateBookingForm()) return;
-
-    setSubmitLoading(true);
-
     try {
       const response = await fetch(bookingForm.action, {
         method: "POST",
         body: new FormData(bookingForm),
-        headers: {
-          Accept: "application/json"
-        }
+        headers: { Accept: "application/json" }
       });
 
-      if (!response.ok) {
-        throw new Error("Submission failed");
-      }
+      if (!response.ok) throw new Error();
 
-      showSuccess();
       bookingForm.reset();
-
-      if (hoursInput) hoursInput.value = "2";
-      if (timeInput) timeInput.value = "10:00";
-
+      showSuccess();
       updateQuote();
-    } catch (error) {
-      showError("There was a problem sending your booking. Please try again or call us.");
-    } finally {
-      setSubmitLoading(false);
+
+    } catch {
+      showError("Something went wrong. Please try again.");
     }
   });
 }
-
-[serviceSelect, ovenInput, suppliesInput, frequencySelect].forEach((el) => {
-  el?.addEventListener("change", updateQuote);
-  el?.addEventListener("input", updateQuote);
-});
-
-hoursInput?.addEventListener("input", updateQuote);
-hoursInput?.addEventListener("change", updateQuote);
-hoursInput?.addEventListener("blur", () => {
-  if (hoursInput && (!hoursInput.value || parseInt(hoursInput.value, 10) < 2)) {
-    hoursInput.value = "2";
-  }
-  updateQuote();
-});
 
 /* =========================
    MENU
@@ -284,94 +162,43 @@ function closeMenu() {
   document.body.classList.remove("menu-open");
 }
 
-function toggleMenu() {
-  const isOpen = menu?.classList.contains("is-open");
-  isOpen ? closeMenu() : openMenu();
-}
-
-menuToggle?.addEventListener("click", toggleMenu);
+menuToggle?.addEventListener("click", openMenu);
 menuClose?.addEventListener("click", closeMenu);
 overlay?.addEventListener("click", closeMenu);
 
-menuItems.forEach((item) => {
-  item.addEventListener("click", () => {
-    closeMenu();
-  });
-});
-
-menuBookBtn?.addEventListener("click", () => {
-  closeMenu();
-});
-
-menuCallBtn?.addEventListener("click", () => {
-  closeMenu();
-});
-
-window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeMenu();
-});
+menuItems.forEach(i => i.addEventListener("click", closeMenu));
 
 /* =========================
-   MENU AREAS TOGGLE
+   MENU AREAS
 ========================= */
 
 menuAreasToggle?.addEventListener("click", () => {
   const expanded = menuAreasToggle.getAttribute("aria-expanded") === "true";
 
-  menuAreasToggle.setAttribute("aria-expanded", String(!expanded));
-
-  if (expanded) {
-    menuAreasList?.setAttribute("hidden", "");
-  } else {
-    menuAreasList?.removeAttribute("hidden");
-
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        if (premiumMenuBody && menuAreasList) {
-          const top = menuAreasList.offsetTop - premiumMenuBody.offsetTop - 12;
-
-          premiumMenuBody.scrollTo({
-            top,
-            behavior: "smooth"
-          });
-        }
-      }, 80);
-    });
-  }
+  menuAreasToggle.setAttribute("aria-expanded", !expanded);
+  menuAreasList.toggleAttribute("hidden");
 });
 
 /* =========================
-   REVEAL ANIMATION
+   REVEAL
 ========================= */
 
 const revealItems = document.querySelectorAll(".reveal");
 
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-visible");
+    }
+  });
+});
 
-  revealItems.forEach((item) => observer.observe(item));
-} else {
-  revealItems.forEach((item) => item.classList.add("is-visible"));
-}
+revealItems.forEach(el => observer.observe(el));
 
 /* =========================
-   INIT
+   REVIEW FORM (FIXED)
 ========================= */
 
-if (dateInput) dateInput.min = getTodayISO();
-if (year) year.textContent = new Date().getFullYear();
-if (hoursInput && !hoursInput.value) hoursInput.value = "2";
-if (timeInput && !timeInput.value) timeInput.value = "10:00";
-
-updateQuote();
-hideMessages();
 const reviewForm = document.getElementById("reviewForm");
 const reviewSuccessMessage = document.getElementById("reviewSuccessMessage");
 
@@ -383,23 +210,29 @@ if (reviewForm) {
       const response = await fetch(reviewForm.action, {
         method: "POST",
         body: new FormData(reviewForm),
-        headers: {
-          Accept: "application/json"
-        }
+        headers: { Accept: "application/json" }
       });
 
-      if (!response.ok) {
-        throw new Error("Review submission failed");
-      }
+      if (!response.ok) throw new Error();
 
       reviewForm.reset();
 
       if (reviewSuccessMessage) {
         reviewSuccessMessage.hidden = false;
-        reviewSuccessMessage.focus();
       }
-    } catch (error) {
-      alert("There was a problem sending your review. Please try again.");
+
+    } catch {
+      alert("Error sending review. Try again.");
     }
   });
 }
+
+/* =========================
+   INIT
+========================= */
+
+dateInput && (dateInput.min = getTodayISO());
+year && (year.textContent = new Date().getFullYear());
+
+updateQuote();
+hideMessages();
