@@ -372,3 +372,34 @@ if (timeInput && !timeInput.value) timeInput.value = "10:00";
 
 updateQuote();
 hideMessages();
+const reviewForm = document.getElementById("reviewForm");
+const reviewSuccessMessage = document.getElementById("reviewSuccessMessage");
+
+if (reviewForm) {
+  reviewForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(reviewForm.action, {
+        method: "POST",
+        body: new FormData(reviewForm),
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error("Review submission failed");
+      }
+
+      reviewForm.reset();
+
+      if (reviewSuccessMessage) {
+        reviewSuccessMessage.hidden = false;
+        reviewSuccessMessage.focus();
+      }
+    } catch (error) {
+      alert("There was a problem sending your review. Please try again.");
+    }
+  });
+}
