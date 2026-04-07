@@ -42,9 +42,6 @@ const consentInput = document.getElementById("consent");
 
 const year = document.getElementById("year");
 
-const reviewForm = document.getElementById("reviewForm");
-const reviewSuccessMessage = document.getElementById("reviewSuccessMessage");
-
 /* =========================
    HELPERS
 ========================= */
@@ -301,31 +298,11 @@ if ("IntersectionObserver" in window) {
 }
 
 /* =========================
-   REVIEW FORM
+   INIT
 ========================= */
-const reviewForm = document.getElementById("reviewForm");
-const reviewSuccessMessage = document.getElementById("reviewSuccessMessage");
 
-if (reviewForm) {
-  reviewForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+if (dateInput) dateInput.min = getTodayISO();
+if (year) year.textContent = new Date().getFullYear();
 
-    try {
-      const response = await fetch(reviewForm.action, {
-        method: "POST",
-        body: new FormData(reviewForm),
-        headers: { Accept: "application/json" }
-      });
-
-      if (!response.ok) throw new Error();
-
-      reviewForm.reset();
-
-      if (reviewSuccessMessage) {
-        reviewSuccessMessage.classList.add("active");
-      }
-    } catch {
-      alert("There was a problem sending your review.");
-    }
-  });
-}
+updateQuote();
+hideMessages();
