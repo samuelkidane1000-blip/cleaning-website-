@@ -2195,3 +2195,10 @@ main {
     min-width: 0;
   }
 }
+.review-submit-section {
+  min-height: 520px; /* keeps layout stable */
+}
+
+.review-submit-card {
+  min-height: 420px;
+}
