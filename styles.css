@@ -1451,15 +1451,36 @@ main {
     padding: 6px 0;
   }
 
-  .logo {
-    gap: 8px;
-  }
+ .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
 
-  .logo-text {
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-  }
+.logo-stack {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+}
+
+.logo-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.logo-text {
+  font-family: "Inter", sans-serif;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-top: 2px;
+}
 
   .menu-toggle {
     width: 46px;
@@ -1512,9 +1533,14 @@ main {
     padding: 14px;
   }
 
-  .menu-logo-text {
-    font-size: 0.9rem;
-  }
+  .menu-logo .logo-name {
+  font-size: 1rem;
+}
+
+.menu-logo .logo-text {
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+}
 
   .menu-close {
     width: 42px;
