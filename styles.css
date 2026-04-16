@@ -2034,3 +2034,25 @@ main {
     grid-template-columns: 1fr;
   }
 }
+/* FIX LOGO ON LAPTOP */
+@media (min-width: 769px) {
+
+  .logo-stack {
+    flex-direction: row !important; /* put Nestlyn + Clean side by side */
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .logo-name {
+    font-size: 1.3rem;
+    letter-spacing: 0;
+  }
+
+  .logo-text {
+    font-size: 1.3rem;
+    margin: 0 !important;
+    letter-spacing: 0.18em; /* keep premium spacing */
+    text-transform: uppercase;
+  }
+
+}
