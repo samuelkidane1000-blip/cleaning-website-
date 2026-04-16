@@ -2,244 +2,550 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cleaning Services Camden | Domestic Cleaners in Camden | Nestlyn Clean</title>
-  <meta name="description" content="Professional cleaning services in Camden for flats, homes, and apartments. Book regular cleaning, one-off cleaning, and deep cleaning in Camden with Nestlyn Clean." />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Professional cleaning services in Camden for flats, homes and apartments. Book regular cleaning, one-off cleaning and deep cleaning in Camden with Nestlyn Clean." />
+  <link rel="canonical" href="https://www.nestlynclean.com/cleaning-camden.html" />
+
+  <style>
+    :root{
+      --bg:#141417;
+      --bg-2:#1a1a1f;
+      --white:#ffffff;
+      --gold:#d4af68;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:linear-gradient(180deg,var(--bg),var(--bg-2));
+      color:#fff;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:min(1100px, calc(100% - 32px));
+      margin:auto;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:9999;
+      backdrop-filter:blur(12px);
+      background:rgba(20,20,24,0.82);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      margin-bottom:0;
+    }
+
+    .header-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:76px;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      font-size:24px;
+      font-weight:800;
+      letter-spacing:.02em;
+      color:var(--white);
+      white-space:nowrap;
+    }
+
+    .hero{
+      padding:60px 0 40px;
+    }
+
+    h1{
+      font-size:clamp(38px,6vw,64px);
+      margin:0 0 12px;
+      line-height:1;
+      max-width:850px;
+    }
+
+    h2{
+      font-size:clamp(28px,4vw,46px);
+      margin:0 0 20px;
+      line-height:1.15;
+    }
+
+    p{
+      font-size:20px;
+      color:rgba(255,255,255,0.85);
+      line-height:1.6;
+      max-width:820px;
+      margin:0 0 20px;
+    }
+
+    .inline-link{
+      color:#fff;
+      text-decoration:underline;
+      font-weight:700;
+    }
+
+    .trust-points{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin:28px 0 10px;
+      max-width:520px;
+    }
+
+    .trust-point{
+      font-size:18px;
+      font-weight:700;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:24px;
+    }
+
+    .btn{
+      padding:16px 22px;
+      border-radius:16px;
+      font-weight:800;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      border:none;
+      box-shadow:0 12px 30px rgba(0,0,0,0.22);
+    }
+
+    .btn-gold{
+      background:var(--gold);
+      color:#111;
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.18);
+      color:#fff;
+    }
+
+    .section{
+      padding:34px 0;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .card{
+      background:#fff;
+      color:#111;
+      padding:20px;
+      border-radius:18px;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-size:24px;
+      line-height:1.2;
+    }
+
+    .card .price{
+      font-size:20px;
+      font-weight:800;
+      color:#111;
+      margin-bottom:12px;
+    }
+
+    .card p{
+      color:#555;
+      font-size:16px;
+      line-height:1.6;
+      max-width:none;
+      margin:0;
+    }
+
+    .area{
+      background:#fff;
+      color:#111;
+      padding:14px;
+      border-radius:14px;
+      margin-bottom:10px;
+      font-weight:700;
+    }
+
+    .seo{
+      background:#fff;
+      color:#111;
+      padding:24px;
+      border-radius:18px;
+      box-shadow:0 18px 48px rgba(0,0,0,0.12);
+    }
+
+    .seo h2,
+    .seo h3{
+      color:#111;
+      margin-top:0;
+    }
+
+    .seo p{
+      color:#444;
+      font-size:17px;
+      line-height:1.7;
+      max-width:none;
+      margin:0 0 16px;
+    }
+
+    .seo a{
+      color:#111;
+      font-weight:700;
+      text-decoration:underline;
+    }
+
+    .faq{
+      background:#fff;
+      color:#111;
+      padding:24px;
+      border-radius:18px;
+      box-shadow:0 18px 48px rgba(0,0,0,0.12);
+    }
+
+    .faq h2{
+      color:#111;
+      margin-top:0;
+    }
+
+    .faq p{
+      color:#444;
+      font-size:17px;
+      line-height:1.7;
+      max-width:none;
+      margin:0 0 16px;
+    }
+
+    .site-footer{
+      padding:28px 0 50px;
+      color:rgba(255,255,255,0.72);
+      font-size:15px;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    @media(max-width:900px){
+      .grid,
+      .grid-3{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        padding:70px 0 30px;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .hero-actions .btn{
+        width:100%;
+        max-width:520px;
+      }
+
+      p{
+        font-size:18px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a href="index.html" class="logo">
-        <span class="logo-mark"></span>
-        <span>
-          <strong>Nestlyn</strong>
-          <small>Clean</small>
-        </span>
-      </a>
-      <nav class="nav">
-        <a href="index.html#services">Services</a>
-        <a href="index.html#pricing">Pricing</a>
-        <a href="index.html#booking">Book</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
-      <a class="nav-cta" href="index.html#booking">Book a Clean</a>
-    </div>
-  </header>
 
-  <main>
-    <section class="section">
-      <div class="container">
-        <div class="section-title">
-          <span>Cleaning Services Camden</span>
-          <h1>Professional Cleaning Services in Camden</h1>
-        </div>
+<header class="site-header">
+  <div class="container header-row">
+    <div class="brand">Nestlyn Clean</div>
+  </div>
+</header>
 
-        <p class="pricing-copy">
-          Nestlyn Clean provides professional cleaning services in Camden for busy households, flats, and apartments.
-          We help clients keep their homes fresh, tidy, and beautifully maintained with flexible appointments and trusted
-          domestic cleaners. Whether you need regular cleaning in Camden, a one-off home clean, or a more detailed deep
-          cleaning service, our team delivers reliable support and high standards throughout every visit.
-        </p>
+<main>
 
-        <p class="pricing-copy">
-          Our cleaning services are popular with professionals, families, tenants, and landlords across Camden who want a
-          dependable cleaning company that is easy to book and focused on consistent results. If you are searching for
-          cleaners in Camden who can help with day-to-day upkeep or a more thorough reset of your home, Nestlyn Clean is
-          ready to help.
-        </p>
+  <section class="hero">
+    <div class="container">
 
-        <div class="service-grid" style="margin-top:32px;">
-          <article class="service-card featured">
-            <h2>Regular Cleaning Camden</h2>
-            <p class="price">£16.95 / hour</p>
-            <p>Weekly and fortnightly domestic cleaning in Camden for homes that need consistent upkeep, fresh surfaces, and reliable ongoing care.</p>
-          </article>
+      <h1>Professional Cleaning Services in Camden</h1>
 
-          <article class="service-card">
-            <h2>One-Off Cleaning Camden</h2>
-            <p class="price">£19 / hour</p>
-            <p>Flexible one-time cleaning for Camden homes that need a reset, refresh, pre-guest tidy, or extra support after a busy week.</p>
-          </article>
+      <p>
+        Nestlyn Clean provides professional cleaning services in Camden for flats, homes and apartments with trusted cleaners, flexible appointments and premium home care across <a href="index.html" class="inline-link">London</a>.
+      </p>
 
-          <article class="service-card">
-            <h2>Deep Cleaning Camden</h2>
-            <p class="price">£23 / hour</p>
-            <p>Detailed top-to-bottom deep cleaning in Camden for kitchens, bathrooms, bedrooms, and living areas that need extra care and attention.</p>
-          </article>
-        </div>
+      <p>
+        Ideal for busy professionals, families, tenants and landlords looking for regular cleaning, one-off cleaning or deep cleaning in Camden.
+      </p>
 
-        <div class="section" style="padding-bottom:0;">
-          <div class="section-title">
-            <span>Why Camden clients book us</span>
-            <h2>Trusted home cleaners in Camden</h2>
-          </div>
-          <p class="pricing-copy">
-            Camden is one of the busiest parts of London, with a mix of apartments, family homes, rental properties, and
-            fast-moving households. Many residents need flexible cleaning support that fits around work, travel, and busy
-            routines. Our Camden cleaning services are designed for clients who want quality, convenience, and dependable
-            results without the hassle of managing everything themselves.
-          </p>
-          <p class="pricing-copy">
-            We focus on professional presentation, reliable appointments, and five-star service. If you want a cleaner home
-            without compromising on quality, our domestic cleaners in Camden provide careful, consistent support from Monday
-            to Saturday, 8:00am to 6:00pm.
-          </p>
-        </div>
-
-        <div class="section" style="padding-bottom:0;">
-          <div class="section-title">
-            <span>Cleaning services</span>
-            <h2>What our Camden cleaning service includes</h2>
-          </div>
-          <div class="steps-grid">
-            <article>
-              <h3>Kitchens</h3>
-              <p>Worktops, sinks, exterior surfaces, hobs, splash areas, floors, and general kitchen cleaning to keep the space fresh, hygienic, and presentable.</p>
-            </article>
-
-            <article>
-              <h3>Bathrooms</h3>
-              <p>Bathrooms cleaned, sanitised, and refreshed with careful attention to hygiene, fittings, surfaces, sinks, toilets, and flooring.</p>
-            </article>
-
-            <article>
-              <h3>Bedrooms and living spaces</h3>
-              <p>Dusting, hoovering, mopping, tidying, and general upkeep throughout bedrooms, lounges, hallways, and shared living areas.</p>
-            </article>
-          </div>
-        </div>
-
-        <div class="section" style="padding-bottom:0;">
-          <div class="section-title">
-            <span>Areas we cover</span>
-            <h2>Home cleaning across Camden and nearby areas</h2>
-          </div>
-          <p class="pricing-copy">
-            We provide cleaning services across Camden for clients who want reliable domestic cleaners close to home.
-            This includes homes and flats in Camden Town, Kentish Town, Chalk Farm, Primrose Hill, and nearby parts of
-            North London. If you are looking for house cleaning in Camden for a main residence, rental property, or
-            apartment, we can provide a service that suits your schedule and cleaning priorities.
-          </p>
-          <p class="pricing-copy">
-            Local area coverage helps us offer convenient booking options and dependable support for returning clients.
-            Whether you need regular home cleaning in Camden or occasional help with a deep clean, our team is available
-            across the area.
-          </p>
-        </div>
-
-        <div class="section" style="padding-bottom:0;">
-          <div class="section-title">
-            <span>Who we help</span>
-            <h2>Cleaning for busy homes, tenants, landlords, and professionals</h2>
-          </div>
-          <p class="pricing-copy">
-            Our Camden cleaners support a wide range of clients. Regular cleaning is ideal for busy professionals and
-            families who want their home maintained week after week. One-off cleaning is useful before guests arrive,
-            after events, or when a home simply needs extra attention. Deep cleaning is a popular choice for clients
-            preparing for a seasonal reset, moving in, or refreshing a space after a demanding period.
-          </p>
-          <p class="pricing-copy">
-            We also help tenants and landlords who need a property presented well, especially in areas with active rental
-            turnover. Camden homes often need flexible, practical cleaning support, and that is exactly what our service is
-            built to provide.
-          </p>
-        </div>
-
-        <div class="section" style="padding-bottom:0;">
-          <div class="section-title">
-            <span>Why choose Nestlyn Clean</span>
-            <h2>A premium cleaning company in Camden</h2>
-          </div>
-          <p class="pricing-copy">
-            When people search for domestic cleaners in Camden, they usually want three things: reliability, quality, and
-            an easy booking experience. Nestlyn Clean is built around all three. We keep our service straightforward, our
-            standards high, and our communication clear from the moment you enquire to the completion of your clean.
-          </p>
-          <p class="pricing-copy">
-            Our goal is simple: to provide cleaning services in Camden that feel polished, professional, and genuinely
-            helpful. Whether you book a regular cleaner or a one-off visit, you can expect careful attention to detail and
-            a service designed around your home.
-          </p>
-        </div>
-
-        <div class="section" style="padding-bottom:0;">
-          <div class="section-title">
-            <span>Frequently asked questions</span>
-            <h2>FAQs about cleaning services in Camden</h2>
-          </div>
-
-          <div class="steps-grid">
-            <article>
-              <h3>How much does cleaning in Camden cost?</h3>
-              <p>Our Camden cleaning prices start from £16.95 per hour for regular cleaning, £19 per hour for one-off cleaning, and £23 per hour for deep cleaning.</p>
-            </article>
-
-            <article>
-              <h3>Do you offer regular domestic cleaning in Camden?</h3>
-              <p>Yes. We provide weekly and fortnightly domestic cleaning in Camden for clients who want ongoing help keeping their home clean, tidy, and well maintained.</p>
-            </article>
-
-            <article>
-              <h3>Can I book a one-off cleaner in Camden?</h3>
-              <p>Yes. Our one-off cleaning service in Camden is ideal for homes that need a reset, post-event tidy, or occasional extra support.</p>
-            </article>
-
-            <article>
-              <h3>Do you provide deep cleaning in Camden?</h3>
-              <p>Yes. Our deep cleaning service is designed for homes that need more detailed attention, especially kitchens, bathrooms, and high-use living spaces.</p>
-            </article>
-
-            <article>
-              <h3>Which parts of Camden do you cover?</h3>
-              <p>We cover Camden and nearby areas including Camden Town, Kentish Town, Chalk Farm, and Primrose Hill, subject to availability and booking schedule.</p>
-            </article>
-
-            <article>
-              <h3>Why choose Nestlyn Clean for house cleaning in Camden?</h3>
-              <p>Clients choose us for our premium service, flexible booking, trusted cleaners, and reliable cleaning standards across regular, one-off, and deep cleaning visits.</p>
-            </article>
-          </div>
-        </div>
-
-        <div class="section" style="padding-bottom:0;">
-          <div class="section-title">
-            <span>Book today</span>
-            <h2>Book cleaning in Camden with Nestlyn Clean</h2>
-          </div>
-          <p class="pricing-copy">
-            If you are looking for reliable cleaners in Camden, Nestlyn Clean is ready to help. We provide regular
-            cleaning, one-off cleaning, and deep cleaning across Camden with trusted professionals and premium results.
-            Book your Camden cleaning service today and enjoy a cleaner, fresher home with less stress.
-          </p>
-
-          <div class="hero-actions" style="margin-top:24px;">
-            <a class="btn btn-gold" href="index.html#booking">Book a Clean</a>
-            <a class="btn btn-ghost" href="index.html#contact">Contact Us</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-wrap">
-      <div class="footer-links">
-        <a href="regular-cleaning-london.html">Regular Cleaning London</a>
-        <a href="deep-cleaning-london.html">Deep Cleaning London</a>
-        <a href="one-off-cleaning-london.html">One-Off Cleaning London</a>
-        <a href="end-of-tenancy-cleaning-london.html">End of Tenancy Cleaning London</a>
-        <a href="after-builders-cleaning-london.html">After Builders Cleaning London</a>
-        <a href="cleaning-camden.html">Cleaning Camden</a>
+      <div class="trust-points">
+        <div class="trust-point">✓ Trusted domestic cleaners</div>
+        <div class="trust-point">✓ Flexible appointments</div>
+        <div class="trust-point">✓ Premium results for Camden homes</div>
       </div>
 
-      <p>© <span id="year"></span> Nestlyn Clean</p>
-      <a href="index.html">Back to home</a>
-    </div>
-  </footer>
+      <div class="hero-actions">
+        <a href="index.html#booking" class="btn btn-gold">Book a Clean</a>
+        <a href="index.html#pricing" class="btn btn-secondary">View Prices</a>
+      </div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <h2>Why cleaning services are in demand in Camden</h2>
+
+      <div class="grid">
+        <div class="card">
+          <p>Camden has a high number of busy households, flats and rental properties, making regular domestic cleaning especially useful for day-to-day upkeep.</p>
+        </div>
+        <div class="card">
+          <p>Popular areas such as Camden Town, Kentish Town and Chalk Farm include a strong mix of professionals, families and tenants who need flexible cleaning support.</p>
+        </div>
+        <div class="card">
+          <p>One-off and deep cleaning are ideal for Camden homes that need a reset before guests, after a busy period or ahead of moving in or out.</p>
+        </div>
+        <div class="card">
+          <p>Our service is built for convenience, reliable appointments and a polished finish for homes across Camden and nearby North London areas.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <h2>Cleaning services available in Camden</h2>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Regular Cleaning Camden</h3>
+          <div class="price">£16.95 / hour</div>
+          <p>Weekly and fortnightly domestic cleaning in Camden for homes that need consistent upkeep, fresh surfaces and reliable ongoing care.</p>
+        </div>
+
+        <div class="card">
+          <h3>One-Off Cleaning Camden</h3>
+          <div class="price">£19 / hour</div>
+          <p>Flexible one-time cleaning for Camden homes that need a reset, refresh, pre-guest tidy or extra support after a busy week.</p>
+        </div>
+
+        <div class="card">
+          <h3>Deep Cleaning Camden</h3>
+          <div class="price">£23 / hour</div>
+          <p>Detailed top-to-bottom deep cleaning in Camden for kitchens, bathrooms, bedrooms and living areas that need extra care and attention.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <h2>Areas we cover in Camden</h2>
+
+      <div class="area">Camden Town</div>
+      <div class="area">Kentish Town</div>
+      <div class="area">Chalk Farm</div>
+      <div class="area">Primrose Hill</div>
+      <div class="area">Belsize Park</div>
+      <div class="area">Gospel Oak</div>
+      <div class="area">Nearby North London areas</div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <h2>Trusted home cleaners in Camden</h2>
+
+      <p>
+        Camden is one of the busiest parts of London, with a mix of apartments, family homes, rental properties and fast-moving households. Many residents need flexible cleaning support that fits around work, travel and busy routines.
+      </p>
+
+      <p>
+        Our Camden cleaning services are designed for clients who want quality, convenience and dependable results without the hassle. Whether you need ongoing home cleaning or a one-off visit, we provide a polished service built around your schedule.
+      </p>
+
+      <p>
+        We focus on professional presentation, reliable appointments and premium standards. If you want a cleaner home without compromising on quality, our domestic cleaners in Camden provide careful, consistent support from Monday to Saturday.
+      </p>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="seo">
+        <h2>Cleaning services Camden</h2>
+
+        <p>
+          Our Camden cleaning services are ideal for busy households, tenants, landlords and professionals who want a cleaner home with less effort. We provide regular cleaning, one-off cleaning and deep cleaning with trusted cleaners and flexible booking.
+        </p>
+
+        <p>
+          Camden’s mix of apartments, shared homes, family houses and active rental properties makes it one of the most in-demand areas in London for dependable domestic cleaning support.
+        </p>
+
+        <p>
+          Whether you need help keeping your home fresh week after week or want a one-time reset before guests, after a busy period or ahead of moving, our Camden cleaning service is built to deliver reliable results with a professional finish.
+        </p>
+
+        <p>
+          We also cover nearby areas and wider <a href="index.html">London cleaning services</a> through our main booking page.
+        </p>
+
+        <p>
+          You can use our <a href="index.html#booking">homepage booking form</a> to request your preferred service, date and extras in under a minute.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="seo">
+        <h2>What our Camden cleaning service includes</h2>
+
+        <p>
+          Our cleaners in Camden help with the day-to-day upkeep that keeps homes tidy, fresh and presentable. This includes kitchens, bathrooms, bedrooms, living spaces, hallways and general household surfaces.
+        </p>
+
+        <p>
+          Regular cleaning is ideal for clients who want weekly or fortnightly support. One-off cleaning works well for occasional resets, while deep cleaning is designed for homes that need more detailed attention and extra care.
+        </p>
+
+        <p>
+          We keep our service simple, flexible and easy to book, helping Camden clients choose the right level of cleaning for their property and routine.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="seo">
+        <h2>Who our Camden cleaning service is for</h2>
+
+        <p>
+          Our Camden cleaning services are ideal for professionals, families, tenants, landlords and busy households that want reliable domestic cleaning with premium standards.
+        </p>
+
+        <p>
+          Regular cleaning is perfect for homes that need ongoing support. One-off cleaning is useful before guests arrive, after events or when a property needs extra attention. Deep cleaning is popular for seasonal resets, moving in, moving out or refreshing a space after a demanding period.
+        </p>
+
+        <p>
+          If you are searching for cleaners in Camden who offer flexibility, quality and dependable service, Nestlyn Clean is ready to help.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="faq">
+        <h2>Cleaning services Camden FAQs</h2>
+
+        <p>
+          <strong>How much does cleaning in Camden cost?</strong><br>
+          Our Camden cleaning prices start from £16.95 per hour for regular cleaning, £19 per hour for one-off cleaning and £23 per hour for deep cleaning.
+        </p>
+
+        <p>
+          <strong>Do you offer regular domestic cleaning in Camden?</strong><br>
+          Yes, we provide weekly and fortnightly domestic cleaning in Camden for clients who want ongoing help keeping their home clean, tidy and well maintained.
+        </p>
+
+        <p>
+          <strong>Can I book a one-off cleaner in Camden?</strong><br>
+          Yes, our one-off cleaning service in Camden is ideal for homes that need a reset, post-event tidy or occasional extra support.
+        </p>
+
+        <p>
+          <strong>Do you provide deep cleaning in Camden?</strong><br>
+          Yes, our deep cleaning service is designed for homes that need more detailed attention, especially kitchens, bathrooms and high-use living spaces.
+        </p>
+
+        <p>
+          <strong>Which parts of Camden do you cover?</strong><br>
+          We cover Camden and nearby areas including Camden Town, Kentish Town, Chalk Farm, Primrose Hill and surrounding North London locations, subject to availability.
+        </p>
+
+        <p>
+          <strong>Why choose Nestlyn Clean for house cleaning in Camden?</strong><br>
+          Clients choose us for our premium service, flexible booking, trusted cleaners and reliable cleaning standards across regular, one-off and deep cleaning visits.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <h2>Book cleaning in Camden today</h2>
+
+      <p>
+        If you are looking for reliable cleaners in Camden, Nestlyn Clean is ready to help. We provide regular cleaning, one-off cleaning and deep cleaning across Camden with trusted professionals and premium results.
+      </p>
+
+      <div class="hero-actions" style="margin-top:0;">
+        <a href="index.html#booking" class="btn btn-gold">Book a Clean</a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>© <span id="year"></span> Nestlyn Clean</span>
+    <span>Camden Cleaning Services</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
