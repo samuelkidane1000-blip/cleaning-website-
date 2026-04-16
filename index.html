@@ -333,124 +333,127 @@
             <span>✔ We’ll confirm your booking shortly</span>
           </div>
 
-          <form
-            id="bookingForm"
-            class="booking-form"
-            action="https://formsubmit.co/bookings@nestlynclean.com"
-            method="POST"
-            novalidate
-          >
-            <input type="hidden" name="_subject" value="New Nestlyn Clean booking request" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="estimated_total" id="estimatedTotalInput" />
-            <input type="hidden" name="quote_breakdown" id="quoteBreakdownInput" />
-            <input type="hidden" name="service_label" id="serviceLabelInput" />
-            <input type="hidden" name="oven_extra" id="ovenExtraInput" />
-            <input type="hidden" name="supplies_extra" id="suppliesExtraInput" />
+         <form
+  id="bookingForm"
+  class="booking-form"
+  action="https://formsubmit.co/info@nestlynclean.com"
+  method="POST"
+  novalidate
+>
+  <input type="hidden" name="_subject" value="New Nestlyn Clean booking request" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_autoresponse" value="Thank you. We have received your booking request and will contact you shortly." />
 
-            <div class="honeypot-field" aria-hidden="true">
-              <label for="website">Leave this field empty</label>
-              <input
-                id="website"
-                name="_honey"
-                type="text"
-                tabindex="-1"
-                autocomplete="off"
-              />
-            </div>
+  <input type="hidden" name="estimated_total" id="estimatedTotalInput" />
+  <input type="hidden" name="quote_breakdown" id="quoteBreakdownInput" />
+  <input type="hidden" name="service_label" id="serviceLabelInput" />
+  <input type="hidden" name="oven_extra" id="ovenExtraInput" />
+  <input type="hidden" name="supplies_extra" id="suppliesExtraInput" />
 
-            <label for="service">
-              <span>Select Service</span>
-              <select id="service" name="service" required>
-                <option value="16.95" data-label="Regular cleaning">Regular cleaning — £16.95/h</option>
-                <option value="19" data-label="One-off clean">One-off clean — £19/h</option>
-                <option value="23" data-label="Deep cleaning">Deep cleaning — £23/h</option>
-              </select>
-            </label>
+  <div class="honeypot-field" aria-hidden="true">
+    <label for="website">Leave this field empty</label>
+    <input
+      id="website"
+      name="_honey"
+      type="text"
+      tabindex="-1"
+      autocomplete="off"
+    />
+  </div>
 
-            <div class="form-row">
-              <label for="frequency">
-                <span>Frequency</span>
-                <select id="frequency" name="frequency">
-                  <option>Weekly</option>
-                  <option>Fortnightly</option>
-                  <option>One payment</option>
-                </select>
-              </label>
+  <label for="service">
+    <span>Select Service</span>
+    <select id="service" name="service" required>
+      <option value="16.95" data-label="Regular cleaning">Regular cleaning — £16.95/h</option>
+      <option value="19" data-label="One-off clean">One-off clean — £19/h</option>
+      <option value="23" data-label="Deep cleaning">Deep cleaning — £23/h</option>
+    </select>
+  </label>
 
-              <label for="hours">
-                <span>Hours</span>
-                <input id="hours" name="hours" type="number" min="2" step="1" value="2" required />
-              </label>
-            </div>
+  <div class="form-row">
+    <label for="frequency">
+      <span>Frequency</span>
+      <select id="frequency" name="frequency">
+        <option>Weekly</option>
+        <option>Fortnightly</option>
+        <option>One payment</option>
+      </select>
+    </label>
 
-            <div class="form-row">
-              <label for="date">
-                <span>Date</span>
-                <input id="date" name="date" type="date" required />
-              </label>
+    <label for="hours">
+      <span>Hours</span>
+      <input id="hours" name="hours" type="number" min="2" step="1" value="2" required />
+    </label>
+  </div>
 
-              <label for="time">
-                <span>Time</span>
-                <input id="time" name="time" type="time" min="08:00" max="18:00" value="10:00" required />
-              </label>
-            </div>
+  <div class="form-row">
+    <label for="date">
+      <span>Date</span>
+      <input id="date" name="date" type="date" required />
+    </label>
 
-            <fieldset class="extras">
-              <legend>Add Extras</legend>
+    <label for="time">
+      <span>Time</span>
+      <input id="time" name="time" type="time" min="08:00" max="18:00" value="10:00" required />
+    </label>
+  </div>
 
-              <label class="check" for="oven">
-                <input type="checkbox" id="oven" name="extras_oven" value="25" />
-                <span>Inside oven clean <strong>+£25</strong></span>
-              </label>
+  <fieldset class="extras">
+    <legend>Add Extras</legend>
 
-              <label class="check" for="supplies">
-                <input type="checkbox" id="supplies" name="extras_supplies" value="20" />
-                <span>Hoover &amp; mop provided by us <strong>+£20</strong></span>
-              </label>
-            </fieldset>
+    <label class="check" for="oven">
+      <input type="checkbox" id="oven" name="extras_oven" value="25" />
+      <span>Inside oven clean <strong>+£25</strong></span>
+    </label>
 
-            <div class="quote-box" aria-live="polite">
-              <div>
-                <small>Estimated total</small>
-                <strong id="quoteTotal">£33.90</strong>
-              </div>
-              <p id="quoteBreakdown">2 hours × £16.95 • Weekly service • No hidden fees</p>
-            </div>
+    <label class="check" for="supplies">
+      <input type="checkbox" id="supplies" name="extras_supplies" value="20" />
+      <span>Hoover &amp; mop provided by us <strong>+£20</strong></span>
+    </label>
+  </fieldset>
 
-            <div class="form-row">
-              <label for="name">
-                <span>Name</span>
-                <input id="name" name="name" type="text" autocomplete="name" placeholder="Your full name" required />
-              </label>
+  <div class="quote-box" aria-live="polite">
+    <div>
+      <small>Estimated total</small>
+      <strong id="quoteTotal">£33.90</strong>
+    </div>
+    <p id="quoteBreakdown">2 hours × £16.95 • Weekly service • No hidden fees</p>
+  </div>
 
-              <label for="phone">
-                <span>Phone</span>
-                <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Your number" required />
-              </label>
-            </div>
+  <div class="form-row">
+    <label for="name">
+      <span>Name</span>
+      <input id="name" name="name" type="text" autocomplete="name" placeholder="Your full name" required />
+    </label>
 
-            <label for="email">
-              <span>Email Address</span>
-              <input id="email" name="email" type="email" autocomplete="email" placeholder="Your email address" required />
-            </label>
+    <label for="phone">
+      <span>Phone</span>
+      <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Your number" required />
+    </label>
+  </div>
 
-            <label class="check consent-check" for="consent">
-              <input type="checkbox" id="consent" name="consent" required />
-              <span>
-                I agree to be contacted about my booking and have read the
-                <a href="privacy-policy.html">Privacy Policy</a>.
-              </span>
-            </label>
+  <label for="email">
+    <span>Email Address</span>
+    <input id="email" name="email" type="email" autocomplete="email" placeholder="Your email address" required />
+  </label>
 
-            <button type="submit" class="btn btn-gold btn-full" id="submitBookingBtn">
-              Check Availability &amp; Book
-            </button>
+  <label class="check consent-check" for="consent">
+    <input type="checkbox" id="consent" name="consent" required />
+    <span>
+      I agree to be contacted about my booking and have read the
+      <a href="privacy-policy.html">Privacy Policy</a>.
+    </span>
+  </label>
 
-            <p class="booking-note">
-              No payment required today. Minimum booking is 2 hours. Opening hours: Monday to Saturday, 8:00am to 6:00pm.
-            </p>
-          </form>
+  <button type="submit" class="btn btn-gold btn-full" id="submitBookingBtn">
+    Check Availability &amp; Book
+  </button>
+
+  <p class="booking-note">
+    No payment required today. Minimum booking is 2 hours. Opening hours: Monday to Saturday, 8:00am to 6:00pm.
+  </p>
+</form>
 
           <div id="errorMessage" class="error-message" hidden aria-live="assertive" tabindex="-1">
             <h3>Something went wrong</h3>
