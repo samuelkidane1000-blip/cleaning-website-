@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cleaning Services London | Domestic Cleaners in London | Nestlyn Clean</title>
+  <meta name="description" content="Professional cleaning services in London for flats, homes and apartments. Book regular cleaning, one-off cleaning and deep cleaning in London with Nestlyn Clean." />
+  <link rel="canonical" href="https://www.nestlynclean.com/cleaning-london.html" />
+
+  <style>
+    :root{
+      --bg:#141417;
+      --bg-2:#1a1a1f;
+      --white:#ffffff;
+      --gold:#d4af68;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:linear-gradient(180deg,var(--bg),var(--bg-2));
+      color:#fff;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:min(1100px, calc(100% - 32px));
+      margin:auto;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:9999;
+      backdrop-filter:blur(12px);
+      background:rgba(20,20,24,0.82);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      margin-bottom:0;
+    }
+
+    .header-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:76px;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      font-size:24px;
+      font-weight:800;
+      letter-spacing:.02em;
+      color:var(--white);
+      white-space:nowrap;
+    }
+
+    .hero{
+      padding:60px 0 40px;
+    }
+
+    h1{
+      font-size:clamp(38px,6vw,64px);
+      margin:0 0 12px;
+      line-height:1;
+      max-width:900px;
+    }
+
+    h2{
+      font-size:clamp(28px,4vw,46px);
+      margin:0 0 20px;
+      line-height:1.15;
+    }
+
+    p{
+      font-size:20px;
+      color:rgba(255,255,255,0.85);
+      line-height:1.6;
+      max-width:860px;
+      margin:0 0 20px;
+    }
+
+    .inline-link{
+      color:#fff;
+      text-decoration:underline;
+      font-weight:700;
+    }
+
+    .trust-points{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin:28px 0 10px;
+      max-width:560px;
+    }
+
+    .trust-point{
+      font-size:18px;
+      font-weight:700;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:24px;
+    }
+
+    .btn{
+      padding:16px 22px;
+      border-radius:16px;
+      font-weight:800;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      border:none;
+      box-shadow:0 12px 30px rgba(0,0,0,0.22);
+    }
+
+    .btn-gold{
+      background:var(--gold);
+      color:#111;
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.18);
+      color:#fff;
+    }
+
+    .section{
+      padding:34px 0;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .areas-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .card{
+      background:#fff;
+      color:#111;
+      padding:20px;
+      border-radius:18px;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-size:24px;
+      line-height:1.2;
+    }
+
+    .card .price{
+      font-size:20px;
+      font-weight:800;
+      color:#111;
+      margin-bottom:12px;
+    }
+
+    .card p{
+      color:#555;
+      font-size:16px;
+      line-height:1.6;
+      max-width:none;
+      margin:0;
+    }
+
+    .area{
+      background:#fff;
+      color:#111;
+      padding:14px;
+      border-radius:14px;
+      font-weight:700;
+    }
+
+    .seo{
+      background:#fff;
+      color:#111;
+      padding:24px;
+      border-radius:18px;
+      box-shadow:0 18px 48px rgba(0,0,0,0.12);
+    }
+
+    .seo h2,
+    .seo h3{
+      color:#111;
+      margin-top:0;
+    }
+
+    .seo p{
+      color:#444;
+      font-size:17px;
+      line-height:1.7;
+      max-width:none;
+      margin:0 0 16px;
+    }
+
+    .seo a{
+      color:#111;
+      font-weight:700;
+      text-decoration:underline;
+    }
+
+    .faq{
+      background:#fff;
+      color:#111;
+      padding:24px;
+      border-radius:18px;
+      box-shadow:0 18px 48px rgba(0,0,0,0.12);
+    }
+
+    .faq h2{
+      color:#111;
+      margin-top:0;
+    }
+
+    .faq p{
+      color:#444;
+      font-size:17px;
+      line-height:1.7;
+      max-width:none;
+      margin:0 0 16px;
+    }
+
+    .site-footer{
+      padding:28px 0 50px;
+      color:rgba(255,255,255,0.72);
+      font-size:15px;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    @media(max-width:900px){
+      .grid,
+      .grid-3,
+      .areas-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        padding:70px 0 30px;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .hero-actions .btn{
+        width:100%;
+        max-width:520px;
+      }
+
+      p{
+        font-size:18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <div class="brand">Nestlyn Clean</div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+
+      <h1>Professional Cleaning Services in London</h1>
+
+      <p>
+        Nestlyn Clean provides professional cleaning services in London for flats, homes and apartments, with trusted cleaners, flexible appointments and premium home care across the city.
+      </p>
+
+      <p>
+        Ideal for busy professionals, families, tenants and landlords looking for regular cleaning, one-off cleaning or deep cleaning in London.
+      </p>
+
+      <div class="trust-points">
+        <div class="trust-point">✓ Trusted domestic cleaners</div>
+        <div class="trust-point">✓ Flexible appointments across London</div>
+        <div class="trust-point">✓ Premium results for flats, homes and apartments</div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="index.html#booking" class="btn btn-gold">Book a Clean</a>
+        <a href="index.html#pricing" class="btn btn-secondary">View Prices</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <h2>Why cleaning services are in demand in London</h2>
+
+      <div class="grid">
+        <div class="card">
+          <p>London has a high number of busy households, flats and family homes, making regular domestic cleaning especially useful for keeping properties tidy, fresh and well maintained.</p>
+        </div>
+        <div class="card">
+          <p>The city is full of professionals, families and tenants who want flexible booking, trusted cleaners and a service that fits around demanding routines.</p>
+        </div>
+        <div class="card">
+          <p>One-off and deep cleaning are especially useful before guests arrive, after busy periods, or when preparing a property for moving in, moving out or a tenancy change.</p>
+        </div>
+        <div class="card">
+          <p>Our service is designed to provide convenience, reliable appointments and premium results for homes across Central, North, East, South and West London.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <h2>Cleaning services available in London</h2>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Regular Cleaning London</h3>
+          <div class="price">£16.95 / hour</div>
+          <p>Weekly and fortnightly domestic cleaning in London for homes that need consistent upkeep, fresh surfaces and reliable ongoing care.</p>
+        </div>
+
+        <div class="card">
+          <h3>One-Off Cleaning London</h3>
+          <div class="price">£19 / hour</div>
+          <p>Flexible one-time cleaning for London homes that need a reset, refresh, pre-guest tidy or extra support after a busy week.</p>
+        </div>
+
+        <div class="card">
+          <h3>Deep Cleaning London</h3>
+          <div class="price">£23 / hour</div>
+          <p>Detailed top-to-bottom deep cleaning in London for kitchens, bathrooms, bedrooms and living areas that need extra care and attention.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <h2>Areas we cover across London</h2>
+
+      <div class="areas-grid">
+        <div class="area">Camden</div>
+        <div class="area">Chelsea</div>
+        <div class="area">Westminster</div>
+        <div class="area">Islington</div>
+        <div class="area">Shoreditch</div>
+        <div class="area">Canary Wharf</div>
+        <div class="area">Kensington</div>
+        <div class="area">Notting Hill</div>
+        <div class="area">Fulham</div>
+        <div class="area">Southwark</div>
+        <div class="area">Lambeth</div>
+        <div class="area">Marylebone</div>
+        <div class="area">Hackney</div>
+        <div class="area">Battersea</div>
+        <div class="area">Clapham</div>
+        <div class="area">Greenwich</div>
+        <div class="area">Hammersmith</div>
+      </div>
+
+      <p style="margin-top:20px;">
+        You can also browse our local area pages for
+        <a href="cleaning-camden.html" class="inline-link">Camden</a>,
+        <a href="cleaning-chelsea.html" class="inline-link">Chelsea</a>,
+        <a href="cleaning-westminster.html" class="inline-link">Westminster</a>,
+        <a href="cleaning-kensington.html" class="inline-link">Kensington</a>,
+        <a href="cleaning-notting-hill.html" class="inline-link">Notting Hill</a> and more.
+      </p>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <h2>Trusted home cleaners in London</h2>
+
+      <p>
+        London is known for busy households, flats, family homes and active day-to-day routines, which makes reliable domestic cleaning especially valuable. Many residents want a service that feels flexible, easy to book and dependable week after week.
+      </p>
+
+      <p>
+        Our London cleaning services are designed for clients who want quality, convenience and consistent results. Whether you need ongoing home cleaning or a one-off visit, we provide a polished service built around your routine and property.
+      </p>
+
+      <p>
+        Many of our clients across London want regular help keeping kitchens, bathrooms, bedrooms and living spaces well presented, especially in high-use homes where mess can build up quickly.
+      </p>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="seo">
+        <h2>Cleaning services London</h2>
+
+        <p>
+          Our London cleaning services are ideal for busy households, tenants, landlords and professionals who want a cleaner home with less effort. We provide regular cleaning, one-off cleaning and deep cleaning with trusted cleaners and flexible booking.
+        </p>
+
+        <p>
+          London’s mix of flats, family homes, apartments and active residential life makes it one of the most in-demand locations in the UK for dependable domestic cleaning support.
+        </p>
+
+        <p>
+          Whether you need help maintaining your home week after week or want a one-time reset before guests, after a busy period or ahead of moving, our London cleaning service is built to deliver reliable results with a polished finish.
+        </p>
+
+        <p>
+          You can also explore our <a href="domestic-cleaning-london.html">domestic cleaning London page</a>, our <a href="regular-cleaning-london.html">regular cleaning service</a>, our <a href="one-off-cleaning-london.html">one-off cleaning service</a> and our <a href="deep-cleaning-london.html">deep cleaning service</a>.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="seo">
+        <h2>Local cleaning across Central, North, East, South and West London</h2>
+
+        <p>
+          We regularly provide cleaning services across a wide range of London neighbourhoods, including central apartments, family homes in residential streets and busy rental properties that need reliable ongoing upkeep.
+        </p>
+
+        <p>
+          London households often need a service that fits around commuting, work, family routines, travel and hosting. Our cleaning service is designed to help keep properties fresh, tidy and guest-ready without adding extra pressure to the week.
+        </p>
+
+        <p>
+          For clients looking for practical, flexible home cleaning in London, we provide a straightforward service with convenient booking and reliable support across the capital.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="seo">
+        <h2>What our London cleaning service includes</h2>
+
+        <p>
+          Our cleaners in London help with the day-to-day upkeep that keeps homes tidy, fresh and beautifully presented. This includes kitchens, bathrooms, bedrooms, living spaces, hallways and general household surfaces.
+        </p>
+
+        <p>
+          Regular cleaning is ideal for clients who want weekly or fortnightly support. One-off cleaning works well for occasional resets, while deep cleaning is designed for homes that need more detailed attention and extra care.
+        </p>
+
+        <p>
+          Compared to one-off cleaning, regular weekly or fortnightly cleaning is the most popular choice for many London households because it helps keep the home in good condition without the need to rebook each time.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="seo">
+        <h2>Recent cleaning work in London</h2>
+
+        <p>
+          A recent London booking involved a deep clean for a two-bedroom flat before a tenancy handover, where extra attention was needed in the kitchen, bathroom and main living areas to get the property ready for inspection.
+        </p>
+
+        <p>
+          This type of service is common across London, where busy households, flats and rental properties often need a more detailed clean before inspections, moving dates or guest stays.
+        </p>
+
+        <p>
+          Adding this level of care helps restore freshness throughout the property and leaves the home looking cleaner, brighter and better prepared.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="seo">
+        <h2>Who our London cleaning service is for</h2>
+
+        <p>
+          Our London cleaning services are ideal for professionals, families, tenants, landlords and busy households that want reliable domestic cleaning with premium standards.
+        </p>
+
+        <p>
+          Regular cleaning is perfect for homes that need ongoing support. One-off cleaning is useful before guests arrive, after events or when a property needs extra attention. Deep cleaning is popular for seasonal resets, moving in, moving out or refreshing a space after a demanding period.
+        </p>
+
+        <p>
+          If you are searching for cleaners in London who offer flexibility, quality and dependable service, Nestlyn Clean is ready to help.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="faq">
+        <h2>Cleaning services London FAQs</h2>
+
+        <p>
+          <strong>How much does cleaning in London cost?</strong><br>
+          Our London cleaning prices start from £16.95 per hour for regular cleaning, £19 per hour for one-off cleaning and £23 per hour for deep cleaning.
+        </p>
+
+        <p>
+          <strong>How quickly can I book a cleaner in London?</strong><br>
+          In many cases, we can offer London cleaning appointments within 24 to 48 hours, depending on availability and the type of service required.
+        </p>
+
+        <p>
+          <strong>Do you offer regular domestic cleaning in London?</strong><br>
+          Yes, we provide weekly and fortnightly domestic cleaning in London for clients who want ongoing help keeping their home clean, tidy and well maintained.
+        </p>
+
+        <p>
+          <strong>Can I book a one-off cleaner in London?</strong><br>
+          Yes, our one-off cleaning service in London is ideal for homes that need a reset, post-event tidy or occasional extra support.
+        </p>
+
+        <p>
+          <strong>Do you provide deep cleaning in London?</strong><br>
+          Yes, our deep cleaning service is designed for homes that need more detailed attention, especially kitchens, bathrooms and high-use living spaces.
+        </p>
+
+        <p>
+          <strong>Which parts of London do you cover?</strong><br>
+          We cover a wide range of London areas including Central, North, East, South and West London, subject to availability and booking schedule.
+        </p>
+
+        <p>
+          <strong>Why choose Nestlyn Clean for house cleaning in London?</strong><br>
+          Clients choose us for our premium service, flexible booking, trusted cleaners and reliable cleaning standards across regular, one-off and deep cleaning visits.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <h2>Book cleaning in London today</h2>
+
+      <p>
+        If you are looking for reliable cleaners in London, Nestlyn Clean is ready to help. We provide regular cleaning, one-off cleaning and deep cleaning across London with trusted professionals and premium results.
+      </p>
+
+      <div class="hero-actions" style="margin-top:0;">
+        <a href="index.html#booking" class="btn btn-gold">Book a Clean</a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <span>© <span id="year"></span> Nestlyn Clean</span>
+    <span>London Cleaning Services</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
