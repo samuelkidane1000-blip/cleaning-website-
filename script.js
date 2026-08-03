@@ -206,15 +206,9 @@ if (bookingForm) {
         headers: { Accept: "application/json" }
       });
 
-      if (!response.ok) throw new Error();
+   if (!response.ok) throw new Error();
 
-      bookingForm.reset();
-      showSuccess();
-
-      if (hoursInput) hoursInput.value = "2";
-      if (timeInput) timeInput.value = "10:00";
-
-      updateQuote();
+window.location.href = "/thank-you.html";
     } catch {
       showError("Something went wrong. Please try again.");
     }
