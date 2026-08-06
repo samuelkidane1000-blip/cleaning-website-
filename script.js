@@ -101,7 +101,7 @@ function updateQuote() {
   const rate = parseFloat(serviceSelect?.value || "0");
   const hours = getSafeHours();
   const oven = ovenInput?.checked ? 25 : 0;
-  const supplies = suppliesInput?.checked ? 20 : 0;
+  const supplies = suppliesInput?.checked ? 40 : 0;
   const total = rate * hours + oven + supplies;
 
   quoteTotal.textContent = formatGBP(total);
